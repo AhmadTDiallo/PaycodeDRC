@@ -67,6 +67,9 @@ export default function HeroSection() {
             className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
             variants={fadeInUp}
           >
+            <span className="block text-4xl md:text-5xl mb-4 text-paycode-blue-accent">
+              Paycode Fintech Congo
+            </span>
             Biometric Digital Identity for{" "}
             <span className="gradient-text">
               Financial Inclusion
