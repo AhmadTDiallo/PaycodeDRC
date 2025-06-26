@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400..900&family=Space+Grotesk:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,6 +102,18 @@
   
   .bg-paycode-gray {
     background-color: hsl(225, 20%, 65%);
+  }
+
+  .font-orbitron {
+    font-family: 'Orbitron', monospace;
+  }
+
+  .font-space-grotesk {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
   }
 }
 

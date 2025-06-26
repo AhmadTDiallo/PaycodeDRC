@@ -64,25 +64,40 @@ export default function HeroSection() {
       >
         <motion.div variants={fadeInUp}>
           <motion.h1
-            className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+            className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
             variants={fadeInUp}
           >
-            <span className="block text-4xl md:text-5xl mb-4 text-paycode-blue-accent">
-              Paycode Fintech Congo
-            </span>
-            Biometric Digital Identity for{" "}
-            <span className="gradient-text">
-              Financial Inclusion
+            <motion.span 
+              className="block text-5xl md:text-8xl font-orbitron font-black mb-6 bg-gradient-to-r from-white via-paycode-blue-accent to-white bg-clip-text text-transparent tracking-wide"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              PAYCODE
+            </motion.span>
+            <motion.span 
+              className="block text-3xl md:text-5xl font-space-grotesk font-semibold mb-6 text-paycode-blue-accent tracking-wider"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              FINTECH CONGO
+            </motion.span>
+            <span className="font-inter text-4xl md:text-6xl">
+              Biometric Digital Identity for{" "}
+              <span className="gradient-text">
+                Financial Inclusion
+              </span>
             </span>
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-200 mb-10 max-w-4xl mx-auto leading-relaxed font-inter"
             variants={fadeInUp}
           >
-            We are a B2B technology provider with a unique digital payments
-            platform, providing Last Mile solutions to the unbanked and
-            underserved across Africa and beyond.
+            Licensed payment aggregator providing shared, interoperable payment platforms 
+            for Financial Institutions across the Democratic Republic of Congo. Connecting 
+            banks, MFIs, and mobile money operators through unified technology.
           </motion.p>
 
           <motion.div
