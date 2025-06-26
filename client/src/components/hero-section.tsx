@@ -26,7 +26,6 @@ export default function HeroSection() {
           }}
         />
       </div>
-
       {/* Animated floating elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -55,7 +54,6 @@ export default function HeroSection() {
           }}
         />
       </div>
-
       <motion.div
         className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         variants={staggerContainer}
@@ -69,13 +67,11 @@ export default function HeroSection() {
           >
             
             <motion.span 
-              className="block text-3xl md:text-5xl font-poppins font-semibold mb-6 text-white tracking-wide"
+              className="block text-3xl md:text-5xl font-poppins font-semibold tracking-wide text-[#334b7d] mt-[2px] mb-[2px] pl-[-12px] pr-[-12px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              FINTECH CONGO
-            </motion.span>
+            >PAYCODE FINTECH CONGO</motion.span>
             <span className="font-poppins text-4xl md:text-6xl font-semibold">
               Biometric Digital Identity for{" "}
               <span className="text-gradient-blue">
