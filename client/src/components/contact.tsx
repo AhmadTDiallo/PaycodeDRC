@@ -110,8 +110,8 @@ export default function Contact() {
             Ready to Transform Financial Inclusion?
           </h2>
           <p className="text-xl text-blue-100 mb-12">
-            Join governments, banks, and organizations worldwide who trust Paycode
-            to deliver biometric digital identity and payment solutions.
+            Partner with Paycode DRC to access our interoperable payment platform
+            and connect your financial institution to the broader DRC ecosystem.
           </p>
         </motion.div>
 

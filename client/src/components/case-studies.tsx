@@ -11,7 +11,7 @@ export default function CaseStudies() {
       flag: "🇬🇭",
       title: "National Payment System",
       description:
-        "The Bank of Ghana selected Paycode's EDAPT technology to provide a turnkey solution for a National Payment Switching & Settlement System.",
+        "The Bank of Ghana selected Paycode DRC's EDAPT technology to provide a turnkey solution for a National Payment Switching & Settlement System.",
       image:
         "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       gradient: "from-yellow-400 to-red-400",
@@ -21,7 +21,7 @@ export default function CaseStudies() {
       flag: "🇦🇫",
       title: "Digital Financial Transactions",
       description:
-        "Afghanistan International Bank implemented Paycode's biometric digital identity and payments technology to digitise financial transactions for donors, NGOs and Corporates.",
+        "Afghanistan International Bank implemented Paycode DRC's biometric digital identity and payments technology to digitise financial transactions for donors, NGOs and Corporates.",
       image:
         "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
       gradient: "from-green-400 to-blue-400",

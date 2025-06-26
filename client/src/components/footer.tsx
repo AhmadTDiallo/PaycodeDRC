@@ -39,11 +39,12 @@ export default function Footer() {
               <div className="w-10 h-10 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-lg flex items-center justify-center">
                 <Fingerprint className="text-white w-5 h-5" />
               </div>
-              <span className="text-2xl font-bold">PAYCODE</span>
+              <span className="text-2xl font-bold">PAYCODE DRC</span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-4 max-w-md">
-              Biometric digital identity and payments technology that works
-              everywhere. Breaking down barriers to financial inclusion worldwide.
+              Licensed payment aggregator providing interoperable financial 
+              services across the Democratic Republic of Congo. Connecting 
+              banks, MFIs, and mobile money operators.
             </p>
             <div className="flex space-x-4">
               <a
@@ -102,8 +103,8 @@ export default function Footer() {
           variants={fadeInUp}
         >
           <p>
-            &copy; 2024 Paycode. All rights reserved. Transforming financial
-            inclusion through biometric technology.
+            &copy; 2024 Paycode DRC. All rights reserved. Driving financial
+            inclusion through interoperable payment solutions.
           </p>
         </motion.div>
       </div>

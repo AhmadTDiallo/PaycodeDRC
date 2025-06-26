@@ -55,7 +55,7 @@ export default function Navigation() {
             <div className="w-10 h-10 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-lg flex items-center justify-center">
               <Fingerprint className="text-white w-5 h-5" />
             </div>
-            <span className="text-2xl font-bold paycode-blue">PAYCODE</span>
+            <span className="text-2xl font-bold paycode-blue">PAYCODE DRC</span>
           </motion.div>
 
           {/* Desktop Navigation */}

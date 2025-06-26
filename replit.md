@@ -1,8 +1,8 @@
-# PayCode Fintech Application
+# Paycode DRC Fintech Application
 
 ## Overview
 
-This is a full-stack fintech application for PayCode, a biometric digital identity and payments technology company. The application features a modern marketing website showcasing PayCode's solutions for financial inclusion in remote areas, with functionality for demo requests and newsletter subscriptions.
+This is a full-stack fintech application for Paycode DRC, a licensed payment aggregator providing shared, interoperable payment platforms for Financial Institutions across the Democratic Republic of Congo. The application features a modern marketing website showcasing Paycode DRC's role in connecting banks, MFIs, mobile money operators, and other financial players through a unified system, with functionality for demo requests and newsletter subscriptions.
 
 ## System Architecture
 
@@ -108,7 +108,11 @@ This is a full-stack fintech application for PayCode, a biometric digital identi
 - Port configuration for deployment flexibility
 
 ## Changelog
-- June 26, 2025. Initial setup
+- June 26, 2025: Initial setup with PayCode branding
+- June 26, 2025: Updated branding to "Paycode DRC" throughout application
+- June 26, 2025: Added new section showcasing Paycode DRC as licensed payment aggregator
+- June 26, 2025: Updated color scheme to navy/royal blue theme, removing green elements
+- June 26, 2025: Enhanced content to reflect DRC-focused interoperable payment solutions
 
 ## User Preferences
 
