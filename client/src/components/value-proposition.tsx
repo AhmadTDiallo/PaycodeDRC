@@ -125,6 +125,127 @@ export default function ValueProposition() {
           </motion.div>
         </div>
       </section>
+
+      {/* Seamless Glassmorphism Section */}
+      <section className="relative py-32 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-fixed"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2942&q=80')`
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-paycode-blue/60 via-paycode-blue-light/40 to-paycode-blue/60" />
+          <div className="absolute inset-0 backdrop-blur-[2px]" />
+        </div>
+
+        {/* Floating Glass Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="absolute top-20 left-10 w-64 h-64 bg-white/5 rounded-3xl backdrop-blur-lg border border-white/10"
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 5, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-16 w-48 h-48 bg-paycode-blue-light/10 rounded-full backdrop-blur-lg border border-white/10"
+            animate={{
+              y: [0, 15, 0],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-white/10 to-paycode-blue/10 rounded-2xl backdrop-blur-md border border-white/20"
+            animate={{
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={staggerContainer}
+            className="text-center"
+          >
+            {/* Glass Card Container */}
+            <motion.div
+              variants={fadeInUp}
+              className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl p-8 md:p-16 shadow-2xl"
+            >
+              <motion.h2 
+                className="text-4xl md:text-6xl font-bold text-white mb-8"
+                variants={fadeInUp}
+              >
+                Transforming
+                <span className="block bg-gradient-to-r from-white to-paycode-blue-accent bg-clip-text text-transparent">
+                  Digital Finance
+                </span>
+              </motion.h2>
+              
+              <motion.p 
+                className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12"
+                variants={fadeInUp}
+              >
+                Connecting every financial institution across the Democratic Republic of Congo through secure, interoperable technology that enables seamless transactions and drives economic growth.
+              </motion.p>
+
+              <motion.div
+                variants={staggerContainer}
+                className="grid md:grid-cols-3 gap-8"
+              >
+                <motion.div 
+                  variants={fadeInUp}
+                  className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="text-3xl font-bold text-white mb-2">50+</div>
+                  <div className="text-white/80">Financial Institutions</div>
+                </motion.div>
+                
+                <motion.div 
+                  variants={fadeInUp}
+                  className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="text-3xl font-bold text-white mb-2">1M+</div>
+                  <div className="text-white/80">Active Users</div>
+                </motion.div>
+                
+                <motion.div 
+                  variants={fadeInUp}
+                  className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="text-3xl font-bold text-white mb-2">99.9%</div>
+                  <div className="text-white/80">System Uptime</div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Seamless Transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-card to-transparent" />
+      </section>
     </>
   );
 }
