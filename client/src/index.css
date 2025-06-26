@@ -3,29 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(215, 25%, 12%);
+  --background: hsl(225, 45%, 10%);
   --foreground: hsl(210, 40%, 95%);
-  --card: hsl(215, 25%, 18%);
+  --card: hsl(225, 40%, 15%);
   --card-foreground: hsl(210, 40%, 95%);
-  --popover: hsl(215, 25%, 18%);
+  --popover: hsl(225, 40%, 15%);
   --popover-foreground: hsl(210, 40%, 95%);
   --primary: hsl(221, 83%, 53%);
   --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(215, 25%, 15%);
+  --secondary: hsl(225, 40%, 20%);
   --secondary-foreground: hsl(210, 40%, 95%);
-  --muted: hsl(215, 25%, 25%);
+  --muted: hsl(225, 35%, 30%);
   --muted-foreground: hsl(215, 16%, 65%);
-  --accent: hsl(215, 25%, 15%);
+  --accent: hsl(225, 40%, 20%);
   --accent-foreground: hsl(210, 40%, 95%);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 40%, 98%);
-  --border: hsl(215, 20%, 25%);
-  --input: hsl(215, 20%, 25%);
+  --border: hsl(225, 30%, 30%);
+  --input: hsl(225, 30%, 30%);
   --ring: hsl(221, 83%, 53%);
-  --paycode-blue: hsl(221, 83%, 32%);
-  --paycode-blue-light: hsl(221, 83%, 53%);
-  --paycode-blue-accent: hsl(221, 70%, 65%);
-  --paycode-gray: hsl(215, 20%, 65%);
+  --paycode-blue: hsl(225, 85%, 35%);
+  --paycode-blue-light: hsl(225, 83%, 55%);
+  --paycode-blue-accent: hsl(225, 70%, 68%);
+  --paycode-gray: hsl(225, 20%, 65%);
   --radius: 0.75rem;
 }
 
@@ -71,35 +71,35 @@
 
 @layer utilities {
   .paycode-blue {
-    color: hsl(221, 83%, 32%);
+    color: hsl(225, 85%, 35%);
   }
   
   .bg-paycode-blue {
-    background-color: hsl(221, 83%, 32%);
+    background-color: hsl(225, 85%, 35%);
   }
   
   .paycode-blue-light {
-    color: hsl(221, 83%, 53%);
+    color: hsl(225, 83%, 55%);
   }
   
   .bg-paycode-blue-light {
-    background-color: hsl(221, 83%, 53%);
+    background-color: hsl(225, 83%, 55%);
   }
   
   .paycode-blue-accent {
-    color: hsl(221, 70%, 65%);
+    color: hsl(225, 70%, 68%);
   }
   
   .bg-paycode-blue-accent {
-    background-color: hsl(221, 70%, 65%);
+    background-color: hsl(225, 70%, 68%);
   }
   
   .paycode-gray {
-    color: hsl(215, 20%, 65%);
+    color: hsl(225, 20%, 65%);
   }
   
   .bg-paycode-gray {
-    background-color: hsl(215, 20%, 65%);
+    background-color: hsl(225, 20%, 65%);
   }
 }
 
@@ -153,7 +153,7 @@
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, hsl(221, 70%, 65%), hsl(221, 83%, 75%));
+  background: linear-gradient(135deg, hsl(225, 70%, 68%), hsl(225, 83%, 78%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -172,14 +172,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(210, 40%, 96%);
+  background: hsl(225, 40%, 20%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(221, 83%, 53%);
+  background: hsl(225, 83%, 55%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(221, 83%, 32%);
+  background: hsl(225, 85%, 35%);
 }
