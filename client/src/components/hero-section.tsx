@@ -68,7 +68,7 @@ export default function HeroSection() {
             variants={fadeInUp}
           >
             <motion.span 
-              className="block text-5xl md:text-8xl font-orbitron font-black mb-6 bg-gradient-to-r from-white via-paycode-blue-accent to-white bg-clip-text text-transparent tracking-wide"
+              className="block text-5xl md:text-8xl font-montserrat font-black mb-6 text-gradient-blue-deep tracking-wider"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
@@ -76,16 +76,16 @@ export default function HeroSection() {
               PAYCODE
             </motion.span>
             <motion.span 
-              className="block text-3xl md:text-5xl font-space-grotesk font-semibold mb-6 text-paycode-blue-accent tracking-wider"
+              className="block text-3xl md:text-5xl font-poppins font-semibold mb-6 text-gradient-blue tracking-wide"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               FINTECH CONGO
             </motion.span>
-            <span className="font-inter text-4xl md:text-6xl">
+            <span className="font-poppins text-4xl md:text-6xl font-semibold">
               Biometric Digital Identity for{" "}
-              <span className="gradient-text">
+              <span className="text-gradient-blue">
                 Financial Inclusion
               </span>
             </span>

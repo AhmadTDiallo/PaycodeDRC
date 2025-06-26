@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400..900&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&family=Montserrat:wght@100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -104,16 +104,30 @@
     background-color: hsl(225, 20%, 65%);
   }
 
-  .font-orbitron {
-    font-family: 'Orbitron', monospace;
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
   }
 
-  .font-space-grotesk {
-    font-family: 'Space Grotesk', sans-serif;
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
   }
 
   .font-inter {
     font-family: 'Inter', sans-serif;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa, #93c5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-blue-deep {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af, #3b82f6, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
