@@ -48,13 +48,13 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-gray-400 hover:text-paycode-green transition-colors"
+                className="text-gray-400 hover:text-paycode-blue-accent transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-paycode-green transition-colors"
+                className="text-gray-400 hover:text-paycode-blue-accent transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
