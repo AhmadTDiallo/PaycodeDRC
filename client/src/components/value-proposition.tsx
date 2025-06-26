@@ -108,21 +108,6 @@ export default function ValueProposition() {
               <p className="text-muted-foreground">Reducing costs while improving accessibility and efficiency</p>
             </motion.div>
           </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-            className="bg-gradient-to-r from-paycode-blue/10 to-paycode-blue-light/10 rounded-2xl p-8 md:p-12 text-center"
-          >
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Driving Financial Inclusion in DRC
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              As a licensed aggregator, Paycode DRC offers secure, reliable, and scalable payment solutions that drive financial inclusion and efficiency. We help institutions reduce costs, improve accessibility, and promote interoperability within the country's growing digital finance ecosystem.
-            </p>
-          </motion.div>
         </div>
       </section>
 
@@ -133,7 +118,7 @@ export default function ValueProposition() {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2942&q=80')`
+              backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-paycode-blue/60 via-paycode-blue-light/40 to-paycode-blue/60" />
@@ -245,6 +230,26 @@ export default function ValueProposition() {
 
         {/* Bottom Seamless Transition */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-card to-transparent" />
+      </section>
+
+      {/* Final Section */}
+      <section className="py-20 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUp}
+            className="bg-gradient-to-r from-paycode-blue/10 to-paycode-blue-light/10 rounded-2xl p-8 md:p-12 text-center"
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
+              Driving Financial Inclusion in DRC
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              As a licensed aggregator, Paycode DRC offers secure, reliable, and scalable payment solutions that drive financial inclusion and efficiency. We help institutions reduce costs, improve accessibility, and promote interoperability within the country's growing digital finance ecosystem.
+            </p>
+          </motion.div>
+        </div>
       </section>
     </>
   );
