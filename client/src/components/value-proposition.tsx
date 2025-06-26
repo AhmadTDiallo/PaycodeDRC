@@ -16,8 +16,8 @@ export default function ValueProposition() {
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
             We provide biometric digital identity to guarantee{" "}
-            <span className="text-paycode-green">proof of life</span> and enable{" "}
-            <span className="text-paycode-green">low cost last mile delivery</span>{" "}
+            <span className="text-paycode-blue-accent">proof of life</span> and enable{" "}
+            <span className="text-paycode-blue-accent">low cost last mile delivery</span>{" "}
             of basic financial services.
           </h2>
           <p className="text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed">

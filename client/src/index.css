@@ -3,28 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(222, 84%, 4.9%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(222, 84%, 4.9%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(222, 84%, 4.9%);
+  --background: hsl(215, 25%, 12%);
+  --foreground: hsl(210, 40%, 95%);
+  --card: hsl(215, 25%, 18%);
+  --card-foreground: hsl(210, 40%, 95%);
+  --popover: hsl(215, 25%, 18%);
+  --popover-foreground: hsl(210, 40%, 95%);
   --primary: hsl(221, 83%, 53%);
   --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(210, 40%, 96%);
-  --secondary-foreground: hsl(222, 47%, 11%);
-  --muted: hsl(210, 40%, 96%);
-  --muted-foreground: hsl(215, 16%, 47%);
-  --accent: hsl(210, 40%, 96%);
-  --accent-foreground: hsl(222, 47%, 11%);
+  --secondary: hsl(215, 25%, 15%);
+  --secondary-foreground: hsl(210, 40%, 95%);
+  --muted: hsl(215, 25%, 25%);
+  --muted-foreground: hsl(215, 16%, 65%);
+  --accent: hsl(215, 25%, 15%);
+  --accent-foreground: hsl(210, 40%, 95%);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 40%, 98%);
-  --border: hsl(214, 32%, 91%);
-  --input: hsl(214, 32%, 91%);
+  --border: hsl(215, 20%, 25%);
+  --input: hsl(215, 20%, 25%);
   --ring: hsl(221, 83%, 53%);
   --paycode-blue: hsl(221, 83%, 32%);
   --paycode-blue-light: hsl(221, 83%, 53%);
-  --paycode-green: hsl(158, 64%, 52%);
+  --paycode-blue-accent: hsl(221, 70%, 65%);
   --paycode-gray: hsl(215, 20%, 65%);
   --radius: 0.75rem;
 }
@@ -86,12 +86,12 @@
     background-color: hsl(221, 83%, 53%);
   }
   
-  .paycode-green {
-    color: hsl(158, 64%, 52%);
+  .paycode-blue-accent {
+    color: hsl(221, 70%, 65%);
   }
   
-  .bg-paycode-green {
-    background-color: hsl(158, 64%, 52%);
+  .bg-paycode-blue-accent {
+    background-color: hsl(221, 70%, 65%);
   }
   
   .paycode-gray {
@@ -153,7 +153,7 @@
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, hsl(158, 64%, 52%), hsl(158, 64%, 62%));
+  background: linear-gradient(135deg, hsl(221, 70%, 65%), hsl(221, 83%, 75%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

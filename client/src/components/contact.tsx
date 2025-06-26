@@ -126,14 +126,14 @@ export default function Contact() {
             <Card className="glass border-white/20 h-full">
               <CardContent className="p-8">
                 <div className="text-center mb-6">
-                  <Calendar className="text-paycode-green mx-auto mb-4 h-12 w-12" />
+                  <Calendar className="text-paycode-blue-accent mx-auto mb-4 h-12 w-12" />
                   <h3 className="text-2xl font-bold text-white mb-2">Book a Demo</h3>
                   <p className="text-blue-100">See our technology in action</p>
                 </div>
 
                 {showDemoSuccess ? (
                   <div className="text-center">
-                    <CheckCircle2 className="text-paycode-green mx-auto mb-4 h-16 w-16" />
+                    <CheckCircle2 className="text-paycode-blue-accent mx-auto mb-4 h-16 w-16" />
                     <h4 className="text-xl font-bold text-white mb-2">
                       Demo Request Received!
                     </h4>
@@ -142,7 +142,7 @@ export default function Contact() {
                     </p>
                     <Button
                       variant="ghost"
-                      className="text-white hover:text-paycode-green mt-4"
+                      className="text-white hover:text-paycode-blue-accent mt-4"
                       onClick={() => setShowDemoSuccess(false)}
                     >
                       Submit Another Request
@@ -244,7 +244,7 @@ export default function Contact() {
                       />
                       <Button
                         type="submit"
-                        className="w-full bg-paycode-green hover:bg-emerald-600 text-white font-semibold transition-all duration-300 transform hover:scale-105"
+                        className="w-full bg-paycode-blue-accent hover:bg-paycode-blue text-white font-semibold transition-all duration-300 transform hover:scale-105"
                         disabled={demoMutation.isPending}
                       >
                         {demoMutation.isPending ? "Submitting..." : "Schedule Demo"}
@@ -266,7 +266,7 @@ export default function Contact() {
             <Card className="glass border-white/20 h-full">
               <CardContent className="p-8">
                 <div className="text-center mb-6">
-                  <Mail className="text-paycode-green mx-auto mb-4 h-12 w-12" />
+                  <Mail className="text-paycode-blue-accent mx-auto mb-4 h-12 w-12" />
                   <h3 className="text-2xl font-bold text-white mb-2">Stay Updated</h3>
                   <p className="text-blue-100">
                     Get the latest news on financial inclusion and digital identity
@@ -275,7 +275,7 @@ export default function Contact() {
 
                 {showNewsletterSuccess ? (
                   <div className="text-center">
-                    <CheckCircle2 className="text-paycode-green mx-auto mb-4 h-16 w-16" />
+                    <CheckCircle2 className="text-paycode-blue-accent mx-auto mb-4 h-16 w-16" />
                     <h4 className="text-xl font-bold text-white mb-2">
                       Welcome to Our Newsletter!
                     </h4>
@@ -285,7 +285,7 @@ export default function Contact() {
                     </p>
                     <Button
                       variant="ghost"
-                      className="text-white hover:text-paycode-green mt-4"
+                      className="text-white hover:text-paycode-blue-accent mt-4"
                       onClick={() => setShowNewsletterSuccess(false)}
                     >
                       Subscribe Another Email

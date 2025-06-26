@@ -53,7 +53,7 @@ export default function News() {
   ];
 
   return (
-    <section id="news" className="py-20 bg-white">
+    <section id="news" className="py-20 bg-card">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -62,8 +62,8 @@ export default function News() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold paycode-blue mb-4">Latest News</h2>
-          <p className="text-xl paycode-gray">
+          <h2 className="text-4xl font-bold text-foreground mb-4">Latest News</h2>
+          <p className="text-xl text-muted-foreground">
             Stay updated with our latest developments and partnerships
           </p>
         </motion.div>
@@ -89,15 +89,15 @@ export default function News() {
                     >
                       {article.category}
                     </Badge>
-                    <span className="paycode-gray text-sm">{article.date}</span>
+                    <span className="text-muted-foreground text-sm">{article.date}</span>
                   </div>
-                  <h3 className="text-xl font-bold paycode-blue mb-3 group-hover:text-paycode-green transition-colors line-clamp-2">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-paycode-blue-accent transition-colors line-clamp-2">
                     {article.title}
                   </h3>
-                  <p className="paycode-gray leading-relaxed mb-3 line-clamp-3">
+                  <p className="text-muted-foreground leading-relaxed mb-3 line-clamp-3">
                     {article.summary}
                   </p>
-                  <div className="flex items-center text-sm paycode-gray">
+                  <div className="flex items-center text-sm text-muted-foreground">
                     <span>By {article.author}</span>
                   </div>
                 </CardContent>
@@ -113,7 +113,7 @@ export default function News() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <button className="text-paycode-blue hover:text-paycode-green font-semibold transition-colors duration-200">
+          <button className="text-paycode-blue hover:text-paycode-blue-accent font-semibold transition-colors duration-200">
             View All News →
           </button>
         </motion.div>

@@ -63,7 +63,7 @@ export default function Team() {
   ];
 
   return (
-    <section id="team" className="py-20 bg-gray-50">
+    <section id="team" className="py-20 bg-secondary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -72,10 +72,10 @@ export default function Team() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold paycode-blue mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Our Leadership Team
           </h2>
-          <p className="text-xl paycode-gray">
+          <p className="text-xl text-muted-foreground">
             Experienced leaders driving financial inclusion worldwide
           </p>
         </motion.div>
@@ -95,20 +95,20 @@ export default function Team() {
                   style={{ backgroundImage: `url(${member.image})` }}
                 />
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold paycode-blue mb-1">
+                  <h3 className="text-xl font-bold text-foreground mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-paycode-green font-semibold mb-3">
+                  <p className="text-paycode-blue-accent font-semibold mb-3">
                     {member.position}
                   </p>
-                  <p className="paycode-gray text-sm leading-relaxed mb-4">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                     {member.description}
                   </p>
                   <div className="flex space-x-3">
                     <Button
                       size="sm"
                       variant="ghost"
-                      className="text-paycode-blue hover:text-paycode-green p-0"
+                      className="text-paycode-blue hover:text-paycode-blue-accent p-0"
                       onClick={() => window.open(member.linkedin, "_blank")}
                     >
                       <Linkedin className="h-5 w-5" />

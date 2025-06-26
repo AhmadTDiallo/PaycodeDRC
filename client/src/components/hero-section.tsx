@@ -68,7 +68,7 @@ export default function HeroSection() {
             variants={fadeInUp}
           >
             Biometric Digital Identity for{" "}
-            <span className="gradient-text bg-gradient-to-r from-paycode-green to-emerald-400 bg-clip-text text-transparent">
+            <span className="gradient-text">
               Financial Inclusion
             </span>
           </motion.h1>
@@ -88,7 +88,7 @@ export default function HeroSection() {
           >
             <Button
               size="lg"
-              className="bg-gradient-to-r from-paycode-green to-emerald-500 hover:from-emerald-500 hover:to-paycode-green text-white px-8 py-4 text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white px-8 py-4 text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               onClick={() => scrollToSection("contact")}
             >
               <Play className="mr-2 h-5 w-5" />

@@ -58,8 +58,8 @@ export default function Statistics() {
     {
       value: formatNumber(counts.connectivity, 3700000000),
       label: "People without connectivity",
-      gradient: "from-paycode-green to-emerald-500",
-      textColor: "text-green-100",
+      gradient: "from-paycode-blue-light to-paycode-blue-accent",
+      textColor: "text-blue-100",
     },
     {
       value: formatNumber(counts.unbanked, 1700000000),
@@ -70,7 +70,7 @@ export default function Statistics() {
   ];
 
   return (
-    <section className="py-20 bg-white" ref={ref}>
+    <section className="py-20 bg-card" ref={ref}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"

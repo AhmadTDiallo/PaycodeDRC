@@ -59,7 +59,7 @@ export default function CaseStudies() {
   ];
 
   return (
-    <section id="case-studies" className="py-20 bg-white">
+    <section id="case-studies" className="py-20 bg-card">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -68,8 +68,8 @@ export default function CaseStudies() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold paycode-blue mb-4">Success Stories</h2>
-          <p className="text-xl paycode-gray">Real impact across Africa and beyond</p>
+          <h2 className="text-4xl font-bold text-foreground mb-4">Success Stories</h2>
+          <p className="text-xl text-muted-foreground">Real impact across Africa and beyond</p>
         </motion.div>
 
         <motion.div
@@ -93,17 +93,17 @@ export default function CaseStudies() {
                     >
                       {study.flag}
                     </div>
-                    <h3 className="text-xl font-bold paycode-blue">{study.country}</h3>
+                    <h3 className="text-xl font-bold text-foreground">{study.country}</h3>
                   </div>
-                  <h4 className="text-lg font-semibold paycode-blue mb-3">
+                  <h4 className="text-lg font-semibold text-foreground mb-3">
                     {study.title}
                   </h4>
-                  <p className="paycode-gray mb-4 leading-relaxed">
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
                     {study.description}
                   </p>
                   <Button
                     variant="ghost"
-                    className="text-paycode-green hover:text-paycode-blue font-semibold p-0"
+                    className="text-paycode-blue-accent hover:text-paycode-blue font-semibold p-0"
                   >
                     View Case Study <ArrowRight className="ml-1 h-4 w-4" />
                   </Button>
@@ -136,17 +136,17 @@ export default function CaseStudies() {
                       >
                         {study.flag}
                       </div>
-                      <h3 className="text-lg font-bold paycode-blue">{study.country}</h3>
+                      <h3 className="text-lg font-bold text-foreground">{study.country}</h3>
                     </div>
-                    <h4 className="text-base font-semibold paycode-blue mb-2">
+                    <h4 className="text-base font-semibold text-foreground mb-2">
                       {study.title}
                     </h4>
-                    <p className="paycode-gray text-sm mb-3 leading-relaxed">
+                    <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
                       {study.description}
                     </p>
                     <Button
                       variant="ghost"
-                      className="text-paycode-green hover:text-paycode-blue font-semibold p-0 text-sm"
+                      className="text-paycode-blue-accent hover:text-paycode-blue font-semibold p-0 text-sm"
                     >
                       View Case Study <ArrowRight className="ml-1 h-3 w-3" />
                     </Button>
