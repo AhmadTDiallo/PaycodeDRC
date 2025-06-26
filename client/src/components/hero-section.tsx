@@ -67,14 +67,7 @@ export default function HeroSection() {
             className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
             variants={fadeInUp}
           >
-            <motion.span 
-              className="block text-5xl md:text-8xl font-montserrat font-black mb-6 text-gradient-blue-deep tracking-wider"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            >
-              PAYCODE
-            </motion.span>
+            
             <motion.span 
               className="block text-3xl md:text-5xl font-poppins font-semibold mb-6 text-white tracking-wide"
               initial={{ opacity: 0, y: 20 }}
