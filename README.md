@@ -99,10 +99,9 @@
 - Vite builds optimized frontend bundle
 - esbuild produces serverless-ready backend bundle
 - Static assets served via Express API
-- Replit hosting with autoscaling
 - Environment-based configuration management
 
 ---
 
 ## ⚙️ Environment Configuration
-Refer to AhmadDiallo
+Refer to AhmadTDiallo - Developer
