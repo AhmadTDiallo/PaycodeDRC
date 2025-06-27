@@ -99,7 +99,7 @@ export default function Navigation() {
                 className="bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white px-6 py-2.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 size="sm"
               >
-                Book Demo
+                Get in Touch
               </Button>
             </motion.div>
           </div>
@@ -162,7 +162,7 @@ export default function Navigation() {
                       onClick={() => scrollToSection("contact")}
                       className="w-full bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                     >
-                      Book Demo
+                      Get in Touch
                     </Button>
                   </motion.div>
                 </div>

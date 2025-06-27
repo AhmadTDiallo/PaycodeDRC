@@ -73,9 +73,9 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >PAYCODE FINTECH CONGO</motion.span>
             <span className="font-poppins text-4xl md:text-6xl font-semibold">
-              Biometric Digital Identity for{" "}
+              Trusted Payment Aggregator for{" "}
               <span className="text-gradient-blue">
-                Financial Inclusion
+                Interoperable Ecosystems
               </span>
             </span>
           </motion.h1>
@@ -84,9 +84,7 @@ export default function HeroSection() {
             className="text-xl md:text-2xl text-gray-200 mb-10 max-w-4xl mx-auto leading-relaxed font-inter"
             variants={fadeInUp}
           >
-            Licensed payment aggregator providing shared, interoperable payment platforms 
-            for Financial Institutions across the Democratic Republic of Congo. Connecting 
-            banks, MFIs, and mobile money operators through unified technology.
+            
           </motion.p>
 
           <motion.div
@@ -99,7 +97,7 @@ export default function HeroSection() {
               onClick={() => scrollToSection("contact")}
             >
               <Play className="mr-2 h-5 w-5" />
-              Book a Demo
+              Get in Touch
             </Button>
             <Button
               size="lg"

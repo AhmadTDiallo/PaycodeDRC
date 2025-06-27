@@ -103,7 +103,7 @@ export default function Footer() {
           variants={fadeInUp}
         >
           <p>
-            &copy; 2024 Paycode DRC. All rights reserved. Driving financial
+            &copy; 2025 Paycode Fintech Congo. All rights reserved. Driving financial
             inclusion through interoperable payment solutions.
           </p>
         </motion.div>

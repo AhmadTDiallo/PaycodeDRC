@@ -7,37 +7,37 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 export default function Team() {
   const teamMembers = [
     {
-      name: "Gabriel Ruhan",
-      position: "Chief Executive Officer",
+      name: "Sadio Diallo",
+      position: "Director General",
       description:
-        "Seasoned entrepreneur with a distinguished track record in technology and engineering. Co-founded Global Switch in 1998 and served as COO at Navisite Inc.",
+        "Director General of Paycode Fintech Congo.",
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
       linkedin: "https://www.linkedin.com/in/gabrielruhan/",
     },
     {
-      name: "Sandy Begg",
-      position: "Chief Operating Officer",
+      name: "Dominique Kaba",
+      position: "Director of Operations",
       description:
-        "Long and successful track record in executive management at large corporates in South Africa. Responsible for operations and day-to-day customer support.",
+        "Head of operations at Paycode Fintech Congo, with over 10 years of experience in the financial sector.",
       image:
         "https://images.unsplash.com/photo-1494790108755-2616b332c1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
       linkedin: "https://www.linkedin.com/in/sandy-begg-b322236/",
     },
     {
-      name: "Grant Haarhoff",
-      position: "Chief Financial Officer",
+      name: "Prosper Tshang",
+      position: "Head of Finance & Administration",
       description:
-        "Qualified Chartered Accountant who joined Paycode after 6 years at the South African Reserve Bank where he held high-profile roles including Acting Group CFO.",
+        "Head of Finance and Administration at Paycode Fintech Congo, with a strong background in financial management and administration.",
       image:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
       linkedin: "https://www.linkedin.com/in/grant-haarhoff-1677217/",
     },
     {
-      name: "Ralph Pecker",
-      position: "Founder & Sales Director",
+      name: "Hassan Bin",
+      position: "Head of Technology & Project Assistant",
       description:
-        "Over 40 years experience in start-ups and management at companies in Africa and around the world. Co-founder of leading haircare businesses in Africa.",
+        "Head of Technology and Project Assistant at Paycode Fintech Congo, with expertise in technology solutions and project management.",
       image:
         "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
       linkedin: "https://www.linkedin.com/in/rpecker/",
@@ -51,19 +51,10 @@ export default function Team() {
         "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
       linkedin: "https://www.linkedin.com/in/ayandaluthuli/",
     },
-    {
-      name: "Heidi Patmore",
-      position: "Head of Marketing",
-      description:
-        "Senior marketing expert with a proven track record of launching and growing brands across Africa. Over 15 years in mobile, fintech and blockchain industries.",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
-      linkedin: "https://www.linkedin.com/in/heidipatmore/",
-    },
   ];
 
   return (
-    <section id="team" className="py-20 bg-secondary">
+    <section id="team" className="py-20 bg-secondary overflow-y-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -81,15 +72,15 @@ export default function Team() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="flex flex-row gap-8 overflow-x-auto"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
           {teamMembers.map((member, index) => (
-            <motion.div key={index} variants={fadeInUp} className="group">
-              <Card className="bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden h-full">
+            <motion.div key={index} variants={fadeInUp} className="group min-w-[320px] flex-1">
+              <Card className="bg-blue shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden h-full">
                 <div
                   className="h-64 bg-cover bg-center"
                   style={{ backgroundImage: `url(${member.image})` }}

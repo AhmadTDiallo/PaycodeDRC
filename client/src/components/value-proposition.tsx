@@ -18,10 +18,10 @@ export default function ValueProposition() {
             variants={fadeInUp}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-              We provide biometric digital identity to guarantee{" "}
-              <span className="text-paycode-blue-accent">proof of life</span> and enable{" "}
-              <span className="text-paycode-blue-accent">low cost last mile delivery</span>{" "}
-              of basic financial services.
+              We are a Licenced Payment Aggregator providing {" "}
+              <span className="text-paycode-blue-accent">interoperable payment platforms</span> for Financial Instituitions.{" "}
+              <span className="text-paycode-blue-accent">Connecting banks, MFI's and mobile money operators</span>{" "}
+              through unified technology.
             </h2>
             <p className="text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
               Our technology supports multiple data types including biometrics, KYC
@@ -204,7 +204,7 @@ export default function ValueProposition() {
                   variants={fadeInUp}
                   className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="text-3xl font-bold text-white mb-2">50+</div>
+                  <div className="text-3xl font-bold text-white mb-2">110+</div>
                   <div className="text-white/80">Financial Institutions</div>
                 </motion.div>
                 
@@ -212,7 +212,7 @@ export default function ValueProposition() {
                   variants={fadeInUp}
                   className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="text-3xl font-bold text-white mb-2">1M+</div>
+                  <div className="text-3xl font-bold text-white mb-2">2M+</div>
                   <div className="text-white/80">Active Users</div>
                 </motion.div>
                 
