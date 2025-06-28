@@ -51,19 +51,19 @@ export default function Statistics() {
   const stats = [
     {
       value: formatNumber(counts.identity, 1000000000),
-      label: "People without formal identity",
+      label: "Personnes sans identité formelle",
       gradient: "from-paycode-blue to-paycode-blue-light",
       textColor: "text-blue-100",
     },
     {
       value: formatNumber(counts.connectivity, 3700000000),
-      label: "People without connectivity",
+      label: "Personnes sans connectivité",
       gradient: "from-paycode-blue-light to-paycode-blue-accent",
       textColor: "text-blue-100",
     },
     {
       value: formatNumber(counts.unbanked, 1700000000),
-      label: "People remain unbanked",
+      label: "Les gens ne sont toujours pas bancarisés",
       gradient: "from-gray-700 to-gray-900",
       textColor: "text-gray-100",
     },
@@ -79,9 +79,9 @@ export default function Statistics() {
           viewport={{ once: true }}
           variants={fadeInScale}
         >
-          <h2 className="text-4xl font-bold paycode-blue mb-4">Global Impact</h2>
+          <h2 className="text-4xl font-bold paycode-blue mb-4">Impact mondial</h2>
           <p className="text-xl paycode-gray">
-            Breaking down barriers to financial inclusion worldwide
+            Faire tomber les obstacles à l’inclusion financière dans le monde entier
           </p>
         </motion.div>
 

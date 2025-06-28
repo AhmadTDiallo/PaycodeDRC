@@ -7,49 +7,44 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 export default function Team() {
   const teamMembers = [
     {
-      name: "Sadio Diallo",
-      position: "Director General",
+      name: "Prince Lwango",
+      position: "Président-Directeur Général",
       description:
-        "Director General of Paycode Fintech Congo.",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
-      linkedin: "https://www.linkedin.com/in/gabrielruhan/",
+        "Président-directeur général de Paycode Fintech Congo.",
+      image: "",
+      linkedin: "https://www.linkedin.com/",
+    },
+    {
+      name: "Sadio Diallo",
+      position: "Directeur Général",
+      description:
+        "Directeur Général de Paycode Fintech Congo, spécialisée dans les technologies financières pour l'inclusion en RDC. Avec plus de 10 ans d'expérience en digitalisation des services financiers, il dirige le déploiement de solutions de core banking, de paiements et de dispositifs biométriques pour les IMF et COOPEC. À travers Paycode, il œuvre à élargir l'accès aux services financiers pour les populations mal desservies.",
+      image: "/SadioDiallo1.jpg",
+      linkedin: "https://www.linkedin.com/in/mamadou-sadio-diallo-5912131a6/",
     },
     {
       name: "Dominique Kaba",
-      position: "Director of Operations",
+      position: "Directeur des Opérations",
       description:
         "Head of operations at Paycode Fintech Congo, with over 10 years of experience in the financial sector.",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b332c1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
-      linkedin: "https://www.linkedin.com/in/sandy-begg-b322236/",
+      image: "/DominiqueKaba.jpg",
+      linkedin: "https://www.linkedin.com/",
     },
     {
       name: "Prosper Tshang",
-      position: "Head of Finance & Administration",
+      position: "Responsable Financier & Administratif",
       description:
-        "Head of Finance and Administration at Paycode Fintech Congo, with a strong background in financial management and administration.",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
-      linkedin: "https://www.linkedin.com/in/grant-haarhoff-1677217/",
+        "Responsable administratif et financier avec plus de 7 ans d’expérience en gestion financière, conformité et management des risques. Il supervise la stratégie budgétaire, la conformité réglementaire et l’optimisation des processus internes. Titulaire d’un Executive MBA de l’Institut MTF de Lisbonne, il allie vision stratégique et rigueur opérationnelle. Ses compétences couvrent la gestion budgétaire, le leadership, la conformité et la transformation digitale.",
+      image: "/ProsperPic.jpeg",
+      linkedin: "https://www.linkedin.com/in/prosper-tshang/",
     },
     {
       name: "Hassan Bin",
-      position: "Head of Technology & Project Assistant",
+      position: "Responsable Technologique & Assistant de Projet",
       description:
-        "Head of Technology and Project Assistant at Paycode Fintech Congo, with expertise in technology solutions and project management.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
-      linkedin: "https://www.linkedin.com/in/rpecker/",
-    },
-    {
-      name: "Ayanda Luthuli",
-      position: "Chief Product Officer",
-      description:
-        "Experienced IT Professional with a passion for technology, innovation and people development. Brings experience from various delivery, LEAN, and systems design roles.",
-      image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80",
-      linkedin: "https://www.linkedin.com/in/ayandaluthuli/",
+        "Responsable Technologique et Assistant de Projet avec une expertise spécialisée dans les systèmes de Core Banking, la technologie EDAPT et les paiements électroniques. Il possède une solide expérience dans la mise en œuvre de solutions technologiques financières intégrées et la gestion de projets systèmes complexes.",
+      image: "/Hassan.jpg",
+      linkedin: "https://www.linkedin.com/in/hassan-bin-baba94180/",
     },
   ];
 
@@ -64,10 +59,10 @@ export default function Team() {
           variants={fadeInUp}
         >
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            Our Leadership Team
+            Notre équipe de direction
           </h2>
           <p className="text-xl text-muted-foreground">
-            Experienced leaders driving financial inclusion worldwide
+            Des dirigeants expérimentés qui favorisent l’inclusion financière dans le monde entier
           </p>
         </motion.div>
 
@@ -82,7 +77,7 @@ export default function Team() {
             <motion.div key={index} variants={fadeInUp} className="group min-w-[320px] flex-1">
               <Card className="bg-blue shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden h-full">
                 <div
-                  className="h-64 bg-cover bg-center"
+                  className="h-72 bg-cover bg-center"
                   style={{ backgroundImage: `url(${member.image})` }}
                 />
                 <CardContent className="p-6">

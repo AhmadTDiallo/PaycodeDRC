@@ -42,9 +42,7 @@ export default function Footer() {
               <span className="text-2xl font-bold">PAYCODE DRC</span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-4 max-w-md">
-              Licensed payment aggregator providing interoperable financial 
-              services across the Democratic Republic of Congo. Connecting 
-              banks, MFIs, and mobile money operators.
+              Agrégateur de paiements agréé fournissant des services financiers interopérables à travers la République démocratique du Congo. Connecter les banques, les IMF et les opérateurs de mobile money.
             </p>
             <div className="flex space-x-4">
               <a
@@ -103,8 +101,7 @@ export default function Footer() {
           variants={fadeInUp}
         >
           <p>
-            &copy; 2025 Paycode Fintech Congo. All rights reserved. Driving financial
-            inclusion through interoperable payment solutions.
+            &copy; 2025 Paycode Fintech Congo. Tous droits réservés. Favoriser l’inclusion financière grâce à des solutions de paiement interopérables.
           </p>
         </motion.div>
       </div>

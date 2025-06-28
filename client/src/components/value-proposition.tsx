@@ -18,10 +18,10 @@ export default function ValueProposition() {
             variants={fadeInUp}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-              We are a Licenced Payment Aggregator providing {" "}
-              <span className="text-paycode-blue-accent">interoperable payment platforms</span> for Financial Instituitions.{" "}
-              <span className="text-paycode-blue-accent">Connecting banks, MFI's and mobile money operators</span>{" "}
-              through unified technology.
+              Nous sommes un Agrégateur de Paiements agréé {" "}
+              <span className="text-paycode-blue-accent">fournissant des plateformes de paiement interopérables</span> pour les institutions financières.{" "}
+              <span className="text-paycode-blue-accent">Nous connectons les banques,les IMF et les opérateurs de mobile money grâce à </span>{" "}
+              une technologie unifiée.
             </h2>
             <p className="text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
               Our technology supports multiple data types including biometrics, KYC
@@ -47,13 +47,13 @@ export default function ValueProposition() {
               className="text-4xl md:text-5xl font-bold text-foreground mb-6"
               variants={fadeInUp}
             >
-              Paycode DRC: Licensed Payment Aggregator
+              Paycode RDC : Agrégateur de Paiements Agréé
             </motion.h2>
             <motion.p 
               className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
               variants={fadeInUp}
             >
-              Paycode DRC provides a shared, interoperable payment platform for Financial Institutions across the Democratic Republic of Congo. Our mission is to enable banks, MFIs, mobile money operators, and other financial players to seamlessly connect and transact through a unified system.
+              Paycode RDC fournit une plateforme de paiement partagée et interopérable pour les institutions financières à travers la République démocratique du Congo. Notre mission est de permettre aux banques, IMF, opérateurs de mobile money et autres acteurs financiers de se connecter et de réaliser des transactions de manière fluide via un système unifié.
             </motion.p>
           </motion.div>
 
@@ -71,8 +71,8 @@ export default function ValueProposition() {
               <div className="w-16 h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Licensed Aggregator</h3>
-              <p className="text-muted-foreground">Fully licensed and regulated payment aggregator in DRC</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Agrégateur agréé</h3>
+              <p className="text-muted-foreground">Agrégateur de paiements pleinement agréé et régulé en RDC</p>
             </motion.div>
 
             <motion.div 
@@ -83,7 +83,7 @@ export default function ValueProposition() {
                 <Building2 className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Multi-Institution</h3>
-              <p className="text-muted-foreground">Serving banks, MFIs, mobile money operators, and more</p>
+              <p className="text-muted-foreground">Au service des banques, IMF, opérateurs de mobile money, et plus encore</p>
             </motion.div>
 
             <motion.div 
@@ -93,8 +93,8 @@ export default function ValueProposition() {
               <div className="w-16 h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Interoperable</h3>
-              <p className="text-muted-foreground">Unified system enabling seamless cross-platform transactions</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Interopérable</h3>
+              <p className="text-muted-foreground">Système unifié permettant des transactions fluides et transparentes entre différentes plateformes</p>
             </motion.div>
 
             <motion.div 
@@ -104,8 +104,8 @@ export default function ValueProposition() {
               <div className="w-16 h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Cost Efficient</h3>
-              <p className="text-muted-foreground">Reducing costs while improving accessibility and efficiency</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Économique</h3>
+              <p className="text-muted-foreground">Réduire les coûts tout en améliorant l’accessibilité et l’efficacité</p>
             </motion.div>
           </motion.div>
         </div>
@@ -183,9 +183,9 @@ export default function ValueProposition() {
                 className="text-4xl md:text-6xl font-bold text-white mb-8"
                 variants={fadeInUp}
               >
-                Transforming
-                <span className="block bg-gradient-to-r from-white to-paycode-blue-accent bg-clip-text text-transparent">
-                  Digital Finance
+                Transformer
+                <span className="block bg-gradient-to-r from-black to-paycode-blue-accent bg-clip-text text-transparent">
+                  la finance numérique
                 </span>
               </motion.h2>
               
@@ -193,7 +193,7 @@ export default function ValueProposition() {
                 className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12"
                 variants={fadeInUp}
               >
-                Connecting every financial institution across the Democratic Republic of Congo through secure, interoperable technology that enables seamless transactions and drives economic growth.
+                Connecter chaque institution financière à travers la République démocratique du Congo grâce à une technologie sécurisée et interopérable, permettant des transactions fluides et stimulant la croissance économique.
               </motion.p>
 
               <motion.div
@@ -205,15 +205,15 @@ export default function ValueProposition() {
                   className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="text-3xl font-bold text-white mb-2">110+</div>
-                  <div className="text-white/80">Financial Institutions</div>
+                  <div className="text-white/80">Institutions financières</div>
                 </motion.div>
                 
                 <motion.div 
                   variants={fadeInUp}
                   className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="text-3xl font-bold text-white mb-2">2M+</div>
-                  <div className="text-white/80">Active Users</div>
+                  <div className="text-3xl font-bold text-white mb-2">+ de 2 millions</div>
+                  <div className="text-white/80">Utilisateurs actifs</div>
                 </motion.div>
                 
                 <motion.div 
@@ -221,7 +221,7 @@ export default function ValueProposition() {
                   className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="text-3xl font-bold text-white mb-2">99.9%</div>
-                  <div className="text-white/80">System Uptime</div>
+                  <div className="text-white/80">Temps de disponibilité du système</div>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -243,10 +243,10 @@ export default function ValueProposition() {
             className="bg-gradient-to-r from-paycode-blue/10 to-paycode-blue-light/10 rounded-2xl p-8 md:p-12 text-center"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Driving Financial Inclusion in DRC
+              Favoriser l’inclusion financière en RDC
             </h3>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              As a licensed aggregator, Paycode DRC offers secure, reliable, and scalable payment solutions that drive financial inclusion and efficiency. We help institutions reduce costs, improve accessibility, and promote interoperability within the country's growing digital finance ecosystem.
+            En tant qu’agrégateur agréé, Paycode RDC propose des solutions de paiement sécurisées, fiables et évolutives qui favorisent l’inclusion financière et l’efficacité. Nous aidons les institutions à réduire leurs coûts, améliorer l’accessibilité et promouvoir l’interopérabilité au sein de l’écosystème croissant de la finance numérique du pays.
             </p>
           </motion.div>
         </div>

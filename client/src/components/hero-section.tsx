@@ -73,9 +73,9 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >PAYCODE FINTECH CONGO</motion.span>
             <span className="font-poppins text-4xl md:text-6xl font-semibold">
-              Trusted Payment Aggregator for{" "}
+            Agrégateur de Paiements de Confiance pour{" "}
               <span className="text-gradient-blue">
-                Interoperable Ecosystems
+              des Écosystèmes Interopérables
               </span>
             </span>
           </motion.h1>
@@ -97,7 +97,7 @@ export default function HeroSection() {
               onClick={() => scrollToSection("contact")}
             >
               <Play className="mr-2 h-5 w-5" />
-              Get in Touch
+              Contactez Nous
             </Button>
             <Button
               size="lg"
@@ -105,7 +105,7 @@ export default function HeroSection() {
               className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-paycode-blue transition-all duration-300"
               onClick={() => scrollToSection("about")}
             >
-              Learn More
+              En Savoir Plus
             </Button>
           </motion.div>
         </motion.div>
