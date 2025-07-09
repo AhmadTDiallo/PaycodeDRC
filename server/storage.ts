@@ -6,6 +6,8 @@ import {
   type NewsletterSubscription,
   type InsertNewsletterSubscription
 } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   // Demo requests
@@ -18,55 +20,38 @@ export interface IStorage {
   checkEmailExists(email: string): Promise<boolean>;
 }
 
-export class MemStorage implements IStorage {
-  private demoRequests: Map<number, DemoRequest>;
-  private newsletterSubscriptions: Map<number, NewsletterSubscription>;
-  private currentDemoId: number;
-  private currentNewsletterId: number;
-
-  constructor() {
-    this.demoRequests = new Map();
-    this.newsletterSubscriptions = new Map();
-    this.currentDemoId = 1;
-    this.currentNewsletterId = 1;
-  }
-
+export class DatabaseStorage implements IStorage {
   async createDemoRequest(insertRequest: InsertDemoRequest): Promise<DemoRequest> {
-    const id = this.currentDemoId++;
-    const request: DemoRequest = { 
-      ...insertRequest, 
-      id,
-      createdAt: new Date()
-    };
-    this.demoRequests.set(id, request);
+    const [request] = await db
+      .insert(demoRequests)
+      .values(insertRequest)
+      .returning();
     return request;
   }
 
   async getDemoRequests(): Promise<DemoRequest[]> {
-    return Array.from(this.demoRequests.values());
+    return await db.select().from(demoRequests);
   }
 
   async createNewsletterSubscription(insertSubscription: InsertNewsletterSubscription): Promise<NewsletterSubscription> {
-    const id = this.currentNewsletterId++;
-    const subscription: NewsletterSubscription = { 
-      ...insertSubscription, 
-      id,
-      subscribed: true,
-      createdAt: new Date()
-    };
-    this.newsletterSubscriptions.set(id, subscription);
+    const [subscription] = await db
+      .insert(newsletterSubscriptions)
+      .values(insertSubscription)
+      .returning();
     return subscription;
   }
 
   async getNewsletterSubscriptions(): Promise<NewsletterSubscription[]> {
-    return Array.from(this.newsletterSubscriptions.values());
+    return await db.select().from(newsletterSubscriptions);
   }
 
   async checkEmailExists(email: string): Promise<boolean> {
-    return Array.from(this.newsletterSubscriptions.values()).some(
-      (subscription) => subscription.email === email
-    );
+    const [subscription] = await db
+      .select()
+      .from(newsletterSubscriptions)
+      .where(eq(newsletterSubscriptions.email, email));
+    return !!subscription;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
