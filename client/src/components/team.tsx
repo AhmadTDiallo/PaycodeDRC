@@ -7,12 +7,12 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 export default function Team() {
   const teamMembers = [
     {
-      name: "Prince Lwango",
+      name: "Lwango Wavo",
       position: "Président-Directeur Général",
       description:
-        "Président-directeur général de Paycode Fintech Congo.",
-      image: "",
-      linkedin: "https://www.linkedin.com/",
+        "Fort de plus de dix ans d’expérience dans les affaires et le leadership, il possède une solide expertise en stratégie, en opérations et en croissance. En tant que Président Directeur Général de Paycode Fintech Congo, il dirige les efforts visant à étendre les solutions de paiement numérique et à promouvoir l’inclusion financière dans la région. Reconnu pour sa capacité à faire évoluer les entreprises et à établir des partenariats solides, il allie innovation et exécution pour générer un impact durable. Son leadership continue de positionner Paycode comme un acteur clé du paysage fintech en Afrique.",
+      image: "/PrinceLwango.jpg",
+      linkedin: "https://www.linkedin.com/in/prince-lwango-62505921/",
     },
     {
       name: "Sadio Diallo",
@@ -29,22 +29,6 @@ export default function Team() {
         "Expert en intégration technologique, il dirige actuellement le projet Transforme, consacré à la digitalisation des IMF et des COOPEC en République Démocratique du Congo. Ancien cadre du secteur bancaire, il possède plus de 10 ans d’expérience dans la gestion des institutions financières et plus de 7 ans dans le domaine des systèmes de paiement et des plateformes de switch. Grâce à cette double expertise, il œuvre à moderniser l’écosystème financier et à promouvoir l’inclusion numérique et financière.",
       image: "/DominiqueKaba.jpg",
       linkedin: "https://www.linkedin.com/",
-    },
-    {
-      name: "Prosper Tshang",
-      position: "Responsable Financier & Administratif",
-      description:
-        "Responsable administratif et financier avec plus de 7 ans d’expérience en gestion financière, conformité et management des risques. Il supervise la stratégie budgétaire, la conformité réglementaire et l’optimisation des processus internes. Titulaire d’un Executive MBA de l’Institut MTF de Lisbonne, il allie vision stratégique et rigueur opérationnelle. Ses compétences couvrent la gestion budgétaire, le leadership, la conformité et la transformation digitale.",
-      image: "/ProsperPic.jpeg",
-      linkedin: "https://www.linkedin.com/in/prosper-tshang/",
-    },
-    {
-      name: "Hassan Bin",
-      position: "Responsable Technologique & Assistant de Projet",
-      description:
-        "Responsable Technologique et Assistant de Projet avec une expertise spécialisée dans les systèmes de Core Banking, la technologie EDAPT et les paiements électroniques. Il possède une solide expérience dans la mise en œuvre de solutions technologiques financières intégrées et la gestion de projets systèmes complexes.",
-      image: "/Hassan.jpg",
-      linkedin: "https://www.linkedin.com/in/hassan-bin-baba94180/",
     },
   ];
 
@@ -74,11 +58,19 @@ export default function Team() {
           viewport={{ once: true }}
         >
           {teamMembers.map((member, index) => (
-            <motion.div key={index} variants={fadeInUp} className="group min-w-[320px] flex-1">
+            <motion.div key={index} variants={fadeInUp} className="group min-w-[250px] flex-1">
               <Card className="bg-blue shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden h-full">
                 <div
-                  className="h-72 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${member.image})` }}
+                  className="h-96 bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: `url(${member.image})`,
+                    backgroundPosition:
+                      member.name === "Prince Lwango"
+                        ? "center 40%"
+                        : member.name === "Sadio Diallo"
+                        ? "center 25%"
+                        : "center"
+                  }}
                 />
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold text-foreground mb-1 text-center">
