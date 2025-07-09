@@ -8,9 +8,9 @@ export default function Solutions() {
     {
       icon: Fingerprint,
       number: "01",
-      title: "Identity",
+      title: "Identité",
       description:
-        "We create biometric digital identity using field teams that go to deep rural areas. We utilise tablet-based proprietary technology to capture individuals' identities and issue cards within minutes in the field.",
+        "Nous créons une identité numérique biométrique grâce à des équipes de terrain qui se rendent dans les zones rurales profondes. Nous utilisons une technologie propriétaire basée sur des tablettes pour capturer l'identité des individus et délivrer des cartes en quelques minutes sur le terrain.",
       image:
         "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2126&q=80",
       iconBg: "bg-paycode-blue",
@@ -18,9 +18,9 @@ export default function Solutions() {
     {
       icon: Signal,
       number: "02",
-      title: "Connectivity",
+      title: "Connectivité",
       description:
-        "Our biometric digital identity and payments technology works seamlessly everywhere in the world. We simplify payments in deep rural areas giving people the ability to transact offline in real time.",
+        "Notre technologie d'identité numérique biométrique et de paiements fonctionne de manière transparente partout dans le monde. Nous simplifions les paiements dans les zones rurales profondes en donnant aux gens la possibilité de faire des transactions hors ligne en temps réel.",
       image:
         "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       iconBg: "bg-paycode-blue-accent",
@@ -28,9 +28,9 @@ export default function Solutions() {
     {
       icon: DollarSign,
       number: "03",
-      title: "Cost",
+      title: "Coût",
       description:
-        "As specialists in last mile delivery and proof of life we believe we can significantly impact financial inclusion in Africa by giving biometric digital identity and low cost access to basic financial services.",
+        "En tant que spécialistes de la livraison du dernier kilomètre et de la preuve de vie, nous pensons pouvoir avoir un impact significatif sur l'inclusion financière en Afrique en fournissant une identité numérique biométrique et un accès à faible coût aux services financiers de base.",
       image:
         "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
       iconBg: "bg-gradient-to-r from-paycode-blue to-paycode-blue-light",
@@ -48,12 +48,10 @@ export default function Solutions() {
           variants={fadeInUp}
         >
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            We solve the 3 key barriers to financial inclusion
+            Nous résolvons les 3 principales barrières à l'inclusion financière
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            True financial inclusion should enable everybody in society to have
-            access to financial services regardless of their income, savings or
-            location.
+            La véritable inclusion financière devrait permettre à chacun dans la société d'avoir accès aux services financiers, quels que soient ses revenus, ses économies ou sa localisation.
           </p>
         </motion.div>
 

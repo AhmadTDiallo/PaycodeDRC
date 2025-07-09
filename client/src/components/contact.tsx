@@ -51,14 +51,14 @@ export default function Contact() {
       demoForm.reset();
       queryClient.invalidateQueries({ queryKey: ["/api/demo-requests"] });
       toast({
-        title: "Demo Request Submitted",
-        description: "We'll contact you soon to schedule your demo.",
+        title: "Demande de démo soumise",
+        description: "Nous vous contacterons bientôt pour programmer votre démo.",
       });
     },
     onError: (error: any) => {
       toast({
-        title: "Error",
-        description: error.message || "Failed to submit demo request. Please try again.",
+        title: "Erreur",
+        description: error.message || "Échec de la soumission de la demande de démo. Veuillez réessayer.",
         variant: "destructive",
       });
     },
@@ -75,14 +75,14 @@ export default function Contact() {
       newsletterForm.reset();
       queryClient.invalidateQueries({ queryKey: ["/api/newsletter"] });
       toast({
-        title: "Successfully Subscribed",
-        description: "Thank you for subscribing to our newsletter!",
+        title: "Inscription réussie",
+        description: "Merci de vous être abonné à notre newsletter !",
       });
     },
     onError: (error: any) => {
       toast({
-        title: "Error",
-        description: error.message || "Failed to subscribe. Please try again.",
+        title: "Erreur",
+        description: error.message || "Échec de l'inscription. Veuillez réessayer.",
         variant: "destructive",
       });
     },
@@ -107,11 +107,10 @@ export default function Contact() {
           variants={fadeInUp}
         >
           <h2 className="text-4xl font-bold text-white mb-8">
-            Ready to Transform Financial Inclusion?
+            Prêt à transformer l'inclusion financière ?
           </h2>
           <p className="text-xl text-blue-100 mb-12">
-            Partner with Paycode DRC to access our interoperable payment platform
-            and connect your financial institution to the broader DRC ecosystem.
+            Partenaire avec Paycode RDC pour accéder à notre plateforme de paiement interopérable et connecter votre institution financière à l'écosystème plus large de la RDC.
           </p>
         </motion.div>
 
@@ -127,25 +126,25 @@ export default function Contact() {
               <CardContent className="p-8">
                 <div className="text-center mb-6">
                   <Calendar className="text-paycode-blue-accent mx-auto mb-4 h-12 w-12" />
-                  <h3 className="text-2xl font-bold text-white mb-2">Book a Demo</h3>
-                  <p className="text-blue-100">See our technology in action</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">Réserver une démo</h3>
+                  <p className="text-blue-100">Voir notre technologie en action</p>
                 </div>
 
                 {showDemoSuccess ? (
                   <div className="text-center">
                     <CheckCircle2 className="text-paycode-blue-accent mx-auto mb-4 h-16 w-16" />
                     <h4 className="text-xl font-bold text-white mb-2">
-                      Demo Request Received!
+                      Demande de démo reçue !
                     </h4>
                     <p className="text-blue-100">
-                      We'll contact you within 24 hours to schedule your demo.
+                      Nous vous contacterons dans les 24 heures pour programmer votre démo.
                     </p>
                     <Button
                       variant="ghost"
                       className="text-white hover:text-paycode-blue-accent mt-4"
                       onClick={() => setShowDemoSuccess(false)}
                     >
-                      Submit Another Request
+                      Soumettre une autre demande
                     </Button>
                   </div>
                 ) : (
@@ -157,12 +156,12 @@ export default function Contact() {
                           name="name"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-blue-100">Name *</FormLabel>
+                              <FormLabel className="text-blue-100">Nom *</FormLabel>
                               <FormControl>
                                 <Input
                                   {...field}
                                   className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                                  placeholder="Your full name"
+                                  placeholder="Votre nom complet"
                                 />
                               </FormControl>
                               <FormMessage className="text-yellow-300" />
@@ -194,12 +193,12 @@ export default function Contact() {
                           name="company"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-blue-100">Company *</FormLabel>
+                              <FormLabel className="text-blue-100">Entreprise *</FormLabel>
                               <FormControl>
                                 <Input
                                   {...field}
                                   className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                                  placeholder="Your company name"
+                                  placeholder="Nom de votre entreprise"
                                 />
                               </FormControl>
                               <FormMessage className="text-yellow-300" />
@@ -211,7 +210,7 @@ export default function Contact() {
                           name="phone"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-blue-100">Phone</FormLabel>
+                              <FormLabel className="text-blue-100">Téléphone</FormLabel>
                               <FormControl>
                                 <Input
                                   {...field}
@@ -234,7 +233,7 @@ export default function Contact() {
                               <Textarea
                                 {...field}
                                 className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                                placeholder="Tell us about your specific needs..."
+                                placeholder="Parlez-nous de vos besoins spécifiques..."
                                 rows={4}
                               />
                             </FormControl>
@@ -247,7 +246,7 @@ export default function Contact() {
                         className="w-full bg-paycode-blue-accent hover:bg-paycode-blue text-white font-semibold transition-all duration-300 transform hover:scale-105"
                         disabled={demoMutation.isPending}
                       >
-                        {demoMutation.isPending ? "Submitting..." : "Schedule Demo"}
+                        {demoMutation.isPending ? "Envoi en cours..." : "Programmer une démo"}
                       </Button>
                     </form>
                   </Form>
@@ -267,9 +266,9 @@ export default function Contact() {
               <CardContent className="p-8">
                 <div className="text-center mb-6">
                   <Mail className="text-paycode-blue-accent mx-auto mb-4 h-12 w-12" />
-                  <h3 className="text-2xl font-bold text-white mb-2">Stay Updated</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">Restez informé</h3>
                   <p className="text-blue-100">
-                    Get the latest news on financial inclusion and digital identity
+                    Recevez les dernières nouvelles sur l'inclusion financière et l'identité numérique
                   </p>
                 </div>
 
@@ -277,18 +276,17 @@ export default function Contact() {
                   <div className="text-center">
                     <CheckCircle2 className="text-paycode-blue-accent mx-auto mb-4 h-16 w-16" />
                     <h4 className="text-xl font-bold text-white mb-2">
-                      Welcome to Our Newsletter!
+                      Bienvenue dans notre newsletter !
                     </h4>
                     <p className="text-blue-100">
-                      You'll receive our latest updates and insights on financial
-                      inclusion technology.
+                      Vous recevrez nos dernières mises à jour et informations sur la technologie d'inclusion financière.
                     </p>
                     <Button
                       variant="ghost"
                       className="text-white hover:text-paycode-blue-accent mt-4"
                       onClick={() => setShowNewsletterSuccess(false)}
                     >
-                      Subscribe Another Email
+                      S'abonner avec un autre email
                     </Button>
                   </div>
                 ) : (
@@ -300,13 +298,13 @@ export default function Contact() {
                           name="email"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-blue-100">Email Address</FormLabel>
+                              <FormLabel className="text-blue-100">Adresse Email</FormLabel>
                               <FormControl>
                                 <Input
                                   {...field}
                                   type="email"
                                   className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                                  placeholder="Enter your email"
+                                  placeholder="Entrez votre email"
                                 />
                               </FormControl>
                               <FormMessage className="text-yellow-300" />
@@ -318,20 +316,20 @@ export default function Contact() {
                           className="w-full bg-white text-paycode-blue hover:bg-gray-100 font-semibold transition-all duration-300"
                           disabled={newsletterMutation.isPending}
                         >
-                          {newsletterMutation.isPending ? "Subscribing..." : "Subscribe"}
+                          {newsletterMutation.isPending ? "Inscription..." : "S'abonner"}
                         </Button>
                       </form>
                     </Form>
 
                     <div className="mt-8 p-6 bg-white/5 rounded-lg">
                       <h4 className="text-lg font-semibold text-white mb-3">
-                        What you'll receive:
+                        Ce que vous recevrez :
                       </h4>
                       <ul className="space-y-2 text-blue-100 text-sm">
-                        <li>• Monthly insights on financial inclusion trends</li>
-                        <li>• Updates on new technology developments</li>
-                        <li>• Case studies from our global implementations</li>
-                        <li>• Industry reports and research findings</li>
+                        <li>• Aperçus mensuels sur les tendances de l'inclusion financière</li>
+                        <li>• Mises à jour sur les nouveaux développements technologiques</li>
+                        <li>• Études de cas de nos implémentations globales</li>
+                        <li>• Rapports sectoriels et résultats de recherche</li>
                       </ul>
                     </div>
                   </div>

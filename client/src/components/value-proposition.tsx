@@ -24,10 +24,7 @@ export default function ValueProposition() {
               une technologie unifiée.
             </h2>
             <p className="text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Our technology supports multiple data types including biometrics, KYC
-              data, location data, health data and more. Any financial institution,
-              central bank, government or company can utilise our technology to
-              enhance their systems.
+              Notre technologie prend en charge plusieurs types de données, notamment la biométrie, les données KYC, les données de localisation, les données de santé et bien plus encore. Toute institution financière, banque centrale, gouvernement ou entreprise peut utiliser notre technologie pour améliorer ses systèmes.
             </p>
           </motion.div>
         </div>

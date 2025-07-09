@@ -11,16 +11,16 @@ export default function Footer() {
   };
 
   const solutions = [
-    { name: "Digital Identity", href: "#solutions" },
-    { name: "Payment Systems", href: "#solutions" },
-    { name: "Offline Transactions", href: "#solutions" },
-    { name: "Biometric Cards", href: "#solutions" },
+    { name: "Identité Numérique", href: "#solutions" },
+    { name: "Systèmes de Paiement", href: "#solutions" },
+    { name: "Transactions Hors Ligne", href: "#solutions" },
+    { name: "Cartes Biométriques", href: "#solutions" },
   ];
 
   const company = [
-    { name: "About Us", href: "#about" },
-    { name: "Case Studies", href: "#case-studies" },
-    { name: "News", href: "#news" },
+    { name: "À Propos", href: "#about" },
+    { name: "Études de Cas", href: "#case-studies" },
+    { name: "Actualités", href: "#news" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -77,7 +77,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Company</h4>
+            <h4 className="text-lg font-semibold mb-4">Entreprise</h4>
             <ul className="space-y-2 text-gray-400">
               {company.map((item) => (
                 <li key={item.name}>

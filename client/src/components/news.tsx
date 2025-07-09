@@ -7,11 +7,11 @@ export default function News() {
   const newsArticles = [
     {
       title:
-        "Algorand Foundation and Paycode Announce Partnership to Expand Financial Inclusion",
+        "La Fondation Algorand et Paycode annoncent un partenariat pour étendre l'inclusion financière",
       summary:
-        "The Algorand Foundation today announced a new strategic partnership with Paycode, a global leader in biometric and offline digital...",
-      category: "Partnership",
-      date: "2 days ago",
+        "La Fondation Algorand a annoncé aujourd'hui un nouveau partenariat stratégique avec Paycode, un leader mondial de la biométrie et du numérique hors ligne...",
+      category: "Partenariat",
+      date: "Il y a 2 jours",
       author: "Paycode",
       image:
         "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2232&q=80",
