@@ -9,9 +9,9 @@ export default function CaseStudies() {
     {
       country: "Ghana",
       flag: "🇬🇭",
-      title: "National Payment System",
+      title: "Système de paiement national",
       description:
-        "The Bank of Ghana selected Paycode's EDAPT technology to provide a turnkey solution for a National Payment Switching & Settlement System.",
+        "La Banque du Ghana a sélectionné la technologie EDAPT de Paycode pour fournir une solution clé en main pour un système national de commutation et de règlement des paiements.",
       image:
         "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       gradient: "from-yellow-400 to-red-400",
@@ -19,9 +19,9 @@ export default function CaseStudies() {
     {
       country: "Afghanistan",
       flag: "🇦🇫",
-      title: "Digital Financial Transactions",
+      title: "Transactions financières numériques",
       description:
-        "Afghanistan International Bank implemented Paycode's biometric digital identity and payments technology to digitise financial transactions for donors, NGOs and Corporates.",
+        "Afghanistan International Bank a mis en œuvre la technologie d'identité numérique biométrique et de paiements de Paycode pour numériser les transactions financières pour les donateurs, ONG et entreprises.",
       image:
         "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
       gradient: "from-green-400 to-blue-400",
@@ -29,9 +29,9 @@ export default function CaseStudies() {
     {
       country: "DRC",
       flag: "🇨🇩",
-      title: "Motorcycle Tax Collection",
+      title: "Collecte de taxes pour motocyclistes",
       description:
-        "Issued biometric ID cards and collected taxes for 20,000 taxi motorcyclists from ANMC in 8 cities across the DRC for the Ministry of Transport.",
+        "Émission de cartes d'identité biométriques et collecte de taxes pour 20 000 motocyclistes-taxis de l'ANMC dans 8 villes à travers la RDC pour le ministère des Transports.",
       image:
         "https://images.unsplash.com/photo-1541840031508-326b77c9a17e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
       gradient: "from-blue-400 to-purple-400",
@@ -48,8 +48,8 @@ export default function CaseStudies() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">Success Stories</h2>
-          <p className="text-xl text-muted-foreground">Real impact across Africa and beyond</p>
+          <h2 className="text-4xl font-bold text-foreground mb-4">Histoires de succès</h2>
+          <p className="text-xl text-muted-foreground">Impact réel à travers l'Afrique et au-delà</p>
         </motion.div>
 
         <motion.div
@@ -85,7 +85,7 @@ export default function CaseStudies() {
                     variant="ghost"
                     className="text-paycode-blue-accent hover:text-paycode-blue font-semibold p-0"
                   >
-                    View Case Study <ArrowRight className="ml-1 h-4 w-4" />
+                    Voir l'étude de cas <ArrowRight className="ml-1 h-4 w-4" />
                   </Button>
                 </CardContent>
               </Card>
@@ -128,7 +128,7 @@ export default function CaseStudies() {
                       variant="ghost"
                       className="text-paycode-blue-accent hover:text-paycode-blue font-semibold p-0 text-sm"
                     >
-                      View Case Study <ArrowRight className="ml-1 h-3 w-3" />
+                      Voir l'étude de cas <ArrowRight className="ml-1 h-3 w-3" />
                     </Button>
                   </CardContent>
                 </div>

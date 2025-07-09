@@ -27,12 +27,12 @@ export default function Awards() {
           variants={fadeInUp}
         >
           <h2 className="text-4xl font-bold text-white mb-8">
-            An Award-Winning Fintech Company
+            Une entreprise fintech primée
           </h2>
           <p className="text-xl text-blue-100 mb-12 max-w-4xl mx-auto">
-            Our innovative technology has been recognised by the world's leading
-            industry players including Citi, IBM, Mastercard, Microsoft, PWC, the
-            International Monetary Fund, and many more.
+            Notre technologie innovante a été reconnue par les principaux acteurs 
+            mondiaux de l'industrie, notamment Citi, IBM, Mastercard, Microsoft, PWC, 
+            le Fonds monétaire international et bien d'autres.
           </p>
         </motion.div>
 

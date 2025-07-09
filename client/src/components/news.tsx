@@ -19,33 +19,33 @@ export default function News() {
       url: "https://www.paycode.com/post/algorand-foundation-and-paycode-announce-partnership-to-expand-financial-inclusion",
     },
     {
-      title: "Putting People First: Paycode's Approach to Humanitarian Cash Assistance",
+      title: "Privilégier les personnes : l'approche de Paycode pour l'assistance humanitaire en espèces",
       summary:
-        "As humanitarian needs reach record highs and the aid system faces pressure to deliver more efficient and effective assistance...",
+        "Alors que les besoins humanitaires atteignent des niveaux records et que le système d'aide subit des pressions pour fournir une assistance plus efficace...",
       category: "Impact",
-      date: "7 days ago",
+      date: "Il y a 7 jours",
       author: "Gabe Ruhan",
       image:
         "https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
       categoryColor: "bg-paycode-blue",
     },
     {
-      title: "Advancing Digital Identity in Remote Areas: A Technology Breakthrough",
+      title: "Faire progresser l'identité numérique dans les zones reculées : une percée technologique",
       summary:
-        "Paycode's latest innovations in offline biometric technology are opening new possibilities for identity verification in the world's most remote locations...",
-      category: "Technology",
-      date: "2 weeks ago",
+        "Les dernières innovations de Paycode en technologie biométrique hors ligne ouvrent de nouvelles possibilités pour la vérification d'identité dans les endroits les plus reculés du monde...",
+      category: "Technologie",
+      date: "Il y a 2 semaines",
       author: "Ayanda Luthuli",
       image:
         "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2372&q=80",
       categoryColor: "bg-purple-500",
     },
     {
-      title: "Financial Inclusion Milestone: 500,000 Rural Users Connected",
+      title: "Étape importante de l'inclusion financière : 500 000 utilisateurs ruraux connectés",
       summary:
-        "A major milestone has been reached as Paycode's platform successfully onboards its 500,000th rural user across African markets...",
-      category: "Milestone",
-      date: "3 weeks ago",
+        "Une étape importante a été franchie car la plateforme de Paycode a réussi à intégrer son 500 000e utilisateur rural dans les marchés africains...",
+      category: "Étape importante",
+      date: "Il y a 3 semaines",
       author: "Sandy Begg",
       image:
         "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
