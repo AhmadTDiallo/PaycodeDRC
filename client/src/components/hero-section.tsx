@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play, ChevronDown } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import CentralBankImage from "@assets/Central-Bank-jpg_1752067092409.webp";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -21,7 +22,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0 bg-gradient-to-r from-paycode-blue/70 to-paycode-blue-light/60"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2742&q=80')`,
+            backgroundImage: `url(${CentralBankImage})`,
             backgroundBlendMode: "overlay",
           }}
         />
