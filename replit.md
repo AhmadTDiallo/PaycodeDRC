@@ -106,10 +106,11 @@ Paycode DRC is a full-stack fintech platform designed as a licensed payment aggr
 ```
 Changelog:
 - July 03, 2025. Initial setup
+- July 09, 2025. Migration from Replit Agent to Replit environment completed
 ```
 
 ## User Preferences
 
 ```
-Preferred communication style: Simple, everyday language.
+Preferred communication style: Simple, everyday language in French.
 ```
