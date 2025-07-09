@@ -3,6 +3,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import BankOfGhanaImage from "@assets/Bank-of-Ghana2-e1668714204967_1752066799539.webp";
+import AfghanistanBankImage from "@assets/afganistanbank_1752066803194.jpg";
+import DrcMotoImage from "@assets/drcmoto_1752066807922.webp";
 
 export default function CaseStudies() {
   const caseStudies = [
@@ -12,8 +15,7 @@ export default function CaseStudies() {
       title: "Système de paiement national",
       description:
         "La Banque du Ghana a sélectionné la technologie EDAPT de Paycode pour fournir une solution clé en main pour un système national de commutation et de règlement des paiements.",
-      image:
-        "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      image: BankOfGhanaImage,
       gradient: "from-yellow-400 to-red-400",
     },
     {
@@ -22,8 +24,7 @@ export default function CaseStudies() {
       title: "Transactions financières numériques",
       description:
         "Afghanistan International Bank a mis en œuvre la technologie d'identité numérique biométrique et de paiements de Paycode pour numériser les transactions financières pour les donateurs, ONG et entreprises.",
-      image:
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      image: AfghanistanBankImage,
       gradient: "from-green-400 to-blue-400",
     },
     {
@@ -32,8 +33,7 @@ export default function CaseStudies() {
       title: "Collecte de taxes pour motocyclistes",
       description:
         "Émission de cartes d'identité biométriques et collecte de taxes pour 20 000 motocyclistes-taxis de l'ANMC dans 8 villes à travers la RDC pour le ministère des Transports.",
-      image:
-        "https://emilioincongo.com/wp-content/uploads/2021/10/img_4428.jpg",
+      image: DrcMotoImage,
       gradient: "from-blue-400 to-purple-400",
     },
   ];
