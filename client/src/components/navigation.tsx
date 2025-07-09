@@ -20,17 +20,22 @@ export default function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const navbarHeight = 80; // Account for fixed navbar
+      const elementPosition = element.offsetTop - navbarHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth"
+      });
     }
     setIsMobileMenuOpen(false);
   };
 
   const navItems = [
     { label: "Solutions", href: "solutions" },
-    { label: "À propos", href: "À propos" },
-    { label: "Études de cas", href: "Études de cas" },
-    { label: "Équipe", href: "Équipe" },
-    { label: "Actualités", href: "Actualités" },
+    { label: "À propos", href: "about" },
+    { label: "Études de cas", href: "case-studies" },
+    { label: "Équipe", href: "team" },
+    { label: "Actualités", href: "news" },
   ];
 
   return (
