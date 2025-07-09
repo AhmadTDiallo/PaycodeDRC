@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Linkedin } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import LwangoPhoto from "@assets/Prince_1752061564517.jpg";
 
 export default function Team() {
   const teamMembers = [
@@ -11,7 +12,7 @@ export default function Team() {
       position: "Président-Directeur Général",
       description:
         "Fort de plus de dix ans d’expérience dans les affaires et le leadership, il possède une solide expertise en stratégie, en opérations et en croissance. En tant que Président Directeur Général de Paycode Fintech Congo, il dirige les efforts visant à étendre les solutions de paiement numérique et à promouvoir l’inclusion financière dans la région. Reconnu pour sa capacité à faire évoluer les entreprises et à établir des partenariats solides, il allie innovation et exécution pour générer un impact durable. Son leadership continue de positionner Paycode comme un acteur clé du paysage fintech en Afrique.",
-      image: "/attached_assets/Prince_1752061564517.jpg",
+      image: LwangoPhoto,
       linkedin: "https://www.linkedin.com/in/prince-lwango-62505921/",
     },
     {
