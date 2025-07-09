@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { Building2, Users, Shield, Zap } from "lucide-react";
-import CentralBankImage from "@assets/Central-Bank-jpg_1752067092409.webp";
 
 export default function ValueProposition() {
   return (
@@ -116,7 +115,7 @@ export default function ValueProposition() {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed"
             style={{
-              backgroundImage: `url(${CentralBankImage})`
+              backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-paycode-blue/60 via-paycode-blue-light/40 to-paycode-blue/60" />
