@@ -73,12 +73,12 @@ export default function CaseStudies() {
                     >
                       {study.flag}
                     </div>
-                    <h3 className="text-xl font-bold text-foreground">{study.country}</h3>
+                    <h3 className="text-xl font-bold text-black">{study.country}</h3>
                   </div>
-                  <h4 className="text-lg font-semibold text-foreground mb-3">
+                  <h4 className="text-lg font-semibold text-black mb-3">
                     {study.title}
                   </h4>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                  <p className="text-black mb-4 leading-relaxed">
                     {study.description}
                   </p>
                   <Button
@@ -116,12 +116,12 @@ export default function CaseStudies() {
                       >
                         {study.flag}
                       </div>
-                      <h3 className="text-lg font-bold text-foreground">{study.country}</h3>
+                      <h3 className="text-lg font-bold text-black">{study.country}</h3>
                     </div>
-                    <h4 className="text-base font-semibold text-foreground mb-2">
+                    <h4 className="text-base font-semibold text-black mb-2">
                       {study.title}
                     </h4>
-                    <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
+                    <p className="text-black text-sm mb-3 leading-relaxed">
                       {study.description}
                     </p>
                     <Button
