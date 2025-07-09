@@ -29,7 +29,7 @@ export default function Team() {
       description:
         "Expert en intégration technologique, il dirige actuellement le projet Transforme, consacré à la digitalisation des IMF et des COOPEC en République Démocratique du Congo. Ancien cadre du secteur bancaire, il possède plus de 10 ans d’expérience dans la gestion des institutions financières et plus de 7 ans dans le domaine des systèmes de paiement et des plateformes de switch. Grâce à cette double expertise, il œuvre à moderniser l’écosystème financier et à promouvoir l’inclusion numérique et financière.",
       image: "/DominiqueKaba.jpg",
-      linkedin: "https://www.linkedin.com/",
+      linkedin: "https://www.linkedin.com/in/dominique-kaba-946610144/",
     },
   ];
 
