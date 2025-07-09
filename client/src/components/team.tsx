@@ -77,7 +77,7 @@ export default function Team() {
                   <h3 className="text-xl font-bold text-foreground mb-1 text-center">
                     {member.name}
                   </h3>
-                  <p className="text-paycode-blue-accent font-semibold mb-3">
+                  <p className="text-paycode-blue-accent font-semibold mb-3 text-center">
                     {member.position}
                   </p>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
