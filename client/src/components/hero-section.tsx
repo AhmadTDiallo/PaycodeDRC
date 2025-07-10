@@ -70,21 +70,21 @@ export default function HeroSection() {
           >
             
             <motion.span 
-              className="block text-lg sm:text-xl md:text-2xl lg:text-4xl font-poppins font-semibold tracking-wide text-[#334b7d] mt-[2px] mb-[2px] pl-[-12px] pr-[-12px]"
+              className="block text-3xl md:text-5xl font-poppins font-semibold tracking-wide text-[#334b7d] mt-[2px] mb-[2px] pl-[-12px] pr-[-12px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >{t("hero.title")}</motion.span>
-            <span className="font-poppins text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold">
+            <span className="font-poppins text-4xl md:text-6xl font-semibold">
             {t("hero.subtitle")}
             </span>
           </motion.h1>
 
           <motion.p
-            className="text-base md:text-lg lg:text-xl text-gray-200 mb-8 md:mb-10 max-w-4xl mx-auto leading-relaxed font-inter px-4"
+            className="text-xl md:text-2xl text-gray-200 mb-10 max-w-4xl mx-auto leading-relaxed font-inter"
             variants={fadeInUp}
           >
-            {t("hero.description")}
+            
           </motion.p>
 
           <motion.div

@@ -19,11 +19,10 @@ const translations = {
     'nav.contact': 'Contact',
 
     // Hero Section
-    'hero.title': 'Favoriser l\'inclusion financière en RDC',
-    'hero.subtitle': 'Solutions de paiement sécurisées',
-    'hero.description': 'En tant qu\'agrégateur agréé, Paycode RDC propose des solutions de paiement sécurisées, fiables et évolutives qui favorisent l\'inclusion financière et l\'efficacité. Nous aidons les institutions à réduire leurs coûts, améliorer l\'accessibilité et promouvoir l\'interopérabilité au sein de l\'écosystème croissant de la finance numérique du pays.',
-    'hero.contactUs': 'Nous contacter',
-    'hero.learnMore': 'En savoir plus',
+    'hero.title': 'PAYCODE FINTECH CONGO',
+    'hero.subtitle': 'Agrégateur de Paiements de Confiance pour des Écosystèmes Interopérables',
+    'hero.contactUs': 'Contactez Nous',
+    'hero.learnMore': 'En Savoir Plus',
 
     // Value Proposition
     'value.mainTitle': 'Nous sommes un Agrégateur de Paiements agréé fournissant des plateformes de paiement interopérables pour les institutions financières. Nous connectons les banques,les IMF et les opérateurs de mobile money grâce à une technologie unifiée.',
@@ -146,9 +145,8 @@ const translations = {
     'nav.contact': 'Contact',
 
     // Hero Section
-    'hero.title': 'Promoting financial inclusion in DRC',
-    'hero.subtitle': 'Secure payment solutions',
-    'hero.description': 'As a licensed aggregator, Paycode DRC provides secure, reliable and scalable payment solutions that promote financial inclusion and efficiency. We help institutions reduce their costs, improve accessibility and promote interoperability within the country\'s growing digital finance ecosystem.',
+    'hero.title': 'PAYCODE FINTECH CONGO',
+    'hero.subtitle': 'Trusted Payment Aggregator for Interoperable Ecosystems',
     'hero.contactUs': 'Contact Us',
     'hero.learnMore': 'Learn More',
 
