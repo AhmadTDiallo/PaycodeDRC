@@ -72,23 +72,23 @@ export default function Statistics() {
   ];
 
   return (
-    <section className="py-20 bg-card" ref={ref}>
+    <section className="py-12 md:py-20 bg-card" ref={ref}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInScale}
         >
-          <h2 className="text-4xl font-bold paycode-blue mb-4">{t("stats.globalTitle")}</h2>
-          <p className="text-xl paycode-gray">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold paycode-blue mb-3 md:mb-4">{t("stats.globalTitle")}</h2>
+          <p className="text-base md:text-lg lg:text-xl paycode-gray max-w-3xl mx-auto">
             {t("stats.globalSubtitle")}
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

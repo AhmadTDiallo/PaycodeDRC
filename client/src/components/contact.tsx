@@ -99,24 +99,24 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-r from-paycode-blue to-paycode-blue-light">
+    <section id="contact" className="py-12 md:py-20 bg-gradient-to-r from-paycode-blue to-paycode-blue-light">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold text-white mb-8">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-8">
             {t("contact.title")}
           </h2>
-          <p className="text-xl text-blue-100 mb-12">
+          <p className="text-base md:text-lg lg:text-xl text-blue-100 mb-6 md:mb-12 max-w-3xl mx-auto">
             {t("contact.subtitle")}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {/* Demo Booking */}
           <motion.div
             initial="hidden"

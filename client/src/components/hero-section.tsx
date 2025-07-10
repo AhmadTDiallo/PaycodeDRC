@@ -17,7 +17,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0"
     >
       {/* Background with parallax effect */}
       <div className="absolute inset-0 bg-cover bg-center bg-fixed">
@@ -65,17 +65,17 @@ export default function HeroSection() {
       >
         <motion.div variants={fadeInUp}>
           <motion.h1
-            className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight px-2"
             variants={fadeInUp}
           >
             
             <motion.span 
-              className="block text-3xl md:text-5xl font-poppins font-semibold tracking-wide text-[#334b7d] mt-[2px] mb-[2px] pl-[-12px] pr-[-12px]"
+              className="block text-xl sm:text-2xl md:text-3xl lg:text-5xl font-poppins font-semibold tracking-wide text-[#334b7d] mt-[2px] mb-[2px] pl-[-12px] pr-[-12px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >{t("hero.title")}</motion.span>
-            <span className="font-poppins text-4xl md:text-6xl font-semibold">
+            <span className="font-poppins text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold">
             {t("hero.subtitle")}
             </span>
           </motion.h1>
@@ -88,21 +88,21 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4"
             variants={fadeInUp}
           >
             <Button
               size="lg"
-              className="bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white px-8 py-4 text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               onClick={() => scrollToSection("contact")}
             >
-              <Play className="mr-2 h-5 w-5" />
+              <Play className="mr-2 h-4 w-4 md:h-5 md:w-5" />
               {t("hero.contactUs")}
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-paycode-blue transition-all duration-300"
+              className="w-full sm:w-auto border-2 border-white text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold hover:bg-white hover:text-paycode-blue transition-all duration-300"
               onClick={() => scrollToSection("about")}
             >
               {t("hero.learnMore")}

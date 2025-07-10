@@ -52,24 +52,25 @@ export default function Navigation() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
+        <div className="flex items-center justify-between h-16 md:h-18">
           <motion.div
-            className="flex items-center space-x-3 cursor-pointer group"
+            className="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
             onClick={() => scrollToSection("hero")}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <motion.div 
-              className="w-12 h-12 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
               whileHover={{ rotate: 5 }}
             >
-              <Fingerprint className="text-white w-6 h-6" />
+              <Fingerprint className="text-white w-5 h-5 md:w-6 md:h-6" />
             </motion.div>
             <motion.span 
-              className="text-2xl font-bold bg-gradient-to-r from-paycode-blue to-paycode-blue-light bg-clip-text text-transparent group-hover:from-paycode-blue-light group-hover:to-paycode-blue transition-all duration-300"
+              className="text-lg md:text-2xl font-bold bg-gradient-to-r from-paycode-blue to-paycode-blue-light bg-clip-text text-transparent group-hover:from-paycode-blue-light group-hover:to-paycode-blue transition-all duration-300"
               whileHover={{ y: -1 }}
             >
-              PAYCODE DRC
+              <span className="hidden sm:inline">PAYCODE DRC</span>
+              <span className="sm:hidden">PAYCODE</span>
             </motion.span>
           </motion.div>
 

@@ -82,13 +82,13 @@ export default function Solutions() {
           </motion.p>
         </motion.div>
 
-        {/* 2x2 Grid Layout */}
+        {/* 2x2 Grid Layout - Mobile Optimized */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {solutions.map((solution, index) => (
             <motion.div 

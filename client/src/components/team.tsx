@@ -37,35 +37,35 @@ export default function Team() {
   ];
 
   return (
-    <section id="team" className="py-20 bg-secondary overflow-y-hidden">
+    <section id="team" className="py-12 md:py-16 bg-secondary overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 md:mb-4">
             {t("team.title")}
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             {t("team.subtitle")}
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-row gap-8 overflow-x-auto"
+          className="flex flex-col md:flex-row gap-6 md:gap-8 md:overflow-x-auto"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
           {teamMembers.map((member, index) => (
-            <motion.div key={index} variants={fadeInUp} className="group min-w-[250px] flex-1">
-              <Card className="bg-blue shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden h-full">
+            <motion.div key={index} variants={fadeInUp} className="group w-full md:min-w-[280px] md:flex-1">
+              <Card className="bg-card shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden h-full">
                 <div
-                  className="h-96 bg-cover bg-center bg-no-repeat"
+                  className="h-64 md:h-80 bg-cover bg-center bg-no-repeat"
                   style={{
                     backgroundImage: `url(${member.image})`,
                     backgroundPosition:
@@ -76,24 +76,24 @@ export default function Team() {
                         : "center"
                   }}
                 />
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-1 text-center">
+                <CardContent className="p-4 md:p-6">
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-1 text-center">
                     {member.name}
                   </h3>
-                  <p className="text-paycode-blue-accent font-semibold mb-3 text-center">
+                  <p className="text-paycode-blue-accent font-semibold mb-3 text-center text-sm md:text-base">
                     {member.position}
                   </p>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-4 line-clamp-4 md:line-clamp-none">
                     {member.description}
                   </p>
-                  <div className="flex space-x-3">
+                  <div className="flex justify-center">
                     <Button
                       size="sm"
                       variant="ghost"
-                      className="text-paycode-blue hover:text-paycode-blue-accent p-0"
+                      className="text-paycode-blue hover:text-paycode-blue-accent hover:bg-paycode-blue/10 p-2"
                       onClick={() => window.open(member.linkedin, "_blank")}
                     >
-                      <Linkedin className="h-5 w-5" />
+                      <Linkedin className="h-4 w-4 md:h-5 md:w-5" />
                     </Button>
                   </div>
                 </CardContent>
