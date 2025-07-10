@@ -100,7 +100,7 @@ export default function Navigation() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
-              className="ml-4"
+              className="ml-4 flex items-center space-x-3"
             >
               <LanguageSelector />
               <Button
@@ -162,7 +162,7 @@ export default function Navigation() {
                     </motion.button>
                   ))}
                   <motion.div
-                    className="pt-4"
+                    className="pt-4 space-y-3"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
