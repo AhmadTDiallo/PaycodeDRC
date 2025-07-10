@@ -83,7 +83,7 @@ export default function Statistics() {
         >
           <h2 className="text-4xl font-bold paycode-blue mb-4">{t("stats.globalTitle")}</h2>
           <p className="text-xl paycode-gray">
-            Faire tomber les obstacles à l’inclusion financière dans le monde entier
+            {t("stats.globalSubtitle")}
           </p>
         </motion.div>
 

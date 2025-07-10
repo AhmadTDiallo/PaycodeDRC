@@ -50,7 +50,7 @@ export default function Team() {
             {t("team.title")}
           </h2>
           <p className="text-xl text-muted-foreground">
-            Des dirigeants expérimentés qui favorisent l’inclusion financière dans le monde entier
+            {t("team.subtitle")}
           </p>
         </motion.div>
 
