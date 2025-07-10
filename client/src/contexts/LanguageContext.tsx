@@ -78,6 +78,21 @@ const translations = {
     'solutions.popup.feature9': 'Design Évolutif & Modulaire – S\'intègre facilement avec nouveaux partenaires ou services selon croissance écosystème.',
     'solutions.popup.feature10': 'Audit & Journalisation – Journaux de transaction détaillés et pistes d\'audit pour conformité et dépannage.',
 
+    // TMS Popup (French)
+    'solutions.tms.popup.title': 'TMS - Système de Gestion de Terminaux',
+    'solutions.tms.popup.overview': 'Aperçu',
+    'solutions.tms.popup.description': 'Le Système de Gestion de Terminaux (TMS) de Paycode fournit un contrôle centralisé, sécurisé et évolutif sur tous les terminaux POS déployés dans des environnements divers et distants. Le système permet l\'approvisionnement distant, la surveillance en temps réel, l\'inscription biométrique et les mises à jour automatiques de logiciels/micrologiciels, garantissant que les terminaux sont toujours conformes, opérationnels et sécurisés. Conçu pour supporter les déploiements à grande échelle, le TMS de Paycode peut gérer des millions d\'appareils avec une intervention humaine minimale.',
+    'solutions.tms.popup.keyFeatures': 'Caractéristiques Clés',
+    'solutions.tms.popup.feature1': 'Gestion d\'Appareils Distants – Configurer, mettre à jour et dépanner les terminaux sans accès physique.',
+    'solutions.tms.popup.feature2': 'Surveillance Temps Réel – Suivre l\'état des terminaux, disponibilité, santé batterie, connectivité réseau et métriques d\'usage.',
+    'solutions.tms.popup.feature3': 'Inscription & Sync Biométrique – Inscrire les utilisateurs sur site et synchroniser les données biométriques avec les systèmes backend de manière sécurisée.',
+    'solutions.tms.popup.feature4': 'Mises à Jour OTA (Over-the-Air) – Pousser efficacement les micrologiciels, correctifs logiciels et mises à jour de sécurité.',
+    'solutions.tms.popup.feature5': 'Distribution Sécurisée de Paramètres – Gérer et déployer des données sensibles comme clés de chiffrement, paramètres EMV et certificats.',
+    'solutions.tms.popup.feature6': 'Support Multi-Vendeur – Compatible avec diverses marques de terminaux et systèmes d\'exploitation (Android, basé Linux, etc.).',
+    'solutions.tms.popup.feature7': 'Suivi Géolocalisation – Voir l\'emplacement temps réel des terminaux pour logistique et prévention fraude.',
+    'solutions.tms.popup.feature8': 'Détection Sabotage & Alertes – Recevoir alertes instantanées sur tout sabotage ou tentatives d\'accès non autorisées.',
+    'solutions.tms.popup.feature9': 'Infrastructure Évolutive – Construite pour supporter déploiements urbains et ruraux avec optimisation bande passante faible.',
+
     // Team
     'team.title': 'Notre équipe de direction',
     'team.subtitle': 'Des dirigeants expérimentés qui favorisent l\'inclusion financière dans le monde entier',
@@ -222,6 +237,21 @@ const translations = {
     'solutions.popup.feature8': 'Fraud Detection & Risk Management – Real-time anomaly detection and rules-based risk scoring.',
     'solutions.popup.feature9': 'Scalable & Modular Design – Easily integrates with new partners or services as the ecosystem grows.',
     'solutions.popup.feature10': 'Audit & Logging – Detailed transaction logs and audit trails to support compliance and troubleshooting.',
+
+    // TMS Popup (English)
+    'solutions.tms.popup.title': 'TMS - Terminal Management System',
+    'solutions.tms.popup.overview': 'Overview',
+    'solutions.tms.popup.description': 'Paycode\'s Terminal Management System (TMS) provides centralized, secure, and scalable control over all POS terminals deployed across diverse and remote environments. The system enables remote provisioning, real-time monitoring, biometric enrollment, and automated software/firmware updates, ensuring terminals are always compliant, operational, and secure. Designed to support large-scale deployments, Paycode\'s TMS can manage millions of devices with minimal human intervention.',
+    'solutions.tms.popup.keyFeatures': 'Key Features',
+    'solutions.tms.popup.feature1': 'Remote Device Management – Configure, update, and troubleshoot terminals without physical access.',
+    'solutions.tms.popup.feature2': 'Real-Time Monitoring – Track terminal status, uptime, battery health, network connectivity, and usage metrics.',
+    'solutions.tms.popup.feature3': 'Biometric Enrollment & Sync – Enroll users on-site and sync biometric data with backend systems securely.',
+    'solutions.tms.popup.feature4': 'Over-the-Air (OTA) Updates – Push firmware, software patches, and security updates efficiently.',
+    'solutions.tms.popup.feature5': 'Secure Parameter Distribution – Manage and deploy sensitive data such as encryption keys, EMV parameters, and certificates.',
+    'solutions.tms.popup.feature6': 'Multi-Vendor Support – Compatible with various terminal brands and operating systems (Android, Linux-based, etc.).',
+    'solutions.tms.popup.feature7': 'Geolocation Tracking – View real-time location of terminals for logistics and fraud prevention.',
+    'solutions.tms.popup.feature8': 'Tamper Detection & Alerts – Receive instant alerts on any tampering or unauthorized access attempts.',
+    'solutions.tms.popup.feature9': 'Scalable Infrastructure – Built to support both urban and rural deployments with low-bandwidth optimization.',
 
     // Team
     'team.title': 'Our Leadership Team',

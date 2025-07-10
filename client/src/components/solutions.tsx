@@ -104,6 +104,85 @@ export default function Solutions() {
     </div>
   );
 
+  // TMS architecture diagram as SVG
+  const TMSDiagram = () => (
+    <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg">
+      <svg viewBox="0 0 400 300" className="w-full h-64">
+        <defs>
+          <linearGradient id="tmsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#8b5cf6" />
+            <stop offset="100%" stopColor="#6d28d9" />
+          </linearGradient>
+        </defs>
+        
+        {/* Central TMS Server */}
+        <rect x="175" y="120" width="50" height="40" fill="url(#tmsGradient)" rx="5" />
+        <text x="200" y="145" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold">TMS</text>
+        
+        {/* POS Terminals */}
+        <rect x="60" y="60" width="40" height="25" fill="#10b981" rx="3" />
+        <text x="80" y="77" textAnchor="middle" fill="white" fontSize="9">POS 1</text>
+        
+        <rect x="60" y="130" width="40" height="25" fill="#10b981" rx="3" />
+        <text x="80" y="147" textAnchor="middle" fill="white" fontSize="9">POS 2</text>
+        
+        <rect x="60" y="200" width="40" height="25" fill="#10b981" rx="3" />
+        <text x="80" y="217" textAnchor="middle" fill="white" fontSize="9">POS 3</text>
+        
+        <rect x="300" y="60" width="40" height="25" fill="#10b981" rx="3" />
+        <text x="320" y="77" textAnchor="middle" fill="white" fontSize="9">POS 4</text>
+        
+        <rect x="300" y="130" width="40" height="25" fill="#10b981" rx="3" />
+        <text x="320" y="147" textAnchor="middle" fill="white" fontSize="9">POS 5</text>
+        
+        <rect x="300" y="200" width="40" height="25" fill="#10b981" rx="3" />
+        <text x="320" y="217" textAnchor="middle" fill="white" fontSize="9">POS 6</text>
+        
+        {/* Connection lines from TMS to terminals */}
+        <line x1="175" y1="140" x2="100" y2="72" stroke="#8b5cf6" strokeWidth="2" />
+        <line x1="175" y1="140" x2="100" y2="142" stroke="#8b5cf6" strokeWidth="2" />
+        <line x1="175" y1="140" x2="100" y2="212" stroke="#8b5cf6" strokeWidth="2" />
+        <line x1="225" y1="140" x2="300" y2="72" stroke="#8b5cf6" strokeWidth="2" />
+        <line x1="225" y1="140" x2="300" y2="142" stroke="#8b5cf6" strokeWidth="2" />
+        <line x1="225" y1="140" x2="300" y2="212" stroke="#8b5cf6" strokeWidth="2" />
+        
+        {/* Wireless indicators */}
+        <circle cx="140" cy="100" r="2" fill="#8b5cf6">
+          <animate attributeName="r" values="2;6;2" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="260" cy="180" r="2" fill="#8b5cf6">
+          <animate attributeName="r" values="2;6;2" dur="2s" repeatCount="indefinite" begin="0.5s" />
+          <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.5s" />
+        </circle>
+        
+        {/* Status indicators on terminals */}
+        <circle cx="90" cy="65" r="3" fill="#22c55e">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="90" cy="135" r="3" fill="#22c55e">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" begin="0.3s" />
+        </circle>
+        <circle cx="90" cy="205" r="3" fill="#f59e0b">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" begin="0.6s" />
+        </circle>
+        <circle cx="330" cy="65" r="3" fill="#22c55e">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" begin="0.9s" />
+        </circle>
+        <circle cx="330" cy="135" r="3" fill="#22c55e">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" begin="1.2s" />
+        </circle>
+        <circle cx="330" cy="205" r="3" fill="#22c55e">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" begin="1.5s" />
+        </circle>
+        
+        {/* Data labels */}
+        <text x="200" y="50" textAnchor="middle" fill="#6b7280" fontSize="10">Remote Management</text>
+        <text x="200" y="270" textAnchor="middle" fill="#6b7280" fontSize="10">Real-time Monitoring</text>
+      </svg>
+    </div>
+  );
+
   return (
     <section id="solutions" className="py-20 bg-gradient-to-b from-secondary via-background to-secondary/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -194,6 +273,50 @@ export default function Solutions() {
                             <div key={i} className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
                               <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                               <span className="text-sm text-gray-700">{t(`solutions.popup.feature${i}`)}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              ) : index === 1 ? (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="cursor-pointer">
+                      <SolutionCard solution={solution} index={index} />
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold text-purple-600 mb-4">
+                        {t("solutions.tms.popup.title")}
+                      </DialogTitle>
+                    </DialogHeader>
+                    
+                    <div className="space-y-6">
+                      {/* TMS Architecture Diagram */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3">TMS Architecture</h3>
+                        <TMSDiagram />
+                      </div>
+                      
+                      {/* Detailed Description */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3">{t("solutions.tms.popup.overview")}</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4">
+                          {t("solutions.tms.popup.description")}
+                        </p>
+                      </div>
+                      
+                      {/* Key Features */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-4">{t("solutions.tms.popup.keyFeatures")}</h3>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+                            <div key={i} className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
+                              <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-gray-700">{t(`solutions.tms.popup.feature${i}`)}</span>
                             </div>
                           ))}
                         </div>
