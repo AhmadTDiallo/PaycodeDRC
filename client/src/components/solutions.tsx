@@ -167,44 +167,33 @@ export default function Solutions() {
                   <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle className="text-2xl font-bold text-blue-600 mb-4">
-                        Financial Switch - Detailed Overview
+                        {t("solutions.popup.title")}
                       </DialogTitle>
                     </DialogHeader>
                     
                     <div className="space-y-6">
                       {/* Payment Routing Diagram */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">Payment Routing Architecture</h3>
+                        <h3 className="text-lg font-semibold mb-3">{t("solutions.popup.architecture")}</h3>
                         <PaymentRoutingDiagram />
                       </div>
                       
                       {/* Detailed Description */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">Overview</h3>
+                        <h3 className="text-lg font-semibold mb-3">{t("solutions.popup.overview")}</h3>
                         <p className="text-muted-foreground leading-relaxed mb-4">
-                          Paycode's financial switch acts as a centralized transaction hub, intelligently routing and authorizing payments across diverse financial institutions and payment channels. Designed for scalability, speed, and compliance, it ensures secure, real-time transaction processing across the ecosystem. The switch is fully PCI-DSS compliant, supporting EMV/Edapt hybrid cards, POS terminals, mobile wallets, ATMs, and core banking systems with ease.
+                          {t("solutions.popup.description")}
                         </p>
                       </div>
                       
                       {/* Key Features */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">Key Features</h3>
+                        <h3 className="text-lg font-semibold mb-4">{t("solutions.popup.keyFeatures")}</h3>
                         <div className="grid md:grid-cols-2 gap-4">
-                          {[
-                            "PCI-DSS Compliant – Ensures high-level security standards for cardholder data protection.",
-                            "EMV/Edapt Integration – Seamless operation with chip-enabled and biometric-enabled smart cards.",
-                            "Multi-Channel Support – Connects payments across POS, mobile, ATM, and web-based platforms.",
-                            "Real-Time Authorization – Instant verification and processing of transactions.",
-                            "ISO 8583 & ISO 20022 Support – Compatible with standard financial messaging protocols.",
-                            "High Availability Architecture – Built for redundancy, failover, and 24/7 uptime.",
-                            "Dynamic Routing Engine – Intelligent routing based on cost, network status, or issuer preference.",
-                            "Fraud Detection & Risk Management – Real-time anomaly detection and rules-based risk scoring.",
-                            "Scalable & Modular Design – Easily integrates with new partners or services as the ecosystem grows.",
-                            "Audit & Logging – Detailed transaction logs and audit trails to support compliance and troubleshooting."
-                          ].map((feature, i) => (
+                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
                             <div key={i} className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
                               <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-gray-700">{feature}</span>
+                              <span className="text-sm text-gray-700">{t(`solutions.popup.feature${i}`)}</span>
                             </div>
                           ))}
                         </div>

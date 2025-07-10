@@ -61,6 +61,23 @@ const translations = {
     'solutions.erpTitle': 'Intégration ERP',
     'solutions.erpDesc': 'Paycode permet des rapports financiers et opérationnels robustes en reliant ses systèmes centraux aux ERP de niveau entreprise comme Priority Software. Cela prend en charge la conformité, les pistes d\'audit, l\'intégration de la paie RH et la planification des ressources, particulièrement pour les clients gouvernementaux et institutionnels.',
 
+    // Financial Switch Popup (French)
+    'solutions.popup.title': 'Switch Financier - Aperçu Détaillé',
+    'solutions.popup.architecture': 'Architecture de Routage des Paiements',
+    'solutions.popup.overview': 'Aperçu',
+    'solutions.popup.description': 'Le switch financier de Paycode agit comme un hub de transaction centralisé, routant et autorisant intelligemment les paiements à travers diverses institutions financières et canaux de paiement. Conçu pour l\'évolutivité, la vitesse et la conformité, il assure un traitement de transaction sécurisé et en temps réel à travers l\'écosystème. Le switch est entièrement conforme PCI-DSS, supportant les cartes hybrides EMV/Edapt, terminaux POS, portefeuilles mobiles, DAB et systèmes bancaires centraux avec facilité.',
+    'solutions.popup.keyFeatures': 'Caractéristiques Clés',
+    'solutions.popup.feature1': 'Conforme PCI-DSS – Assure des standards de sécurité élevés pour la protection des données de cartes.',
+    'solutions.popup.feature2': 'Intégration EMV/Edapt – Fonctionnement transparent avec cartes à puce et cartes intelligentes biométriques.',
+    'solutions.popup.feature3': 'Support Multi-Canal – Connecte les paiements à travers POS, mobile, DAB et plateformes web.',
+    'solutions.popup.feature4': 'Autorisation Temps Réel – Vérification et traitement instantané des transactions.',
+    'solutions.popup.feature5': 'Support ISO 8583 & ISO 20022 – Compatible avec les protocoles de messagerie financière standards.',
+    'solutions.popup.feature6': 'Architecture Haute Disponibilité – Construite pour la redondance, basculement et disponibilité 24/7.',
+    'solutions.popup.feature7': 'Moteur de Routage Dynamique – Routage intelligent basé sur le coût, statut réseau ou préférence émetteur.',
+    'solutions.popup.feature8': 'Détection Fraude & Gestion Risque – Détection d\'anomalies temps réel et notation de risque basée sur règles.',
+    'solutions.popup.feature9': 'Design Évolutif & Modulaire – S\'intègre facilement avec nouveaux partenaires ou services selon croissance écosystème.',
+    'solutions.popup.feature10': 'Audit & Journalisation – Journaux de transaction détaillés et pistes d\'audit pour conformité et dépannage.',
+
     // Team
     'team.title': 'Notre équipe de direction',
     'team.subtitle': 'Des dirigeants expérimentés qui favorisent l\'inclusion financière dans le monde entier',
@@ -188,6 +205,23 @@ const translations = {
     'solutions.cbsDesc': 'Integrated with leading solutions like Temenos, Paycode\'s CBS supports full banking operations including account creation, ledger management, loan origination, deposits, withdrawals. The system is modular, cloud ready, and scalable for MFIs, cooperatives and digital-only banks.',
     'solutions.erpTitle': 'ERP Integration',
     'solutions.erpDesc': 'Paycode enables robust financial and operational reporting by linking its core systems to enterprise-grade ERPs like Priority Software. This supports compliance, audit trails, HR payroll integration, and resource planning, particularly for government and institutional clients.',
+
+    // Financial Switch Popup (English)
+    'solutions.popup.title': 'Financial Switch - Detailed Overview',
+    'solutions.popup.architecture': 'Payment Routing Architecture',
+    'solutions.popup.overview': 'Overview',
+    'solutions.popup.description': 'Paycode\'s financial switch acts as a centralized transaction hub, intelligently routing and authorizing payments across diverse financial institutions and payment channels. Designed for scalability, speed, and compliance, it ensures secure, real-time transaction processing across the ecosystem. The switch is fully PCI-DSS compliant, supporting EMV/Edapt hybrid cards, POS terminals, mobile wallets, ATMs, and core banking systems with ease.',
+    'solutions.popup.keyFeatures': 'Key Features',
+    'solutions.popup.feature1': 'PCI-DSS Compliant – Ensures high-level security standards for cardholder data protection.',
+    'solutions.popup.feature2': 'EMV/Edapt Integration – Seamless operation with chip-enabled and biometric-enabled smart cards.',
+    'solutions.popup.feature3': 'Multi-Channel Support – Connects payments across POS, mobile, ATM, and web-based platforms.',
+    'solutions.popup.feature4': 'Real-Time Authorization – Instant verification and processing of transactions.',
+    'solutions.popup.feature5': 'ISO 8583 & ISO 20022 Support – Compatible with standard financial messaging protocols.',
+    'solutions.popup.feature6': 'High Availability Architecture – Built for redundancy, failover, and 24/7 uptime.',
+    'solutions.popup.feature7': 'Dynamic Routing Engine – Intelligent routing based on cost, network status, or issuer preference.',
+    'solutions.popup.feature8': 'Fraud Detection & Risk Management – Real-time anomaly detection and rules-based risk scoring.',
+    'solutions.popup.feature9': 'Scalable & Modular Design – Easily integrates with new partners or services as the ecosystem grows.',
+    'solutions.popup.feature10': 'Audit & Logging – Detailed transaction logs and audit trails to support compliance and troubleshooting.',
 
     // Team
     'team.title': 'Our Leadership Team',
