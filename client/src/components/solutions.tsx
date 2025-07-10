@@ -765,6 +765,18 @@ function SolutionCard({ solution, index }: { solution: any; index: number }) {
           ))}
         </motion.div>
 
+        {/* Click to expand indicator */}
+        <motion.div 
+          className="flex items-center justify-center mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: solution.delay + 0.8 }}
+        >
+          <div className="bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 border border-white/30">
+            <span className="text-white/90 text-xs font-medium">Click to expand more</span>
+          </div>
+        </motion.div>
+
         {/* Hover Arrow */}
         <motion.div
           className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
