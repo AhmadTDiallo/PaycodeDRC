@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Network, Monitor, Database, Settings, CheckCircle, Shield, Zap, ArrowRight } from "lucide-react";
+import { Network, Monitor, Database, Settings, CheckCircle, Shield, Zap, ArrowRight, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useState } from "react";
 
 export default function Solutions() {
   const { t } = useLanguage();
@@ -53,6 +56,53 @@ export default function Solutions() {
       delay: 0.4
     },
   ];
+
+  // Payment routing diagram as SVG
+  const PaymentRoutingDiagram = () => (
+    <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg">
+      <svg viewBox="0 0 400 300" className="w-full h-64">
+        <defs>
+          <linearGradient id="routingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#1d4ed8" />
+          </linearGradient>
+        </defs>
+        
+        {/* Central Switch */}
+        <rect x="175" y="125" width="50" height="50" fill="url(#routingGradient)" rx="5" />
+        <text x="200" y="155" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Switch</text>
+        
+        {/* Banks */}
+        <rect x="50" y="50" width="60" height="30" fill="#10b981" rx="3" />
+        <text x="80" y="70" textAnchor="middle" fill="white" fontSize="10">Bank A</text>
+        
+        <rect x="50" y="220" width="60" height="30" fill="#10b981" rx="3" />
+        <text x="80" y="240" textAnchor="middle" fill="white" fontSize="10">Bank B</text>
+        
+        {/* Mobile Money */}
+        <rect x="290" y="50" width="60" height="30" fill="#f59e0b" rx="3" />
+        <text x="320" y="70" textAnchor="middle" fill="white" fontSize="10">Mobile Money</text>
+        
+        {/* MFI */}
+        <rect x="290" y="220" width="60" height="30" fill="#8b5cf6" rx="3" />
+        <text x="320" y="240" textAnchor="middle" fill="white" fontSize="10">MFI</text>
+        
+        {/* Connection lines */}
+        <line x1="110" y1="65" x2="175" y2="140" stroke="#3b82f6" strokeWidth="2" />
+        <line x1="110" y1="235" x2="175" y2="160" stroke="#3b82f6" strokeWidth="2" />
+        <line x1="225" y1="140" x2="290" y2="65" stroke="#3b82f6" strokeWidth="2" />
+        <line x1="225" y1="160" x2="290" y2="235" stroke="#3b82f6" strokeWidth="2" />
+        
+        {/* Data flow indicators */}
+        <circle cx="140" cy="100" r="3" fill="#3b82f6">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="260" cy="200" r="3" fill="#3b82f6">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1s" />
+        </circle>
+      </svg>
+    </div>
+  );
 
   return (
     <section id="solutions" className="py-20 bg-gradient-to-b from-secondary via-background to-secondary/50">
@@ -107,215 +157,279 @@ export default function Solutions() {
               }}
               className="group"
             >
-              <Card className="relative h-full bg-card border-0 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-sm">
-                {/* Tech Grid Background */}
-                <div className="absolute inset-0">
-                  {/* Grid Pattern */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `
-                        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-                      `,
-                      backgroundSize: '20px 20px'
-                    }} />
-                  </div>
-                  
-                  {/* Circuit Lines */}
-                  <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 300">
-                    <defs>
-                      <linearGradient id={`circuit-gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="rgba(255,255,255,0.6)" />
-                        <stop offset="50%" stopColor="rgba(255,255,255,0.3)" />
-                        <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
-                      </linearGradient>
-                    </defs>
-                    
-                    {/* Animated circuit paths */}
-                    <path
-                      d="M0,50 L100,50 L100,100 L200,100 L200,150 L300,150"
-                      stroke={`url(#circuit-gradient-${index})`}
-                      strokeWidth="2"
-                      fill="none"
-                      className="animate-pulse"
-                    />
-                    <path
-                      d="M400,200 L300,200 L300,120 L200,120 L200,80 L100,80"
-                      stroke={`url(#circuit-gradient-${index})`}
-                      strokeWidth="1.5"
-                      fill="none"
-                      className="animate-pulse"
-                      style={{ animationDelay: '0.5s' }}
-                    />
-                    <path
-                      d="M0,250 L80,250 L80,180 L160,180 L160,130 L240,130 L240,80 L400,80"
-                      stroke={`url(#circuit-gradient-${index})`}
-                      strokeWidth="1"
-                      fill="none"
-                      className="animate-pulse"
-                      style={{ animationDelay: '1s' }}
-                    />
-                    
-                    {/* Circuit nodes */}
-                    <circle cx="100" cy="50" r="3" fill="rgba(255,255,255,0.6)" className="animate-pulse" />
-                    <circle cx="200" cy="100" r="2" fill="rgba(255,255,255,0.5)" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
-                    <circle cx="300" cy="150" r="2.5" fill="rgba(255,255,255,0.4)" className="animate-pulse" style={{ animationDelay: '0.7s' }} />
-                    <circle cx="160" cy="180" r="2" fill="rgba(255,255,255,0.6)" className="animate-pulse" style={{ animationDelay: '1.2s' }} />
-                  </svg>
-                  
-                  {/* Tech Corner Elements */}
-                  <div className="absolute top-0 left-0 w-16 h-16">
-                    <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-white/40"></div>
-                    <div className="absolute top-2 left-8 w-6 h-0.5 bg-white/40"></div>
-                    <div className="absolute top-8 left-2 w-0.5 h-6 bg-white/40"></div>
-                  </div>
-                  
-                  <div className="absolute top-0 right-0 w-16 h-16">
-                    <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-white/40"></div>
-                    <div className="absolute top-2 right-8 w-6 h-0.5 bg-white/40"></div>
-                    <div className="absolute top-8 right-2 w-0.5 h-6 bg-white/40"></div>
-                  </div>
-                  
-                  <div className="absolute bottom-0 left-0 w-16 h-16">
-                    <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-white/40"></div>
-                    <div className="absolute bottom-2 left-8 w-6 h-0.5 bg-white/40"></div>
-                    <div className="absolute bottom-8 left-2 w-0.5 h-6 bg-white/40"></div>
-                  </div>
-                  
-                  <div className="absolute bottom-0 right-0 w-16 h-16">
-                    <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-white/40"></div>
-                    <div className="absolute bottom-2 right-8 w-6 h-0.5 bg-white/40"></div>
-                    <div className="absolute bottom-8 right-2 w-0.5 h-6 bg-white/40"></div>
-                  </div>
-                </div>
-
-                {/* Background Image with Overlay */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${solution.image})` }}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} opacity-85 group-hover:opacity-90 transition-opacity duration-500`} />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 p-6 lg:p-8 h-full flex flex-col">
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-6">
-                    <motion.div 
-                      className={`relative w-14 h-14 ${solution.iconBg} rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-sm border border-white/20`}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {/* Tech corners on icon */}
-                      <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-white/60 rounded-tl"></div>
-                      <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-white/60 rounded-tr"></div>
-                      <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-white/60 rounded-bl"></div>
-                      <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-white/60 rounded-br"></div>
-                      
-                      <solution.icon className="text-white w-7 h-7" />
-                    </motion.div>
-                    
-                    <div className="relative">
-                      <motion.span 
-                        className="text-white/70 text-4xl lg:text-5xl font-bold font-mono"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: solution.delay + 0.3 }}
-                      >
-                        {solution.number}
-                      </motion.span>
-                      
-                      {/* Tech lines around number */}
-                      <div className="absolute -top-2 -right-2 w-8 h-0.5 bg-white/40"></div>
-                      <div className="absolute -top-2 -right-2 w-0.5 h-8 bg-white/40"></div>
+              {index === 0 ? (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="cursor-pointer">
+                      <SolutionCard solution={solution} index={index} />
                     </div>
-                  </div>
-
-                  {/* Title and Description */}
-                  <div className="flex-grow">
-                    <motion.h3 
-                      className="text-xl lg:text-2xl font-bold text-white mb-4 leading-tight"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: solution.delay + 0.2 }}
-                    >
-                      {solution.title}
-                    </motion.h3>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold text-blue-600 mb-4">
+                        Financial Switch - Detailed Overview
+                      </DialogTitle>
+                    </DialogHeader>
                     
-                    <motion.p 
-                      className="text-white/90 text-sm lg:text-base leading-relaxed mb-6 line-clamp-4"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: solution.delay + 0.4 }}
-                    >
-                      {solution.description}
-                    </motion.p>
-                  </div>
-
-                  {/* Features Grid */}
-                  <motion.div 
-                    className="grid grid-cols-2 gap-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: solution.delay + 0.5 }}
-                  >
-                    {solution.features.map((feature, featureIndex) => (
-                      <motion.div
-                        key={featureIndex}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: solution.delay + 0.6 + featureIndex * 0.1 }}
-                        className="relative flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/20"
-                      >
-                        {/* Tech accent line */}
-                        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
-                        
-                        <div className="relative">
-                          <CheckCircle className="w-3 h-3 text-white/80 flex-shrink-0" />
-                          <div className="absolute -top-0.5 -left-0.5 w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+                    <div className="space-y-6">
+                      {/* Payment Routing Diagram */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3">Payment Routing Architecture</h3>
+                        <PaymentRoutingDiagram />
+                      </div>
+                      
+                      {/* Detailed Description */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3">Overview</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4">
+                          Paycode's financial switch acts as a centralized transaction hub, intelligently routing and authorizing payments across diverse financial institutions and payment channels. Designed for scalability, speed, and compliance, it ensures secure, real-time transaction processing across the ecosystem. The switch is fully PCI-DSS compliant, supporting EMV/Edapt hybrid cards, POS terminals, mobile wallets, ATMs, and core banking systems with ease.
+                        </p>
+                      </div>
+                      
+                      {/* Key Features */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-4">Key Features</h3>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {[
+                            "PCI-DSS Compliant – Ensures high-level security standards for cardholder data protection.",
+                            "EMV/Edapt Integration – Seamless operation with chip-enabled and biometric-enabled smart cards.",
+                            "Multi-Channel Support – Connects payments across POS, mobile, ATM, and web-based platforms.",
+                            "Real-Time Authorization – Instant verification and processing of transactions.",
+                            "ISO 8583 & ISO 20022 Support – Compatible with standard financial messaging protocols.",
+                            "High Availability Architecture – Built for redundancy, failover, and 24/7 uptime.",
+                            "Dynamic Routing Engine – Intelligent routing based on cost, network status, or issuer preference.",
+                            "Fraud Detection & Risk Management – Real-time anomaly detection and rules-based risk scoring.",
+                            "Scalable & Modular Design – Easily integrates with new partners or services as the ecosystem grows.",
+                            "Audit & Logging – Detailed transaction logs and audit trails to support compliance and troubleshooting."
+                          ].map((feature, i) => (
+                            <div key={i} className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+                              <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-gray-700">{feature}</span>
+                            </div>
+                          ))}
                         </div>
-                        <span className="text-white/90 text-xs font-medium truncate font-mono">{feature}</span>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-
-                  {/* Hover Arrow */}
-                  <motion.div
-                    className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ delay: solution.delay + 0.8 }}
-                  >
-                    <div className="relative w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
-                      {/* Tech corners on arrow */}
-                      <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-white/60"></div>
-                      <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-white/60"></div>
-                      <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-white/60"></div>
-                      <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-white/60"></div>
-                      
-                      <ArrowRight className="w-5 h-5 text-white" />
+                      </div>
                     </div>
-                  </motion.div>
-                </div>
-
-                {/* Animated Tech Border */}
-                <motion.div
-                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  whileHover={{
-                    boxShadow: "0 0 30px rgba(255,255,255,0.3)"
-                  }}
-                >
-                  {/* Animated border lines */}
-                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-pulse"></div>
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.25s' }}></div>
-                  <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.75s' }}></div>
-                </motion.div>
-              </Card>
+                  </DialogContent>
+                </Dialog>
+              ) : (
+                <SolutionCard solution={solution} index={index} />
+              )}
             </motion.div>
           ))}
         </motion.div>
       </div>
     </section>
+  );
+}
+
+// Separate component for the solution card to avoid duplication
+function SolutionCard({ solution, index }: { solution: any; index: number }) {
+  return (
+    <Card className="relative h-full bg-card border-0 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-sm">
+      {/* Tech Grid Background */}
+      <div className="absolute inset-0">
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '20px 20px'
+          }} />
+        </div>
+        
+        {/* Circuit Lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 300">
+          <defs>
+            <linearGradient id={`circuit-gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.6)" />
+              <stop offset="50%" stopColor="rgba(255,255,255,0.3)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
+            </linearGradient>
+          </defs>
+          
+          {/* Animated circuit paths */}
+          <path
+            d="M0,50 L100,50 L100,100 L200,100 L200,150 L300,150"
+            stroke={`url(#circuit-gradient-${index})`}
+            strokeWidth="2"
+            fill="none"
+            className="animate-pulse"
+          />
+          <path
+            d="M400,200 L300,200 L300,120 L200,120 L200,80 L100,80"
+            stroke={`url(#circuit-gradient-${index})`}
+            strokeWidth="1.5"
+            fill="none"
+            className="animate-pulse"
+            style={{ animationDelay: '0.5s' }}
+          />
+          <path
+            d="M0,250 L80,250 L80,180 L160,180 L160,130 L240,130 L240,80 L400,80"
+            stroke={`url(#circuit-gradient-${index})`}
+            strokeWidth="1"
+            fill="none"
+            className="animate-pulse"
+            style={{ animationDelay: '1s' }}
+          />
+          
+          {/* Circuit nodes */}
+          <circle cx="100" cy="50" r="3" fill="rgba(255,255,255,0.6)" className="animate-pulse" />
+          <circle cx="200" cy="100" r="2" fill="rgba(255,255,255,0.5)" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
+          <circle cx="300" cy="150" r="2.5" fill="rgba(255,255,255,0.4)" className="animate-pulse" style={{ animationDelay: '0.7s' }} />
+          <circle cx="160" cy="180" r="2" fill="rgba(255,255,255,0.6)" className="animate-pulse" style={{ animationDelay: '1.2s' }} />
+        </svg>
+        
+        {/* Tech Corner Elements */}
+        <div className="absolute top-0 left-0 w-16 h-16">
+          <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-white/40"></div>
+          <div className="absolute top-2 left-8 w-6 h-0.5 bg-white/40"></div>
+          <div className="absolute top-8 left-2 w-0.5 h-6 bg-white/40"></div>
+        </div>
+        
+        <div className="absolute top-0 right-0 w-16 h-16">
+          <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-white/40"></div>
+          <div className="absolute top-2 right-8 w-6 h-0.5 bg-white/40"></div>
+          <div className="absolute top-8 right-2 w-0.5 h-6 bg-white/40"></div>
+        </div>
+        
+        <div className="absolute bottom-0 left-0 w-16 h-16">
+          <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-white/40"></div>
+          <div className="absolute bottom-2 left-8 w-6 h-0.5 bg-white/40"></div>
+          <div className="absolute bottom-8 left-2 w-0.5 h-6 bg-white/40"></div>
+        </div>
+        
+        <div className="absolute bottom-0 right-0 w-16 h-16">
+          <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-white/40"></div>
+          <div className="absolute bottom-2 right-8 w-6 h-0.5 bg-white/40"></div>
+          <div className="absolute bottom-8 right-2 w-0.5 h-6 bg-white/40"></div>
+        </div>
+      </div>
+
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${solution.image})` }}
+      >
+        <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} opacity-85 group-hover:opacity-90 transition-opacity duration-500`} />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 p-6 lg:p-8 h-full flex flex-col">
+        {/* Header */}
+        <div className="flex items-start justify-between mb-6">
+          <motion.div 
+            className={`relative w-14 h-14 ${solution.iconBg} rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-sm border border-white/20`}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Tech corners on icon */}
+            <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-white/60 rounded-tl"></div>
+            <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-white/60 rounded-tr"></div>
+            <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-white/60 rounded-bl"></div>
+            <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-white/60 rounded-br"></div>
+            
+            <solution.icon className="text-white w-7 h-7" />
+          </motion.div>
+          
+          <div className="relative">
+            <motion.span 
+              className="text-white/70 text-4xl lg:text-5xl font-bold font-mono"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: solution.delay + 0.3 }}
+            >
+              {solution.number}
+            </motion.span>
+            
+            {/* Tech lines around number */}
+            <div className="absolute -top-2 -right-2 w-8 h-0.5 bg-white/40"></div>
+            <div className="absolute -top-2 -right-2 w-0.5 h-8 bg-white/40"></div>
+          </div>
+        </div>
+
+        {/* Title and Description */}
+        <div className="flex-grow">
+          <motion.h3 
+            className="text-xl lg:text-2xl font-bold text-white mb-4 leading-tight"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: solution.delay + 0.2 }}
+          >
+            {solution.title}
+          </motion.h3>
+          
+          <motion.p 
+            className="text-white/90 text-sm lg:text-base leading-relaxed mb-6 line-clamp-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: solution.delay + 0.4 }}
+          >
+            {solution.description}
+          </motion.p>
+        </div>
+
+        {/* Features Grid */}
+        <motion.div 
+          className="grid grid-cols-2 gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: solution.delay + 0.5 }}
+        >
+          {solution.features.map((feature, featureIndex) => (
+            <motion.div
+              key={featureIndex}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: solution.delay + 0.6 + featureIndex * 0.1 }}
+              className="relative flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/20"
+            >
+              {/* Tech accent line */}
+              <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+              
+              <div className="relative">
+                <CheckCircle className="w-3 h-3 text-white/80 flex-shrink-0" />
+                <div className="absolute -top-0.5 -left-0.5 w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+              </div>
+              <span className="text-white/90 text-xs font-medium truncate font-mono">{feature}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Hover Arrow */}
+        <motion.div
+          className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          transition={{ delay: solution.delay + 0.8 }}
+        >
+          <div className="relative w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+            {/* Tech corners on arrow */}
+            <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-white/60"></div>
+            <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-white/60"></div>
+            <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-white/60"></div>
+            <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-white/60"></div>
+            
+            <ArrowRight className="w-5 h-5 text-white" />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Animated Tech Border */}
+      <motion.div
+        className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        whileHover={{
+          boxShadow: "0 0 30px rgba(255,255,255,0.3)"
+        }}
+      >
+        {/* Animated border lines */}
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.25s' }}></div>
+        <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.75s' }}></div>
+      </motion.div>
+    </Card>
   );
 }
