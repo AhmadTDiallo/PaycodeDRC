@@ -109,6 +109,21 @@ const translations = {
     'solutions.cbs.popup.feature9': 'Connectivité Interbancaire & Switch – Se connecte avec switches nationaux, passerelles paiement et schémas cartes.',
     'solutions.cbs.popup.feature10': 'Sécurisé & Conforme – Aligné avec standards réglementaires internationaux pour finance numérique.',
 
+    // ERP Popup (French)
+    'solutions.erp.popup.title': 'Intégration ERP',
+    'solutions.erp.popup.overview': 'Aperçu',
+    'solutions.erp.popup.description': 'Paycode permet une supervision financière et opérationnelle robuste en intégrant ses plateformes centrales avec des systèmes ERP de niveau entreprise tels que Priority Software. Cette connexion rationalise la conformité, assure des pistes d\'audit traçables et permet des fonctions transparentes de RH, paie et planification des ressources. Conçue pour répondre aux exigences des gouvernements, ONG et grandes institutions, cette intégration assure un flux de données en temps réel entre les opérations de terrain et les systèmes centralisés.',
+    'solutions.erp.popup.keyFeatures': 'Caractéristiques Clés',
+    'solutions.erp.popup.feature1': 'Intégration Priority Software – Se connecte avec l\'une des plateformes ERP leaders pour le contrôle financier et opérationnel.',
+    'solutions.erp.popup.feature2': 'Conformité & Audit – Supporte transactions traçables et vérifiables pour rapports réglementaires et bailleurs.',
+    'solutions.erp.popup.feature3': 'Intégration RH & Paie – Lie données d\'inscription biométrique et présence avec traitement paie.',
+    'solutions.erp.popup.feature4': 'Planification Ressources – Permet prévision, budgétisation et allocation des ressources financières et humaines.',
+    'solutions.erp.popup.feature5': 'Synchronisation Temps Réel – Assure données cohérentes entre systèmes terrain et tableaux de bord ERP.',
+    'solutions.erp.popup.feature6': 'Workflows Personnalisables – Adaptés aux structures organisationnelles et besoins sectoriels spécifiques.',
+    'solutions.erp.popup.feature7': 'Support Multi-Départements – Facilite opérations à travers finance, RH, approvisionnement et logistique.',
+    'solutions.erp.popup.feature8': 'Déploiement Cloud ou Sur Site – Modèles de déploiement flexibles pour s\'adapter à l\'infrastructure d\'entreprise.',
+    'solutions.erp.popup.feature9': 'Sécurité Données & Chiffrement – Assure protection bout en bout des données financières et personnelles sensibles.',
+
     // Team
     'team.title': 'Notre équipe de direction',
     'team.subtitle': 'Des dirigeants expérimentés qui favorisent l\'inclusion financière dans le monde entier',
@@ -284,6 +299,21 @@ const translations = {
     'solutions.cbs.popup.feature8': 'Automated Loan Workflows – Streamlines loan application, approval, disbursement, and repayment tracking.',
     'solutions.cbs.popup.feature9': 'Interbank & Switch Connectivity – Connects with national switches, payment gateways, and card schemes.',
     'solutions.cbs.popup.feature10': 'Secure & Compliant – Aligned with international regulatory standards for digital finance.',
+
+    // ERP Popup (English)
+    'solutions.erp.popup.title': 'ERP Integration',
+    'solutions.erp.popup.overview': 'Overview',
+    'solutions.erp.popup.description': 'Paycode enables robust financial and operational oversight by integrating its core platforms with enterprise-grade ERP systems such as Priority Software. This connection streamlines compliance, ensures traceable audit trails, and enables seamless HR, payroll, and resource planning functions. Designed to meet the demands of governments, NGOs, and large institutions, this integration ensures real-time data flow between field operations and centralized systems.',
+    'solutions.erp.popup.keyFeatures': 'Key Features',
+    'solutions.erp.popup.feature1': 'Priority Software Integration – Connects with one of the leading ERP platforms for financial and operational control.',
+    'solutions.erp.popup.feature2': 'Compliance & Audit – Supports traceable, verifiable transactions for regulatory and donor reporting.',
+    'solutions.erp.popup.feature3': 'HR & Payroll Integration – Links biometric enrollment and attendance data with payroll processing.',
+    'solutions.erp.popup.feature4': 'Resource Planning – Enables forecasting, budgeting, and allocation of financial and human resources.',
+    'solutions.erp.popup.feature5': 'Real-Time Sync – Ensures consistent data across field systems and ERP dashboards.',
+    'solutions.erp.popup.feature6': 'Customizable Workflows – Tailored to meet organizational structures and sector-specific needs.',
+    'solutions.erp.popup.feature7': 'Multi-Department Support – Facilitates operations across finance, HR, procurement, and logistics.',
+    'solutions.erp.popup.feature8': 'Cloud or On-Prem Deployment – Flexible deployment models to fit enterprise infrastructure.',
+    'solutions.erp.popup.feature9': 'Data Security & Encryption – Ensures sensitive financial and personnel data is protected end-to-end.',
 
     // Team
     'team.title': 'Our Leadership Team',

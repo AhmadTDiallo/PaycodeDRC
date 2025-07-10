@@ -261,6 +261,95 @@ export default function Solutions() {
     </div>
   );
 
+  // ERP integration diagram as SVG
+  const ERPDiagram = () => (
+    <div className="bg-gradient-to-br from-orange-50 to-red-100 p-6 rounded-lg">
+      <svg viewBox="0 0 400 300" className="w-full h-64">
+        <defs>
+          <linearGradient id="erpGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#f97316" />
+            <stop offset="100%" stopColor="#dc2626" />
+          </linearGradient>
+        </defs>
+        
+        {/* Central ERP System */}
+        <rect x="150" y="130" width="100" height="60" fill="url(#erpGradient)" rx="8" />
+        <text x="200" y="155" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Priority ERP</text>
+        <text x="200" y="175" textAnchor="middle" fill="white" fontSize="9">Enterprise System</text>
+        
+        {/* Paycode Systems */}
+        <rect x="50" y="60" width="80" height="40" fill="#3b82f6" rx="4" />
+        <text x="90" y="78" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Paycode CBS</text>
+        <text x="90" y="92" textAnchor="middle" fill="white" fontSize="8">Core Banking</text>
+        
+        <rect x="270" y="60" width="80" height="40" fill="#8b5cf6" rx="4" />
+        <text x="310" y="78" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Paycode TMS</text>
+        <text x="310" y="92" textAnchor="middle" fill="white" fontSize="8">Terminal Mgmt</text>
+        
+        <rect x="50" y="230" width="80" height="40" fill="#10b981" rx="4" />
+        <text x="90" y="248" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Biometric</text>
+        <text x="90" y="262" textAnchor="middle" fill="white" fontSize="8">Enrollment</text>
+        
+        <rect x="270" y="230" width="80" height="40" fill="#f59e0b" rx="4" />
+        <text x="310" y="248" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Field</text>
+        <text x="310" y="262" textAnchor="middle" fill="white" fontSize="8">Operations</text>
+        
+        {/* ERP Modules */}
+        <rect x="160" y="40" width="35" height="25" fill="#ef4444" rx="3" />
+        <text x="177" y="55" textAnchor="middle" fill="white" fontSize="8">Finance</text>
+        
+        <rect x="200" y="40" width="35" height="25" fill="#ef4444" rx="3" />
+        <text x="217" y="55" textAnchor="middle" fill="white" fontSize="8">HR</text>
+        
+        <rect x="160" y="235" width="35" height="25" fill="#ef4444" rx="3" />
+        <text x="177" y="250" textAnchor="middle" fill="white" fontSize="8">Audit</text>
+        
+        <rect x="200" y="235" width="35" height="25" fill="#ef4444" rx="3" />
+        <text x="217" y="250" textAnchor="middle" fill="white" fontSize="8">Reports</text>
+        
+        {/* Connection lines */}
+        <line x1="130" y1="80" x2="150" y2="140" stroke="#f97316" strokeWidth="2" />
+        <line x1="270" y1="80" x2="250" y2="140" stroke="#f97316" strokeWidth="2" />
+        <line x1="130" y1="250" x2="150" y2="180" stroke="#f97316" strokeWidth="2" />
+        <line x1="270" y1="250" x2="250" y2="180" stroke="#f97316" strokeWidth="2" />
+        
+        <line x1="177" y1="65" x2="177" y2="130" stroke="#ef4444" strokeWidth="2" />
+        <line x1="217" y1="65" x2="217" y2="130" stroke="#ef4444" strokeWidth="2" />
+        <line x1="177" y1="190" x2="177" y2="235" stroke="#ef4444" strokeWidth="2" />
+        <line x1="217" y1="190" x2="217" y2="235" stroke="#ef4444" strokeWidth="2" />
+        
+        {/* Data flow indicators */}
+        <circle cx="140" cy="110" r="3" fill="#f97316">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="260" cy="110" r="3" fill="#f97316">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.5s" />
+        </circle>
+        <circle cx="140" cy="215" r="3" fill="#f97316">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1s" />
+        </circle>
+        <circle cx="260" cy="215" r="3" fill="#f97316">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.5s" />
+        </circle>
+        
+        {/* Real-time sync indicators */}
+        <circle cx="200" cy="100" r="2" fill="#22c55e">
+          <animate attributeName="r" values="2;8;2" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.2;1" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <text x="200" y="120" textAnchor="middle" fill="#059669" fontSize="8">Real-time Sync</text>
+        
+        {/* Compliance badge */}
+        <rect x="320" y="10" width="70" height="20" fill="#22c55e" rx="10" />
+        <text x="355" y="23" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold">Audit Ready</text>
+        
+        {/* Data labels */}
+        <text x="200" y="15" textAnchor="middle" fill="#6b7280" fontSize="10">Enterprise Integration</text>
+        <text x="200" y="295" textAnchor="middle" fill="#6b7280" fontSize="10">Compliance & Resource Planning</text>
+      </svg>
+    </div>
+  );
+
   return (
     <section id="solutions" className="py-20 bg-gradient-to-b from-secondary via-background to-secondary/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -439,6 +528,50 @@ export default function Solutions() {
                             <div key={i} className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
                               <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                               <span className="text-sm text-gray-700">{t(`solutions.cbs.popup.feature${i}`)}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              ) : index === 3 ? (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="cursor-pointer">
+                      <SolutionCard solution={solution} index={index} />
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold text-orange-600 mb-4">
+                        {t("solutions.erp.popup.title")}
+                      </DialogTitle>
+                    </DialogHeader>
+                    
+                    <div className="space-y-6">
+                      {/* ERP Integration Diagram */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3">ERP Integration Architecture</h3>
+                        <ERPDiagram />
+                      </div>
+                      
+                      {/* Detailed Description */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3">{t("solutions.erp.popup.overview")}</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4">
+                          {t("solutions.erp.popup.description")}
+                        </p>
+                      </div>
+                      
+                      {/* Key Features */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-4">{t("solutions.erp.popup.keyFeatures")}</h3>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+                            <div key={i} className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg">
+                              <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-gray-700">{t(`solutions.erp.popup.feature${i}`)}</span>
                             </div>
                           ))}
                         </div>
