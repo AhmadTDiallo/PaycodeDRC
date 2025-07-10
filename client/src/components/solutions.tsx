@@ -410,36 +410,36 @@ export default function Solutions() {
                       <SolutionCard solution={solution} index={index} />
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full p-4 sm:p-6">
                     <DialogHeader>
-                      <DialogTitle className="text-2xl font-bold text-blue-600 mb-4">
+                      <DialogTitle className="text-xl sm:text-2xl font-bold text-blue-600 mb-4">
                         {t("solutions.popup.title")}
                       </DialogTitle>
                     </DialogHeader>
                     
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {/* Payment Routing Diagram */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">{t("solutions.popup.architecture")}</h3>
+                        <h3 className="text-base sm:text-lg font-semibold mb-3">{t("solutions.popup.architecture")}</h3>
                         <PaymentRoutingDiagram />
                       </div>
                       
                       {/* Detailed Description */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">{t("solutions.popup.overview")}</h3>
-                        <p className="text-muted-foreground leading-relaxed mb-4">
+                        <h3 className="text-base sm:text-lg font-semibold mb-3">{t("solutions.popup.overview")}</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4 text-sm sm:text-base">
                           {t("solutions.popup.description")}
                         </p>
                       </div>
                       
                       {/* Key Features */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">{t("solutions.popup.keyFeatures")}</h3>
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <h3 className="text-base sm:text-lg font-semibold mb-4">{t("solutions.popup.keyFeatures")}</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-                            <div key={i} className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
-                              <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-gray-700">{t(`solutions.popup.feature${i}`)}</span>
+                            <div key={i} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-blue-50 rounded-lg">
+                              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-xs sm:text-sm text-gray-700">{t(`solutions.popup.feature${i}`)}</span>
                             </div>
                           ))}
                         </div>
@@ -454,36 +454,36 @@ export default function Solutions() {
                       <SolutionCard solution={solution} index={index} />
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full p-4 sm:p-6">
                     <DialogHeader>
-                      <DialogTitle className="text-2xl font-bold text-purple-600 mb-4">
+                      <DialogTitle className="text-xl sm:text-2xl font-bold text-purple-600 mb-4">
                         {t("solutions.tms.popup.title")}
                       </DialogTitle>
                     </DialogHeader>
                     
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {/* TMS Architecture Diagram */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">TMS Architecture</h3>
+                        <h3 className="text-base sm:text-lg font-semibold mb-3">TMS Architecture</h3>
                         <TMSDiagram />
                       </div>
                       
                       {/* Detailed Description */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">{t("solutions.tms.popup.overview")}</h3>
-                        <p className="text-muted-foreground leading-relaxed mb-4">
+                        <h3 className="text-base sm:text-lg font-semibold mb-3">{t("solutions.tms.popup.overview")}</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4 text-sm sm:text-base">
                           {t("solutions.tms.popup.description")}
                         </p>
                       </div>
                       
                       {/* Key Features */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">{t("solutions.tms.popup.keyFeatures")}</h3>
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <h3 className="text-base sm:text-lg font-semibold mb-4">{t("solutions.tms.popup.keyFeatures")}</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
-                            <div key={i} className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
-                              <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-gray-700">{t(`solutions.tms.popup.feature${i}`)}</span>
+                            <div key={i} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-purple-50 rounded-lg">
+                              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-xs sm:text-sm text-gray-700">{t(`solutions.tms.popup.feature${i}`)}</span>
                             </div>
                           ))}
                         </div>
@@ -498,36 +498,36 @@ export default function Solutions() {
                       <SolutionCard solution={solution} index={index} />
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full p-4 sm:p-6">
                     <DialogHeader>
-                      <DialogTitle className="text-2xl font-bold text-green-600 mb-4">
+                      <DialogTitle className="text-xl sm:text-2xl font-bold text-green-600 mb-4">
                         {t("solutions.cbs.popup.title")}
                       </DialogTitle>
                     </DialogHeader>
                     
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {/* CBS Architecture Diagram */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">CBS Architecture</h3>
+                        <h3 className="text-base sm:text-lg font-semibold mb-3">CBS Architecture</h3>
                         <CBSDiagram />
                       </div>
                       
                       {/* Detailed Description */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">{t("solutions.cbs.popup.overview")}</h3>
-                        <p className="text-muted-foreground leading-relaxed mb-4">
+                        <h3 className="text-base sm:text-lg font-semibold mb-3">{t("solutions.cbs.popup.overview")}</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4 text-sm sm:text-base">
                           {t("solutions.cbs.popup.description")}
                         </p>
                       </div>
                       
                       {/* Key Features */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">{t("solutions.cbs.popup.keyFeatures")}</h3>
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <h3 className="text-base sm:text-lg font-semibold mb-4">{t("solutions.cbs.popup.keyFeatures")}</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-                            <div key={i} className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                              <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-gray-700">{t(`solutions.cbs.popup.feature${i}`)}</span>
+                            <div key={i} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-green-50 rounded-lg">
+                              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-xs sm:text-sm text-gray-700">{t(`solutions.cbs.popup.feature${i}`)}</span>
                             </div>
                           ))}
                         </div>
@@ -542,36 +542,36 @@ export default function Solutions() {
                       <SolutionCard solution={solution} index={index} />
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full p-4 sm:p-6">
                     <DialogHeader>
-                      <DialogTitle className="text-2xl font-bold text-orange-600 mb-4">
+                      <DialogTitle className="text-xl sm:text-2xl font-bold text-orange-600 mb-4">
                         {t("solutions.erp.popup.title")}
                       </DialogTitle>
                     </DialogHeader>
                     
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {/* ERP Integration Diagram */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">ERP Integration Architecture</h3>
+                        <h3 className="text-base sm:text-lg font-semibold mb-3">ERP Integration Architecture</h3>
                         <ERPDiagram />
                       </div>
                       
                       {/* Detailed Description */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">{t("solutions.erp.popup.overview")}</h3>
-                        <p className="text-muted-foreground leading-relaxed mb-4">
+                        <h3 className="text-base sm:text-lg font-semibold mb-3">{t("solutions.erp.popup.overview")}</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4 text-sm sm:text-base">
                           {t("solutions.erp.popup.description")}
                         </p>
                       </div>
                       
                       {/* Key Features */}
                       <div>
-                        <h3 className="text-lg font-semibold mb-4">{t("solutions.erp.popup.keyFeatures")}</h3>
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <h3 className="text-base sm:text-lg font-semibold mb-4">{t("solutions.erp.popup.keyFeatures")}</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
-                            <div key={i} className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg">
-                              <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                              <span className="text-sm text-gray-700">{t(`solutions.erp.popup.feature${i}`)}</span>
+                            <div key={i} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-orange-50 rounded-lg">
+                              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-xs sm:text-sm text-gray-700">{t(`solutions.erp.popup.feature${i}`)}</span>
                             </div>
                           ))}
                         </div>
