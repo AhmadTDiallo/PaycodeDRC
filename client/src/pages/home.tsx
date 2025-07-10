@@ -4,7 +4,7 @@ import ValueProposition from "@/components/value-proposition";
 import Statistics from "@/components/statistics";
 import Solutions from "@/components/solutions";
 import Awards from "@/components/awards";
-import CaseStudies from "@/components/case-studies";
+
 import Team from "@/components/team";
 import News from "@/components/news";
 import Contact from "@/components/contact";
@@ -19,7 +19,7 @@ export default function Home() {
       <Statistics />
       <Solutions />
       <Awards />
-      <CaseStudies />
+
       <Team />
       <News />
       <Contact />

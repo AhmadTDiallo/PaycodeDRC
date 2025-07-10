@@ -36,7 +36,6 @@ export default function Navigation() {
   const navItems = [
     { label: t("nav.solutions"), href: "solutions" },
     { label: t("nav.about"), href: "about" },
-    { label: t("nav.caseStudies"), href: "case-studies" },
     { label: t("nav.team"), href: "team" },
     { label: t("nav.news"), href: "news" },
   ];
