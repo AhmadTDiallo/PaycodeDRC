@@ -12,8 +12,8 @@ export default function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
 
   const languages = [
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'en', name: 'English', flag: '🇺🇸' }
+    { code: 'fr', name: 'Français' },
+    { code: 'en', name: 'English' }
   ];
 
   const currentLang = languages.find(lang => lang.code === language);
@@ -27,7 +27,6 @@ export default function LanguageSelector() {
           className="h-9 px-3 text-muted-foreground hover:text-foreground hover:bg-paycode-blue/10 transition-colors duration-300"
         >
           <Globe className="w-4 h-4 mr-2" />
-          <span className="hidden sm:inline mr-1">{currentLang?.flag}</span>
           <span className="text-sm font-medium">{language.toUpperCase()}</span>
           <ChevronDown className="w-3 h-3 ml-1" />
         </Button>
@@ -43,7 +42,6 @@ export default function LanguageSelector() {
                 : 'hover:bg-accent'
             }`}
           >
-            <span className="mr-2">{lang.flag}</span>
             {lang.name}
           </DropdownMenuItem>
         ))}
