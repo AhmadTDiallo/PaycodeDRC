@@ -3,10 +3,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Fingerprint } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSelector from "./LanguageSelector";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,11 +34,11 @@ export default function Navigation() {
   };
 
   const navItems = [
-    { label: "Solutions", href: "solutions" },
-    { label: "À propos", href: "about" },
-    { label: "Études de cas", href: "case-studies" },
-    { label: "Équipe", href: "team" },
-    { label: "Actualités", href: "news" },
+    { label: t("nav.solutions"), href: "solutions" },
+    { label: t("nav.about"), href: "about" },
+    { label: t("nav.caseStudies"), href: "case-studies" },
+    { label: t("nav.team"), href: "team" },
+    { label: t("nav.news"), href: "news" },
   ];
 
   return (
@@ -99,12 +102,13 @@ export default function Navigation() {
               transition={{ delay: 0.8 }}
               className="ml-4"
             >
+              <LanguageSelector />
               <Button
                 onClick={() => scrollToSection("contact")}
                 className="bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white px-6 py-2.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 size="sm"
               >
-                Contactez Nous
+                {t("nav.contact")}
               </Button>
             </motion.div>
           </div>
@@ -163,11 +167,12 @@ export default function Navigation() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
+                    <LanguageSelector />
                     <Button
                       onClick={() => scrollToSection("contact")}
                       className="w-full bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                     >
-                      Contactez Nous
+                      {t("nav.contact")}
                     </Button>
                   </motion.div>
                 </div>

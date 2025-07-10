@@ -3,9 +3,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Linkedin } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 import LwangoPhoto from "@assets/Prince_1752061564517.jpg";
 
 export default function Team() {
+  const { t } = useLanguage();
+  
   const teamMembers = [
     {
       name: "Lwango Wavo",
@@ -44,7 +47,7 @@ export default function Team() {
           variants={fadeInUp}
         >
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            Notre équipe de direction
+            {t("team.title")}
           </h2>
           <p className="text-xl text-muted-foreground">
             Des dirigeants expérimentés qui favorisent l’inclusion financière dans le monde entier

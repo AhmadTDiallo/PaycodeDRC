@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Fingerprint, Signal, DollarSign } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Solutions() {
+  const { t } = useLanguage();
+  
   const solutions = [
     {
       icon: Fingerprint,
@@ -48,10 +51,10 @@ export default function Solutions() {
           variants={fadeInUp}
         >
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            Nous résolvons les 3 principales barrières à l'inclusion financière
+            {t("solutions.title")}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            La véritable inclusion financière devrait permettre à chacun dans la société d'avoir accès aux services financiers, quels que soient ses revenus, ses économies ou sa localisation.
+            {t("solutions.subtitle")}
           </p>
         </motion.div>
 

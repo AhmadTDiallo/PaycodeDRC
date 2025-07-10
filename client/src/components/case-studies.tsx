@@ -3,36 +3,36 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 import BankOfGhanaImage from "@assets/Bank-of-Ghana2-e1668714204967_1752066799539.webp";
 import AfghanistanBankImage from "@assets/afganistanbank_1752066803194.jpg";
 import DrcMotoImage from "@assets/drcmoto_1752066807922.webp";
 
 export default function CaseStudies() {
+  const { t } = useLanguage();
+  
   const caseStudies = [
     {
       country: "Ghana",
       flag: "🇬🇭",
-      title: "Système de paiement national",
-      description:
-        "La Banque du Ghana a sélectionné la technologie EDAPT de Paycode pour fournir une solution clé en main pour un système national de commutation et de règlement des paiements.",
+      title: t("caseStudies.ghana.title"),
+      description: t("caseStudies.ghana.desc"),
       image: BankOfGhanaImage,
       gradient: "from-yellow-400 to-red-400",
     },
     {
       country: "Afghanistan",
       flag: "🇦🇫",
-      title: "Transactions financières numériques",
-      description:
-        "Afghanistan International Bank a mis en œuvre la technologie d'identité numérique biométrique et de paiements de Paycode pour numériser les transactions financières pour les donateurs, ONG et entreprises.",
+      title: t("caseStudies.afghanistan.title"),
+      description: t("caseStudies.afghanistan.desc"),
       image: AfghanistanBankImage,
       gradient: "from-green-400 to-blue-400",
     },
     {
       country: "DRC",
       flag: "🇨🇩",
-      title: "Collecte de taxes pour motocyclistes",
-      description:
-        "Émission de cartes d'identité biométriques et collecte de taxes pour 20 000 motocyclistes-taxis de l'ANMC dans 8 villes à travers la RDC pour le ministère des Transports.",
+      title: t("caseStudies.drc.title"),
+      description: t("caseStudies.drc.desc"),
       image: DrcMotoImage,
       gradient: "from-blue-400 to-purple-400",
     },
@@ -48,8 +48,8 @@ export default function CaseStudies() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">Histoires de succès</h2>
-          <p className="text-xl text-muted-foreground">Impact réel à travers l'Afrique et au-delà</p>
+          <h2 className="text-4xl font-bold text-foreground mb-4">{t("caseStudies.title")}</h2>
+          <p className="text-xl text-muted-foreground">{t("caseStudies.subtitle")}</p>
         </motion.div>
 
         <motion.div
@@ -85,7 +85,7 @@ export default function CaseStudies() {
                     variant="ghost"
                     className="text-paycode-blue-accent hover:text-paycode-blue font-semibold p-0"
                   >
-                    Voir l'étude de cas <ArrowRight className="ml-1 h-4 w-4" />
+{t("caseStudies.readMore")} <ArrowRight className="ml-1 h-4 w-4" />
                   </Button>
                 </CardContent>
               </Card>

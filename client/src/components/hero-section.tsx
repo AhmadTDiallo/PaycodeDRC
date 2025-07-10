@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Play, ChevronDown } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -71,12 +74,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-            >PAYCODE FINTECH CONGO</motion.span>
+            >{t("hero.title")}</motion.span>
             <span className="font-poppins text-4xl md:text-6xl font-semibold">
-            Agrégateur de Paiements de Confiance pour{" "}
-              <span className="text-gradient-blue">
-              des Écosystèmes Interopérables
-              </span>
+            {t("hero.subtitle")}
             </span>
           </motion.h1>
 
@@ -97,7 +97,7 @@ export default function HeroSection() {
               onClick={() => scrollToSection("contact")}
             >
               <Play className="mr-2 h-5 w-5" />
-              Contactez Nous
+              {t("hero.contactUs")}
             </Button>
             <Button
               size="lg"
@@ -105,7 +105,7 @@ export default function HeroSection() {
               className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-paycode-blue transition-all duration-300"
               onClick={() => scrollToSection("about")}
             >
-              En Savoir Plus
+              {t("hero.learnMore")}
             </Button>
           </motion.div>
         </motion.div>

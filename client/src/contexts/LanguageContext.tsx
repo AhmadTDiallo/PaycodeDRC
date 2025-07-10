@@ -1,0 +1,264 @@
+import React, { createContext, useContext, useState } from 'react';
+
+type Language = 'fr' | 'en';
+
+interface LanguageContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
+}
+
+const translations = {
+  fr: {
+    // Navigation
+    'nav.about': 'À propos',
+    'nav.solutions': 'Solutions',
+    'nav.team': 'Équipe',
+    'nav.caseStudies': 'Cas d\'usage',
+    'nav.news': 'Actualités',
+    'nav.contact': 'Contact',
+
+    // Hero Section
+    'hero.title': 'PAYCODE FINTECH CONGO',
+    'hero.subtitle': 'Agrégateur de Paiements de Confiance pour des Écosystèmes Interopérables',
+    'hero.contactUs': 'Contactez Nous',
+    'hero.learnMore': 'En Savoir Plus',
+
+    // Value Proposition
+    'value.mainTitle': 'Nous sommes un Agrégateur de Paiements agréé fournissant des plateformes de paiement interopérables pour les institutions financières. Nous connectons les banques,les IMF et les opérateurs de mobile money grâce à une technologie unifiée.',
+    'value.mainDescription': 'Notre technologie prend en charge plusieurs types de données, notamment la biométrie, les données KYC, les données de localisation, les données de santé et bien plus encore. Toute institution financière, banque centrale, gouvernement ou entreprise peut utiliser notre technologie pour améliorer ses systèmes.',
+    'value.platformTitle': 'Paycode RDC : Agrégateur de Paiements Agréé',
+    'value.platformDescription': 'Paycode RDC fournit une plateforme de paiement partagée et interopérable pour les institutions financières à travers la République démocratique du Congo. Notre mission est de permettre aux banques, IMF, opérateurs de mobile money et autres acteurs financiers de se connecter et de réaliser des transactions de manière fluide via un système unifié.',
+    'value.feature1Title': 'Agrégateur agréé',
+    'value.feature1Desc': 'Agrégateur de paiements pleinement agréé et régulé en RDC',
+    'value.feature2Title': 'Multi-Institution',
+    'value.feature2Desc': 'Au service des banques, IMF, opérateurs de mobile money, et plus encore',
+    'value.feature3Title': 'Interopérable',
+    'value.feature3Desc': 'Système unifié permettant des transactions fluides et transparentes entre différentes plateformes',
+    'value.feature4Title': 'Économique',
+    'value.feature4Desc': 'Réduire les coûts tout en améliorant l\'accessibilité et l\'efficacité',
+    'value.transformTitle': 'Transformer',
+    'value.transformSubtitle': 'la finance numérique',
+    'value.transformDescription': 'Connecter chaque institution financière à travers la République démocratique du Congo grâce à une technologie sécurisée et interopérable, permettant des transactions fluides et stimulant la croissance économique.',
+    'value.stat1': '110+',
+    'value.stat1Label': 'Institutions financières',
+    'value.stat2': '+ de 2 millions',
+    'value.stat2Label': 'Utilisateurs actifs',
+    'value.stat3': '99.9%',
+    'value.stat3Label': 'Temps de disponibilité du système',
+    'value.inclusionTitle': 'Favoriser l\'inclusion financière en RDC',
+    'value.inclusionDescription': 'En tant qu\'agrégateur agréé, Paycode RDC propose des solutions de paiement sécurisées, fiables et évolutives qui favorisent l\'inclusion financière et l\'efficacité. Nous aidons les institutions à réduire leurs coûts, améliorer l\'accessibilité et promouvoir l\'interopérabilité au sein de l\'écosystème croissant de la finance numérique.',
+
+    // Solutions
+    'solutions.title': 'Nos Solutions',
+    'solutions.subtitle': 'Solutions technologiques complètes pour les institutions financières',
+    'solutions.solution1Title': 'Solutions de Commutation',
+    'solutions.solution1Desc': 'Technologie d\'agrégation de paiements permettant aux institutions financières de se connecter à un réseau interopérable pour les transferts d\'argent, les paiements de factures et les transactions cross-border.',
+    'solutions.solution2Title': 'Plateforme de Paiements',
+    'solutions.solution2Desc': 'Solution complète de traitement des paiements offrant des API sécurisées, la gestion des transactions en temps réel, et l\'intégration avec de multiples canaux de paiement pour une expérience utilisateur transparente.',
+    'solutions.solution3Title': 'Services d\'Identité Numérique',
+    'solutions.solution3Desc': 'En tant que spécialistes de la livraison du dernier kilomètre et de la preuve de vie, nous pensons pouvoir avoir un impact significatif sur l\'inclusion financière en Afrique en fournissant une identité numérique biométrique et un accès à faible coût aux services financiers de base.',
+
+    // Team
+    'team.title': 'Notre équipe de direction',
+    'team.subtitle': 'Des dirigeants expérimentés qui favorisent l\'inclusion financière dans le monde entier',
+    'team.lwangoPosition': 'Président-Directeur Général',
+    'team.lwangoDesc': 'Fort de plus de dix ans d\'expérience dans les affaires et le leadership, il possède une solide expertise en stratégie, en opérations et en croissance. En tant que Président Directeur Général de Paycode Fintech Congo, il dirige les efforts visant à étendre les solutions de paiement numérique et à promouvoir l\'inclusion financière dans la région. Reconnu pour sa capacité à faire évoluer les entreprises et à établir des partenariats solides, il allie innovation et exécution pour générer un impact durable. Son leadership continue de positionner Paycode comme un acteur clé du paysage fintech en Afrique.',
+    'team.sadioPosition': 'Directeur Général',
+    'team.sadioDesc': 'Directeur Général de Paycode Fintech Congo, spécialisée dans les technologies financières pour l\'inclusion en RDC. Avec plus de 10 ans d\'expérience en digitalisation des services financiers, il dirige le déploiement de solutions de core banking, de paiements et de dispositifs biométriques pour les IMF et COOPEC. À travers Paycode, il œuvre à élargir l\'accès aux services financiers pour les populations mal desservies.',
+    'team.dominiquePosition': 'Directeur des Opérations',
+    'team.dominiqueDesc': 'Expert en intégration technologique, il dirige actuellement le projet Transforme, consacré à la digitalisation des IMF et des COOPEC en République Démocratique du Congo. Ancien cadre du secteur bancaire, il possède plus de 10 ans d\'expérience dans la gestion des institutions financières et plus de 7 ans dans le domaine des systèmes de paiement et des plateformes de switch. Grâce à cette double expertise, il œuvre à moderniser l\'écosystème financier et à promouvoir l\'inclusion numérique et financière.',
+
+    // Case Studies
+    'caseStudies.title': 'Histoires de succès',
+    'caseStudies.subtitle': 'Impact réel à travers l\'Afrique et au-delà',
+    'caseStudies.ghana.title': 'Système de paiement national',
+    'caseStudies.ghana.desc': 'La Banque du Ghana a sélectionné la technologie EDAPT de Paycode pour fournir une solution clé en main pour un système national de commutation et de règlement des paiements.',
+    'caseStudies.afghanistan.title': 'Transactions financières numériques',
+    'caseStudies.afghanistan.desc': 'Afghanistan International Bank a mis en œuvre la technologie d\'identité numérique biométrique et de paiements de Paycode pour numériser les transactions financières pour les donateurs, ONG et entreprises.',
+    'caseStudies.drc.title': 'Collecte de taxes pour motocyclistes',
+    'caseStudies.drc.desc': 'Émission de cartes d\'identité biométriques et collecte de taxes pour 20 000 motocyclistes-taxis de l\'ANMC dans 8 villes à travers la RDC pour le ministère des Transports.',
+    'caseStudies.viewCase': 'Voir l\'étude de cas',
+
+    // News
+    'news.title': 'Actualités et événements',
+    'news.subtitle': 'Restez informé de nos dernières nouvelles et développements',
+    'news.readMore': 'Lire la suite',
+
+    // Statistics
+    'stats.title': 'L\'impact de Paycode RDC en chiffres',
+    'stats.subtitle': 'Des résultats mesurables qui favorisent l\'inclusion financière',
+    'stats.institutions': 'Institutions financières connectées',
+    'stats.transactions': 'Transactions traitées par mois',
+    'stats.uptime': 'Temps de disponibilité du système',
+    'stats.countries': 'Pays desservis',
+
+    // Awards
+    'awards.title': 'Reconnaissance et récompenses',
+    'awards.subtitle': 'Récompensé pour notre excellence dans la technologie financière',
+
+    // Contact
+    'contact.title': 'Prêt à transformer l\'inclusion financière ?',
+    'contact.subtitle': 'Partenaire avec Paycode RDC pour accéder à notre plateforme de paiement interopérable et connecter votre institution financière à l\'écosystème plus large de la RDC.',
+    'contact.demoTitle': 'Réserver une démo',
+    'contact.demoSubtitle': 'Voir notre technologie en action',
+    'contact.newsletterTitle': 'Restez informé',
+    'contact.newsletterSubtitle': 'Recevez nos dernières nouvelles et mises à jour',
+    'contact.form.name': 'Nom complet',
+    'contact.form.email': 'Email',
+    'contact.form.company': 'Entreprise',
+    'contact.form.phone': 'Téléphone',
+    'contact.form.message': 'Message',
+    'contact.form.requestDemo': 'Demander une démo',
+    'contact.form.subscribe': 'S\'abonner',
+    'contact.success.demo': 'Demande de démo soumise avec succès!',
+    'contact.success.newsletter': 'Abonnement réussi à la newsletter!',
+    'contact.error.demo': 'Erreur lors de la soumission de la demande de démo',
+    'contact.error.newsletter': 'Erreur lors de l\'abonnement à la newsletter',
+
+    // Footer
+    'footer.description': 'Agrégateur de paiements agréé fournissant des plateformes de paiement interopérables pour les institutions financières en République démocratique du Congo.',
+    'footer.quickLinks': 'Liens rapides',
+    'footer.contact': 'Contact',
+    'footer.followUs': 'Suivez-nous',
+    'footer.rights': 'Tous droits réservés.',
+  },
+  en: {
+    // Navigation
+    'nav.about': 'About',
+    'nav.solutions': 'Solutions',
+    'nav.team': 'Team',
+    'nav.caseStudies': 'Case Studies',
+    'nav.news': 'News',
+    'nav.contact': 'Contact',
+
+    // Hero Section
+    'hero.title': 'PAYCODE FINTECH CONGO',
+    'hero.subtitle': 'Trusted Payment Aggregator for Interoperable Ecosystems',
+    'hero.contactUs': 'Contact Us',
+    'hero.learnMore': 'Learn More',
+
+    // Value Proposition
+    'value.mainTitle': 'We are a licensed Payment Aggregator providing shared, interoperable payment platforms for Financial Institutions. We connect banks, MFIs and mobile money operators through unified technology.',
+    'value.mainDescription': 'Our technology supports multiple data types including biometrics, KYC data, location data, health data, and much more. Any financial institution, central bank, government, or enterprise can use our technology to improve their systems.',
+    'value.platformTitle': 'Paycode DRC: Licensed Payment Aggregator',
+    'value.platformDescription': 'Paycode DRC provides a shared, interoperable payment platform for financial institutions across the Democratic Republic of Congo. Our mission is to enable banks, MFIs, mobile money operators, and other financial actors to connect and transact seamlessly through a unified system.',
+    'value.feature1Title': 'Licensed Aggregator',
+    'value.feature1Desc': 'Fully licensed and regulated payment aggregator in DRC',
+    'value.feature2Title': 'Multi-Institution',
+    'value.feature2Desc': 'Serving banks, MFIs, mobile money operators, and more',
+    'value.feature3Title': 'Interoperable',
+    'value.feature3Desc': 'Unified system enabling seamless and transparent transactions across different platforms',
+    'value.feature4Title': 'Cost-Effective',
+    'value.feature4Desc': 'Reduce costs while improving accessibility and efficiency',
+    'value.transformTitle': 'Transforming',
+    'value.transformSubtitle': 'digital finance',
+    'value.transformDescription': 'Connecting every financial institution across the Democratic Republic of Congo through secure and interoperable technology, enabling seamless transactions and driving economic growth.',
+    'value.stat1': '110+',
+    'value.stat1Label': 'Financial institutions',
+    'value.stat2': '2+ million',
+    'value.stat2Label': 'Active users',
+    'value.stat3': '99.9%',
+    'value.stat3Label': 'System uptime',
+    'value.inclusionTitle': 'Fostering financial inclusion in DRC',
+    'value.inclusionDescription': 'As a licensed aggregator, Paycode DRC provides secure, reliable, and scalable payment solutions that promote financial inclusion and efficiency. We help institutions reduce costs, improve accessibility, and promote interoperability within the growing digital finance ecosystem.',
+
+    // Solutions
+    'solutions.title': 'Our Solutions',
+    'solutions.subtitle': 'Comprehensive technology solutions for financial institutions',
+    'solutions.solution1Title': 'Switching Solutions',
+    'solutions.solution1Desc': 'Payment aggregation technology enabling financial institutions to connect to an interoperable network for money transfers, bill payments, and cross-border transactions.',
+    'solutions.solution2Title': 'Payment Platform',
+    'solutions.solution2Desc': 'Comprehensive payment processing solution offering secure APIs, real-time transaction management, and integration with multiple payment channels for seamless user experience.',
+    'solutions.solution3Title': 'Digital Identity Services',
+    'solutions.solution3Desc': 'As specialists in last-mile delivery and proof of life, we believe we can make a significant impact on financial inclusion in Africa by providing biometric digital identity and low-cost access to basic financial services.',
+
+    // Team
+    'team.title': 'Our Leadership Team',
+    'team.subtitle': 'Experienced leaders driving financial inclusion worldwide',
+    'team.lwangoPosition': 'Chief Executive Officer',
+    'team.lwangoDesc': 'With over ten years of experience in business and leadership, he possesses solid expertise in strategy, operations, and growth. As Chief Executive Officer of Paycode Fintech Congo, he leads efforts to expand digital payment solutions and promote financial inclusion in the region. Recognized for his ability to scale businesses and establish strong partnerships, he combines innovation and execution to generate lasting impact. His leadership continues to position Paycode as a key player in Africa\'s fintech landscape.',
+    'team.sadioPosition': 'General Manager',
+    'team.sadioDesc': 'General Manager of Paycode Fintech Congo, specialized in financial technologies for inclusion in DRC. With over 10 years of experience in digitalizing financial services, he leads the deployment of core banking, payment, and biometric device solutions for MFIs and COOPECs. Through Paycode, he works to expand access to financial services for underserved populations.',
+    'team.dominiquePosition': 'Operations Director',
+    'team.dominiqueDesc': 'Expert in technological integration, he currently leads the Transform project, dedicated to the digitalization of MFIs and COOPECs in the Democratic Republic of Congo. Former banking sector executive, he has over 10 years of experience in financial institution management and over 7 years in payment systems and switch platforms. Through this dual expertise, he works to modernize the financial ecosystem and promote digital and financial inclusion.',
+
+    // Case Studies
+    'caseStudies.title': 'Success Stories',
+    'caseStudies.subtitle': 'Real impact across Africa and beyond',
+    'caseStudies.ghana.title': 'National Payment System',
+    'caseStudies.ghana.desc': 'Bank of Ghana selected Paycode\'s EDAPT technology to provide a turnkey solution for a national payment switching and settlement system.',
+    'caseStudies.afghanistan.title': 'Digital Financial Transactions',
+    'caseStudies.afghanistan.desc': 'Afghanistan International Bank implemented Paycode\'s biometric digital identity and payment technology to digitize financial transactions for donors, NGOs, and businesses.',
+    'caseStudies.drc.title': 'Motorcycle Tax Collection',
+    'caseStudies.drc.desc': 'Issuance of biometric identity cards and tax collection for 20,000 ANMC motorcycle taxi drivers in 8 cities across DRC for the Ministry of Transport.',
+    'caseStudies.viewCase': 'View case study',
+
+    // News
+    'news.title': 'News and Events',
+    'news.subtitle': 'Stay informed about our latest news and developments',
+    'news.readMore': 'Read more',
+
+    // Statistics
+    'stats.title': 'Paycode DRC\'s Impact in Numbers',
+    'stats.subtitle': 'Measurable results driving financial inclusion',
+    'stats.institutions': 'Connected financial institutions',
+    'stats.transactions': 'Transactions processed monthly',
+    'stats.uptime': 'System uptime',
+    'stats.countries': 'Countries served',
+
+    // Awards
+    'awards.title': 'Recognition and Awards',
+    'awards.subtitle': 'Awarded for our excellence in financial technology',
+
+    // Contact
+    'contact.title': 'Ready to transform financial inclusion?',
+    'contact.subtitle': 'Partner with Paycode DRC to access our interoperable payment platform and connect your financial institution to DRC\'s broader ecosystem.',
+    'contact.demoTitle': 'Book a Demo',
+    'contact.demoSubtitle': 'See our technology in action',
+    'contact.newsletterTitle': 'Stay Informed',
+    'contact.newsletterSubtitle': 'Receive our latest news and updates',
+    'contact.form.name': 'Full Name',
+    'contact.form.email': 'Email',
+    'contact.form.company': 'Company',
+    'contact.form.phone': 'Phone',
+    'contact.form.message': 'Message',
+    'contact.form.requestDemo': 'Request Demo',
+    'contact.form.subscribe': 'Subscribe',
+    'contact.success.demo': 'Demo request submitted successfully!',
+    'contact.success.newsletter': 'Successfully subscribed to newsletter!',
+    'contact.error.demo': 'Error submitting demo request',
+    'contact.error.newsletter': 'Error subscribing to newsletter',
+
+    // Footer
+    'footer.description': 'Licensed payment aggregator providing interoperable payment platforms for financial institutions in the Democratic Republic of Congo.',
+    'footer.quickLinks': 'Quick Links',
+    'footer.contact': 'Contact',
+    'footer.followUs': 'Follow Us',
+    'footer.rights': 'All rights reserved.',
+  }
+};
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState<Language>('fr');
+
+  const t = (key: string): string => {
+    return translations[language][key] || key;
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
+export const useLanguage = (): LanguageContextType => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};
