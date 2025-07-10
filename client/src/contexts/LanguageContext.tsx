@@ -207,7 +207,7 @@ const translations = {
     'team.lwangoDesc': 'With over ten years of experience in business and leadership, he possesses solid expertise in strategy, operations, and growth. As Chief Executive Officer of Paycode Fintech Congo, he leads efforts to expand digital payment solutions and promote financial inclusion in the region. Recognized for his ability to scale businesses and establish strong partnerships, he combines innovation and execution to generate lasting impact. His leadership continues to position Paycode as a key player in Africa\'s fintech landscape.',
     'team.sadioPosition': 'General Manager',
     'team.sadioDesc': 'General Manager of Paycode Fintech Congo, specialized in financial technologies for inclusion in DRC. With over 10 years of experience in digitalizing financial services, he leads the deployment of core banking, payment, and biometric device solutions for MFIs and COOPECs. Through Paycode, he works to expand access to financial services for underserved populations.',
-    'team.dominiquePosition': 'Operations Director',
+    'team.dominiquePosition': 'Chief Operating Officer',
     'team.dominiqueDesc': 'Expert in technological integration, he currently leads the Transform project, dedicated to the digitalization of MFIs and COOPECs in the Democratic Republic of Congo. Former banking sector executive, he has over 10 years of experience in financial institution management and over 7 years in payment systems and switch platforms. Through this dual expertise, he works to modernize the financial ecosystem and promote digital and financial inclusion.',
 
     // Case Studies
