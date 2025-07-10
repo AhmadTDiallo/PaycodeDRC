@@ -48,7 +48,9 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/groups/13176593/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-paycode-blue-accent transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
