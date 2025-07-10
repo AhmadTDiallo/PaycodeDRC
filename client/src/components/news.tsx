@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function News() {
+  const { t } = useLanguage();
   const newsArticles = [
     {
       title:
@@ -69,9 +71,9 @@ export default function News() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">Dernières Actualités</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">{t("news.title")}</h2>
           <p className="text-xl text-muted-foreground">
-            Restez informé des dernières actualités de Paycode et Paycode Fintech Congo.
+            {t("news.subtitle")}
           </p>
         </motion.div>
 

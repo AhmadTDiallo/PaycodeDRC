@@ -47,7 +47,7 @@ const translations = {
     'value.stat3': '99.9%',
     'value.stat3Label': 'Temps de disponibilité du système',
     'value.inclusionTitle': 'Favoriser l\'inclusion financière en RDC',
-    'value.inclusionDescription': 'En tant qu\'agrégateur agréé, Paycode RDC propose des solutions de paiement sécurisées, fiables et évolutives qui favorisent l\'inclusion financière et l\'efficacité. Nous aidons les institutions à réduire leurs coûts, améliorer l\'accessibilité et promouvoir l\'interopérabilité au sein de l\'écosystème croissant de la finance numérique.',
+    'value.inclusionDescription': 'En tant qu\'agrégateur agréé, Paycode RDC propose des solutions de paiement sécurisées, fiables et évolutives qui favorisent l\'inclusion financière et l\'efficacité. Nous aidons les institutions à réduire leurs coûts, améliorer l\'accessibilité et promouvoir l\'interopérabilité au sein de l\'écosystème croissant de la finance numérique du pays.',
 
     // Solutions
     'solutions.title': 'Nos Solutions',
@@ -92,10 +92,20 @@ const translations = {
     'stats.transactions': 'Transactions traitées par mois',
     'stats.uptime': 'Temps de disponibilité du système',
     'stats.countries': 'Pays desservis',
+    'stats.globalTitle': 'Impact mondial',
+    'stats.globalSubtitle': 'Faire tomber les obstacles à l\'inclusion financière dans le monde entier',
+    'stats.unidentified': '1.0B+',
+    'stats.unidentifiedLabel': 'Personnes sans identité formelle',
+    'stats.noConnectivity': '3.7B+',
+    'stats.noConnectivityLabel': 'Personnes sans connectivité',
+    'stats.unbanked': '1.7B+',
+    'stats.unbankedLabel': 'Les gens ne sont toujours pas bancarisés',
 
     // Awards
     'awards.title': 'Reconnaissance et récompenses',
     'awards.subtitle': 'Récompensé pour notre excellence dans la technologie financière',
+    'awards.fintechTitle': 'Une entreprise fintech primée',
+    'awards.fintechDesc': 'Notre technologie innovante a été reconnue par les principaux acteurs mondiaux de l\'industrie, notamment Citi, IBM, Mastercard, Microsoft, PWC, le Fonds monétaire international et bien d\'autres.',
 
     // Contact
     'contact.title': 'Prêt à transformer l\'inclusion financière ?',
@@ -163,30 +173,7 @@ const translations = {
     'value.inclusionTitle': 'Fostering financial inclusion in DRC',
     'value.inclusionDescription': 'As a licensed aggregator, Paycode DRC offers secure, reliable, and scalable payment solutions that promote financial inclusion and efficiency. We help institutions reduce costs, improve accessibility, and promote interoperability within the country\'s growing digital finance ecosystem.',
 
-    // Value Proposition
-    'value.mainTitle': 'We are a licensed Payment Aggregator providing shared, interoperable payment platforms for Financial Institutions. We connect banks, MFIs and mobile money operators through unified technology.',
-    'value.mainDescription': 'Our technology supports multiple data types including biometrics, KYC data, location data, health data, and much more. Any financial institution, central bank, government, or enterprise can use our technology to improve their systems.',
-    'value.platformTitle': 'Paycode DRC: Licensed Payment Aggregator',
-    'value.platformDescription': 'Paycode DRC provides a shared, interoperable payment platform for financial institutions across the Democratic Republic of Congo. Our mission is to enable banks, MFIs, mobile money operators, and other financial actors to connect and transact seamlessly through a unified system.',
-    'value.feature1Title': 'Licensed Aggregator',
-    'value.feature1Desc': 'Fully licensed and regulated payment aggregator in DRC',
-    'value.feature2Title': 'Multi-Institution',
-    'value.feature2Desc': 'Serving banks, MFIs, mobile money operators, and more',
-    'value.feature3Title': 'Interoperable',
-    'value.feature3Desc': 'Unified system enabling seamless and transparent transactions across different platforms',
-    'value.feature4Title': 'Cost-Effective',
-    'value.feature4Desc': 'Reduce costs while improving accessibility and efficiency',
-    'value.transformTitle': 'Transforming',
-    'value.transformSubtitle': 'digital finance',
-    'value.transformDescription': 'Connecting every financial institution across the Democratic Republic of Congo through secure and interoperable technology, enabling seamless transactions and driving economic growth.',
-    'value.stat1': '110+',
-    'value.stat1Label': 'Financial institutions',
-    'value.stat2': '2+ million',
-    'value.stat2Label': 'Active users',
-    'value.stat3': '99.9%',
-    'value.stat3Label': 'System uptime',
-    'value.inclusionTitle': 'Fostering financial inclusion in DRC',
-    'value.inclusionDescription': 'As a licensed aggregator, Paycode DRC provides secure, reliable, and scalable payment solutions that promote financial inclusion and efficiency. We help institutions reduce costs, improve accessibility, and promote interoperability within the growing digital finance ecosystem.',
+
 
     // Solutions
     'solutions.title': 'Our Solutions',
@@ -220,8 +207,8 @@ const translations = {
     'caseStudies.viewCase': 'View case study',
 
     // News
-    'news.title': 'News and Events',
-    'news.subtitle': 'Stay informed about our latest news and developments',
+    'news.title': 'Latest News',
+    'news.subtitle': 'Stay informed about the latest news from Paycode and Paycode Fintech Congo',
     'news.readMore': 'Read more',
 
     // Statistics
@@ -231,10 +218,20 @@ const translations = {
     'stats.transactions': 'Transactions processed monthly',
     'stats.uptime': 'System uptime',
     'stats.countries': 'Countries served',
+    'stats.globalTitle': 'Global Impact',
+    'stats.globalSubtitle': 'Breaking down barriers to financial inclusion worldwide',
+    'stats.unidentified': '1.0B+',
+    'stats.unidentifiedLabel': 'People without formal identity',
+    'stats.noConnectivity': '3.7B+',
+    'stats.noConnectivityLabel': 'People without connectivity',
+    'stats.unbanked': '1.7B+',
+    'stats.unbankedLabel': 'People still unbanked',
 
     // Awards
     'awards.title': 'Recognition and Awards',
     'awards.subtitle': 'Awarded for our excellence in financial technology',
+    'awards.fintechTitle': 'An Award-Winning Fintech Company',
+    'awards.fintechDesc': 'Our innovative technology has been recognized by leading global industry players, including Citi, IBM, Mastercard, Microsoft, PWC, the International Monetary Fund, and many others.',
 
     // Contact
     'contact.title': 'Ready to transform financial inclusion?',
