@@ -51,13 +51,13 @@ const translations = {
 
     // Solutions
     'solutions.title': 'Nos Solutions',
-    'solutions.subtitle': 'Solutions technologiques complètes pour les institutions financières',
-    'solutions.solution1Title': 'Solutions de Commutation',
-    'solutions.solution1Desc': 'Technologie d\'agrégation de paiements permettant aux institutions financières de se connecter à un réseau interopérable pour les transferts d\'argent, les paiements de factures et les transactions cross-border.',
-    'solutions.solution2Title': 'Plateforme de Paiements',
-    'solutions.solution2Desc': 'Solution complète de traitement des paiements offrant des API sécurisées, la gestion des transactions en temps réel, et l\'intégration avec de multiples canaux de paiement pour une expérience utilisateur transparente.',
-    'solutions.solution3Title': 'Services d\'Identité Numérique',
-    'solutions.solution3Desc': 'En tant que spécialistes de la livraison du dernier kilomètre et de la preuve de vie, nous pensons pouvoir avoir un impact significatif sur l\'inclusion financière en Afrique en fournissant une identité numérique biométrique et un accès à faible coût aux services financiers de base.',
+    'solutions.subtitle': 'Technologies avancées pour l\'infrastructure financière moderne',
+    'solutions.switchTitle': 'Switch Financier',
+    'solutions.switchDesc': 'Le switch financier de Paycode agit comme le hub transactionnel qui route et autorise les paiements à travers plusieurs institutions financières et canaux. Il est conforme PCI-DSS et s\'intègre parfaitement avec les cartes hybrides EMV/Edapt, les terminaux POS, les portefeuilles mobiles, les GAB et les systèmes bancaires centraux.',
+    'solutions.tmsTitle': 'TMS (Système de Gestion de Terminaux)',
+    'solutions.tmsDesc': 'Le TMS de Paycode gère à distance tous les terminaux POS à travers les réseaux, gérant les mises à jour logicielles, la surveillance de l\'état des appareils, les configurations de paramètres et l\'inscription biométrique. Il assure la sécurité, la disponibilité et le contrôle efficace de millions d\'appareils sur le terrain.',
+    'solutions.cbsTitle': 'CBS (Systèmes Bancaires Centraux)',
+    'solutions.cbsDesc': 'Intégré avec des solutions leaders comme Temenos, le CBS de Paycode prend en charge les opérations bancaires complètes incluant la création de comptes, la gestion du grand livre, l\'origination de prêts, les dépôts, les retraits. Le système est modulaire, prêt pour le cloud et évolutif pour les IMF, coopératives et banques entièrement numériques.',
 
     // Team
     'team.title': 'Notre équipe de direction',
@@ -177,13 +177,13 @@ const translations = {
 
     // Solutions
     'solutions.title': 'Our Solutions',
-    'solutions.subtitle': 'Comprehensive technology solutions for financial institutions',
-    'solutions.solution1Title': 'Switching Solutions',
-    'solutions.solution1Desc': 'Payment aggregation technology enabling financial institutions to connect to an interoperable network for money transfers, bill payments, and cross-border transactions.',
-    'solutions.solution2Title': 'Payment Platform',
-    'solutions.solution2Desc': 'Comprehensive payment processing solution offering secure APIs, real-time transaction management, and integration with multiple payment channels for seamless user experience.',
-    'solutions.solution3Title': 'Digital Identity Services',
-    'solutions.solution3Desc': 'As specialists in last-mile delivery and proof of life, we believe we can make a significant impact on financial inclusion in Africa by providing biometric digital identity and low-cost access to basic financial services.',
+    'solutions.subtitle': 'Advanced technology for modern financial infrastructure',
+    'solutions.switchTitle': 'Financial Switch',
+    'solutions.switchDesc': 'Paycode\'s financial switch acts as the transaction hub that routes and authorizes payments across multiple financial institutions and channels. It is PCI-DSS compliant and integrates seamlessly with EMV/Edapt hybrid cards, POS terminals, mobile wallets, ATMs, and core banking systems.',
+    'solutions.tmsTitle': 'TMS (Terminal Management System)',
+    'solutions.tmsDesc': 'Paycode\'s TMS remotely manages all POS terminals across networks, handling software updates, device health monitoring, parameter configurations and biometric enrollment. It ensures security, uptime, and efficient control over millions of devices in the field.',
+    'solutions.cbsTitle': 'CBS (Core Banking Systems)',
+    'solutions.cbsDesc': 'Integrated with leading solutions like Temenos, Paycode\'s CBS supports full banking operations including account creation, ledger management, loan origination, deposits, withdrawals. The system is modular, cloud ready, and scalable for MFIs, cooperatives and digital-only banks.',
 
     // Team
     'team.title': 'Our Leadership Team',

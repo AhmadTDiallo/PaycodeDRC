@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Fingerprint, Signal, DollarSign } from "lucide-react";
+import { Network, Monitor, Database, CheckCircle, Shield, Zap } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -9,37 +9,40 @@ export default function Solutions() {
   
   const solutions = [
     {
-      icon: Fingerprint,
+      icon: Network,
       number: "01",
-      title: t("solutions.solution3Title"),
-      description: t("solutions.solution3Desc"),
-      image:
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2126&q=80",
-      iconBg: "bg-paycode-blue",
+      title: t("solutions.switchTitle"),
+      description: t("solutions.switchDesc"),
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      iconBg: "bg-gradient-to-br from-paycode-blue to-paycode-blue-light",
+      features: ["PCI-DSS Compliant", "EMV/Edapt Integration", "Multi-Channel Support", "Real-time Authorization"],
+      accent: "from-blue-500 to-cyan-500"
     },
     {
-      icon: Signal,
-      number: "02",
-      title: t("solutions.solution2Title"),
-      description: t("solutions.solution2Desc"),
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      iconBg: "bg-paycode-blue-accent",
+      icon: Monitor,
+      number: "02", 
+      title: t("solutions.tmsTitle"),
+      description: t("solutions.tmsDesc"),
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      iconBg: "bg-gradient-to-br from-paycode-blue-accent to-purple-500",
+      features: ["Remote Management", "Software Updates", "Device Monitoring", "Biometric Enrollment"],
+      accent: "from-purple-500 to-pink-500"
     },
     {
-      icon: DollarSign,
+      icon: Database,
       number: "03",
-      title: t("solutions.solution1Title"),
-      description: t("solutions.solution1Desc"),
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-      iconBg: "bg-gradient-to-r from-paycode-blue to-paycode-blue-light",
+      title: t("solutions.cbsTitle"), 
+      description: t("solutions.cbsDesc"),
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80",
+      iconBg: "bg-gradient-to-br from-green-500 to-emerald-600",
+      features: ["Temenos Integration", "Full Banking Operations", "Cloud Ready", "Scalable Architecture"],
+      accent: "from-green-500 to-teal-500"
     },
   ];
 
   return (
-    <section id="solutions" className="py-20 bg-secondary">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="py-20 bg-gradient-to-b from-secondary to-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -47,48 +50,80 @@ export default function Solutions() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             {t("solutions.title")}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t("solutions.subtitle")}
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="space-y-12"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
           {solutions.map((solution, index) => (
-            <motion.div key={index} variants={fadeInUp} className="group">
-              <Card className="bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden h-full">
-                <div
-                  className="h-64 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${solution.image})` }}
-                />
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-4">
+            <motion.div 
+              key={index} 
+              variants={fadeInUp} 
+              className="group"
+            >
+              <Card className="bg-card border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] overflow-hidden">
+                <div className={`relative ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} flex flex-col lg:flex`}>
+                  {/* Image Section */}
+                  <div className="lg:w-1/2 relative overflow-hidden">
                     <div
-                      className={`w-12 h-12 ${solution.iconBg} rounded-full flex items-center justify-center mr-4`}
+                      className="h-80 lg:h-96 bg-cover bg-center relative"
+                      style={{ backgroundImage: `url(${solution.image})` }}
                     >
-                      <solution.icon className="text-white w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-paycode-blue-accent">
-                        {solution.number}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      <div className="absolute bottom-6 left-6">
+                        <div className={`w-16 h-16 ${solution.iconBg} rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-sm border border-white/20`}>
+                          <solution.icon className="text-white w-8 h-8" />
+                        </div>
                       </div>
-                      <h3 className="text-2xl font-bold text-foreground">
-                        {solution.title}
-                      </h3>
+                      <div className="absolute top-6 right-6">
+                        <span className="text-white/90 text-6xl font-bold">{solution.number}</span>
+                      </div>
                     </div>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {solution.description}
-                  </p>
-                </CardContent>
+
+                  {/* Content Section */}
+                  <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                        {solution.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                        {solution.description}
+                      </p>
+
+                      {/* Features List */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {solution.features.map((feature, featureIndex) => (
+                          <motion.div
+                            key={featureIndex}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 + featureIndex * 0.1 }}
+                            className="flex items-center space-x-3"
+                          >
+                            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${solution.accent}`} />
+                            <span className="text-sm font-medium text-foreground">{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
               </Card>
             </motion.div>
           ))}
