@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Fingerprint, Linkedin, Twitter } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -11,17 +13,17 @@ export default function Footer() {
   };
 
   const solutions = [
-    { name: "Identité Numérique", href: "#solutions" },
-    { name: "Systèmes de Paiement", href: "#solutions" },
+    { name: t("solutions.solution3Title"), href: "#solutions" },
+    { name: t("solutions.solution2Title"), href: "#solutions" },
     { name: "Transactions Hors Ligne", href: "#solutions" },
     { name: "Cartes Biométriques", href: "#solutions" },
   ];
 
   const company = [
-    { name: "À Propos", href: "#about" },
-    { name: "Études de Cas", href: "#case-studies" },
-    { name: "Actualités", href: "#news" },
-    { name: "Contact", href: "#contact" },
+    { name: t("nav.about"), href: "#about" },
+    { name: t("nav.caseStudies"), href: "#case-studies" },
+    { name: t("nav.news"), href: "#news" },
+    { name: t("nav.contact"), href: "#contact" },
   ];
 
   return (
@@ -42,7 +44,7 @@ export default function Footer() {
               <span className="text-2xl font-bold">PAYCODE DRC</span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-4 max-w-md">
-              Agrégateur de paiements agréé fournissant des services financiers interopérables à travers la République démocratique du Congo. Connecter les banques, les IMF et les opérateurs de mobile money.
+              {t("footer.description")}
             </p>
             <div className="flex space-x-4">
               <a
@@ -61,7 +63,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Solutions</h4>
+            <h4 className="text-lg font-semibold mb-4">{t("nav.solutions")}</h4>
             <ul className="space-y-2 text-gray-400">
               {solutions.map((item) => (
                 <li key={item.name}>
@@ -77,7 +79,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Entreprise</h4>
+            <h4 className="text-lg font-semibold mb-4">{t("footer.quickLinks")}</h4>
             <ul className="space-y-2 text-gray-400">
               {company.map((item) => (
                 <li key={item.name}>

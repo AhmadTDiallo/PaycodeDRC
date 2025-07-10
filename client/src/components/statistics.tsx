@@ -2,8 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { fadeInScale, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Statistics() {
+  const { t } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const [counts, setCounts] = useState({
@@ -51,19 +53,19 @@ export default function Statistics() {
   const stats = [
     {
       value: formatNumber(counts.identity, 1000000000),
-      label: "Personnes sans identité formelle",
+      label: t("stats.unidentifiedLabel"),
       gradient: "from-paycode-blue to-paycode-blue-light",
       textColor: "text-blue-100",
     },
     {
       value: formatNumber(counts.connectivity, 3700000000),
-      label: "Personnes sans connectivité",
+      label: t("stats.noConnectivityLabel"),
       gradient: "from-paycode-blue-light to-paycode-blue-accent",
       textColor: "text-blue-100",
     },
     {
       value: formatNumber(counts.unbanked, 1700000000),
-      label: "Les gens ne sont toujours pas bancarisés",
+      label: t("stats.unbankedLabel"),
       gradient: "from-gray-700 to-gray-900",
       textColor: "text-gray-100",
     },
@@ -79,7 +81,7 @@ export default function Statistics() {
           viewport={{ once: true }}
           variants={fadeInScale}
         >
-          <h2 className="text-4xl font-bold paycode-blue mb-4">Impact mondial</h2>
+          <h2 className="text-4xl font-bold paycode-blue mb-4">{t("stats.globalTitle")}</h2>
           <p className="text-xl paycode-gray">
             Faire tomber les obstacles à l’inclusion financière dans le monde entier
           </p>

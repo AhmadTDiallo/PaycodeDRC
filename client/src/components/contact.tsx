@@ -13,8 +13,10 @@ import { useToast } from "@/hooks/use-toast";
 import { insertDemoRequestSchema, insertNewsletterSchema, type InsertDemoRequest, type InsertNewsletterSubscription } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { fadeInUp } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [showDemoSuccess, setShowDemoSuccess] = useState(false);
   const [showNewsletterSuccess, setShowNewsletterSuccess] = useState(false);
   const { toast } = useToast();
@@ -51,14 +53,14 @@ export default function Contact() {
       demoForm.reset();
       queryClient.invalidateQueries({ queryKey: ["/api/demo-requests"] });
       toast({
-        title: "Demande de démo soumise",
+        title: t("contact.success.demo"),
         description: "Nous vous contacterons bientôt pour programmer votre démo.",
       });
     },
     onError: (error: any) => {
       toast({
         title: "Erreur",
-        description: error.message || "Échec de la soumission de la demande de démo. Veuillez réessayer.",
+        description: error.message || t("contact.error.demo"),
         variant: "destructive",
       });
     },
@@ -75,14 +77,14 @@ export default function Contact() {
       newsletterForm.reset();
       queryClient.invalidateQueries({ queryKey: ["/api/newsletter"] });
       toast({
-        title: "Inscription réussie",
+        title: t("contact.success.newsletter"),
         description: "Merci de vous être abonné à notre newsletter !",
       });
     },
     onError: (error: any) => {
       toast({
         title: "Erreur",
-        description: error.message || "Échec de l'inscription. Veuillez réessayer.",
+        description: error.message || t("contact.error.newsletter"),
         variant: "destructive",
       });
     },
@@ -107,10 +109,10 @@ export default function Contact() {
           variants={fadeInUp}
         >
           <h2 className="text-4xl font-bold text-white mb-8">
-            Prêt à transformer l'inclusion financière ?
+            {t("contact.title")}
           </h2>
           <p className="text-xl text-blue-100 mb-12">
-            Partenaire avec Paycode RDC pour accéder à notre plateforme de paiement interopérable et connecter votre institution financière à l'écosystème plus large de la RDC.
+            {t("contact.subtitle")}
           </p>
         </motion.div>
 
@@ -126,8 +128,8 @@ export default function Contact() {
               <CardContent className="p-8">
                 <div className="text-center mb-6">
                   <Calendar className="text-paycode-blue-accent mx-auto mb-4 h-12 w-12" />
-                  <h3 className="text-2xl font-bold text-white mb-2">Réserver une démo</h3>
-                  <p className="text-blue-100">Voir notre technologie en action</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">{t("contact.demoTitle")}</h3>
+                  <p className="text-blue-100">{t("contact.demoSubtitle")}</p>
                 </div>
 
                 {showDemoSuccess ? (
@@ -156,7 +158,7 @@ export default function Contact() {
                           name="name"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-blue-100">Nom *</FormLabel>
+                              <FormLabel className="text-blue-100">{t("contact.form.name")} *</FormLabel>
                               <FormControl>
                                 <Input
                                   {...field}
@@ -173,7 +175,7 @@ export default function Contact() {
                           name="email"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-blue-100">Email *</FormLabel>
+                              <FormLabel className="text-blue-100">{t("contact.form.email")} *</FormLabel>
                               <FormControl>
                                 <Input
                                   {...field}
@@ -193,7 +195,7 @@ export default function Contact() {
                           name="company"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-blue-100">Entreprise *</FormLabel>
+                              <FormLabel className="text-blue-100">{t("contact.form.company")} *</FormLabel>
                               <FormControl>
                                 <Input
                                   {...field}
@@ -210,7 +212,7 @@ export default function Contact() {
                           name="phone"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className="text-blue-100">Téléphone</FormLabel>
+                              <FormLabel className="text-blue-100">{t("contact.form.phone")}</FormLabel>
                               <FormControl>
                                 <Input
                                   {...field}
@@ -228,7 +230,7 @@ export default function Contact() {
                         name="message"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-blue-100">Message</FormLabel>
+                            <FormLabel className="text-blue-100">{t("contact.form.message")}</FormLabel>
                             <FormControl>
                               <Textarea
                                 {...field}
@@ -246,7 +248,7 @@ export default function Contact() {
                         className="w-full bg-paycode-blue-accent hover:bg-paycode-blue text-white font-semibold transition-all duration-300 transform hover:scale-105"
                         disabled={demoMutation.isPending}
                       >
-                        {demoMutation.isPending ? "Envoi en cours..." : "Programmer une démo"}
+                        {demoMutation.isPending ? "Envoi en cours..." : t("contact.form.requestDemo")}
                       </Button>
                     </form>
                   </Form>
@@ -266,9 +268,9 @@ export default function Contact() {
               <CardContent className="p-8">
                 <div className="text-center mb-6">
                   <Mail className="text-paycode-blue-accent mx-auto mb-4 h-12 w-12" />
-                  <h3 className="text-2xl font-bold text-white mb-2">Restez informé</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">{t("contact.newsletterTitle")}</h3>
                   <p className="text-blue-100">
-                    Recevez les dernières nouvelles sur l'inclusion financière et l'identité numérique
+                    {t("contact.newsletterSubtitle")}
                   </p>
                 </div>
 
@@ -316,7 +318,7 @@ export default function Contact() {
                           className="w-full bg-white text-paycode-blue hover:bg-gray-100 font-semibold transition-all duration-300"
                           disabled={newsletterMutation.isPending}
                         >
-                          {newsletterMutation.isPending ? "Inscription..." : "S'abonner"}
+                          {newsletterMutation.isPending ? "Inscription..." : t("contact.form.subscribe")}
                         </Button>
                       </form>
                     </Form>

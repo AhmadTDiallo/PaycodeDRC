@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Awards() {
+  const { t } = useLanguage();
   const partners = [
     "Citi",
     "IBM",
@@ -27,12 +29,10 @@ export default function Awards() {
           variants={fadeInUp}
         >
           <h2 className="text-4xl font-bold text-white mb-8">
-            Une entreprise fintech primée
+            {t("awards.fintechTitle")}
           </h2>
           <p className="text-xl text-blue-100 mb-12 max-w-4xl mx-auto">
-            Notre technologie innovante a été reconnue par les principaux acteurs 
-            mondiaux de l'industrie, notamment Citi, IBM, Mastercard, Microsoft, PWC, 
-            le Fonds monétaire international et bien d'autres.
+            {t("awards.fintechDesc")}
           </p>
         </motion.div>
 
