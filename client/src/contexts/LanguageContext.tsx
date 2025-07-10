@@ -93,6 +93,22 @@ const translations = {
     'solutions.tms.popup.feature8': 'Détection Sabotage & Alertes – Recevoir alertes instantanées sur tout sabotage ou tentatives d\'accès non autorisées.',
     'solutions.tms.popup.feature9': 'Infrastructure Évolutive – Construite pour supporter déploiements urbains et ruraux avec optimisation bande passante faible.',
 
+    // CBS Popup (French)
+    'solutions.cbs.popup.title': 'CBS - Systèmes Bancaires Centraux',
+    'solutions.cbs.popup.overview': 'Aperçu',
+    'solutions.cbs.popup.description': 'Intégré avec des plateformes leaders comme Temenos, le Système Bancaire Central (CBS) de Paycode supporte les opérations bancaires de bout en bout incluant la création de comptes, gestion du grand livre, origination de prêts, dépôts et retraits. Conçu pour les institutions de microfinance (IMF), coopératives et banques entièrement numériques, le système est modulaire, prêt pour le cloud et évolutif—capable de servir des millions d\'utilisateurs avec haute performance et fiabilité.',
+    'solutions.cbs.popup.keyFeatures': 'Caractéristiques Clés',
+    'solutions.cbs.popup.feature1': 'Intégration Temenos – Interopère parfaitement avec les plateformes bancaires centrales leaders de l\'industrie.',
+    'solutions.cbs.popup.feature2': 'Opérations Bancaires Complètes – Supporte l\'embarquement clients, épargne, crédit, prêts et gestion grand livre.',
+    'solutions.cbs.popup.feature3': 'Prêt pour le Cloud – Facilement déployable sur infrastructures cloud publiques ou privées pour mise à l\'échelle rentable.',
+    'solutions.cbs.popup.feature4': 'Architecture Évolutive – Supporte volumes de transactions croissants et bases clients sans perte de performance.',
+    'solutions.cbs.popup.feature5': 'Support Multi-Devise & Multi-Langue – Idéal pour environnements bancaires transfrontaliers et multilingues.',
+    'solutions.cbs.popup.feature6': 'Traitement Transaction Temps Réel – Comptabilisation instantanée des transactions et mises à jour comptes.',
+    'solutions.cbs.popup.feature7': 'Design API-First – Permet intégration rapide avec apps mobiles, plateformes fintech et services tiers.',
+    'solutions.cbs.popup.feature8': 'Workflows Prêts Automatisés – Rationalise demande prêt, approbation, décaissement et suivi remboursement.',
+    'solutions.cbs.popup.feature9': 'Connectivité Interbancaire & Switch – Se connecte avec switches nationaux, passerelles paiement et schémas cartes.',
+    'solutions.cbs.popup.feature10': 'Sécurisé & Conforme – Aligné avec standards réglementaires internationaux pour finance numérique.',
+
     // Team
     'team.title': 'Notre équipe de direction',
     'team.subtitle': 'Des dirigeants expérimentés qui favorisent l\'inclusion financière dans le monde entier',
@@ -252,6 +268,22 @@ const translations = {
     'solutions.tms.popup.feature7': 'Geolocation Tracking – View real-time location of terminals for logistics and fraud prevention.',
     'solutions.tms.popup.feature8': 'Tamper Detection & Alerts – Receive instant alerts on any tampering or unauthorized access attempts.',
     'solutions.tms.popup.feature9': 'Scalable Infrastructure – Built to support both urban and rural deployments with low-bandwidth optimization.',
+
+    // CBS Popup (English)
+    'solutions.cbs.popup.title': 'CBS - Core Banking System',
+    'solutions.cbs.popup.overview': 'Overview',
+    'solutions.cbs.popup.description': 'Integrated with leading platforms like Temenos, Paycode\'s Core Banking System (CBS) supports end-to-end banking operations including account creation, ledger management, loan origination, deposits, and withdrawals. Designed for microfinance institutions (MFIs), cooperatives, and digital-only banks, the system is modular, cloud-ready, and scalable—capable of serving millions of users with high performance and reliability.',
+    'solutions.cbs.popup.keyFeatures': 'Key Features',
+    'solutions.cbs.popup.feature1': 'Temenos Integration – Seamlessly interoperates with industry-leading core banking platforms.',
+    'solutions.cbs.popup.feature2': 'Full Banking Operations – Supports customer onboarding, savings, credit, loans, and general ledger management.',
+    'solutions.cbs.popup.feature3': 'Cloud Ready – Easily deployable on public or private cloud infrastructures for cost-effective scaling.',
+    'solutions.cbs.popup.feature4': 'Scalable Architecture – Supports growing transaction volumes and customer bases without performance loss.',
+    'solutions.cbs.popup.feature5': 'Multi-Currency & Multi-Language Support – Ideal for cross-border and multilingual banking environments.',
+    'solutions.cbs.popup.feature6': 'Real-Time Transaction Processing – Instant posting of transactions and account updates.',
+    'solutions.cbs.popup.feature7': 'API-First Design – Enables rapid integration with mobile apps, fintech platforms, and third-party services.',
+    'solutions.cbs.popup.feature8': 'Automated Loan Workflows – Streamlines loan application, approval, disbursement, and repayment tracking.',
+    'solutions.cbs.popup.feature9': 'Interbank & Switch Connectivity – Connects with national switches, payment gateways, and card schemes.',
+    'solutions.cbs.popup.feature10': 'Secure & Compliant – Aligned with international regulatory standards for digital finance.',
 
     // Team
     'team.title': 'Our Leadership Team',

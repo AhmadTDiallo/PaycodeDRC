@@ -183,6 +183,84 @@ export default function Solutions() {
     </div>
   );
 
+  // CBS architecture diagram as SVG
+  const CBSDiagram = () => (
+    <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg">
+      <svg viewBox="0 0 400 300" className="w-full h-64">
+        <defs>
+          <linearGradient id="cbsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#10b981" />
+            <stop offset="100%" stopColor="#059669" />
+          </linearGradient>
+        </defs>
+        
+        {/* Central CBS Core */}
+        <rect x="160" y="120" width="80" height="60" fill="url(#cbsGradient)" rx="8" />
+        <text x="200" y="145" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">CBS Core</text>
+        <text x="200" y="165" textAnchor="middle" fill="white" fontSize="9">Temenos</text>
+        
+        {/* Banking Services */}
+        <rect x="50" y="40" width="70" height="35" fill="#22c55e" rx="4" />
+        <text x="85" y="60" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Account</text>
+        <text x="85" y="72" textAnchor="middle" fill="white" fontSize="8">Management</text>
+        
+        <rect x="280" y="40" width="70" height="35" fill="#22c55e" rx="4" />
+        <text x="315" y="60" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Loan</text>
+        <text x="315" y="72" textAnchor="middle" fill="white" fontSize="8">Origination</text>
+        
+        <rect x="50" y="230" width="70" height="35" fill="#22c55e" rx="4" />
+        <text x="85" y="250" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Deposits &</text>
+        <text x="85" y="262" textAnchor="middle" fill="white" fontSize="8">Withdrawals</text>
+        
+        <rect x="280" y="230" width="70" height="35" fill="#22c55e" rx="4" />
+        <text x="315" y="250" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">General</text>
+        <text x="315" y="262" textAnchor="middle" fill="white" fontSize="8">Ledger</text>
+        
+        {/* API Gateway */}
+        <rect x="175" y="50" width="50" height="25" fill="#f59e0b" rx="3" />
+        <text x="200" y="67" textAnchor="middle" fill="white" fontSize="9" fontWeight="bold">API Gateway</text>
+        
+        {/* Mobile & Web Apps */}
+        <rect x="340" y="120" width="45" height="20" fill="#6366f1" rx="3" />
+        <text x="362" y="133" textAnchor="middle" fill="white" fontSize="8">Mobile App</text>
+        
+        <rect x="340" y="150" width="45" height="20" fill="#6366f1" rx="3" />
+        <text x="362" y="163" textAnchor="middle" fill="white" fontSize="8">Web Portal</text>
+        
+        {/* Connection lines */}
+        <line x1="120" y1="57" x2="175" y2="62" stroke="#10b981" strokeWidth="2" />
+        <line x1="280" y1="57" x2="225" y2="62" stroke="#10b981" strokeWidth="2" />
+        <line x1="120" y1="247" x2="175" y2="170" stroke="#10b981" strokeWidth="2" />
+        <line x1="280" y1="247" x2="225" y2="170" stroke="#10b981" strokeWidth="2" />
+        
+        <line x1="200" y1="75" x2="200" y2="120" stroke="#f59e0b" strokeWidth="3" />
+        <line x1="240" y1="140" x2="340" y2="130" stroke="#6366f1" strokeWidth="2" />
+        <line x1="240" y1="160" x2="340" y2="160" stroke="#6366f1" strokeWidth="2" />
+        
+        {/* Transaction flow indicators */}
+        <circle cx="150" cy="90" r="3" fill="#10b981">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="250" cy="90" r="3" fill="#10b981">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.5s" />
+        </circle>
+        <circle cx="290" cy="140" r="3" fill="#6366f1">
+          <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1s" />
+        </circle>
+        
+        {/* Cloud infrastructure indicator */}
+        <ellipse cx="200" cy="200" rx="15" ry="8" fill="none" stroke="#10b981" strokeWidth="1.5" strokeDasharray="3,2">
+          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" />
+        </ellipse>
+        <text x="200" y="205" textAnchor="middle" fill="#059669" fontSize="8">Cloud Ready</text>
+        
+        {/* Data labels */}
+        <text x="200" y="25" textAnchor="middle" fill="#6b7280" fontSize="10">End-to-End Banking Operations</text>
+        <text x="200" y="295" textAnchor="middle" fill="#6b7280" fontSize="10">Scalable & Modular Architecture</text>
+      </svg>
+    </div>
+  );
+
   return (
     <section id="solutions" className="py-20 bg-gradient-to-b from-secondary via-background to-secondary/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -317,6 +395,50 @@ export default function Solutions() {
                             <div key={i} className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
                               <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
                               <span className="text-sm text-gray-700">{t(`solutions.tms.popup.feature${i}`)}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              ) : index === 2 ? (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="cursor-pointer">
+                      <SolutionCard solution={solution} index={index} />
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold text-green-600 mb-4">
+                        {t("solutions.cbs.popup.title")}
+                      </DialogTitle>
+                    </DialogHeader>
+                    
+                    <div className="space-y-6">
+                      {/* CBS Architecture Diagram */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3">CBS Architecture</h3>
+                        <CBSDiagram />
+                      </div>
+                      
+                      {/* Detailed Description */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-3">{t("solutions.cbs.popup.overview")}</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-4">
+                          {t("solutions.cbs.popup.description")}
+                        </p>
+                      </div>
+                      
+                      {/* Key Features */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-4">{t("solutions.cbs.popup.keyFeatures")}</h3>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+                            <div key={i} className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                              <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-gray-700">{t(`solutions.cbs.popup.feature${i}`)}</span>
                             </div>
                           ))}
                         </div>
