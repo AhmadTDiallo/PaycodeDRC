@@ -107,7 +107,7 @@ const translations = {
     'awards.title': 'Reconnaissance et récompenses',
     'awards.subtitle': 'Récompensé pour notre excellence dans la technologie financière',
     'awards.fintechTitle': 'Une entreprise fintech primée',
-    'awards.fintechDesc': 'Notre technologie innovante a été reconnue par les principaux acteurs mondiaux de l\'industrie, notamment Citi, IBM, Mastercard, Microsoft, PWC, le Fonds monétaire international et bien d\'autres.',
+    'awards.fintechDesc': 'Reconnu par les leaders de l\'industrie',
 
     // Contact
     'contact.title': 'Prêt à transformer l\'inclusion financière ?',
@@ -246,7 +246,7 @@ const translations = {
     'awards.title': 'Recognition and Awards',
     'awards.subtitle': 'Awarded for our excellence in financial technology',
     'awards.fintechTitle': 'An Award-Winning Fintech Company',
-    'awards.fintechDesc': 'Our innovative technology has been recognized by leading global industry players, including Citi, IBM, Mastercard, Microsoft, PWC, the International Monetary Fund, and many others.',
+    'awards.fintechDesc': 'Recognized by industry leaders',
 
     // Contact
     'contact.title': 'Ready to transform financial inclusion?',
