@@ -108,12 +108,93 @@ export default function Solutions() {
               className="group"
             >
               <Card className="relative h-full bg-card border-0 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-sm">
+                {/* Tech Grid Background */}
+                <div className="absolute inset-0">
+                  {/* Grid Pattern */}
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="absolute inset-0" style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                      `,
+                      backgroundSize: '20px 20px'
+                    }} />
+                  </div>
+                  
+                  {/* Circuit Lines */}
+                  <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 300">
+                    <defs>
+                      <linearGradient id={`circuit-gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="rgba(255,255,255,0.6)" />
+                        <stop offset="50%" stopColor="rgba(255,255,255,0.3)" />
+                        <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
+                      </linearGradient>
+                    </defs>
+                    
+                    {/* Animated circuit paths */}
+                    <path
+                      d="M0,50 L100,50 L100,100 L200,100 L200,150 L300,150"
+                      stroke={`url(#circuit-gradient-${index})`}
+                      strokeWidth="2"
+                      fill="none"
+                      className="animate-pulse"
+                    />
+                    <path
+                      d="M400,200 L300,200 L300,120 L200,120 L200,80 L100,80"
+                      stroke={`url(#circuit-gradient-${index})`}
+                      strokeWidth="1.5"
+                      fill="none"
+                      className="animate-pulse"
+                      style={{ animationDelay: '0.5s' }}
+                    />
+                    <path
+                      d="M0,250 L80,250 L80,180 L160,180 L160,130 L240,130 L240,80 L400,80"
+                      stroke={`url(#circuit-gradient-${index})`}
+                      strokeWidth="1"
+                      fill="none"
+                      className="animate-pulse"
+                      style={{ animationDelay: '1s' }}
+                    />
+                    
+                    {/* Circuit nodes */}
+                    <circle cx="100" cy="50" r="3" fill="rgba(255,255,255,0.6)" className="animate-pulse" />
+                    <circle cx="200" cy="100" r="2" fill="rgba(255,255,255,0.5)" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
+                    <circle cx="300" cy="150" r="2.5" fill="rgba(255,255,255,0.4)" className="animate-pulse" style={{ animationDelay: '0.7s' }} />
+                    <circle cx="160" cy="180" r="2" fill="rgba(255,255,255,0.6)" className="animate-pulse" style={{ animationDelay: '1.2s' }} />
+                  </svg>
+                  
+                  {/* Tech Corner Elements */}
+                  <div className="absolute top-0 left-0 w-16 h-16">
+                    <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-white/40"></div>
+                    <div className="absolute top-2 left-8 w-6 h-0.5 bg-white/40"></div>
+                    <div className="absolute top-8 left-2 w-0.5 h-6 bg-white/40"></div>
+                  </div>
+                  
+                  <div className="absolute top-0 right-0 w-16 h-16">
+                    <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-white/40"></div>
+                    <div className="absolute top-2 right-8 w-6 h-0.5 bg-white/40"></div>
+                    <div className="absolute top-8 right-2 w-0.5 h-6 bg-white/40"></div>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 w-16 h-16">
+                    <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-white/40"></div>
+                    <div className="absolute bottom-2 left-8 w-6 h-0.5 bg-white/40"></div>
+                    <div className="absolute bottom-8 left-2 w-0.5 h-6 bg-white/40"></div>
+                  </div>
+                  
+                  <div className="absolute bottom-0 right-0 w-16 h-16">
+                    <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-white/40"></div>
+                    <div className="absolute bottom-2 right-8 w-6 h-0.5 bg-white/40"></div>
+                    <div className="absolute bottom-8 right-2 w-0.5 h-6 bg-white/40"></div>
+                  </div>
+                </div>
+
                 {/* Background Image with Overlay */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url(${solution.image})` }}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} opacity-90 group-hover:opacity-95 transition-opacity duration-500`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} opacity-85 group-hover:opacity-90 transition-opacity duration-500`} />
                 </div>
 
                 {/* Content */}
@@ -121,20 +202,33 @@ export default function Solutions() {
                   {/* Header */}
                   <div className="flex items-start justify-between mb-6">
                     <motion.div 
-                      className={`w-14 h-14 ${solution.iconBg} rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-sm border border-white/20`}
+                      className={`relative w-14 h-14 ${solution.iconBg} rounded-2xl flex items-center justify-center shadow-lg backdrop-blur-sm border border-white/20`}
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.3 }}
                     >
+                      {/* Tech corners on icon */}
+                      <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-white/60 rounded-tl"></div>
+                      <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-white/60 rounded-tr"></div>
+                      <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-white/60 rounded-bl"></div>
+                      <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-white/60 rounded-br"></div>
+                      
                       <solution.icon className="text-white w-7 h-7" />
                     </motion.div>
-                    <motion.span 
-                      className="text-white/70 text-4xl lg:text-5xl font-bold"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: solution.delay + 0.3 }}
-                    >
-                      {solution.number}
-                    </motion.span>
+                    
+                    <div className="relative">
+                      <motion.span 
+                        className="text-white/70 text-4xl lg:text-5xl font-bold font-mono"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: solution.delay + 0.3 }}
+                      >
+                        {solution.number}
+                      </motion.span>
+                      
+                      {/* Tech lines around number */}
+                      <div className="absolute -top-2 -right-2 w-8 h-0.5 bg-white/40"></div>
+                      <div className="absolute -top-2 -right-2 w-0.5 h-8 bg-white/40"></div>
+                    </div>
                   </div>
 
                   {/* Title and Description */}
@@ -171,10 +265,16 @@ export default function Solutions() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: solution.delay + 0.6 + featureIndex * 0.1 }}
-                        className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/20"
+                        className="relative flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/20"
                       >
-                        <CheckCircle className="w-3 h-3 text-white/80 flex-shrink-0" />
-                        <span className="text-white/90 text-xs font-medium truncate">{feature}</span>
+                        {/* Tech accent line */}
+                        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+                        
+                        <div className="relative">
+                          <CheckCircle className="w-3 h-3 text-white/80 flex-shrink-0" />
+                          <div className="absolute -top-0.5 -left-0.5 w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+                        </div>
+                        <span className="text-white/90 text-xs font-medium truncate font-mono">{feature}</span>
                       </motion.div>
                     ))}
                   </motion.div>
@@ -186,19 +286,31 @@ export default function Solutions() {
                     whileInView={{ scale: 1 }}
                     transition={{ delay: solution.delay + 0.8 }}
                   >
-                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+                    <div className="relative w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+                      {/* Tech corners on arrow */}
+                      <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-white/60"></div>
+                      <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-white/60"></div>
+                      <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-white/60"></div>
+                      <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-white/60"></div>
+                      
                       <ArrowRight className="w-5 h-5 text-white" />
                     </div>
                   </motion.div>
                 </div>
 
-                {/* Animated Border */}
+                {/* Animated Tech Border */}
                 <motion.div
-                  className="absolute inset-0 border-2 border-white/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   whileHover={{
                     boxShadow: "0 0 30px rgba(255,255,255,0.3)"
                   }}
-                />
+                >
+                  {/* Animated border lines */}
+                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-pulse"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.25s' }}></div>
+                  <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-transparent via-white/60 to-transparent animate-pulse" style={{ animationDelay: '0.75s' }}></div>
+                </motion.div>
               </Card>
             </motion.div>
           ))}
