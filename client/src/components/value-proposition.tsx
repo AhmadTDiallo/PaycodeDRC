@@ -30,24 +30,24 @@ export default function ValueProposition() {
         </div>
       </section>
 
-      {/* Compact Financial Inclusion Section */}
-      <section className="py-12 md:py-16 bg-card">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Very Compact Financial Inclusion Section */}
+      <section className="py-8 bg-card">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={staggerContainer}
-            className="text-center mb-10 md:mb-12"
+            className="text-center mb-6"
           >
             <motion.h2 
-              className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 md:mb-6"
+              className="text-xl md:text-2xl font-bold text-foreground mb-3"
               variants={fadeInUp}
             >
               {t("value.inclusionTitle")}
             </motion.h2>
             <motion.p 
-              className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed"
               variants={fadeInUp}
             >
               {t("value.inclusionDescription")}
@@ -59,50 +59,50 @@ export default function ValueProposition() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={staggerContainer}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
           >
             <motion.div 
-              className="text-center p-4 md:p-6 rounded-xl bg-secondary/50 hover:bg-secondary/70 transition-colors duration-300"
+              className="text-center p-3 rounded-lg bg-secondary/30"
               variants={fadeInUp}
             >
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4">
-                <Shield className="w-6 h-6 md:w-8 md:h-8 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-lg flex items-center justify-center mx-auto mb-2">
+                <Shield className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">{t("value.feature1Title")}</h3>
-              <p className="text-sm md:text-base text-muted-foreground">{t("value.feature1Desc")}</p>
+              <h3 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("value.feature1Title")}</h3>
+              <p className="text-xs md:text-sm text-muted-foreground">{t("value.feature1Desc")}</p>
             </motion.div>
 
             <motion.div 
-              className="text-center p-4 md:p-6 rounded-xl bg-secondary/50 hover:bg-secondary/70 transition-colors duration-300"
+              className="text-center p-3 rounded-lg bg-secondary/30"
               variants={fadeInUp}
             >
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4">
-                <Building2 className="w-6 h-6 md:w-8 md:h-8 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-lg flex items-center justify-center mx-auto mb-2">
+                <Building2 className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">{t("value.feature2Title")}</h3>
-              <p className="text-sm md:text-base text-muted-foreground">{t("value.feature2Desc")}</p>
+              <h3 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("value.feature2Title")}</h3>
+              <p className="text-xs md:text-sm text-muted-foreground">{t("value.feature2Desc")}</p>
             </motion.div>
 
             <motion.div 
-              className="text-center p-4 md:p-6 rounded-xl bg-secondary/50 hover:bg-secondary/70 transition-colors duration-300"
+              className="text-center p-3 rounded-lg bg-secondary/30"
               variants={fadeInUp}
             >
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4">
-                <Users className="w-6 h-6 md:w-8 md:h-8 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-lg flex items-center justify-center mx-auto mb-2">
+                <Users className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">{t("value.feature3Title")}</h3>
-              <p className="text-sm md:text-base text-muted-foreground">{t("value.feature3Desc")}</p>
+              <h3 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("value.feature3Title")}</h3>
+              <p className="text-xs md:text-sm text-muted-foreground">{t("value.feature3Desc")}</p>
             </motion.div>
 
             <motion.div 
-              className="text-center p-4 md:p-6 rounded-xl bg-secondary/50 hover:bg-secondary/70 transition-colors duration-300"
+              className="text-center p-3 rounded-lg bg-secondary/30"
               variants={fadeInUp}
             >
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4">
-                <Zap className="w-6 h-6 md:w-8 md:h-8 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-lg flex items-center justify-center mx-auto mb-2">
+                <Zap className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">{t("value.feature4Title")}</h3>
-              <p className="text-sm md:text-base text-muted-foreground">{t("value.feature4Desc")}</p>
+              <h3 className="text-sm md:text-base font-semibold text-foreground mb-1">{t("value.feature4Title")}</h3>
+              <p className="text-xs md:text-sm text-muted-foreground">{t("value.feature4Desc")}</p>
             </motion.div>
           </motion.div>
         </div>

@@ -72,23 +72,23 @@ export default function Statistics() {
   ];
 
   return (
-    <section className="py-12 md:py-20 bg-card" ref={ref}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-6 bg-card" ref={ref}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-10 md:mb-16"
+          className="text-center mb-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInScale}
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold paycode-blue mb-3 md:mb-4">{t("stats.globalTitle")}</h2>
-          <p className="text-base md:text-lg lg:text-xl paycode-gray max-w-3xl mx-auto">
+          <h2 className="text-lg md:text-xl font-bold paycode-blue mb-2">{t("stats.globalTitle")}</h2>
+          <p className="text-sm md:text-base paycode-gray max-w-2xl mx-auto">
             {t("stats.globalSubtitle")}
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -97,12 +97,12 @@ export default function Statistics() {
           {stats.map((stat, index) => (
             <motion.div key={index} variants={fadeInScale}>
               <Card
-                className={`p-8 bg-gradient-to-br ${stat.gradient} shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group cursor-pointer`}
+                className={`p-4 md:p-6 bg-gradient-to-br ${stat.gradient} shadow-lg hover:shadow-xl transition-all duration-300 text-center group cursor-pointer`}
               >
-                <div className="text-5xl font-bold text-white mb-2">
+                <div className="text-2xl md:text-3xl font-bold text-white mb-1">
                   {stat.value}
                 </div>
-                <div className={`${stat.textColor} text-lg font-semibold`}>
+                <div className={`${stat.textColor} text-sm md:text-base font-semibold`}>
                   {stat.label}
                 </div>
               </Card>
