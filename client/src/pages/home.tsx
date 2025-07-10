@@ -1,7 +1,7 @@
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import ValueProposition from "@/components/value-proposition";
-import Statistics from "@/components/statistics";
+
 import Solutions from "@/components/solutions";
 import Awards from "@/components/awards";
 
@@ -16,7 +16,7 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <ValueProposition />
-      <Statistics />
+
       <Solutions />
       <Awards />
 
