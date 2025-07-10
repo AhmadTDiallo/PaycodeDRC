@@ -58,6 +58,8 @@ const translations = {
     'solutions.tmsDesc': 'Le TMS de Paycode gère à distance tous les terminaux POS à travers les réseaux, gérant les mises à jour logicielles, la surveillance de l\'état des appareils, les configurations de paramètres et l\'inscription biométrique. Il assure la sécurité, la disponibilité et le contrôle efficace de millions d\'appareils sur le terrain.',
     'solutions.cbsTitle': 'CBS (Systèmes Bancaires Centraux)',
     'solutions.cbsDesc': 'Intégré avec des solutions leaders comme Temenos, le CBS de Paycode prend en charge les opérations bancaires complètes incluant la création de comptes, la gestion du grand livre, l\'origination de prêts, les dépôts, les retraits. Le système est modulaire, prêt pour le cloud et évolutif pour les IMF, coopératives et banques entièrement numériques.',
+    'solutions.erpTitle': 'Intégration ERP',
+    'solutions.erpDesc': 'Paycode permet des rapports financiers et opérationnels robustes en reliant ses systèmes centraux aux ERP de niveau entreprise comme Priority Software. Cela prend en charge la conformité, les pistes d\'audit, l\'intégration de la paie RH et la planification des ressources, particulièrement pour les clients gouvernementaux et institutionnels.',
 
     // Team
     'team.title': 'Notre équipe de direction',
@@ -184,6 +186,8 @@ const translations = {
     'solutions.tmsDesc': 'Paycode\'s TMS remotely manages all POS terminals across networks, handling software updates, device health monitoring, parameter configurations and biometric enrollment. It ensures security, uptime, and efficient control over millions of devices in the field.',
     'solutions.cbsTitle': 'CBS (Core Banking Systems)',
     'solutions.cbsDesc': 'Integrated with leading solutions like Temenos, Paycode\'s CBS supports full banking operations including account creation, ledger management, loan origination, deposits, withdrawals. The system is modular, cloud ready, and scalable for MFIs, cooperatives and digital-only banks.',
+    'solutions.erpTitle': 'ERP Integration',
+    'solutions.erpDesc': 'Paycode enables robust financial and operational reporting by linking its core systems to enterprise-grade ERPs like Priority Software. This supports compliance, audit trails, HR payroll integration, and resource planning, particularly for government and institutional clients.',
 
     // Team
     'team.title': 'Our Leadership Team',
