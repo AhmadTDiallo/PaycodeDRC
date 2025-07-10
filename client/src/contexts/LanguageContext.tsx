@@ -52,6 +52,10 @@ const translations = {
     // Solutions
     'solutions.title': 'Nos Solutions',
     'solutions.subtitle': 'Technologies avancées pour l\'infrastructure financière moderne',
+    'solutions.solution1Title': 'Switch Financier',
+    'solutions.solution2Title': 'TMS (Système de Gestion de Terminaux)',
+    'solutions.solution3Title': 'CBS (Systèmes Bancaires Centraux)',
+    'solutions.solution4Title': 'Intégration ERP',
     'solutions.switchTitle': 'Switch Financier',
     'solutions.switchDesc': 'Le switch financier de Paycode agit comme le hub transactionnel qui route et autorise les paiements à travers plusieurs institutions financières et canaux. Il est conforme PCI-DSS et s\'intègre parfaitement avec les cartes hybrides EMV/Edapt, les terminaux POS, les portefeuilles mobiles, les GAB et les systèmes bancaires centraux.',
     'solutions.tmsTitle': 'TMS (Système de Gestion de Terminaux)',
@@ -243,6 +247,10 @@ const translations = {
     // Solutions
     'solutions.title': 'Our Solutions',
     'solutions.subtitle': 'Advanced technology for modern financial infrastructure',
+    'solutions.solution1Title': 'Financial Switch',
+    'solutions.solution2Title': 'TMS (Terminal Management System)',
+    'solutions.solution3Title': 'CBS (Core Banking Systems)',
+    'solutions.solution4Title': 'ERP Integration',
     'solutions.switchTitle': 'Financial Switch',
     'solutions.switchDesc': 'Paycode\'s financial switch acts as the transaction hub that routes and authorizes payments across multiple financial institutions and channels. It is PCI-DSS compliant and integrates seamlessly with EMV/Edapt hybrid cards, POS terminals, mobile wallets, ATMs, and core banking systems.',
     'solutions.tmsTitle': 'TMS (Terminal Management System)',

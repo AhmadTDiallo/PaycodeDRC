@@ -13,10 +13,10 @@ export default function Footer() {
   };
 
   const solutions = [
-    { name: t("solutions.solution3Title"), href: "#solutions" },
+    { name: t("solutions.solution1Title"), href: "#solutions" },
     { name: t("solutions.solution2Title"), href: "#solutions" },
-    { name: "Transactions Hors Ligne", href: "#solutions" },
-    { name: "Cartes Biométriques", href: "#solutions" },
+    { name: t("solutions.solution3Title"), href: "#solutions" },
+    { name: t("solutions.solution4Title"), href: "#solutions" },
   ];
 
   const company = [
