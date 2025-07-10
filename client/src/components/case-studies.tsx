@@ -85,7 +85,7 @@ export default function CaseStudies() {
                     variant="ghost"
                     className="text-paycode-blue-accent hover:text-paycode-blue font-semibold p-0"
                   >
-{t("caseStudies.readMore")} <ArrowRight className="ml-1 h-4 w-4" />
+{t("caseStudies.viewCase")} <ArrowRight className="ml-1 h-4 w-4" />
                   </Button>
                 </CardContent>
               </Card>
