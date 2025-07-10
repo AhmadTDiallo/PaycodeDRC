@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { Building2, Users, Shield, Zap } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ValueProposition() {
+  const { t } = useLanguage();
+  
   return (
     <>
       {/* Main Value Proposition */}
@@ -18,13 +21,10 @@ export default function ValueProposition() {
             variants={fadeInUp}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-              Nous sommes un Agrégateur de Paiements agréé {" "}
-              <span className="text-paycode-blue-accent">fournissant des plateformes de paiement interopérables</span> pour les institutions financières.{" "}
-              <span className="text-paycode-blue-accent">Nous connectons les banques,les IMF et les opérateurs de mobile money grâce à </span>{" "}
-              une technologie unifiée.
+              {t("value.mainTitle")}
             </h2>
             <p className="text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Notre technologie prend en charge plusieurs types de données, notamment la biométrie, les données KYC, les données de localisation, les données de santé et bien plus encore. Toute institution financière, banque centrale, gouvernement ou entreprise peut utiliser notre technologie pour améliorer ses systèmes.
+              {t("value.mainDescription")}
             </p>
           </motion.div>
         </div>
@@ -44,13 +44,13 @@ export default function ValueProposition() {
               className="text-4xl md:text-5xl font-bold text-foreground mb-6"
               variants={fadeInUp}
             >
-              Paycode RDC : Agrégateur de Paiements Agréé
+              {t("value.platformTitle")}
             </motion.h2>
             <motion.p 
               className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
               variants={fadeInUp}
             >
-              Paycode RDC fournit une plateforme de paiement partagée et interopérable pour les institutions financières à travers la République démocratique du Congo. Notre mission est de permettre aux banques, IMF, opérateurs de mobile money et autres acteurs financiers de se connecter et de réaliser des transactions de manière fluide via un système unifié.
+              {t("value.platformDescription")}
             </motion.p>
           </motion.div>
 
@@ -68,8 +68,8 @@ export default function ValueProposition() {
               <div className="w-16 h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Agrégateur agréé</h3>
-              <p className="text-muted-foreground">Agrégateur de paiements pleinement agréé et régulé en RDC</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">{t("value.feature1Title")}</h3>
+              <p className="text-muted-foreground">{t("value.feature1Desc")}</p>
             </motion.div>
 
             <motion.div 
@@ -79,8 +79,8 @@ export default function ValueProposition() {
               <div className="w-16 h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Building2 className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Multi-Institution</h3>
-              <p className="text-muted-foreground">Au service des banques, IMF, opérateurs de mobile money, et plus encore</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">{t("value.feature2Title")}</h3>
+              <p className="text-muted-foreground">{t("value.feature2Desc")}</p>
             </motion.div>
 
             <motion.div 
@@ -90,8 +90,8 @@ export default function ValueProposition() {
               <div className="w-16 h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Interopérable</h3>
-              <p className="text-muted-foreground">Système unifié permettant des transactions fluides et transparentes entre différentes plateformes</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">{t("value.feature3Title")}</h3>
+              <p className="text-muted-foreground">{t("value.feature3Desc")}</p>
             </motion.div>
 
             <motion.div 
@@ -101,7 +101,7 @@ export default function ValueProposition() {
               <div className="w-16 h-16 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-xl flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">Économique</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">{t("value.feature4Title")}</h3>
               <p className="text-muted-foreground">Réduire les coûts tout en améliorant l’accessibilité et l’efficacité</p>
             </motion.div>
           </motion.div>
@@ -180,9 +180,9 @@ export default function ValueProposition() {
                 className="text-4xl md:text-6xl font-bold text-white mb-8"
                 variants={fadeInUp}
               >
-                Transformer
+                {t("value.transformTitle")}
                 <span className="block bg-gradient-to-r from-black to-paycode-blue-accent bg-clip-text text-transparent">
-                  la finance numérique
+                  {t("value.transformSubtitle")}
                 </span>
               </motion.h2>
               
@@ -190,7 +190,7 @@ export default function ValueProposition() {
                 className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12"
                 variants={fadeInUp}
               >
-                Connecter chaque institution financière à travers la République démocratique du Congo grâce à une technologie sécurisée et interopérable, permettant des transactions fluides et stimulant la croissance économique.
+{t("value.transformDescription")}
               </motion.p>
 
               <motion.div
@@ -201,24 +201,24 @@ export default function ValueProposition() {
                   variants={fadeInUp}
                   className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="text-3xl font-bold text-white mb-2">110+</div>
-                  <div className="text-white/80">Institutions financières</div>
+                  <div className="text-3xl font-bold text-white mb-2">{t("value.stat1")}</div>
+                  <div className="text-white/80">{t("value.stat1Label")}</div>
                 </motion.div>
                 
                 <motion.div 
                   variants={fadeInUp}
                   className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="text-3xl font-bold text-white mb-2">+ de 2 millions</div>
-                  <div className="text-white/80">Utilisateurs actifs</div>
+                  <div className="text-3xl font-bold text-white mb-2">{t("value.stat2")}</div>
+                  <div className="text-white/80">{t("value.stat2Label")}</div>
                 </motion.div>
                 
                 <motion.div 
                   variants={fadeInUp}
                   className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="text-3xl font-bold text-white mb-2">99.9%</div>
-                  <div className="text-white/80">Temps de disponibilité du système</div>
+                  <div className="text-3xl font-bold text-white mb-2">{t("value.stat3")}</div>
+                  <div className="text-white/80">{t("value.stat3Label")}</div>
                 </motion.div>
               </motion.div>
             </motion.div>
