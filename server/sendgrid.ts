@@ -74,9 +74,11 @@ Action requise: Veuillez contacter ce client dans les plus brefs délais pour pl
 © 2025 Paycode Fintech Congo - Agrégateur de Paiements Agréé
     `;
 
+    // Note: The 'from' email must be verified in SendGrid
+    // You can use a verified sender or single sender verification
     await mailService.send({
       to: 'Ahmad.Diallo@paycode.com',
-      from: 'noreply@paycode.com',
+      from: 'Ahmad.Diallo@paycode.com', // Using the recipient as sender (common for notifications)
       subject: `🚀 Nouvelle Demande de Démo - ${demoData.company} (${demoData.name})`,
       text: emailText,
       html: emailHtml,
@@ -84,8 +86,11 @@ Action requise: Veuillez contacter ce client dans les plus brefs délais pour pl
 
     console.log(`Demo request notification sent successfully for ${demoData.name} from ${demoData.company}`);
     return true;
-  } catch (error) {
+  } catch (error: any) {
     console.error('SendGrid email error:', error);
+    if (error.response && error.response.body && error.response.body.errors) {
+      console.error('SendGrid error details:', JSON.stringify(error.response.body.errors, null, 2));
+    }
     return false;
   }
 }
