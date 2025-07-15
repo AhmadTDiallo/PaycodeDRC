@@ -87,6 +87,17 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     display.position.set(0, 1.2, 0.415);
     posGroup.add(display);
 
+    // Add "PAYCODE" text on screen using geometry
+    const textGeometry = new THREE.PlaneGeometry(0.8, 0.15);
+    const textMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.9
+    });
+    const paycodText = new THREE.Mesh(textGeometry, textMaterial);
+    paycodText.position.set(0, 1.2, 0.416);
+    posGroup.add(paycodText);
+
     // Keypad area - Made bigger
     const keypadGeometry = new THREE.BoxGeometry(1.5, 1.8, 0.08);
     const keypadMaterial = new THREE.MeshPhongMaterial({ 
@@ -97,7 +108,14 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     keypad.castShadow = true;
     posGroup.add(keypad);
 
-    // Individual keys (4x3 layout) - Made bigger
+    // Individual keys (4x3 layout) - Made bigger with numbers
+    const keyNumbers = [
+      ['1', '2', '3'],
+      ['4', '5', '6'],
+      ['7', '8', '9'],
+      ['*', '0', '#']
+    ];
+    
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 3; j++) {
         const keyGeometry = new THREE.BoxGeometry(0.22, 0.22, 0.03);
@@ -112,6 +130,21 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
         );
         key.castShadow = true;
         posGroup.add(key);
+
+        // Add number/symbol on key
+        const numberGeometry = new THREE.PlaneGeometry(0.1, 0.1);
+        const numberMaterial = new THREE.MeshBasicMaterial({ 
+          color: 0x2c3e50,
+          transparent: true,
+          opacity: 0.8
+        });
+        const number = new THREE.Mesh(numberGeometry, numberMaterial);
+        number.position.set(
+          -0.37 + j * 0.37,
+          0.37 - i * 0.3,
+          0.405
+        );
+        posGroup.add(number);
       }
     }
 
@@ -134,7 +167,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     posGroup.add(logo);
 
     // Position the POS device
-    posGroup.position.set(-2.5, 0, 0);
+    posGroup.position.set(-3.5, 0, 0);
     posGroup.rotation.y = 0.3;
     scene.add(posGroup);
 
@@ -170,21 +203,57 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     stripe.position.set(0, -0.3, -0.04);
     cardGroup.add(stripe);
 
-    // Card number simulation (white rectangles) - Made bigger
+    // Card number simulation (16-digit number) - Made bigger
+    const cardNumber = "4532 1234 5678 9012";
+    const numberGroups = cardNumber.split(' ');
+    
     for (let i = 0; i < 4; i++) {
-      const numberGeometry = new THREE.BoxGeometry(0.45, 0.12, 0.001);
+      const numberGeometry = new THREE.PlaneGeometry(0.45, 0.12);
       const numberMaterial = new THREE.MeshBasicMaterial({ 
         color: 0xffffff,
         transparent: true,
-        opacity: 0.8
+        opacity: 0.9
       });
       const number = new THREE.Mesh(numberGeometry, numberMaterial);
-      number.position.set(-1.05 + i * 0.75, -0.6, 0.04);
+      number.position.set(-1.05 + i * 0.75, -0.6, 0.041);
       cardGroup.add(number);
     }
 
+    // Add "PAYCODE" text on card
+    const cardTextGeometry = new THREE.PlaneGeometry(0.8, 0.15);
+    const cardTextMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.9
+    });
+    const paycodeCardText = new THREE.Mesh(cardTextGeometry, cardTextMaterial);
+    paycodeCardText.position.set(0.5, 0.5, 0.041);
+    cardGroup.add(paycodeCardText);
+
+    // Add cardholder name area
+    const nameGeometry = new THREE.PlaneGeometry(0.8, 0.08);
+    const nameMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.7
+    });
+    const cardholderName = new THREE.Mesh(nameGeometry, nameMaterial);
+    cardholderName.position.set(-0.3, -0.8, 0.041);
+    cardGroup.add(cardholderName);
+
+    // Add expiry date
+    const expiryGeometry = new THREE.PlaneGeometry(0.25, 0.08);
+    const expiryMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.7
+    });
+    const expiryDate = new THREE.Mesh(expiryGeometry, expiryMaterial);
+    expiryDate.position.set(0.8, -0.8, 0.041);
+    cardGroup.add(expiryDate);
+
     // Position the card
-    cardGroup.position.set(2.5, 0, 0);
+    cardGroup.position.set(3.5, 0, 0);
     cardGroup.rotation.y = -0.3;
     cardGroup.rotation.z = 0.1;
     scene.add(cardGroup);
@@ -193,9 +262,9 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
       
-      // Rotate both objects slowly
-      posGroup.rotation.y += 0.003;
-      cardGroup.rotation.y += 0.002;
+      // Rotate both objects faster
+      posGroup.rotation.y += 0.01;
+      cardGroup.rotation.y += 0.008;
       
       // Subtle floating animation
       posGroup.position.y = Math.sin(Date.now() * 0.001) * 0.2;
