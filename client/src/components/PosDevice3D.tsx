@@ -10,6 +10,8 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const animationRef = useRef<number | null>(null);
+  const mouseRef = useRef<THREE.Vector2>(new THREE.Vector2());
+  const raycasterRef = useRef<THREE.Raycaster>(new THREE.Raycaster());
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -170,6 +172,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     // Position the POS device
     posGroup.position.set(-3.5, 0, 0);
     posGroup.rotation.y = 0.3;
+    posGroup.userData = { type: 'pos', isClicked: false };
     scene.add(posGroup);
 
     // Create 3D Credit Card - Made bigger
@@ -220,22 +223,56 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     cardGroup.position.set(3.5, 0, 0);
     cardGroup.rotation.y = -0.3;
     cardGroup.rotation.z = 0.1;
+    cardGroup.userData = { type: 'card', isClicked: false };
     scene.add(cardGroup);
+
+    // Mouse interaction
+    const onMouseClick = (event: MouseEvent) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseRef.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycasterRef.current.setFromCamera(mouseRef.current, camera);
+      const intersects = raycasterRef.current.intersectObjects([posGroup, cardGroup], true);
+
+      if (intersects.length > 0) {
+        const clickedObject = intersects[0].object.parent;
+        
+        if (clickedObject === posGroup) {
+          posGroup.userData.isClicked = !posGroup.userData.isClicked;
+          console.log('POS Device clicked!');
+        } else if (clickedObject === cardGroup) {
+          cardGroup.userData.isClicked = !cardGroup.userData.isClicked;
+          console.log('Credit Card clicked!');
+        }
+      }
+    };
+
+    // Add mouse event listener
+    renderer.domElement.addEventListener('click', onMouseClick);
+    renderer.domElement.style.cursor = 'pointer';
 
     // Animation
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
       
       // Swing left to right instead of full rotation
-      posGroup.rotation.y = 0.3 + Math.sin(Date.now() * 0.002) * 0.4;
-      cardGroup.rotation.y = -0.3 + Math.sin(Date.now() * 0.0015) * 0.4;
+      const baseRotationPOS = 0.3 + Math.sin(Date.now() * 0.002) * 0.4;
+      const baseRotationCard = -0.3 + Math.sin(Date.now() * 0.0015) * 0.4;
       
-      // Subtle floating animation
-      posGroup.position.y = Math.sin(Date.now() * 0.001) * 0.2;
-      cardGroup.position.y = Math.sin(Date.now() * 0.001 + Math.PI) * 0.15;
+      // Add interactive rotation if clicked
+      posGroup.rotation.y = baseRotationPOS + (posGroup.userData.isClicked ? Math.sin(Date.now() * 0.01) * 0.1 : 0);
+      cardGroup.rotation.y = baseRotationCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.01) * 0.1 : 0);
       
-      // Card gentle rotation
-      cardGroup.rotation.z = 0.1 + Math.sin(Date.now() * 0.0005) * 0.05;
+      // Subtle floating animation with interactive bounce
+      const baseFloatPOS = Math.sin(Date.now() * 0.001) * 0.2;
+      const baseFloatCard = Math.sin(Date.now() * 0.001 + Math.PI) * 0.15;
+      
+      posGroup.position.y = baseFloatPOS + (posGroup.userData.isClicked ? Math.sin(Date.now() * 0.005) * 0.1 : 0);
+      cardGroup.position.y = baseFloatCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.005) * 0.1 : 0);
+      
+      // Card gentle rotation with interactive effect
+      cardGroup.rotation.z = 0.1 + Math.sin(Date.now() * 0.0005) * 0.05 + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.008) * 0.05 : 0);
       
       renderer.render(scene, camera);
     };
@@ -246,6 +283,9 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
+      }
+      if (renderer.domElement) {
+        renderer.domElement.removeEventListener('click', onMouseClick);
       }
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement);
