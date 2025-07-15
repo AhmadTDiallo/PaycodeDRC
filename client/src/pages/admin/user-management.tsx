@@ -13,12 +13,14 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { insertAdminUserSchema, type AdminUser, type InsertAdminUser } from "@shared/schema";
-import { UserPlus, Edit, Trash2, Users, Shield, User } from "lucide-react";
+import { UserPlus, Edit, Trash2, Users, Shield, User, ArrowLeft } from "lucide-react";
+import { useLocation } from "wouter";
 
 export default function UserManagement() {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [, setLocation] = useLocation();
 
   const form = useForm<InsertAdminUser>({
     resolver: zodResolver(insertAdminUserSchema),
@@ -117,6 +119,16 @@ export default function UserManagement() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
+          <div className="flex items-center gap-4 mb-4">
+            <Button
+              onClick={() => setLocation("/admin/dashboard")}
+              variant="outline"
+              className="border-gray-300 text-gray-700 hover:bg-gray-50 flex items-center gap-2"
+            >
+              <ArrowLeft size={16} />
+              Back to Dashboard
+            </Button>
+          </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">User Management</h1>
           <p className="text-gray-600">Manage administrator accounts and permissions</p>
         </div>
@@ -267,7 +279,7 @@ export default function UserManagement() {
                 </TableHeader>
                 <TableBody>
                   {users.map((user: AdminUser) => (
-                    <TableRow key={user.id} className="hover:bg-gray-50">
+                    <TableRow key={user.id} className="bg-white hover:bg-gray-50">
                       <TableCell className="font-medium text-gray-900">{user.username}</TableCell>
                       <TableCell className="text-gray-700">{user.email}</TableCell>
                       <TableCell>{getRoleBadge(user.role)}</TableCell>
