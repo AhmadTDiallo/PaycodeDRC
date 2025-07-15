@@ -45,12 +45,12 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <Card className="w-full max-w-md mx-4">
-        <CardHeader className="text-center px-4 sm:px-6">
+      <Card className="w-full max-w-md mx-4 bg-white shadow-lg border-0">
+        <CardHeader className="text-center px-4 sm:px-6 bg-white">
           <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900">
             Administration PAYCODE DRC
           </CardTitle>
-          <p className="text-sm sm:text-base text-gray-800 font-medium mt-2">
+          <p className="text-sm sm:text-base text-gray-700 font-medium mt-2">
             Connectez-vous pour accéder au panneau d'administration
           </p>
         </CardHeader>
