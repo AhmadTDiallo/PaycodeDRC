@@ -50,8 +50,8 @@ export default function UserManagement() {
     },
     onSuccess: () => {
       toast({
-        title: "Success",
-        description: "Admin user created successfully",
+        title: "Succès",
+        description: "Utilisateur administrateur créé avec succès",
       });
       queryClient.invalidateQueries({ queryKey: ["/api/admin/users"] });
       setIsCreateDialogOpen(false);
@@ -59,8 +59,8 @@ export default function UserManagement() {
     },
     onError: (error: any) => {
       toast({
-        title: "Error",
-        description: error.message || "Failed to create admin user",
+        title: "Erreur",
+        description: error.message || "Échec de la création de l'utilisateur administrateur",
         variant: "destructive",
       });
     },
@@ -69,21 +69,31 @@ export default function UserManagement() {
   // Delete user mutation
   const deleteUserMutation = useMutation({
     mutationFn: async (id: number) => {
-      return await apiRequest(`/api/admin/users/${id}`, {
+      const response = await fetch(`/api/admin/users/${id}`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to delete admin user");
+      }
+      
+      return await response.json();
     },
     onSuccess: () => {
       toast({
-        title: "Success",
-        description: "Admin user deleted successfully",
+        title: "Succès",
+        description: "Utilisateur administrateur supprimé avec succès",
       });
       queryClient.invalidateQueries({ queryKey: ["/api/admin/users"] });
     },
     onError: (error: any) => {
       toast({
-        title: "Error",
-        description: error.message || "Failed to delete admin user",
+        title: "Erreur",
+        description: error.message || "Échec de la suppression de l'utilisateur administrateur",
         variant: "destructive",
       });
     },
@@ -96,14 +106,14 @@ export default function UserManagement() {
   const handleDeleteUser = (user: AdminUser) => {
     if (user.role === "superadmin") {
       toast({
-        title: "Error",
-        description: "Cannot delete superadmin user",
+        title: "Erreur",
+        description: "Impossible de supprimer l'utilisateur superadmin",
         variant: "destructive",
       });
       return;
     }
 
-    if (confirm(`Are you sure you want to delete user "${user.username}"?`)) {
+    if (confirm(`Êtes-vous sûr de vouloir supprimer l'utilisateur "${user.username}" ?`)) {
       deleteUserMutation.mutate(user.id);
     }
   };
@@ -126,11 +136,11 @@ export default function UserManagement() {
               className="border-gray-300 text-gray-700 hover:bg-gray-50 flex items-center gap-2"
             >
               <ArrowLeft size={16} />
-              Back to Dashboard
+              Retour au Tableau de Bord
             </Button>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">User Management</h1>
-          <p className="text-gray-600">Manage administrator accounts and permissions</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Gestion des Utilisateurs</h1>
+          <p className="text-gray-600">Gérer les comptes et permissions d'administrateur</p>
         </div>
 
         <Card className="shadow-lg">
