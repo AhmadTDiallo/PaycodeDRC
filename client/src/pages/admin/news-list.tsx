@@ -105,30 +105,31 @@ export default function AdminNewsList() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+    <div className="min-h-screen bg-gray-100">
+      {/* Modern Header */}
+      <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
               <Button
                 variant="ghost"
                 onClick={() => setLocation("/admin/dashboard")}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100"
               >
                 <ArrowLeft className="h-4 w-4" />
-                <span>Retour</span>
+                <span>Back to Dashboard</span>
               </Button>
+              <div className="h-6 w-px bg-gray-300"></div>
               <h1 className="text-xl font-semibold text-gray-900">
-                Gestion des Articles
+                Articles Management
               </h1>
             </div>
             <Button
               onClick={() => setLocation("/admin/news/new")}
-              className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700"
+              className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-sm"
             >
               <PlusCircle className="h-4 w-4" />
-              <span>Nouvel Article</span>
+              <span>Create New Article</span>
             </Button>
           </div>
         </div>
@@ -137,28 +138,28 @@ export default function AdminNewsList() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {articles.length === 0 ? (
-          <Card>
+          <Card className="bg-white border-gray-200 shadow-sm">
             <CardContent className="text-center py-12">
               <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
-                Aucun article
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                No Articles Found
               </h3>
-              <p className="text-gray-600 mb-4">
-                Commencez par créer votre premier article
+              <p className="text-gray-700 mb-4">
+                Get started by creating your first article
               </p>
               <Button
                 onClick={() => setLocation("/admin/news/new")}
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-green-600 hover:bg-green-700 text-white"
               >
                 <PlusCircle className="h-4 w-4 mr-2" />
-                Créer un article
+                Create Article
               </Button>
             </CardContent>
           </Card>
         ) : (
           <div className="space-y-4">
             {articles.map((article) => (
-              <Card key={article.id} className="hover:shadow-md transition-shadow">
+              <Card key={article.id} className="bg-white border-gray-200 hover:shadow-md transition-shadow shadow-sm">
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
@@ -209,17 +210,17 @@ export default function AdminNewsList() {
                         size="sm"
                         onClick={() => handleTogglePublish(article.id)}
                         disabled={togglePublishMutation.isPending}
-                        className="flex items-center space-x-1"
+                        className="flex items-center space-x-1 border-gray-300 text-gray-700 hover:bg-gray-50"
                       >
                         {article.isPublished ? (
                           <>
                             <EyeOff className="h-4 w-4" />
-                            <span>Dépublier</span>
+                            <span>Unpublish</span>
                           </>
                         ) : (
                           <>
                             <Eye className="h-4 w-4" />
-                            <span>Publier</span>
+                            <span>Publish</span>
                           </>
                         )}
                       </Button>
@@ -228,10 +229,10 @@ export default function AdminNewsList() {
                         variant="outline"
                         size="sm"
                         onClick={() => setLocation(`/admin/news/${article.id}/edit`)}
-                        className="flex items-center space-x-1"
+                        className="flex items-center space-x-1 border-blue-300 text-blue-700 hover:bg-blue-50"
                       >
                         <Edit className="h-4 w-4" />
-                        <span>Modifier</span>
+                        <span>Edit</span>
                       </Button>
                       
                       <Button
@@ -239,10 +240,10 @@ export default function AdminNewsList() {
                         size="sm"
                         onClick={() => handleDelete(article.id)}
                         disabled={deleteMutation.isPending}
-                        className="flex items-center space-x-1 text-red-600 hover:text-red-700 hover:bg-red-50"
+                        className="flex items-center space-x-1 border-red-300 text-red-600 hover:bg-red-50"
                       >
                         <Trash2 className="h-4 w-4" />
-                        <span>Supprimer</span>
+                        <span>Delete</span>
                       </Button>
                     </div>
                   </div>

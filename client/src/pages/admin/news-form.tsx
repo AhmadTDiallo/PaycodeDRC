@@ -167,22 +167,22 @@ export default function AdminNewsForm() {
   const isPending = createMutation.isPending || updateMutation.isPending;
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Professional CRM Header */}
-      <header className="bg-white shadow-sm border-b border-slate-200">
+    <div className="min-h-screen bg-gray-100">
+      {/* Modern Admin Header */}
+      <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
               <Button
                 variant="ghost"
                 onClick={() => setLocation("/admin/news")}
-                className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span>Back to Articles</span>
               </Button>
-              <div className="h-6 w-px bg-slate-300"></div>
-              <h1 className="text-xl font-semibold text-slate-900">
+              <div className="h-6 w-px bg-gray-300"></div>
+              <h1 className="text-xl font-semibold text-gray-900">
                 {isEdit ? "Edit Article" : "Create New Article"}
               </h1>
             </div>
@@ -190,7 +190,7 @@ export default function AdminNewsForm() {
               type="submit"
               form="news-form"
               disabled={isPending}
-              className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+              className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-sm"
             >
               <Save className="h-4 w-4" />
               <span>{isPending ? "Saving..." : "Save Article"}</span>
@@ -199,24 +199,25 @@ export default function AdminNewsForm() {
         </div>
       </header>
 
-      {/* Professional CRM Content */}
+      {/* Modern Admin Content */}
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Card className="shadow-sm border-slate-200">
-          <CardHeader className="bg-slate-50 border-b border-slate-200">
-            <CardTitle className="text-slate-900 font-medium">
+        <Card className="shadow-md border-gray-200 bg-white">
+          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
+            <CardTitle className="text-gray-900 font-semibold text-lg">
               Article Information
             </CardTitle>
-            <p className="text-slate-600 text-sm mt-1">
+            <p className="text-gray-700 text-sm mt-1">
               {isEdit ? "Update the article details below" : "Fill out the form to create a new article"}
             </p>
           </CardHeader>
-          <CardContent className="p-6">
+          <CardContent className="p-8 bg-white">
             <Form {...form}>
               <form id="news-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 
                 {/* Basic Information Section */}
-                <div className="bg-white border border-slate-200 rounded-lg p-6">
-                  <h3 className="text-lg font-medium text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                <div className="bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-300 rounded-xl p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
                     Basic Information
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -225,15 +226,15 @@ export default function AdminNewsForm() {
                       name="title"
                       render={({ field }) => (
                         <FormItem className="md:col-span-2">
-                          <FormLabel className="text-slate-700 font-medium">Article Title *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Article Title *</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Enter the article title"
-                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600" />
+                          <FormMessage className="text-red-600 font-medium" />
                         </FormItem>
                       )}
                     />
@@ -243,22 +244,22 @@ export default function AdminNewsForm() {
                       name="category"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-700 font-medium">Category *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Category *</FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
-                              <SelectTrigger className="border-slate-300 focus:border-blue-500 focus:ring-blue-500">
+                              <SelectTrigger className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11">
                                 <SelectValue placeholder="Select a category" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent>
+                            <SelectContent className="bg-white border-gray-300">
                               {categories.map((category) => (
-                                <SelectItem key={category} value={category}>
+                                <SelectItem key={category} value={category} className="text-gray-900">
                                   {category}
                                 </SelectItem>
                               ))}
                             </SelectContent>
                           </Select>
-                          <FormMessage className="text-red-600" />
+                          <FormMessage className="text-red-600 font-medium" />
                         </FormItem>
                       )}
                     />
@@ -268,15 +269,15 @@ export default function AdminNewsForm() {
                       name="author"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-700 font-medium">Author *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Author *</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Enter author name"
-                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600" />
+                          <FormMessage className="text-red-600 font-medium" />
                         </FormItem>
                       )}
                     />
@@ -284,8 +285,9 @@ export default function AdminNewsForm() {
                 </div>
 
                 {/* Content Section */}
-                <div className="bg-white border border-slate-200 rounded-lg p-6">
-                  <h3 className="text-lg font-medium text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-gray-300 rounded-xl p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
                     Article Content
                   </h3>
                   <div className="space-y-6">
@@ -294,15 +296,15 @@ export default function AdminNewsForm() {
                       name="summary"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-700 font-medium">Summary *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Summary *</FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Enter a brief summary of the article"
-                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500 min-h-[80px]"
+                              className="border-gray-300 focus:border-green-500 focus:ring-green-200 bg-white text-gray-900 min-h-[90px]"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600" />
+                          <FormMessage className="text-red-600 font-medium" />
                         </FormItem>
                       )}
                     />
@@ -312,15 +314,15 @@ export default function AdminNewsForm() {
                       name="content"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-700 font-medium">Full Content *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Full Content *</FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Enter the full article content"
-                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500 min-h-[200px]"
+                              className="border-gray-300 focus:border-green-500 focus:ring-green-200 bg-white text-gray-900 min-h-[220px]"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600" />
+                          <FormMessage className="text-red-600 font-medium" />
                         </FormItem>
                       )}
                     />
@@ -328,22 +330,23 @@ export default function AdminNewsForm() {
                 </div>
 
                 {/* Media Section */}
-                <div className="bg-white border border-slate-200 rounded-lg p-6">
-                  <h3 className="text-lg font-medium text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-gray-300 rounded-xl p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
                     Featured Image
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     <div className="flex items-center space-x-4">
                       <div className="flex-1">
-                        <label className="block text-sm font-medium text-slate-700 mb-2">
-                          Upload Image
+                        <label className="block text-sm font-semibold text-gray-800 mb-3">
+                          Upload Image from Computer
                         </label>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-4">
                           <Button
                             type="button"
                             variant="outline"
                             onClick={() => document.getElementById('image-upload')?.click()}
-                            className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                            className="border-gray-300 text-gray-800 hover:bg-purple-50 bg-white h-11 px-6"
                           >
                             <Upload className="h-4 w-4 mr-2" />
                             Choose File
@@ -358,7 +361,7 @@ export default function AdminNewsForm() {
                               if (file) handleImageUpload(file);
                             }}
                           />
-                          <span className="text-sm text-slate-500">
+                          <span className="text-sm text-gray-700 font-medium">
                             {selectedImage ? selectedImage.name : 'No file selected'}
                           </span>
                         </div>
@@ -366,15 +369,15 @@ export default function AdminNewsForm() {
                     </div>
                     
                     {imagePreview && (
-                      <div className="mt-4">
-                        <label className="block text-sm font-medium text-slate-700 mb-2">
-                          Preview
+                      <div className="mt-6">
+                        <label className="block text-sm font-semibold text-gray-800 mb-3">
+                          Image Preview
                         </label>
-                        <div className="border border-slate-300 rounded-lg p-2 bg-slate-50">
+                        <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm">
                           <img
                             src={imagePreview}
                             alt="Preview"
-                            className="h-32 w-auto object-cover rounded"
+                            className="h-40 w-auto object-cover rounded-lg"
                           />
                         </div>
                       </div>
@@ -385,11 +388,11 @@ export default function AdminNewsForm() {
                       name="imageUrl"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-700 font-medium">Or Enter Image URL</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Or Enter Image URL</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="https://example.com/image.jpg"
-                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                              className="border-gray-300 focus:border-purple-500 focus:ring-purple-200 bg-white text-gray-900 h-11"
                               {...field}
                               onChange={(e) => {
                                 field.onChange(e);
@@ -399,7 +402,7 @@ export default function AdminNewsForm() {
                               }}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600" />
+                          <FormMessage className="text-red-600 font-medium" />
                         </FormItem>
                       )}
                     />
@@ -407,8 +410,9 @@ export default function AdminNewsForm() {
                 </div>
 
                 {/* Publishing Section */}
-                <div className="bg-white border border-slate-200 rounded-lg p-6">
-                  <h3 className="text-lg font-medium text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                <div className="bg-gradient-to-r from-orange-50 to-yellow-50 border border-gray-300 rounded-xl p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
                     Publishing Options
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -417,18 +421,18 @@ export default function AdminNewsForm() {
                       name="publishedDate"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-700 font-medium">Publication Date</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Publication Date</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
                               <Input
                                 type="date"
-                                className="border-slate-300 focus:border-blue-500 focus:ring-blue-500 pl-10"
+                                className="border-gray-300 focus:border-orange-500 focus:ring-orange-200 bg-white text-gray-900 pl-10 h-11"
                                 {...field}
                               />
                             </div>
                           </FormControl>
-                          <FormMessage className="text-red-600" />
+                          <FormMessage className="text-red-600 font-medium" />
                         </FormItem>
                       )}
                     />
@@ -437,15 +441,15 @@ export default function AdminNewsForm() {
                       control={form.control}
                       name="isPublished"
                       render={({ field }) => (
-                        <FormItem className="flex items-center space-x-3 space-y-0 pt-6">
+                        <FormItem className="flex items-center space-x-4 space-y-0 pt-6">
                           <FormControl>
                             <Switch
                               checked={field.value}
                               onCheckedChange={field.onChange}
-                              className="data-[state=checked]:bg-blue-600"
+                              className="data-[state=checked]:bg-green-600"
                             />
                           </FormControl>
-                          <FormLabel className="text-slate-700 font-medium">
+                          <FormLabel className="text-gray-800 font-semibold text-sm">
                             Publish immediately
                           </FormLabel>
                         </FormItem>
