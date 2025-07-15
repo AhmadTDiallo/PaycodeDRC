@@ -147,9 +147,9 @@ export default function UserManagement() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setLocation("/admin/dashboard")}
-                  className="p-1 sm:p-2 hover:bg-gray-100"
+                  className="p-1 sm:p-2 hover:bg-gray-100 text-gray-900"
                 >
-                  <ArrowLeft className="h-4 w-4" />
+                  <ArrowLeft className="h-4 w-4 text-gray-900" />
                 </Button>
                 <h1 className="text-sm sm:text-lg font-semibold text-gray-900 truncate">
                   Utilisateurs Admin

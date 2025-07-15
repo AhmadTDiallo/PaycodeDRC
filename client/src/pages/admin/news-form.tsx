@@ -195,12 +195,12 @@ export default function AdminNewsForm() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
               <Button
                 variant="ghost"
-                onClick={() => setLocation("/admin/news")}
-                className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full sm:w-auto justify-start"
+                onClick={() => setLocation("/admin/dashboard")}
+                className="flex items-center space-x-2 text-gray-900 hover:text-gray-900 hover:bg-gray-100 w-full sm:w-auto justify-start"
                 size="sm"
               >
-                <ArrowLeft className="h-4 w-4" />
-                <span>Retour aux Articles</span>
+                <ArrowLeft className="h-4 w-4 text-gray-900" />
+                <span>Retour au Tableau de Bord</span>
               </Button>
               <div className="hidden sm:block h-6 w-px bg-gray-300"></div>
               <h1 className="text-lg sm:text-xl font-semibold text-gray-900">

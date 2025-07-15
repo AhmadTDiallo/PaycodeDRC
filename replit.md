@@ -105,6 +105,11 @@ Paycode DRC is a full-stack fintech platform designed as a licensed payment aggr
 
 ```
 Changelog:
+- July 15, 2025. Fixed critical admin navigation routing by adding missing routes in App.tsx
+- July 15, 2025. Improved admin back button visibility with dark text colors (text-gray-900)
+- July 15, 2025. Corrected navigation flow: "Créer Article" now returns to dashboard instead of article list
+- July 15, 2025. Enhanced login page text contrast for better visibility on gradient backgrounds
+- July 15, 2025. Comprehensive mobile optimization for all admin sections with compact layouts
 - July 15, 2025. Complete French translation of admin interface (dashboard, login, news management)
 - July 15, 2025. Article modal redesigned with magazine-style layout and improved readability
 - July 15, 2025. News section redesigned to be horizontally structured with slider functionality
