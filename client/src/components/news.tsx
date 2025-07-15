@@ -3,10 +3,23 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useQuery } from "@tanstack/react-query";
+import { NewsArticle } from "@shared/schema";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
+import { Calendar, User } from "lucide-react";
 
 export default function News() {
   const { t } = useLanguage();
-  const newsArticles = [
+
+  const { data: newsResponse, isLoading } = useQuery({
+    queryKey: ["/api/news"],
+  });
+
+  const newsArticles: NewsArticle[] = newsResponse?.data || [];
+
+  // Fallback data while loading or if no articles exist
+  const fallbackArticles = [
     {
       title:
         "La Fondation Algorand et Paycode annoncent un partenariat pour étendre l'inclusion financière",
@@ -55,6 +68,22 @@ export default function News() {
     },
   ];
 
+  const displayArticles = newsArticles.length > 0 ? newsArticles : fallbackArticles;
+
+  const getCategoryColor = (category: string) => {
+    const colors: { [key: string]: string } = {
+      "Partenariat": "bg-paycode-green",
+      "Impact": "bg-paycode-blue", 
+      "Technologie": "bg-purple-500",
+      "Étape importante": "bg-orange-500",
+      "Actualités": "bg-blue-500",
+      "Finance": "bg-green-500",
+      "Produits": "bg-indigo-500",
+      "Événements": "bg-pink-500"
+    };
+    return colors[category] || "bg-gray-500";
+  };
+
   const handleArticleClick = (url?: string) => {
     if (url) {
       window.open(url, "_blank", "noopener,noreferrer");
@@ -84,38 +113,55 @@ export default function News() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {newsArticles.map((article, index) => (
-            <motion.div key={index} variants={fadeInUp} className="group">
-              <Card 
-                className="bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-black-100 h-full cursor-pointer"
-                onClick={() => handleArticleClick(article.url)}
-              >
-                <div
-                  className="h-48 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${article.image})` }}
-                />
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-3">
-                    <Badge
-                      className={`${article.categoryColor} text-black px-3 py-1 text-xs font-semibold mr-3`}
-                    >
-                      {article.category}
-                    </Badge>
-                    <span className="text-muted-foreground text-sm">{article.date}</span>
-                  </div>
-                  <h3 className="text-paycode-blue font-bold mb-3 group-hover:text-paycode-blue-accent transition-colors line-clamp-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-black leading-relaxed mb-3 line-clamp-3">
-                    {article.summary}
-                  </p>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <span>By {article.author}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+          {displayArticles.map((article, index) => {
+            const isDbArticle = 'id' in article;
+            const displayImage = isDbArticle ? article.imageUrl : article.image;
+            const displayDate = isDbArticle 
+              ? format(new Date(article.publishedDate || article.createdAt), "dd MMM yyyy", { locale: fr })
+              : article.date;
+            const categoryColor = isDbArticle 
+              ? getCategoryColor(article.category)
+              : article.categoryColor;
+
+            return (
+              <motion.div key={isDbArticle ? article.id : index} variants={fadeInUp} className="group">
+                <Card 
+                  className="bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-black-100 h-full cursor-pointer"
+                  onClick={() => handleArticleClick(isDbArticle ? undefined : article.url)}
+                >
+                  {displayImage && (
+                    <div
+                      className="h-48 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${displayImage})` }}
+                    />
+                  )}
+                  <CardContent className="p-6">
+                    <div className="flex items-center mb-3">
+                      <Badge
+                        className={`${categoryColor} text-white px-3 py-1 text-xs font-semibold mr-3`}
+                      >
+                        {article.category}
+                      </Badge>
+                      <div className="flex items-center text-sm text-gray-500">
+                        <Calendar className="h-4 w-4 mr-1" />
+                        <span>{displayDate}</span>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-paycode-blue transition-colors">
+                      {article.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 line-clamp-3">
+                      {article.summary}
+                    </p>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <User className="h-4 w-4 mr-1" />
+                      <span>Par {article.author}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         <motion.div
