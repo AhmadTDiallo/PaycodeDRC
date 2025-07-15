@@ -54,11 +54,11 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
 
-    // Create 3D Credit Card - Much bigger and centered
+    // Create 3D Credit Card - Appropriately sized and centered
     const cardGroup = new THREE.Group();
 
-    // Card body - Much bigger (doubled size)
-    const cardGeometry = new THREE.BoxGeometry(6.3, 3.9, 0.16);
+    // Card body - More reasonable size
+    const cardGeometry = new THREE.BoxGeometry(4.2, 2.6, 0.12);
     const cardMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x1e3a8a,
       shininess: 80 
@@ -67,43 +67,70 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     card.castShadow = true;
     cardGroup.add(card);
 
-    // Card chip - Much bigger
-    const chipGeometry = new THREE.BoxGeometry(0.9, 0.76, 0.06);
+    // Card chip
+    const chipGeometry = new THREE.BoxGeometry(0.6, 0.5, 0.04);
     const chipMaterial = new THREE.MeshPhongMaterial({ 
       color: 0xffd700,
       shininess: 100 
     });
     const chip = new THREE.Mesh(chipGeometry, chipMaterial);
-    chip.position.set(-1.8, 0.6, 0.08);
+    chip.position.set(-1.2, 0.4, 0.06);
     cardGroup.add(chip);
 
-    // Card stripe - Much bigger
-    const stripeGeometry = new THREE.BoxGeometry(6.3, 0.44, 0.002);
+    // Card stripe
+    const stripeGeometry = new THREE.BoxGeometry(4.2, 0.3, 0.001);
     const stripeMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x000000 
     });
     const stripe = new THREE.Mesh(stripeGeometry, stripeMaterial);
-    stripe.position.set(0, -0.6, -0.08);
+    stripe.position.set(0, -0.4, -0.06);
     cardGroup.add(stripe);
 
-    // Card details - Much bigger
-    const cardDetailGeometry = new THREE.BoxGeometry(5.6, 0.2, 0.02);
+    // Card details
+    const cardDetailGeometry = new THREE.BoxGeometry(3.8, 0.15, 0.015);
     const cardDetailMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x2563eb,
       transparent: true,
       opacity: 0.3
     });
     const cardDetail = new THREE.Mesh(cardDetailGeometry, cardDetailMaterial);
-    cardDetail.position.set(0, -1.0, 0.082);
+    cardDetail.position.set(0, -0.7, 0.061);
     cardGroup.add(cardDetail);
 
-    // Add PayCode logo on the card - Much bigger
-    const logoGeometry = new THREE.CircleGeometry(0.3, 16);
+    // Add PAYCODE DRC text on the card
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = 512;
+    canvas.height = 128;
+    
+    if (context) {
+      context.fillStyle = 'rgba(0, 0, 0, 0)';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      
+      context.font = 'bold 48px Arial';
+      context.fillStyle = 'white';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillText('PAYCODE DRC', canvas.width / 2, canvas.height / 2);
+    }
+    
+    const textTexture = new THREE.CanvasTexture(canvas);
+    const textMaterial = new THREE.MeshBasicMaterial({ 
+      map: textTexture,
+      transparent: true
+    });
+    const textGeometry = new THREE.PlaneGeometry(2.5, 0.6);
+    const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+    textMesh.position.set(0, 0.1, 0.061);
+    cardGroup.add(textMesh);
+
+    // Add PayCode logo on the card
+    const logoGeometry = new THREE.CircleGeometry(0.2, 16);
     const logoMaterial = new THREE.MeshBasicMaterial({ 
       color: 0x3498db 
     });
     const logo = new THREE.Mesh(logoGeometry, logoMaterial);
-    logo.position.set(2.2, 0.8, 0.082);
+    logo.position.set(1.5, 0.5, 0.061);
     cardGroup.add(logo);
 
     // Position the card in center
