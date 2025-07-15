@@ -106,10 +106,11 @@ export default function AdminNewsForm() {
       });
       setLocation("/admin/news");
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error("Create article error:", error);
       toast({
         title: "Erreur",
-        description: "Échec de la création de l'article",
+        description: error.message || "Échec de la création de l'article",
         variant: "destructive",
       });
     },
@@ -129,10 +130,11 @@ export default function AdminNewsForm() {
       });
       setLocation("/admin/news");
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error("Update article error:", error);
       toast({
         title: "Erreur",
-        description: "Échec de la mise à jour de l'article",
+        description: error.message || "Échec de la mise à jour de l'article",
         variant: "destructive",
       });
     },
@@ -155,7 +157,10 @@ export default function AdminNewsForm() {
     const finalData = {
       ...articleData,
       publishedDate: publishedDate ? new Date(publishedDate) : new Date(),
+      imageUrl: data.imageUrl || "", // Ensure imageUrl is always a string
     };
+    
+    console.log("Submitting article data:", finalData); // Debug log
     
     if (isEdit) {
       updateMutation.mutate(finalData);

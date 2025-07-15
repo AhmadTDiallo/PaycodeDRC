@@ -76,7 +76,7 @@ export const insertNewsArticleSchema = createInsertSchema(newsArticles).omit({
   content: z.string().min(50, "Content must be at least 50 characters"),
   category: z.string().min(2, "Category is required"),
   author: z.string().min(2, "Author is required"),
-  imageUrl: z.string().url("Invalid image URL").optional().or(z.literal("")),
+  imageUrl: z.string().optional().or(z.literal("")),
   publishedDate: z.date().optional(),
   isPublished: z.boolean().default(false),
 });
