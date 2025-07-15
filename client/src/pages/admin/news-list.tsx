@@ -38,9 +38,10 @@ export default function AdminNewsList() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/news"] }); // Invalidate public news cache
       toast({
-        title: "Article supprimé",
-        description: "L'article a été supprimé avec succès",
+        title: "Article Deleted",
+        description: "The article has been deleted successfully",
       });
     },
     onError: () => {
@@ -58,9 +59,10 @@ export default function AdminNewsList() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/news"] }); // Invalidate public news cache
       toast({
-        title: "Statut mis à jour",
-        description: "Le statut de publication a été modifié",
+        title: "Status Updated", 
+        description: "The publication status has been changed",
       });
     },
     onError: () => {
@@ -166,20 +168,20 @@ export default function AdminNewsList() {
                         </h3>
                         <Badge 
                           variant={article.isPublished ? "default" : "secondary"}
-                          className={article.isPublished ? "bg-green-100 text-green-800" : ""}
+                          className={article.isPublished ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}
                         >
-                          {article.isPublished ? "Publié" : "Brouillon"}
+                          {article.isPublished ? "Published" : "Draft"}
                         </Badge>
-                        <Badge variant="outline">
+                        <Badge variant="outline" className="border-gray-300 text-gray-700">
                           {article.category}
                         </Badge>
                       </div>
                       
-                      <p className="text-gray-600 mb-3 line-clamp-2">
+                      <p className="text-gray-700 mb-3 line-clamp-2">
                         {article.summary}
                       </p>
                       
-                      <div className="flex items-center space-x-4 text-sm text-gray-500">
+                      <div className="flex items-center space-x-4 text-sm text-gray-600">
                         <div className="flex items-center space-x-1">
                           <User className="h-4 w-4" />
                           <span>{article.author}</span>

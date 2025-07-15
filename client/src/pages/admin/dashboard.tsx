@@ -44,8 +44,8 @@ export default function AdminDashboard() {
               </h1>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">
-                Connecté en tant que: <strong>{admin?.username}</strong>
+              <span className="text-sm text-gray-700">
+                Connected as: <strong className="text-gray-900">{admin?.username}</strong>
               </span>
               <Button 
                 variant="outline" 

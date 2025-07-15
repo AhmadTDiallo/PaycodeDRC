@@ -78,9 +78,10 @@ export default function AdminNewsForm() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/news"] }); // Invalidate public news cache
       toast({
-        title: "Article créé",
-        description: "L'article a été créé avec succès",
+        title: "Article Created",
+        description: "The article has been created successfully",
       });
       setLocation("/admin/news");
     },
@@ -100,9 +101,10 @@ export default function AdminNewsForm() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
       queryClient.invalidateQueries({ queryKey: [`/api/admin/news/${params.id}`] });
+      queryClient.invalidateQueries({ queryKey: ["/api/news"] }); // Invalidate public news cache
       toast({
-        title: "Article mis à jour",
-        description: "L'article a été modifié avec succès",
+        title: "Article Updated",
+        description: "The article has been updated successfully",
       });
       setLocation("/admin/news");
     },

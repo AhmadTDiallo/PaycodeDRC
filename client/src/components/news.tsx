@@ -14,6 +14,8 @@ export default function News() {
 
   const { data: newsResponse, isLoading } = useQuery({
     queryKey: ["/api/news"],
+    staleTime: 0, // Always refetch to get latest articles
+    refetchOnWindowFocus: true,
   });
 
   const newsArticles: NewsArticle[] = newsResponse?.data || [];
@@ -68,6 +70,7 @@ export default function News() {
     },
   ];
 
+  // Prioritize database articles over fallback articles
   const displayArticles = newsArticles.length > 0 ? newsArticles : fallbackArticles;
 
   const getCategoryColor = (category: string) => {
