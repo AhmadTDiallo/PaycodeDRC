@@ -7,6 +7,7 @@ import {
   insertNewsArticleSchema,
   updateNewsArticleSchema,
   adminLoginSchema,
+  insertAdminUserSchema,
 } from "@shared/schema";
 import { z } from "zod";
 import { sendDemoRequestNotification } from "./sendgrid";
