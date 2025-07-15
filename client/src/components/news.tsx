@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -110,6 +110,17 @@ export default function News() {
     return colors[category] || "bg-gray-500";
   };
 
+  const formatSafeDate = (dateValue: any, formatStr: string = "dd MMM yyyy") => {
+    try {
+      if (!dateValue) return "Date non disponible";
+      const date = new Date(dateValue);
+      if (isNaN(date.getTime())) return "Date non disponible";
+      return format(date, formatStr, { locale: fr });
+    } catch {
+      return "Date non disponible";
+    }
+  };
+
   const handleArticleClick = (article: any, url?: string) => {
     if (url && !('id' in article)) {
       // External article - open in new tab
@@ -172,7 +183,7 @@ export default function News() {
               const isDbArticle = 'id' in article;
               const displayImage = isDbArticle ? article.imageUrl : article.image;
               const displayDate = isDbArticle 
-                ? format(new Date(article.publishedDate || article.createdAt), "dd MMM yyyy", { locale: fr })
+                ? formatSafeDate(article.publishedDate || article.createdAt)
                 : article.date;
               const categoryColor = isDbArticle 
                 ? getCategoryColor(article.category)
@@ -260,6 +271,9 @@ export default function News() {
             {selectedArticle && (
               <>
                 <DialogHeader>
+                  <DialogDescription className="sr-only">
+                    Détails complets de l'article de presse
+                  </DialogDescription>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
                       <Badge className={`${getCategoryColor(selectedArticle.category)} text-white px-3 py-1 text-sm font-semibold`}>
@@ -268,7 +282,7 @@ export default function News() {
                       <div className="flex items-center text-sm text-gray-500">
                         <Calendar className="h-4 w-4 mr-1" />
                         <span>
-                          {format(new Date(selectedArticle.publishedDate || selectedArticle.createdAt), "dd MMMM yyyy", { locale: fr })}
+                          {formatSafeDate(selectedArticle.publishedDate || selectedArticle.createdAt, "dd MMMM yyyy")}
                         </span>
                       </div>
                     </div>
