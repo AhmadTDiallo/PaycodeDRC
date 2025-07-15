@@ -26,59 +26,8 @@ export default function News() {
 
   const newsArticles: NewsArticle[] = newsResponse?.data || [];
 
-  // Fallback data while loading or if no articles exist
-  const fallbackArticles = [
-    {
-      title:
-        "La Fondation Algorand et Paycode annoncent un partenariat pour étendre l'inclusion financière",
-      summary:
-        "La Fondation Algorand a annoncé aujourd'hui un nouveau partenariat stratégique avec Paycode, un leader mondial de la biométrie et du numérique hors ligne...",
-      category: "Partenariat",
-      date: "Il y a 2 jours",
-      author: "Paycode",
-      image:
-        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2232&q=80",
-      categoryColor: "bg-paycode-green",
-      url: "https://www.paycode.com/post/algorand-foundation-and-paycode-announce-partnership-to-expand-financial-inclusion",
-    },
-    {
-      title: "Privilégier les personnes : l'approche de Paycode pour l'assistance humanitaire en espèces",
-      summary:
-        "Alors que les besoins humanitaires atteignent des niveaux records et que le système d'aide subit des pressions pour fournir une assistance plus efficace...",
-      category: "Impact",
-      date: "Il y a 7 jours",
-      author: "Gabe Ruhan",
-      image:
-        "https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-      categoryColor: "bg-paycode-blue",
-    },
-    {
-      title: "Faire progresser l'identité numérique dans les zones reculées : une percée technologique",
-      summary:
-        "Les dernières innovations de Paycode en technologie biométrique hors ligne ouvrent de nouvelles possibilités pour la vérification d'identité dans les endroits les plus reculés du monde...",
-      category: "Technologie",
-      date: "Il y a 2 semaines",
-      author: "Ayanda Luthuli",
-      image:
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2372&q=80",
-      categoryColor: "bg-purple-500",
-    },
-    {
-      title: "Étape importante de l'inclusion financière : 500 000 utilisateurs ruraux connectés",
-      summary:
-        "Une étape importante a été franchie car la plateforme de Paycode a réussi à intégrer son 500 000e utilisateur rural dans les marchés africains...",
-      category: "Étape importante",
-      date: "Il y a 3 semaines",
-      author: "Sandy Begg",
-      image:
-        "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      categoryColor: "bg-orange-500",
-    },
-  ];
-
-  // Prioritize database articles over fallback articles, ensure minimum 4 articles
-  const combinedArticles = [...newsArticles, ...fallbackArticles];
-  const displayArticles = combinedArticles.slice(0, Math.max(4, combinedArticles.length));
+  // Only show database articles, no fallback articles
+  const displayArticles = newsArticles.filter(article => article.isPublished);
   
   // For slider: show 4 articles at a time
   const articlesPerSlide = 4;
@@ -276,10 +225,10 @@ export default function News() {
                   </DialogDescription>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <Badge className={`${getCategoryColor(selectedArticle.category)} text-white px-3 py-1 text-sm font-semibold`}>
+                      <Badge className="bg-blue-600 text-white px-3 py-1 text-sm font-semibold">
                         {selectedArticle.category}
                       </Badge>
-                      <div className="flex items-center text-sm text-gray-500">
+                      <div className="flex items-center text-sm text-gray-600">
                         <Calendar className="h-4 w-4 mr-1" />
                         <span>
                           {formatSafeDate(selectedArticle.publishedDate || selectedArticle.createdAt, "dd MMMM yyyy")}
@@ -303,17 +252,17 @@ export default function News() {
                 )}
 
                 <div className="space-y-4">
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-gray-700">
                     <User className="h-4 w-4 mr-2" />
                     <span>Par {selectedArticle.author}</span>
                   </div>
 
                   <div className="prose prose-gray max-w-none">
-                    <p className="text-lg text-gray-700 font-medium mb-4">
+                    <p className="text-lg text-gray-800 font-medium mb-4 bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
                       {selectedArticle.summary}
                     </p>
                     
-                    <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                    <div className="text-gray-800 leading-relaxed whitespace-pre-wrap text-base">
                       {selectedArticle.content}
                     </div>
                   </div>
