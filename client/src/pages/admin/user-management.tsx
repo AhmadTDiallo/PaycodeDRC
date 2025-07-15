@@ -125,12 +125,12 @@ export default function UserManagement() {
           <CardHeader className="bg-white border-b border-gray-200">
             <div className="flex justify-between items-center">
               <CardTitle className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <Users className="text-blue-600" size={24} />
+                <Users className="text-green-600" size={24} />
                 Administrator Accounts
               </CardTitle>
               <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2">
+                  <Button className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2">
                     <UserPlus size={16} />
                     Create Admin User
                   </Button>
@@ -151,7 +151,7 @@ export default function UserManagement() {
                             <FormControl>
                               <Input
                                 placeholder="Enter username"
-                                className="border-gray-300 focus:border-blue-500"
+                                className="border-gray-300 focus:border-green-500"
                                 {...field}
                                 disabled={createUserMutation.isPending}
                               />
@@ -171,7 +171,7 @@ export default function UserManagement() {
                               <Input
                                 type="email"
                                 placeholder="Enter email address"
-                                className="border-gray-300 focus:border-blue-500"
+                                className="border-gray-300 focus:border-green-500"
                                 {...field}
                                 disabled={createUserMutation.isPending}
                               />
@@ -191,7 +191,7 @@ export default function UserManagement() {
                               <Input
                                 type="password"
                                 placeholder="Enter password (min. 8 characters)"
-                                className="border-gray-300 focus:border-blue-500"
+                                className="border-gray-300 focus:border-green-500"
                                 {...field}
                                 disabled={createUserMutation.isPending}
                               />
@@ -209,7 +209,7 @@ export default function UserManagement() {
                             <FormLabel className="text-gray-800 font-medium">Role</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <SelectTrigger className="border-gray-300 focus:border-blue-500">
+                                <SelectTrigger className="border-gray-300 focus:border-green-500">
                                   <SelectValue placeholder="Select role" />
                                 </SelectTrigger>
                               </FormControl>
@@ -226,7 +226,7 @@ export default function UserManagement() {
                       <div className="flex gap-2 pt-4">
                         <Button
                           type="submit"
-                          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                          className="flex-1 bg-green-600 hover:bg-green-700 text-white"
                           disabled={createUserMutation.isPending}
                         >
                           {createUserMutation.isPending ? "Creating..." : "Create User"}
@@ -250,7 +250,7 @@ export default function UserManagement() {
           <CardContent className="p-0">
             {isLoading ? (
               <div className="p-8 text-center">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
                 <p className="text-gray-600 mt-2">Loading users...</p>
               </div>
             ) : (
