@@ -188,21 +188,22 @@ export default function AdminNewsForm() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Modern Admin Header */}
+      {/* Mobile-Friendly Admin Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 sm:py-0 sm:h-16 gap-4 sm:gap-0">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
               <Button
                 variant="ghost"
                 onClick={() => setLocation("/admin/news")}
-                className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full sm:w-auto justify-start"
+                size="sm"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span>Retour aux Articles</span>
               </Button>
-              <div className="h-6 w-px bg-gray-300"></div>
-              <h1 className="text-xl font-semibold text-gray-900">
+              <div className="hidden sm:block h-6 w-px bg-gray-300"></div>
+              <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
                 {isEdit ? "Modifier l'Article" : "Créer un Nouvel Article"}
               </h1>
             </div>
@@ -210,7 +211,8 @@ export default function AdminNewsForm() {
               type="submit"
               form="news-form"
               disabled={isPending}
-              className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-sm"
+              className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-sm w-full sm:w-auto"
+              size="sm"
             >
               <Save className="h-4 w-4" />
               <span>{isPending ? "Sauvegarde..." : "Sauvegarder l'Article"}</span>
@@ -219,28 +221,28 @@ export default function AdminNewsForm() {
         </div>
       </header>
 
-      {/* Modern Admin Content */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Mobile-Friendly Admin Content */}
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <Card className="shadow-md border-gray-200 bg-white">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
-            <CardTitle className="text-gray-900 font-semibold text-lg">
+          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 p-4 sm:p-6">
+            <CardTitle className="text-gray-900 font-semibold text-base sm:text-lg">
               Informations de l'Article
             </CardTitle>
-            <p className="text-gray-700 text-sm mt-1">
+            <p className="text-gray-700 text-xs sm:text-sm mt-1">
               {isEdit ? "Mettez à jour les détails de l'article ci-dessous" : "Remplissez le formulaire pour créer un nouvel article"}
             </p>
           </CardHeader>
-          <CardContent className="p-8 bg-white">
+          <CardContent className="p-4 sm:p-6 lg:p-8 bg-white">
             <Form {...form}>
-              <form id="news-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <form id="news-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8">
                 
                 {/* Basic Information Section */}
-                <div className="bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-300 rounded-xl p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
+                <div className="bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-300 rounded-xl p-4 sm:p-6 shadow-sm">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 border-b border-gray-300 pb-3 flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
                     Informations de Base
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                     <FormField
                       control={form.control}
                       name="title"

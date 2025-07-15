@@ -45,16 +45,16 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold text-gray-900">
+      <Card className="w-full max-w-md mx-4">
+        <CardHeader className="text-center px-4 sm:px-6">
+          <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900">
             Administration PAYCODE DRC
           </CardTitle>
-          <p className="text-gray-800 font-medium mt-2">
+          <p className="text-sm sm:text-base text-gray-800 font-medium mt-2">
             Connectez-vous pour accéder au panneau d'administration
           </p>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-4 sm:px-6">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -62,11 +62,11 @@ export default function AdminLogin() {
                 name="username"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-800 font-medium">Nom d'utilisateur</FormLabel>
+                    <FormLabel className="text-gray-800 font-medium text-sm sm:text-base">Nom d'utilisateur</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Entrez votre nom d'utilisateur"
-                        className="border-gray-300 focus:border-blue-500"
+                        className="border-gray-300 focus:border-blue-500 text-sm sm:text-base h-10 sm:h-11"
                         {...field}
                         disabled={isLoggingIn}
                       />
@@ -80,12 +80,12 @@ export default function AdminLogin() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-800 font-medium">Mot de passe</FormLabel>
+                    <FormLabel className="text-gray-800 font-medium text-sm sm:text-base">Mot de passe</FormLabel>
                     <FormControl>
                       <Input
                         type="password"
                         placeholder="Entrez votre mot de passe"
-                        className="border-gray-300 focus:border-blue-500"
+                        className="border-gray-300 focus:border-blue-500 text-sm sm:text-base h-10 sm:h-11"
                         {...field}
                         disabled={isLoggingIn}
                       />
@@ -96,7 +96,7 @@ export default function AdminLogin() {
               />
               <Button 
                 type="submit" 
-                className="w-full bg-blue-600 hover:bg-blue-700"
+                className="w-full bg-blue-600 hover:bg-blue-700 h-10 sm:h-11 text-sm sm:text-base"
                 disabled={isLoggingIn}
               >
                 {isLoggingIn ? "Connexion..." : "Se connecter"}
