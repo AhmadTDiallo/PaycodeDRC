@@ -101,15 +101,15 @@ export default function AdminNewsForm() {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
       queryClient.invalidateQueries({ queryKey: ["/api/news"] });
       toast({
-        title: "Article Created",
-        description: "The article has been created successfully",
+        title: "Article Créé",
+        description: "L'article a été créé avec succès",
       });
       setLocation("/admin/news");
     },
     onError: () => {
       toast({
-        title: "Error",
-        description: "Failed to create article",
+        title: "Erreur",
+        description: "Échec de la création de l'article",
         variant: "destructive",
       });
     },
@@ -124,15 +124,15 @@ export default function AdminNewsForm() {
       queryClient.invalidateQueries({ queryKey: [`/api/admin/news/${params.id}`] });
       queryClient.invalidateQueries({ queryKey: ["/api/news"] });
       toast({
-        title: "Article Updated",
-        description: "The article has been updated successfully",
+        title: "Article Mis à Jour",
+        description: "L'article a été mis à jour avec succès",
       });
       setLocation("/admin/news");
     },
     onError: () => {
       toast({
-        title: "Error",
-        description: "Failed to update article",
+        title: "Erreur",
+        description: "Échec de la mise à jour de l'article",
         variant: "destructive",
       });
     },
@@ -179,11 +179,11 @@ export default function AdminNewsForm() {
                 className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100"
               >
                 <ArrowLeft className="h-4 w-4" />
-                <span>Back to Articles</span>
+                <span>Retour aux Articles</span>
               </Button>
               <div className="h-6 w-px bg-gray-300"></div>
               <h1 className="text-xl font-semibold text-gray-900">
-                {isEdit ? "Edit Article" : "Create New Article"}
+                {isEdit ? "Modifier l'Article" : "Créer un Nouvel Article"}
               </h1>
             </div>
             <Button
@@ -193,7 +193,7 @@ export default function AdminNewsForm() {
               className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-sm"
             >
               <Save className="h-4 w-4" />
-              <span>{isPending ? "Saving..." : "Save Article"}</span>
+              <span>{isPending ? "Sauvegarde..." : "Sauvegarder l'Article"}</span>
             </Button>
           </div>
         </div>
@@ -204,10 +204,10 @@ export default function AdminNewsForm() {
         <Card className="shadow-md border-gray-200 bg-white">
           <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
             <CardTitle className="text-gray-900 font-semibold text-lg">
-              Article Information
+              Informations de l'Article
             </CardTitle>
             <p className="text-gray-700 text-sm mt-1">
-              {isEdit ? "Update the article details below" : "Fill out the form to create a new article"}
+              {isEdit ? "Mettez à jour les détails de l'article ci-dessous" : "Remplissez le formulaire pour créer un nouvel article"}
             </p>
           </CardHeader>
           <CardContent className="p-8 bg-white">
@@ -218,7 +218,7 @@ export default function AdminNewsForm() {
                 <div className="bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-300 rounded-xl p-6 shadow-sm">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                    Basic Information
+                    Informations de Base
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
@@ -226,10 +226,10 @@ export default function AdminNewsForm() {
                       name="title"
                       render={({ field }) => (
                         <FormItem className="md:col-span-2">
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Article Title *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Titre de l'Article *</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Enter the article title"
+                              placeholder="Entrez le titre de l'article"
                               className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11"
                               {...field}
                             />
@@ -244,11 +244,11 @@ export default function AdminNewsForm() {
                       name="category"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Category *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Catégorie *</FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
                               <SelectTrigger className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11">
-                                <SelectValue placeholder="Select a category" />
+                                <SelectValue placeholder="Sélectionnez une catégorie" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent className="bg-white border-gray-300">
@@ -269,10 +269,10 @@ export default function AdminNewsForm() {
                       name="author"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Author *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Auteur *</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Enter author name"
+                              placeholder="Entrez le nom de l'auteur"
                               className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11"
                               {...field}
                             />
@@ -288,7 +288,7 @@ export default function AdminNewsForm() {
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-gray-300 rounded-xl p-6 shadow-sm">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                    Article Content
+                    Contenu de l'Article
                   </h3>
                   <div className="space-y-6">
                     <FormField
@@ -296,10 +296,10 @@ export default function AdminNewsForm() {
                       name="summary"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Summary *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Résumé *</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Enter a brief summary of the article"
+                              placeholder="Entrez un bref résumé de l'article"
                               className="border-gray-300 focus:border-green-500 focus:ring-green-200 bg-white text-gray-900 min-h-[90px]"
                               {...field}
                             />
@@ -314,10 +314,10 @@ export default function AdminNewsForm() {
                       name="content"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Full Content *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Contenu Complet *</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Enter the full article content"
+                              placeholder="Entrez le contenu complet de l'article"
                               className="border-gray-300 focus:border-green-500 focus:ring-green-200 bg-white text-gray-900 min-h-[220px]"
                               {...field}
                             />
@@ -333,13 +333,13 @@ export default function AdminNewsForm() {
                 <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-gray-300 rounded-xl p-6 shadow-sm">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
                     <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                    Featured Image
+                    Image Principale
                   </h3>
                   <div className="space-y-6">
                     <div className="flex items-center space-x-4">
                       <div className="flex-1">
                         <label className="block text-sm font-semibold text-gray-800 mb-3">
-                          Upload Image from Computer
+                          Télécharger une Image depuis l'Ordinateur
                         </label>
                         <div className="flex items-center space-x-4">
                           <Button
@@ -349,7 +349,7 @@ export default function AdminNewsForm() {
                             className="border-gray-300 text-gray-800 hover:bg-purple-50 bg-white h-11 px-6"
                           >
                             <Upload className="h-4 w-4 mr-2" />
-                            Choose File
+                            Choisir un Fichier
                           </Button>
                           <input
                             id="image-upload"
@@ -362,7 +362,7 @@ export default function AdminNewsForm() {
                             }}
                           />
                           <span className="text-sm text-gray-700 font-medium">
-                            {selectedImage ? selectedImage.name : 'No file selected'}
+                            {selectedImage ? selectedImage.name : 'Aucun fichier sélectionné'}
                           </span>
                         </div>
                       </div>
@@ -371,7 +371,7 @@ export default function AdminNewsForm() {
                     {imagePreview && (
                       <div className="mt-6">
                         <label className="block text-sm font-semibold text-gray-800 mb-3">
-                          Image Preview
+                          Aperçu de l'Image
                         </label>
                         <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm">
                           <img
@@ -388,7 +388,7 @@ export default function AdminNewsForm() {
                       name="imageUrl"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Or Enter Image URL</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Ou Entrez l'URL de l'Image</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="https://example.com/image.jpg"
@@ -413,7 +413,7 @@ export default function AdminNewsForm() {
                 <div className="bg-gradient-to-r from-orange-50 to-yellow-50 border border-gray-300 rounded-xl p-6 shadow-sm">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-                    Publishing Options
+                    Options de Publication
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
@@ -421,7 +421,7 @@ export default function AdminNewsForm() {
                       name="publishedDate"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Publication Date</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm">Date de Publication</FormLabel>
                           <FormControl>
                             <div className="relative">
                               <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
@@ -450,7 +450,7 @@ export default function AdminNewsForm() {
                             />
                           </FormControl>
                           <FormLabel className="text-gray-800 font-semibold text-sm">
-                            Publish immediately
+                            Publier immédiatement
                           </FormLabel>
                         </FormItem>
                       )}
