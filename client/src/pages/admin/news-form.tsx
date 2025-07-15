@@ -13,8 +13,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Save } from "lucide-react";
+import { ArrowLeft, Save, Upload, Calendar } from "lucide-react";
 import { insertNewsArticleSchema, type InsertNewsArticle } from "@shared/schema";
+import { z } from "zod";
 
 const categories = [
   "Actualités",
@@ -32,14 +33,18 @@ export default function AdminNewsForm() {
   const { isAuthenticated, isLoading: authLoading } = useAdminAuth();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const { data: articleResponse } = useQuery({
     queryKey: [`/api/admin/news/${params.id}`],
     enabled: isEdit && isAuthenticated,
   });
 
-  const form = useForm<InsertNewsArticle>({
-    resolver: zodResolver(insertNewsArticleSchema),
+  const form = useForm<InsertNewsArticle & { publishedDate?: string }>({
+    resolver: zodResolver(insertNewsArticleSchema.extend({
+      publishedDate: z.string().optional()
+    })),
     defaultValues: {
       title: "",
       summary: "",
@@ -48,6 +53,7 @@ export default function AdminNewsForm() {
       author: "",
       imageUrl: "",
       isPublished: false,
+      publishedDate: new Date().toISOString().split('T')[0],
     },
   });
 
@@ -60,6 +66,7 @@ export default function AdminNewsForm() {
   useEffect(() => {
     if (articleResponse?.data) {
       const article = articleResponse.data;
+      const publishedDate = article.publishedDate ? new Date(article.publishedDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
       form.reset({
         title: article.title,
         summary: article.summary,
@@ -68,9 +75,23 @@ export default function AdminNewsForm() {
         author: article.author,
         imageUrl: article.imageUrl || "",
         isPublished: article.isPublished,
+        publishedDate: publishedDate,
       });
+      if (article.imageUrl) {
+        setImagePreview(article.imageUrl);
+      }
     }
   }, [articleResponse, form]);
+
+  const handleImageUpload = (file: File) => {
+    setSelectedImage(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result as string);
+      form.setValue('imageUrl', reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
 
   const createMutation = useMutation({
     mutationFn: async (data: InsertNewsArticle) => {
@@ -78,7 +99,7 @@ export default function AdminNewsForm() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/news"] }); // Invalidate public news cache
+      queryClient.invalidateQueries({ queryKey: ["/api/news"] });
       toast({
         title: "Article Created",
         description: "The article has been created successfully",
@@ -87,8 +108,8 @@ export default function AdminNewsForm() {
     },
     onError: () => {
       toast({
-        title: "Erreur",
-        description: "Impossible de créer l'article",
+        title: "Error",
+        description: "Failed to create article",
         variant: "destructive",
       });
     },
@@ -101,7 +122,7 @@ export default function AdminNewsForm() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
       queryClient.invalidateQueries({ queryKey: [`/api/admin/news/${params.id}`] });
-      queryClient.invalidateQueries({ queryKey: ["/api/news"] }); // Invalidate public news cache
+      queryClient.invalidateQueries({ queryKey: ["/api/news"] });
       toast({
         title: "Article Updated",
         description: "The article has been updated successfully",
@@ -110,8 +131,8 @@ export default function AdminNewsForm() {
     },
     onError: () => {
       toast({
-        title: "Erreur",
-        description: "Impossible de modifier l'article",
+        title: "Error",
+        description: "Failed to update article",
         variant: "destructive",
       });
     },
@@ -120,7 +141,7 @@ export default function AdminNewsForm() {
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Chargement...</div>
+        <div className="text-lg">Loading...</div>
       </div>
     );
   }
@@ -129,194 +150,308 @@ export default function AdminNewsForm() {
     return null;
   }
 
-  const onSubmit = (data: InsertNewsArticle) => {
+  const onSubmit = (data: InsertNewsArticle & { publishedDate?: string }) => {
+    const { publishedDate, ...articleData } = data;
+    const finalData = {
+      ...articleData,
+      publishedDate: publishedDate ? new Date(publishedDate) : new Date(),
+    };
+    
     if (isEdit) {
-      updateMutation.mutate(data);
+      updateMutation.mutate(finalData);
     } else {
-      createMutation.mutate(data);
+      createMutation.mutate(finalData);
     }
   };
 
   const isPending = createMutation.isPending || updateMutation.isPending;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+    <div className="min-h-screen bg-slate-50">
+      {/* Professional CRM Header */}
+      <header className="bg-white shadow-sm border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
               <Button
                 variant="ghost"
                 onClick={() => setLocation("/admin/news")}
-                className="flex items-center space-x-2"
+                className="flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100"
               >
                 <ArrowLeft className="h-4 w-4" />
-                <span>Retour</span>
+                <span>Back to Articles</span>
               </Button>
-              <h1 className="text-xl font-semibold text-gray-900">
-                {isEdit ? "Modifier l'article" : "Nouvel article"}
+              <div className="h-6 w-px bg-slate-300"></div>
+              <h1 className="text-xl font-semibold text-slate-900">
+                {isEdit ? "Edit Article" : "Create New Article"}
               </h1>
             </div>
             <Button
               type="submit"
               form="news-form"
               disabled={isPending}
-              className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700"
+              className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
             >
               <Save className="h-4 w-4" />
-              <span>{isPending ? "Enregistrement..." : "Enregistrer"}</span>
+              <span>{isPending ? "Saving..." : "Save Article"}</span>
             </Button>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>
-              {isEdit ? "Modifier l'article" : "Créer un nouvel article"}
+      {/* Professional CRM Content */}
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Card className="shadow-sm border-slate-200">
+          <CardHeader className="bg-slate-50 border-b border-slate-200">
+            <CardTitle className="text-slate-900 font-medium">
+              Article Information
             </CardTitle>
+            <p className="text-slate-600 text-sm mt-1">
+              {isEdit ? "Update the article details below" : "Fill out the form to create a new article"}
+            </p>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-6">
             <Form {...form}>
-              <form id="news-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="title"
-                    render={({ field }) => (
-                      <FormItem className="md:col-span-2">
-                        <FormLabel>Titre *</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Entrez le titre de l'article"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="category"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Catégorie *</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
+              <form id="news-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                
+                {/* Basic Information Section */}
+                <div className="bg-white border border-slate-200 rounded-lg p-6">
+                  <h3 className="text-lg font-medium text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                    Basic Information
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="title"
+                      render={({ field }) => (
+                        <FormItem className="md:col-span-2">
+                          <FormLabel className="text-slate-700 font-medium">Article Title *</FormLabel>
                           <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Sélectionnez une catégorie" />
-                            </SelectTrigger>
+                            <Input
+                              placeholder="Enter the article title"
+                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                              {...field}
+                            />
                           </FormControl>
-                          <SelectContent>
-                            {categories.map((category) => (
-                              <SelectItem key={category} value={category}>
-                                {category}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                          <FormMessage className="text-red-600" />
+                        </FormItem>
+                      )}
+                    />
 
-                  <FormField
-                    control={form.control}
-                    name="author"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Auteur *</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Nom de l'auteur"
-                            {...field}
+                    <FormField
+                      control={form.control}
+                      name="category"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700 font-medium">Category *</FormLabel>
+                          <Select onValueChange={field.onChange} value={field.value}>
+                            <FormControl>
+                              <SelectTrigger className="border-slate-300 focus:border-blue-500 focus:ring-blue-500">
+                                <SelectValue placeholder="Select a category" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {categories.map((category) => (
+                                <SelectItem key={category} value={category}>
+                                  {category}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage className="text-red-600" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="author"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700 font-medium">Author *</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter author name"
+                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-600" />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="bg-white border border-slate-200 rounded-lg p-6">
+                  <h3 className="text-lg font-medium text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                    Article Content
+                  </h3>
+                  <div className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="summary"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700 font-medium">Summary *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Enter a brief summary of the article"
+                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500 min-h-[80px]"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-600" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="content"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700 font-medium">Full Content *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Enter the full article content"
+                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500 min-h-[200px]"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-600" />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </div>
+
+                {/* Media Section */}
+                <div className="bg-white border border-slate-200 rounded-lg p-6">
+                  <h3 className="text-lg font-medium text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                    Featured Image
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex-1">
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                          Upload Image
+                        </label>
+                        <div className="flex items-center space-x-3">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => document.getElementById('image-upload')?.click()}
+                            className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                          >
+                            <Upload className="h-4 w-4 mr-2" />
+                            Choose File
+                          </Button>
+                          <input
+                            id="image-upload"
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) handleImageUpload(file);
+                            }}
                           />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="imageUrl"
-                    render={({ field }) => (
-                      <FormItem className="md:col-span-2">
-                        <FormLabel>URL de l'image</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="https://exemple.com/image.jpg"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="summary"
-                    render={({ field }) => (
-                      <FormItem className="md:col-span-2">
-                        <FormLabel>Résumé *</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Entrez un résumé de l'article"
-                            className="min-h-[100px]"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="content"
-                    render={({ field }) => (
-                      <FormItem className="md:col-span-2">
-                        <FormLabel>Contenu *</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Entrez le contenu complet de l'article"
-                            className="min-h-[300px]"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="isPublished"
-                    render={({ field }) => (
-                      <FormItem className="flex items-center justify-between rounded-lg border p-4">
-                        <div className="space-y-0.5">
-                          <FormLabel className="text-base">
-                            Publier l'article
-                          </FormLabel>
-                          <div className="text-sm text-gray-600">
-                            L'article sera visible sur le site web
-                          </div>
+                          <span className="text-sm text-slate-500">
+                            {selectedImage ? selectedImage.name : 'No file selected'}
+                          </span>
                         </div>
-                        <FormControl>
-                          <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
+                      </div>
+                    </div>
+                    
+                    {imagePreview && (
+                      <div className="mt-4">
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                          Preview
+                        </label>
+                        <div className="border border-slate-300 rounded-lg p-2 bg-slate-50">
+                          <img
+                            src={imagePreview}
+                            alt="Preview"
+                            className="h-32 w-auto object-cover rounded"
                           />
-                        </FormControl>
-                      </FormItem>
+                        </div>
+                      </div>
                     )}
-                  />
+                    
+                    <FormField
+                      control={form.control}
+                      name="imageUrl"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700 font-medium">Or Enter Image URL</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="https://example.com/image.jpg"
+                              className="border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                              {...field}
+                              onChange={(e) => {
+                                field.onChange(e);
+                                if (e.target.value) {
+                                  setImagePreview(e.target.value);
+                                }
+                              }}
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-600" />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </div>
+
+                {/* Publishing Section */}
+                <div className="bg-white border border-slate-200 rounded-lg p-6">
+                  <h3 className="text-lg font-medium text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                    Publishing Options
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="publishedDate"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700 font-medium">Publication Date</FormLabel>
+                          <FormControl>
+                            <div className="relative">
+                              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                              <Input
+                                type="date"
+                                className="border-slate-300 focus:border-blue-500 focus:ring-blue-500 pl-10"
+                                {...field}
+                              />
+                            </div>
+                          </FormControl>
+                          <FormMessage className="text-red-600" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="isPublished"
+                      render={({ field }) => (
+                        <FormItem className="flex items-center space-x-3 space-y-0 pt-6">
+                          <FormControl>
+                            <Switch
+                              checked={field.value}
+                              onCheckedChange={field.onChange}
+                              className="data-[state=checked]:bg-blue-600"
+                            />
+                          </FormControl>
+                          <FormLabel className="text-slate-700 font-medium">
+                            Publish immediately
+                          </FormLabel>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
               </form>
             </Form>
