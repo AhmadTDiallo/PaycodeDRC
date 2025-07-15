@@ -37,35 +37,35 @@ export default function Team() {
   ];
 
   return (
-    <section id="team" className="py-12 md:py-16 bg-secondary overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="team" className="py-8 md:py-12 bg-secondary overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-10 md:mb-12"
+          className="text-center mb-6 md:mb-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3 md:mb-4">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-2 md:mb-3">
             {t("team.title")}
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
             {t("team.subtitle")}
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-col md:flex-row gap-6 md:gap-8 md:overflow-x-auto"
+          className="flex flex-col md:flex-row gap-4 md:gap-6 md:overflow-x-auto"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
           {teamMembers.map((member, index) => (
-            <motion.div key={index} variants={fadeInUp} className="group w-full md:min-w-[280px] md:flex-1">
-              <Card className="bg-card shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden h-full">
+            <motion.div key={index} variants={fadeInUp} className="group w-full md:min-w-[260px] md:flex-1">
+              <Card className="bg-card shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01] overflow-hidden h-full">
                 <div
-                  className="h-64 md:h-80 bg-cover bg-center bg-no-repeat"
+                  className="h-48 md:h-56 bg-cover bg-center bg-no-repeat"
                   style={{
                     backgroundImage: `url(${member.image})`,
                     backgroundPosition:
@@ -76,24 +76,24 @@ export default function Team() {
                         : "center"
                   }}
                 />
-                <CardContent className="p-4 md:p-6">
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-1 text-center">
+                <CardContent className="p-3 md:p-4">
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-1 text-center">
                     {member.name}
                   </h3>
-                  <p className="text-paycode-blue-accent font-semibold mb-3 text-center text-sm md:text-base">
+                  <p className="text-paycode-blue-accent font-semibold mb-2 text-center text-xs md:text-sm">
                     {member.position}
                   </p>
-                  <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-4 line-clamp-4 md:line-clamp-none">
+                  <p className="text-muted-foreground text-xs leading-relaxed mb-3 line-clamp-3">
                     {member.description}
                   </p>
                   <div className="flex justify-center">
                     <Button
                       size="sm"
                       variant="ghost"
-                      className="text-paycode-blue hover:text-paycode-blue-accent hover:bg-paycode-blue/10 p-2"
+                      className="text-paycode-blue hover:text-paycode-blue-accent hover:bg-paycode-blue/10 p-1.5"
                       onClick={() => window.open(member.linkedin, "_blank")}
                     >
-                      <Linkedin className="h-4 w-4 md:h-5 md:w-5" />
+                      <Linkedin className="h-3 w-3 md:h-4 md:w-4" />
                     </Button>
                   </div>
                 </CardContent>
