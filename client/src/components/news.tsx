@@ -94,29 +94,29 @@ export default function News() {
   };
 
   return (
-    <section id="news" className="py-20 bg-card">
+    <section id="news" className="py-12 bg-card">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">{t("news.title")}</h2>
-          <p className="text-xl text-muted-foreground">
-            {t("news.subtitle")}
+          <h2 className="text-3xl font-bold text-foreground mb-3">Actualités et événements</h2>
+          <p className="text-lg text-muted-foreground">
+            Restez informé de nos dernières nouvelles et développements
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {displayArticles.map((article, index) => {
+          {displayArticles.slice(0, 4).map((article, index) => {
             const isDbArticle = 'id' in article;
             const displayImage = isDbArticle ? article.imageUrl : article.image;
             const displayDate = isDbArticle 
@@ -129,35 +129,39 @@ export default function News() {
             return (
               <motion.div key={isDbArticle ? article.id : index} variants={fadeInUp} className="group">
                 <Card 
-                  className="bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-black-100 h-full cursor-pointer"
+                  className="bg-white shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 h-full cursor-pointer flex"
                   onClick={() => handleArticleClick(isDbArticle ? undefined : article.url)}
                 >
                   {displayImage && (
-                    <div
-                      className="h-48 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${displayImage})` }}
-                    />
-                  )}
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-3">
-                      <Badge
-                        className={`${categoryColor} text-white px-3 py-1 text-xs font-semibold mr-3`}
-                      >
-                        {article.category}
-                      </Badge>
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        <span>{displayDate}</span>
-                      </div>
+                    <div className="w-24 h-24 flex-shrink-0">
+                      <div
+                        className="w-full h-full bg-cover bg-center"
+                        style={{ backgroundImage: `url(${displayImage})` }}
+                      />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-paycode-blue transition-colors">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
-                      {article.summary}
-                    </p>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <User className="h-4 w-4 mr-1" />
+                  )}
+                  <CardContent className="p-4 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge
+                          className={`${categoryColor} text-white px-2 py-1 text-xs font-semibold`}
+                        >
+                          {article.category}
+                        </Badge>
+                        <div className="flex items-center text-xs text-gray-500">
+                          <Calendar className="h-3 w-3 mr-1" />
+                          <span>{displayDate}</span>
+                        </div>
+                      </div>
+                      <h3 className="text-sm font-bold text-gray-900 mb-2 group-hover:text-paycode-blue transition-colors line-clamp-2">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-600 mb-2 text-xs line-clamp-2">
+                        {article.summary}
+                      </p>
+                    </div>
+                    <div className="flex items-center text-xs text-gray-500">
+                      <User className="h-3 w-3 mr-1" />
                       <span>Par {article.author}</span>
                     </div>
                   </CardContent>
@@ -168,14 +172,14 @@ export default function News() {
         </motion.div>
 
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <button className="text-paycode-blue hover:text-paycode-blue-accent font-semibold transition-colors duration-200">
-            View All News →
+          <button className="text-paycode-blue hover:text-paycode-blue-accent font-semibold transition-colors duration-200 text-sm">
+            Voir toutes les actualités →
           </button>
         </motion.div>
       </div>
