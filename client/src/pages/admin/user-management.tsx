@@ -43,10 +43,20 @@ export default function UserManagement() {
   // Create user mutation
   const createUserMutation = useMutation({
     mutationFn: async (data: InsertAdminUser) => {
-      return await apiRequest("/api/admin/users", {
+      const response = await fetch("/api/admin/users", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to create admin user");
+      }
+      
+      return await response.json();
     },
     onSuccess: () => {
       toast({
@@ -120,9 +130,9 @@ export default function UserManagement() {
 
   const getRoleBadge = (role: string) => {
     if (role === "superadmin") {
-      return <Badge variant="destructive" className="gap-1"><Shield size={12} />Super Admin</Badge>;
+      return <Badge variant="destructive" className="gap-1"><Shield size={12} />Super Administrateur</Badge>;
     }
-    return <Badge variant="secondary" className="gap-1"><User size={12} />Admin</Badge>;
+    return <Badge variant="secondary" className="gap-1"><User size={12} />Administrateur</Badge>;
   };
 
   return (
@@ -148,18 +158,18 @@ export default function UserManagement() {
             <div className="flex justify-between items-center">
               <CardTitle className="text-xl font-bold text-gray-900 flex items-center gap-2">
                 <Users className="text-green-600" size={24} />
-                Administrator Accounts
+                Comptes Administrateurs
               </CardTitle>
               <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
                 <DialogTrigger asChild>
                   <Button className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-2">
                     <UserPlus size={16} />
-                    Create Admin User
+                    Créer un Administrateur
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-md">
                   <DialogHeader>
-                    <DialogTitle className="text-xl font-bold text-gray-900">Create New Admin User</DialogTitle>
+                    <DialogTitle className="text-xl font-bold text-gray-900">Créer un Nouvel Administrateur</DialogTitle>
                   </DialogHeader>
                   
                   <Form {...form}>
@@ -169,10 +179,10 @@ export default function UserManagement() {
                         name="username"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-800 font-medium">Username</FormLabel>
+                            <FormLabel className="text-gray-800 font-medium">Nom d'utilisateur</FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="Enter username"
+                                placeholder="Entrez le nom d'utilisateur"
                                 className="border-gray-300 focus:border-green-500"
                                 {...field}
                                 disabled={createUserMutation.isPending}
@@ -192,7 +202,7 @@ export default function UserManagement() {
                             <FormControl>
                               <Input
                                 type="email"
-                                placeholder="Enter email address"
+                                placeholder="Entrez l'adresse email"
                                 className="border-gray-300 focus:border-green-500"
                                 {...field}
                                 disabled={createUserMutation.isPending}
@@ -208,11 +218,11 @@ export default function UserManagement() {
                         name="password"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-800 font-medium">Password</FormLabel>
+                            <FormLabel className="text-gray-800 font-medium">Mot de passe</FormLabel>
                             <FormControl>
                               <Input
                                 type="password"
-                                placeholder="Enter password (min. 8 characters)"
+                                placeholder="Entrez le mot de passe (min. 8 caractères)"
                                 className="border-gray-300 focus:border-green-500"
                                 {...field}
                                 disabled={createUserMutation.isPending}
@@ -228,16 +238,16 @@ export default function UserManagement() {
                         name="role"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-800 font-medium">Role</FormLabel>
+                            <FormLabel className="text-gray-800 font-medium">Rôle</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
                                 <SelectTrigger className="border-gray-300 focus:border-green-500">
-                                  <SelectValue placeholder="Select role" />
+                                  <SelectValue placeholder="Sélectionner le rôle" />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                <SelectItem value="admin">Admin</SelectItem>
-                                <SelectItem value="superadmin">Super Admin</SelectItem>
+                                <SelectItem value="admin">Administrateur</SelectItem>
+                                <SelectItem value="superadmin">Super Administrateur</SelectItem>
                               </SelectContent>
                             </Select>
                             <FormMessage />
@@ -251,7 +261,7 @@ export default function UserManagement() {
                           className="flex-1 bg-green-600 hover:bg-green-700 text-white"
                           disabled={createUserMutation.isPending}
                         >
-                          {createUserMutation.isPending ? "Creating..." : "Create User"}
+                          {createUserMutation.isPending ? "Création..." : "Créer l'Utilisateur"}
                         </Button>
                         <Button
                           type="button"
@@ -259,7 +269,7 @@ export default function UserManagement() {
                           onClick={() => setIsCreateDialogOpen(false)}
                           disabled={createUserMutation.isPending}
                         >
-                          Cancel
+                          Annuler
                         </Button>
                       </div>
                     </form>
@@ -273,17 +283,17 @@ export default function UserManagement() {
             {isLoading ? (
               <div className="p-8 text-center">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
-                <p className="text-gray-600 mt-2">Loading users...</p>
+                <p className="text-gray-600 mt-2">Chargement des utilisateurs...</p>
               </div>
             ) : (
               <Table>
                 <TableHeader>
                   <TableRow className="bg-gray-50">
-                    <TableHead className="font-semibold text-gray-900">Username</TableHead>
+                    <TableHead className="font-semibold text-gray-900">Nom d'utilisateur</TableHead>
                     <TableHead className="font-semibold text-gray-900">Email</TableHead>
-                    <TableHead className="font-semibold text-gray-900">Role</TableHead>
-                    <TableHead className="font-semibold text-gray-900">Status</TableHead>
-                    <TableHead className="font-semibold text-gray-900">Created</TableHead>
+                    <TableHead className="font-semibold text-gray-900">Rôle</TableHead>
+                    <TableHead className="font-semibold text-gray-900">Statut</TableHead>
+                    <TableHead className="font-semibold text-gray-900">Créé</TableHead>
                     <TableHead className="font-semibold text-gray-900">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -295,7 +305,7 @@ export default function UserManagement() {
                       <TableCell>{getRoleBadge(user.role)}</TableCell>
                       <TableCell>
                         <Badge variant={user.isActive ? "default" : "secondary"}>
-                          {user.isActive ? "Active" : "Inactive"}
+                          {user.isActive ? "Actif" : "Inactif"}
                         </Badge>
                       </TableCell>
                       <TableCell className="text-gray-600">
@@ -321,7 +331,7 @@ export default function UserManagement() {
                   {users.length === 0 && (
                     <TableRow>
                       <TableCell colSpan={6} className="text-center py-8 text-gray-500">
-                        No admin users found
+                        Aucun utilisateur administrateur trouvé
                       </TableCell>
                     </TableRow>
                   )}
