@@ -252,17 +252,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/admin/news", requireAdmin, async (req, res) => {
     try {
+      console.log("Raw request body:", JSON.stringify(req.body, null, 2));
+      
       // Convert publishedDate string to Date object before validation
       const requestData = {
         ...req.body,
-        publishedDate: req.body.publishedDate ? new Date(req.body.publishedDate) : new Date()
+        publishedDate: req.body.publishedDate ? new Date(req.body.publishedDate) : new Date(),
+        // Ensure imageUrl is a string, even if empty
+        imageUrl: req.body.imageUrl || ""
       };
+      
+      console.log("Processed request data:", JSON.stringify(requestData, null, 2));
       
       const validatedData = insertNewsArticleSchema.parse(requestData);
       const article = await storage.createNewsArticle(validatedData);
       res.json({ success: true, data: article });
     } catch (error) {
       if (error instanceof z.ZodError) {
+        console.error("Validation errors:", error.errors);
         res.status(400).json({ success: false, message: "Validation failed", errors: error.errors });
       } else {
         console.error("Error creating article:", error);

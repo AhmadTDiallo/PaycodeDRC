@@ -41,10 +41,20 @@ export default function AdminNewsForm() {
     enabled: isEdit && isAuthenticated,
   });
 
-  const form = useForm<InsertNewsArticle & { publishedDate?: string }>({
-    resolver: zodResolver(insertNewsArticleSchema.extend({
-      publishedDate: z.string().optional()
-    })),
+  // Create a simplified form schema for client-side validation
+  const clientFormSchema = z.object({
+    title: z.string().min(1, "Titre requis"),
+    summary: z.string().min(1, "Résumé requis"),
+    content: z.string().min(1, "Contenu requis"),
+    category: z.string().min(1, "Catégorie requise"),
+    author: z.string().min(1, "Auteur requis"),
+    imageUrl: z.string().optional(),
+    isPublished: z.boolean().default(false),
+    publishedDate: z.string().optional(),
+  });
+
+  const form = useForm({
+    resolver: zodResolver(clientFormSchema),
     defaultValues: {
       title: "",
       summary: "",
@@ -94,7 +104,7 @@ export default function AdminNewsForm() {
   };
 
   const createMutation = useMutation({
-    mutationFn: async (data: InsertNewsArticle) => {
+    mutationFn: async (data: any) => {
       return await apiRequest('POST', '/api/admin/news', data);
     },
     onSuccess: () => {
@@ -117,7 +127,7 @@ export default function AdminNewsForm() {
   });
 
   const updateMutation = useMutation({
-    mutationFn: async (data: InsertNewsArticle) => {
+    mutationFn: async (data: any) => {
       return await apiRequest('PUT', `/api/admin/news/${params.id}`, data);
     },
     onSuccess: () => {
@@ -153,20 +163,16 @@ export default function AdminNewsForm() {
   }
 
   const onSubmit = (data: InsertNewsArticle & { publishedDate?: string }) => {
-    const { publishedDate, ...articleData } = data;
-    
-    // Convert string date to Date object, or use current date if not provided
-    let dateToUse: Date;
-    if (publishedDate) {
-      dateToUse = new Date(publishedDate);
-    } else {
-      dateToUse = new Date();
-    }
-    
+    // Send the date as a string, let server handle conversion
     const finalData = {
-      ...articleData,
-      publishedDate: dateToUse,
-      imageUrl: data.imageUrl || "", // Ensure imageUrl is always a string
+      title: data.title || "",
+      summary: data.summary || "",
+      content: data.content || "",
+      category: data.category || "",
+      author: data.author || "",
+      imageUrl: data.imageUrl || "",
+      isPublished: data.isPublished || false,
+      publishedDate: data.publishedDate || new Date().toISOString().split('T')[0],
     };
     
     console.log("Submitting article data:", finalData); // Debug log
