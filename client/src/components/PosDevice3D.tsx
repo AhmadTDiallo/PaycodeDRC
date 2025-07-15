@@ -21,11 +21,11 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
       75,
-      400 / 300,
+      500 / 400,
       0.1,
       1000
     );
-    camera.position.set(0, 2, 5);
+    camera.position.set(0, 3, 8);
     camera.lookAt(0, 0, 0);
 
     // Renderer setup
@@ -33,8 +33,8 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
       antialias: true, 
       alpha: true 
     });
-    renderer.setSize(400, 300);
-    renderer.setClearColor(0x000000, 0);
+    renderer.setSize(500, 400);
+    renderer.setClearColor(0x000000, 0); // Transparent background
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     rendererRef.current = renderer;
@@ -42,65 +42,62 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     mountRef.current.appendChild(renderer.domElement);
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
     scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
     directionalLight.position.set(5, 10, 5);
     directionalLight.castShadow = true;
     directionalLight.shadow.mapSize.width = 2048;
     directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
 
-    // Create POS Device
-    const group = new THREE.Group();
+    // Create handheld POS device
+    const posGroup = new THREE.Group();
 
-    // Base (main body)
-    const baseGeometry = new THREE.BoxGeometry(2, 0.3, 1.5);
-    const baseMaterial = new THREE.MeshPhongMaterial({ 
+    // Main body (handheld design)
+    const bodyGeometry = new THREE.BoxGeometry(1.2, 3, 0.5);
+    const bodyMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x2c3e50,
-      shininess: 30 
+      shininess: 50 
     });
-    const base = new THREE.Mesh(baseGeometry, baseMaterial);
-    base.position.y = 0.15;
-    base.castShadow = true;
-    base.receiveShadow = true;
-    group.add(base);
+    const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+    body.position.y = 0;
+    body.castShadow = true;
+    posGroup.add(body);
 
-    // Screen
-    const screenGeometry = new THREE.BoxGeometry(1.6, 1, 0.1);
+    // Screen (small LCD display)
+    const screenGeometry = new THREE.BoxGeometry(1, 0.6, 0.05);
     const screenMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x1a1a1a 
     });
     const screen = new THREE.Mesh(screenGeometry, screenMaterial);
-    screen.position.set(0, 0.8, 0.7);
-    screen.rotation.x = -0.2;
+    screen.position.set(0, 0.8, 0.25);
     screen.castShadow = true;
-    group.add(screen);
+    posGroup.add(screen);
 
-    // Screen display (glowing effect)
-    const displayGeometry = new THREE.PlaneGeometry(1.4, 0.8);
+    // Screen display (glowing blue)
+    const displayGeometry = new THREE.PlaneGeometry(0.8, 0.4);
     const displayMaterial = new THREE.MeshBasicMaterial({ 
       color: 0x3498db,
       transparent: true,
-      opacity: 0.8
+      opacity: 0.9
     });
     const display = new THREE.Mesh(displayGeometry, displayMaterial);
-    display.position.set(0, 0.8, 0.76);
-    display.rotation.x = -0.2;
-    group.add(display);
+    display.position.set(0, 0.8, 0.276);
+    posGroup.add(display);
 
-    // Keypad
-    const keypadGeometry = new THREE.BoxGeometry(1.2, 0.8, 0.05);
+    // Keypad area
+    const keypadGeometry = new THREE.BoxGeometry(1, 1.2, 0.05);
     const keypadMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x34495e 
     });
     const keypad = new THREE.Mesh(keypadGeometry, keypadMaterial);
-    keypad.position.set(0, 0.325, 0.4);
+    keypad.position.set(0, 0, 0.25);
     keypad.castShadow = true;
-    group.add(keypad);
+    posGroup.add(keypad);
 
-    // Individual keys
+    // Individual keys (4x3 layout)
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 3; j++) {
         const keyGeometry = new THREE.BoxGeometry(0.15, 0.15, 0.02);
@@ -109,67 +106,103 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
         });
         const key = new THREE.Mesh(keyGeometry, keyMaterial);
         key.position.set(
-          -0.3 + j * 0.3,
-          0.45 - i * 0.15,
-          0.43
+          -0.25 + j * 0.25,
+          0.25 - i * 0.2,
+          0.26
         );
         key.castShadow = true;
-        group.add(key);
+        posGroup.add(key);
       }
     }
 
-    // Card slot
+    // Card slot at the bottom
     const slotGeometry = new THREE.BoxGeometry(0.8, 0.05, 0.1);
     const slotMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x1a1a1a 
     });
     const slot = new THREE.Mesh(slotGeometry, slotMaterial);
-    slot.position.set(0, 0.32, 0.75);
-    group.add(slot);
+    slot.position.set(0, -1.2, 0.25);
+    posGroup.add(slot);
 
-    // Receipt printer
-    const printerGeometry = new THREE.BoxGeometry(0.4, 0.2, 0.2);
-    const printerMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x2c3e50 
-    });
-    const printer = new THREE.Mesh(printerGeometry, printerMaterial);
-    printer.position.set(0.8, 0.4, 0);
-    printer.castShadow = true;
-    group.add(printer);
-
-    // Add PayCode logo simulation (blue accent)
-    const logoGeometry = new THREE.CircleGeometry(0.1, 16);
+    // PayCode logo
+    const logoGeometry = new THREE.CircleGeometry(0.08, 16);
     const logoMaterial = new THREE.MeshBasicMaterial({ 
       color: 0x3498db 
     });
     const logo = new THREE.Mesh(logoGeometry, logoMaterial);
-    logo.position.set(0.6, 0.32, 0.31);
-    logo.rotation.x = -Math.PI / 2;
-    group.add(logo);
+    logo.position.set(0, 0.3, 0.26);
+    posGroup.add(logo);
 
-    // Add the group to scene
-    scene.add(group);
+    // Position the POS device
+    posGroup.position.set(-2, 0, 0);
+    posGroup.rotation.y = 0.3;
+    scene.add(posGroup);
 
-    // Ground plane for shadows
-    const groundGeometry = new THREE.PlaneGeometry(10, 10);
-    const groundMaterial = new THREE.ShadowMaterial({ 
-      opacity: 0.3 
+    // Create 3D Credit Card
+    const cardGroup = new THREE.Group();
+
+    // Card body
+    const cardGeometry = new THREE.BoxGeometry(2.1, 1.3, 0.05);
+    const cardMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0x1e3a8a,
+      shininess: 80 
     });
-    const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-    ground.rotation.x = -Math.PI / 2;
-    ground.position.y = -0.1;
-    ground.receiveShadow = true;
-    scene.add(ground);
+    const card = new THREE.Mesh(cardGeometry, cardMaterial);
+    card.castShadow = true;
+    cardGroup.add(card);
+
+    // Card chip
+    const chipGeometry = new THREE.BoxGeometry(0.3, 0.25, 0.02);
+    const chipMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0xffd700,
+      shininess: 100 
+    });
+    const chip = new THREE.Mesh(chipGeometry, chipMaterial);
+    chip.position.set(-0.6, 0.2, 0.026);
+    cardGroup.add(chip);
+
+    // Card stripe
+    const stripeGeometry = new THREE.BoxGeometry(2.1, 0.15, 0.001);
+    const stripeMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0x000000 
+    });
+    const stripe = new THREE.Mesh(stripeGeometry, stripeMaterial);
+    stripe.position.set(0, -0.2, -0.026);
+    cardGroup.add(stripe);
+
+    // Card number simulation (white rectangles)
+    for (let i = 0; i < 4; i++) {
+      const numberGeometry = new THREE.BoxGeometry(0.3, 0.08, 0.001);
+      const numberMaterial = new THREE.MeshBasicMaterial({ 
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.8
+      });
+      const number = new THREE.Mesh(numberGeometry, numberMaterial);
+      number.position.set(-0.7 + i * 0.5, -0.4, 0.026);
+      cardGroup.add(number);
+    }
+
+    // Position the card
+    cardGroup.position.set(2, 0, 0);
+    cardGroup.rotation.y = -0.3;
+    cardGroup.rotation.z = 0.1;
+    scene.add(cardGroup);
 
     // Animation
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
       
-      // Rotate the POS device slowly
-      group.rotation.y += 0.005;
+      // Rotate both objects slowly
+      posGroup.rotation.y += 0.003;
+      cardGroup.rotation.y += 0.002;
       
       // Subtle floating animation
-      group.position.y = Math.sin(Date.now() * 0.001) * 0.1;
+      posGroup.position.y = Math.sin(Date.now() * 0.001) * 0.2;
+      cardGroup.position.y = Math.sin(Date.now() * 0.001 + Math.PI) * 0.15;
+      
+      // Card gentle rotation
+      cardGroup.rotation.z = 0.1 + Math.sin(Date.now() * 0.0005) * 0.05;
       
       renderer.render(scene, camera);
     };
@@ -192,8 +225,8 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     <div className={`flex justify-center items-center ${className}`}>
       <div 
         ref={mountRef} 
-        className="rounded-lg shadow-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200"
-        style={{ width: '400px', height: '300px' }}
+        className="rounded-lg overflow-hidden"
+        style={{ width: '500px', height: '400px' }}
       />
     </div>
   );
