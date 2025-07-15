@@ -22,7 +22,7 @@ const requireAdmin = (req: any, res: any, next: any) => {
 };
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Session configuration for admin
+  // Session configuration for admin - using default memory store for now
   app.use(session({
     secret: process.env.SESSION_SECRET || 'your-secret-key',
     resave: false,
