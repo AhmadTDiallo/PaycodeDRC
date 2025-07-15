@@ -252,7 +252,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/admin/news", requireAdmin, async (req, res) => {
     try {
-      const validatedData = insertNewsArticleSchema.parse(req.body);
+      // Convert publishedDate string to Date object before validation
+      const requestData = {
+        ...req.body,
+        publishedDate: req.body.publishedDate ? new Date(req.body.publishedDate) : new Date()
+      };
+      
+      const validatedData = insertNewsArticleSchema.parse(requestData);
       const article = await storage.createNewsArticle(validatedData);
       res.json({ success: true, data: article });
     } catch (error) {
@@ -291,7 +297,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ success: false, message: "Invalid article ID" });
       }
 
-      const validatedData = updateNewsArticleSchema.parse({ ...req.body, id });
+      // Convert publishedDate string to Date object before validation
+      const requestData = {
+        ...req.body,
+        id,
+        publishedDate: req.body.publishedDate ? new Date(req.body.publishedDate) : undefined
+      };
+
+      const validatedData = updateNewsArticleSchema.parse(requestData);
       const { id: _, ...updateData } = validatedData;
       
       const article = await storage.updateNewsArticle(id, updateData);

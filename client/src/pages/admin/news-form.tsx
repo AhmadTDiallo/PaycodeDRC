@@ -154,9 +154,18 @@ export default function AdminNewsForm() {
 
   const onSubmit = (data: InsertNewsArticle & { publishedDate?: string }) => {
     const { publishedDate, ...articleData } = data;
+    
+    // Convert string date to Date object, or use current date if not provided
+    let dateToUse: Date;
+    if (publishedDate) {
+      dateToUse = new Date(publishedDate);
+    } else {
+      dateToUse = new Date();
+    }
+    
     const finalData = {
       ...articleData,
-      publishedDate: publishedDate ? new Date(publishedDate) : new Date(),
+      publishedDate: dateToUse,
       imageUrl: data.imageUrl || "", // Ensure imageUrl is always a string
     };
     
