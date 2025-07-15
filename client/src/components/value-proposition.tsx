@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { Building2, Users, Shield, Zap } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import PosDevice3D from "./PosDevice3D";
 
 export default function ValueProposition() {
   const { t } = useLanguage();
@@ -52,6 +53,17 @@ export default function ValueProposition() {
             >
               {t("value.inclusionDescription")}
             </motion.p>
+          </motion.div>
+
+          {/* 3D POS Device */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+            className="mb-10 md:mb-12"
+          >
+            <PosDevice3D className="mx-auto" />
           </motion.div>
 
           <motion.div
