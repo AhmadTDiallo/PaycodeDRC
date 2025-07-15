@@ -34,9 +34,7 @@ export default function AdminNewsList() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: number) => {
-      return await apiRequest(`/api/admin/news/${id}`, {
-        method: 'DELETE',
-      });
+      return await apiRequest('DELETE', `/api/admin/news/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
@@ -56,9 +54,7 @@ export default function AdminNewsList() {
 
   const togglePublishMutation = useMutation({
     mutationFn: async (id: number) => {
-      return await apiRequest(`/api/admin/news/${id}/publish`, {
-        method: 'PATCH',
-      });
+      return await apiRequest('PATCH', `/api/admin/news/${id}/publish`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });

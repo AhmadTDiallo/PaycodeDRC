@@ -74,13 +74,7 @@ export default function AdminNewsForm() {
 
   const createMutation = useMutation({
     mutationFn: async (data: InsertNewsArticle) => {
-      return await apiRequest('/api/admin/news', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      return await apiRequest('POST', '/api/admin/news', data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
@@ -101,13 +95,7 @@ export default function AdminNewsForm() {
 
   const updateMutation = useMutation({
     mutationFn: async (data: InsertNewsArticle) => {
-      return await apiRequest(`/api/admin/news/${params.id}`, {
-        method: 'PUT',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      return await apiRequest('PUT', `/api/admin/news/${params.id}`, data);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
