@@ -136,160 +136,161 @@ export default function UserManagement() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Mobile-Friendly Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 sm:py-0 sm:h-16 gap-4 sm:gap-0">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
-              <Button
-                onClick={() => setLocation("/admin/dashboard")}
-                variant="ghost"
-                className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full sm:w-auto justify-start"
-                size="sm"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                <span>Retour au Tableau de Bord</span>
-              </Button>
-              <div className="hidden sm:block h-6 w-px bg-gray-300"></div>
-              <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
-                Gestion des Utilisateurs
-              </h1>
-            </div>
-            <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
-              <DialogTrigger asChild>
-                <Button 
-                  className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-sm w-full sm:w-auto"
+    <div className="min-h-screen bg-gray-50">
+      {/* Compact Mobile Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="px-3 sm:px-6">
+          <div className="py-3 sm:py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+                <Button
+                  variant="ghost"
                   size="sm"
+                  onClick={() => setLocation("/admin/dashboard")}
+                  className="p-1 sm:p-2 hover:bg-gray-100"
                 >
-                  <UserPlus className="h-4 w-4" />
-                  <span>Nouvel Admin</span>
+                  <ArrowLeft className="h-4 w-4" />
                 </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md w-full mx-4">
-                <DialogHeader>
-                  <DialogTitle className="text-lg font-semibold">Créer un Nouvel Administrateur</DialogTitle>
-                </DialogHeader>
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                    <FormField
-                      control={form.control}
-                      name="username"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-sm font-medium">Nom d'utilisateur</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="nom_utilisateur"
-                              className="h-10 text-sm"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage className="text-xs" />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-sm font-medium">Email</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="email"
-                              placeholder="email@example.com"
-                              className="h-10 text-sm"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage className="text-xs" />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-sm font-medium">Mot de passe</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="password"
-                              placeholder="••••••••"
-                              className="h-10 text-sm"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage className="text-xs" />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="role"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-sm font-medium">Rôle</FormLabel>
-                          <Select onValueChange={field.onChange} value={field.value}>
+                <h1 className="text-sm sm:text-lg font-semibold text-gray-900 truncate">
+                  Utilisateurs Admin
+                </h1>
+              </div>
+              
+              <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button 
+                    size="sm" 
+                    className="bg-blue-600 hover:bg-blue-700 text-white h-8 px-3 text-xs sm:text-sm"
+                  >
+                    <UserPlus className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Nouvel Admin</span>
+                    <span className="sm:hidden">+</span>
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="mx-3 sm:mx-0 max-w-sm sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="text-base sm:text-lg">Nouvel Administrateur</DialogTitle>
+                  </DialogHeader>
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="username"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs sm:text-sm">Nom d'utilisateur</FormLabel>
                             <FormControl>
-                              <SelectTrigger className="h-10 text-sm">
-                                <SelectValue placeholder="Sélectionner un rôle" />
-                              </SelectTrigger>
+                              <Input
+                                placeholder="nom_utilisateur"
+                                className="h-9 sm:h-10 text-xs sm:text-sm"
+                                {...field}
+                                disabled={createUserMutation.isPending}
+                              />
                             </FormControl>
-                            <SelectContent>
-                              <SelectItem value="admin">Administrateur</SelectItem>
-                              <SelectItem value="superadmin">Super Administrateur</SelectItem>
-                            </SelectContent>
-                          </Select>
-                          <FormMessage className="text-xs" />
-                        </FormItem>
-                      )}
-                    />
-                    <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                      <Button 
-                        type="submit" 
-                        disabled={createUserMutation.isPending}
-                        className="bg-green-600 hover:bg-green-700 text-white flex-1"
-                        size="sm"
-                      >
-                        {createUserMutation.isPending ? "Création..." : "Créer l'utilisateur"}
-                      </Button>
-                      <Button 
-                        type="button" 
-                        variant="outline" 
-                        onClick={() => setIsCreateDialogOpen(false)}
-                        className="flex-1"
-                        size="sm"
-                      >
-                        Annuler
-                      </Button>
-                    </div>
-                  </form>
-                </Form>
-              </DialogContent>
-            </Dialog>
+                            <FormMessage className="text-xs" />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs sm:text-sm">Email</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="email"
+                                placeholder="email@exemple.com"
+                                className="h-9 sm:h-10 text-xs sm:text-sm"
+                                {...field}
+                                disabled={createUserMutation.isPending}
+                              />
+                            </FormControl>
+                            <FormMessage className="text-xs" />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs sm:text-sm">Mot de passe</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="password"
+                                placeholder="Minimum 8 caractères"
+                                className="h-9 sm:h-10 text-xs sm:text-sm"
+                                {...field}
+                                disabled={createUserMutation.isPending}
+                              />
+                            </FormControl>
+                            <FormMessage className="text-xs" />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="role"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs sm:text-sm">Rôle</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger className="h-9 sm:h-10 text-xs sm:text-sm">
+                                  <SelectValue placeholder="Sélectionner" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="admin">Administrateur</SelectItem>
+                                <SelectItem value="superadmin">Super Administrateur</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage className="text-xs" />
+                          </FormItem>
+                        )}
+                      />
+                      <div className="flex gap-2 pt-2">
+                        <Button
+                          type="submit"
+                          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm h-8 sm:h-9"
+                          disabled={createUserMutation.isPending}
+                        >
+                          {createUserMutation.isPending ? "..." : "Créer"}
+                        </Button>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={() => setIsCreateDialogOpen(false)}
+                          className="flex-1 text-xs sm:text-sm h-8 sm:h-9"
+                          disabled={createUserMutation.isPending}
+                        >
+                          Annuler
+                        </Button>
+                      </div>
+                    </form>
+                  </Form>
+                </DialogContent>
+              </Dialog>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile-Friendly Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="mb-6">
-          <p className="text-sm sm:text-base text-gray-700">
-            Gérer les comptes et permissions d'administrateur
+      {/* Compact Main Content */}
+      <main className="px-3 sm:px-6 py-4 sm:py-6">
+        <div className="mb-3 sm:mb-4">
+          <p className="text-xs sm:text-sm text-gray-600">
+            Gérer les comptes administrateurs
           </p>
         </div>
 
-        <Card className="bg-white shadow-md border border-gray-200">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 p-4 sm:p-6">
-            <CardTitle className="text-gray-900 text-base sm:text-xl font-semibold flex items-center gap-2">
-              <Users className="h-4 w-4 sm:h-5 sm:w-5" />
-              Utilisateurs Administrateurs
+        <Card className="bg-white shadow-sm border">
+          <CardHeader className="bg-gray-50 border-b p-3 sm:p-4">
+            <CardTitle className="text-gray-900 text-sm sm:text-base font-semibold flex items-center gap-2">
+              <Users className="h-4 w-4" />
+              Administrateurs
             </CardTitle>
-            <p className="text-gray-700 text-xs sm:text-sm mt-1">
-              Gérer les utilisateurs et leurs permissions
-            </p>
           </CardHeader>
           
           <CardContent className="p-0 sm:p-1">

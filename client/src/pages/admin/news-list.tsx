@@ -105,57 +105,58 @@ export default function AdminNewsList() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Mobile-Friendly Admin Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 sm:py-0 sm:h-16 gap-4 sm:gap-0">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+    <div className="min-h-screen bg-gray-50">
+      {/* Compact Mobile Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="px-3 sm:px-6">
+          <div className="py-3 sm:py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setLocation("/admin/dashboard")}
+                  className="p-1 sm:p-2 hover:bg-gray-100"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </Button>
+                <h1 className="text-sm sm:text-lg font-semibold text-gray-900 truncate">
+                  Articles
+                </h1>
+              </div>
+              
               <Button
-                variant="ghost"
-                onClick={() => setLocation("/admin/dashboard")}
-                className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 w-full sm:w-auto justify-start"
+                onClick={() => setLocation("/admin/news-form")}
                 size="sm"
+                className="bg-green-600 hover:bg-green-700 text-white h-8 px-3 text-xs sm:text-sm"
               >
-                <ArrowLeft className="h-4 w-4" />
-                <span>Retour au tableau de bord</span>
+                <PlusCircle className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">Nouvel Article</span>
+                <span className="sm:hidden">+</span>
               </Button>
-              <div className="hidden sm:block h-6 w-px bg-gray-300"></div>
-              <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
-                Gestion des articles
-              </h1>
             </div>
-            <Button
-              onClick={() => setLocation("/admin/news/new")}
-              className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-sm w-full sm:w-auto"
-              size="sm"
-            >
-              <PlusCircle className="h-4 w-4" />
-              <span>Créer un nouvel article</span>
-            </Button>
           </div>
         </div>
       </header>
 
-      {/* Mobile-Friendly Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      {/* Compact Main Content */}
+      <main className="px-3 sm:px-6 py-4 sm:py-6">
         {articles.length === 0 ? (
-          <Card className="bg-white border-gray-200 shadow-sm">
-            <CardContent className="text-center py-8 sm:py-12 px-4">
-              <FileText className="h-10 w-10 sm:h-12 sm:w-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
-                Aucun article trouvé
+          <Card className="bg-white border shadow-sm">
+            <CardContent className="text-center py-6 sm:py-8 px-3 sm:px-4">
+              <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">
+                Aucun article
               </h3>
-              <p className="text-sm sm:text-base text-gray-700 mb-4">
-                Commencez par créer votre premier article
+              <p className="text-xs sm:text-sm text-gray-600 mb-3">
+                Créez votre premier article
               </p>
               <Button
-                onClick={() => setLocation("/admin/news/new")}
-                className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto"
+                onClick={() => setLocation("/admin/news-form")}
+                className="bg-green-600 hover:bg-green-700 text-white h-8 px-3 text-xs sm:text-sm"
                 size="sm"
               >
-                <PlusCircle className="h-4 w-4 mr-2" />
-                Créer un article
+                <PlusCircle className="h-3 w-3 mr-1" />
+                Créer
               </Button>
             </CardContent>
           </Card>

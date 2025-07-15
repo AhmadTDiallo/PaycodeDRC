@@ -221,20 +221,17 @@ export default function AdminNewsForm() {
         </div>
       </header>
 
-      {/* Mobile-Friendly Admin Content */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <Card className="shadow-md border-gray-200 bg-white">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 p-4 sm:p-6">
-            <CardTitle className="text-gray-900 font-semibold text-base sm:text-lg">
-              Informations de l'Article
+      {/* Compact Mobile Content */}
+      <main className="px-3 sm:px-6 py-4 sm:py-6">
+        <Card className="shadow-sm border bg-white">
+          <CardHeader className="bg-gray-50 border-b p-3 sm:p-4">
+            <CardTitle className="text-gray-900 font-semibold text-sm sm:text-base">
+              {isEdit ? "Modifier Article" : "Nouvel Article"}
             </CardTitle>
-            <p className="text-gray-700 text-xs sm:text-sm mt-1">
-              {isEdit ? "Mettez à jour les détails de l'article ci-dessous" : "Remplissez le formulaire pour créer un nouvel article"}
-            </p>
           </CardHeader>
-          <CardContent className="p-4 sm:p-6 lg:p-8 bg-white">
+          <CardContent className="p-3 sm:p-4 bg-white">
             <Form {...form}>
-              <form id="news-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8">
+              <form id="news-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
                 
                 {/* Basic Information Section */}
                 <div className="bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-300 rounded-xl p-4 sm:p-6 shadow-sm">
