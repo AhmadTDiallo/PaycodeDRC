@@ -40,19 +40,19 @@ export default function AdminDashboard() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
               <h1 className="text-xl font-semibold text-gray-900">
-                PAYCODE DRC Admin Portal
+                Portail d'Administration PAYCODE DRC
               </h1>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-700">
-                Logged in as: <strong className="text-gray-900">{admin?.username}</strong>
+                Connecté en tant que: <strong className="text-gray-900">{admin?.username}</strong>
               </span>
               <Button 
                 variant="outline" 
                 onClick={handleLogout}
                 className="border-red-300 text-red-600 hover:text-red-700 hover:bg-red-50"
               >
-                Logout
+                Se déconnecter
               </Button>
             </div>
           </div>
@@ -63,10 +63,10 @@ export default function AdminDashboard() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Dashboard Overview
+            Tableau de bord
           </h2>
           <p className="text-gray-700">
-            Manage your website content and settings
+            Gérez le contenu et les paramètres de votre site web
           </p>
         </div>
 
@@ -80,8 +80,8 @@ export default function AdminDashboard() {
               <div className="flex items-center space-x-3">
                 <PlusCircle className="h-8 w-8 text-green-600" />
                 <div>
-                  <h3 className="font-semibold text-gray-900">Create Article</h3>
-                  <p className="text-sm text-gray-700">Write a new article</p>
+                  <h3 className="font-semibold text-gray-900">Créer un article</h3>
+                  <p className="text-sm text-gray-700">Rédiger un nouvel article</p>
                 </div>
               </div>
             </CardContent>
@@ -95,8 +95,8 @@ export default function AdminDashboard() {
               <div className="flex items-center space-x-3">
                 <FileText className="h-8 w-8 text-blue-600" />
                 <div>
-                  <h3 className="font-semibold text-gray-900">Manage Articles</h3>
-                  <p className="text-sm text-gray-700">View and edit articles</p>
+                  <h3 className="font-semibold text-gray-900">Gérer les articles</h3>
+                  <p className="text-sm text-gray-700">Voir et modifier les articles</p>
                 </div>
               </div>
             </CardContent>
@@ -110,8 +110,8 @@ export default function AdminDashboard() {
               <div className="flex items-center space-x-3">
                 <Users className="h-8 w-8 text-green-600" />
                 <div>
-                  <h3 className="font-semibold text-gray-900">Manage Users</h3>
-                  <p className="text-sm text-gray-700">Admin user accounts</p>
+                  <h3 className="font-semibold text-gray-900">Gérer les utilisateurs</h3>
+                  <p className="text-sm text-gray-700">Comptes d'administration</p>
                 </div>
               </div>
             </CardContent>

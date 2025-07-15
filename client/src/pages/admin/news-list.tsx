@@ -40,8 +40,8 @@ export default function AdminNewsList() {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
       queryClient.invalidateQueries({ queryKey: ["/api/news"] }); // Invalidate public news cache
       toast({
-        title: "Article Deleted",
-        description: "The article has been deleted successfully",
+        title: "Article supprimé",
+        description: "L'article a été supprimé avec succès",
       });
     },
     onError: () => {
@@ -61,8 +61,8 @@ export default function AdminNewsList() {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/news"] });
       queryClient.invalidateQueries({ queryKey: ["/api/news"] }); // Invalidate public news cache
       toast({
-        title: "Status Updated", 
-        description: "The publication status has been changed",
+        title: "Statut mis à jour", 
+        description: "Le statut de publication a été modifié",
       });
     },
     onError: () => {
@@ -117,11 +117,11 @@ export default function AdminNewsList() {
                 className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100"
               >
                 <ArrowLeft className="h-4 w-4" />
-                <span>Back to Dashboard</span>
+                <span>Retour au tableau de bord</span>
               </Button>
               <div className="h-6 w-px bg-gray-300"></div>
               <h1 className="text-xl font-semibold text-gray-900">
-                Articles Management
+                Gestion des articles
               </h1>
             </div>
             <Button
@@ -129,7 +129,7 @@ export default function AdminNewsList() {
               className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-sm"
             >
               <PlusCircle className="h-4 w-4" />
-              <span>Create New Article</span>
+              <span>Créer un nouvel article</span>
             </Button>
           </div>
         </div>
@@ -142,17 +142,17 @@ export default function AdminNewsList() {
             <CardContent className="text-center py-12">
               <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                No Articles Found
+                Aucun article trouvé
               </h3>
               <p className="text-gray-700 mb-4">
-                Get started by creating your first article
+                Commencez par créer votre premier article
               </p>
               <Button
                 onClick={() => setLocation("/admin/news/new")}
                 className="bg-green-600 hover:bg-green-700 text-white"
               >
                 <PlusCircle className="h-4 w-4 mr-2" />
-                Create Article
+                Créer un article
               </Button>
             </CardContent>
           </Card>
@@ -171,7 +171,7 @@ export default function AdminNewsList() {
                           variant={article.isPublished ? "default" : "secondary"}
                           className={article.isPublished ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}
                         >
-                          {article.isPublished ? "Published" : "Draft"}
+                          {article.isPublished ? "Publié" : "Brouillon"}
                         </Badge>
                         <Badge variant="outline" className="border-gray-300 text-gray-700">
                           {article.category}
@@ -215,12 +215,12 @@ export default function AdminNewsList() {
                         {article.isPublished ? (
                           <>
                             <EyeOff className="h-4 w-4" />
-                            <span>Unpublish</span>
+                            <span>Dépublier</span>
                           </>
                         ) : (
                           <>
                             <Eye className="h-4 w-4" />
-                            <span>Publish</span>
+                            <span>Publier</span>
                           </>
                         )}
                       </Button>
@@ -232,7 +232,7 @@ export default function AdminNewsList() {
                         className="flex items-center space-x-1 border-blue-300 text-blue-700 hover:bg-blue-50"
                       >
                         <Edit className="h-4 w-4" />
-                        <span>Edit</span>
+                        <span>Modifier</span>
                       </Button>
                       
                       <Button
@@ -243,7 +243,7 @@ export default function AdminNewsList() {
                         className="flex items-center space-x-1 border-red-300 text-red-600 hover:bg-red-50"
                       >
                         <Trash2 className="h-4 w-4" />
-                        <span>Delete</span>
+                        <span>Supprimer</span>
                       </Button>
                     </div>
                   </div>

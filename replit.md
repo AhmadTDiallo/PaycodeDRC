@@ -105,6 +105,10 @@ Paycode DRC is a full-stack fintech platform designed as a licensed payment aggr
 
 ```
 Changelog:
+- July 15, 2025. Complete French translation of admin interface (dashboard, login, news management)
+- July 15, 2025. Article modal redesigned with magazine-style layout and improved readability
+- July 15, 2025. News section redesigned to be horizontally structured with slider functionality
+- July 15, 2025. Publish/unpublish buttons and all admin interface text translated to French
 - July 09, 2025. PostgreSQL database integration completed with Neon Database
 - July 09, 2025. DatabaseStorage implementation replaced MemStorage for persistent data
 - July 09, 2025. Demo requests and newsletter subscriptions now saved permanently
