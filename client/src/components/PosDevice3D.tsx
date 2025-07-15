@@ -23,7 +23,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
       75,
-      400 / 300,
+      380 / 280,
       0.1,
       1000
     );
@@ -35,7 +35,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
       antialias: true, 
       alpha: true 
     });
-    renderer.setSize(400, 300);
+    renderer.setSize(380, 280);
     renderer.setClearColor(0x000000, 0); // Transparent background
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -57,8 +57,8 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     // Create 3D Credit Card - Compact and well-sized
     const cardGroup = new THREE.Group();
 
-    // Card body - Standard credit card proportions
-    const cardGeometry = new THREE.BoxGeometry(3.4, 2.1, 0.1);
+    // Card body - Bigger card with standard proportions
+    const cardGeometry = new THREE.BoxGeometry(4.0, 2.5, 0.1);
     const cardMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x1e3a8a,
       shininess: 80 
@@ -78,7 +78,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     cardGroup.add(chip);
 
     // Card stripe
-    const stripeGeometry = new THREE.BoxGeometry(3.4, 0.25, 0.001);
+    const stripeGeometry = new THREE.BoxGeometry(4.0, 0.25, 0.001);
     const stripeMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x000000 
     });
@@ -108,7 +108,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
       map: titleTexture,
       transparent: true
     });
-    const titleGeometry = new THREE.PlaneGeometry(2.0, 0.4);
+    const titleGeometry = new THREE.PlaneGeometry(2.4, 0.4);
     const titleMesh = new THREE.Mesh(titleGeometry, titleMaterial);
     titleMesh.position.set(0, 0.65, 0.051);
     cardGroup.add(titleMesh);
@@ -135,7 +135,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
       map: numberTexture,
       transparent: true
     });
-    const numberGeometry = new THREE.PlaneGeometry(2.8, 0.35);
+    const numberGeometry = new THREE.PlaneGeometry(3.2, 0.35);
     const numberMesh = new THREE.Mesh(numberGeometry, numberMaterial);
     numberMesh.position.set(0, -0.1, 0.051);
     cardGroup.add(numberMesh);
@@ -175,23 +175,23 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     renderer.domElement.addEventListener('click', onMouseClick);
     renderer.domElement.style.cursor = 'pointer';
 
-    // Animation - only for card now
+    // Animation - much slower and subtle
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
       
-      // Gentle rotation for the centered card
-      const baseRotationCard = Math.sin(Date.now() * 0.0015) * 0.2;
+      // Very gentle rotation for the centered card (much slower)
+      const baseRotationCard = Math.sin(Date.now() * 0.0003) * 0.08;
       
-      // Add interactive rotation if clicked
-      cardGroup.rotation.y = baseRotationCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.01) * 0.15 : 0);
+      // Add interactive rotation if clicked (slower)
+      cardGroup.rotation.y = baseRotationCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.003) * 0.1 : 0);
       
-      // Subtle floating animation with interactive bounce
-      const baseFloatCard = Math.sin(Date.now() * 0.001) * 0.15;
+      // Very subtle floating animation (much slower)
+      const baseFloatCard = Math.sin(Date.now() * 0.0002) * 0.05;
       
-      cardGroup.position.y = baseFloatCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.005) * 0.1 : 0);
+      cardGroup.position.y = baseFloatCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.002) * 0.05 : 0);
       
-      // Card gentle rotation with interactive effect
-      cardGroup.rotation.z = 0.05 + Math.sin(Date.now() * 0.0005) * 0.03 + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.008) * 0.05 : 0);
+      // Very gentle Z rotation (much slower)
+      cardGroup.rotation.z = 0.02 + Math.sin(Date.now() * 0.0001) * 0.01 + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.004) * 0.03 : 0);
       
       renderer.render(scene, camera);
     };
@@ -218,7 +218,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
       <div 
         ref={mountRef} 
         className="rounded-lg overflow-hidden"
-        style={{ width: '400px', height: '300px' }}
+        style={{ width: '380px', height: '280px' }}
       />
     </div>
   );
