@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Linkedin } from "lucide-react";
+import { 
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { Linkedin, User } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LwangoPhoto from "@assets/Prince_1752061564517.jpg";
@@ -63,41 +68,89 @@ export default function Team() {
         >
           {teamMembers.map((member, index) => (
             <motion.div key={index} variants={fadeInUp} className="group w-full md:min-w-[260px] md:flex-1">
-              <Card className="bg-card shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01] overflow-hidden h-full">
-                <div
-                  className="h-48 md:h-56 bg-cover bg-center bg-no-repeat"
-                  style={{
-                    backgroundImage: `url(${member.image})`,
-                    backgroundPosition:
-                      member.name === "Lwango Wavo"
-                        ? "center 30%"
-                        : member.name === "Sadio Diallo"
-                        ? "center 25%"
-                        : "center"
-                  }}
-                />
-                <CardContent className="p-3 md:p-4">
-                  <h3 className="text-base md:text-lg font-bold text-foreground mb-1 text-center">
-                    {member.name}
-                  </h3>
-                  <p className="text-paycode-blue-accent font-semibold mb-2 text-center text-xs md:text-sm">
-                    {member.position}
-                  </p>
-                  <p className="text-muted-foreground text-xs leading-relaxed mb-3 line-clamp-3">
-                    {member.description}
-                  </p>
-                  <div className="flex justify-center">
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="text-paycode-blue hover:text-paycode-blue-accent hover:bg-paycode-blue/10 p-1.5"
-                      onClick={() => window.open(member.linkedin, "_blank")}
-                    >
-                      <Linkedin className="h-3 w-3 md:h-4 md:w-4" />
-                    </Button>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Card className="bg-card shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.01] overflow-hidden h-full cursor-pointer">
+                    <div
+                      className="h-48 md:h-56 bg-cover bg-center bg-no-repeat"
+                      style={{
+                        backgroundImage: `url(${member.image})`,
+                        backgroundPosition:
+                          member.name === "Lwango Wavo"
+                            ? "center 30%"
+                            : member.name === "Sadio Diallo"
+                            ? "center 25%"
+                            : "center"
+                      }}
+                    />
+                    <CardContent className="p-3 md:p-4">
+                      <h3 className="text-base md:text-lg font-bold text-foreground mb-1 text-center">
+                        {member.name}
+                      </h3>
+                      <p className="text-paycode-blue-accent font-semibold mb-2 text-center text-xs md:text-sm">
+                        {member.position}
+                      </p>
+                      <p className="text-muted-foreground text-xs leading-relaxed mb-3 line-clamp-3">
+                        {member.description}
+                      </p>
+                      <div className="flex justify-center">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="text-paycode-blue hover:text-paycode-blue-accent hover:bg-paycode-blue/10 p-1.5"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(member.linkedin, "_blank");
+                          }}
+                        >
+                          <Linkedin className="h-3 w-3 md:h-4 md:w-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-96 p-4 bg-white border border-gray-200 shadow-lg">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div
+                        className="w-16 h-16 bg-cover bg-center bg-no-repeat rounded-full border-2 border-paycode-blue/20"
+                        style={{
+                          backgroundImage: `url(${member.image})`,
+                          backgroundPosition:
+                            member.name === "Lwango Wavo"
+                              ? "center 30%"
+                              : member.name === "Sadio Diallo"
+                              ? "center 25%"
+                              : "center"
+                        }}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <User className="h-4 w-4 text-paycode-blue" />
+                        <h4 className="text-lg font-bold text-gray-900">{member.name}</h4>
+                      </div>
+                      <p className="text-sm font-semibold text-paycode-blue-accent mb-3">
+                        {member.position}
+                      </p>
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        {member.description}
+                      </p>
+                      <div className="flex justify-start mt-3">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="text-paycode-blue border-paycode-blue hover:bg-paycode-blue hover:text-white"
+                          onClick={() => window.open(member.linkedin, "_blank")}
+                        >
+                          <Linkedin className="h-4 w-4 mr-2" />
+                          Voir LinkedIn
+                        </Button>
+                      </div>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
+                </HoverCardContent>
+              </HoverCard>
             </motion.div>
           ))}
         </motion.div>
