@@ -27,7 +27,7 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
       0.1,
       1000
     );
-    camera.position.set(0, 3, 5);
+    camera.position.set(0, 2, 3.5);
     camera.lookAt(0, 0, 0);
 
     // Renderer setup
@@ -54,11 +54,11 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
 
-    // Create 3D Credit Card - Appropriately sized and centered
+    // Create 3D Credit Card - Compact and well-sized
     const cardGroup = new THREE.Group();
 
-    // Card body - More reasonable size
-    const cardGeometry = new THREE.BoxGeometry(4.2, 2.6, 0.12);
+    // Card body - Standard credit card proportions
+    const cardGeometry = new THREE.BoxGeometry(3.4, 2.1, 0.1);
     const cardMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x1e3a8a,
       shininess: 80 
@@ -68,69 +68,85 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     cardGroup.add(card);
 
     // Card chip
-    const chipGeometry = new THREE.BoxGeometry(0.6, 0.5, 0.04);
+    const chipGeometry = new THREE.BoxGeometry(0.5, 0.4, 0.03);
     const chipMaterial = new THREE.MeshPhongMaterial({ 
       color: 0xffd700,
       shininess: 100 
     });
     const chip = new THREE.Mesh(chipGeometry, chipMaterial);
-    chip.position.set(-1.2, 0.4, 0.06);
+    chip.position.set(-1.0, 0.3, 0.05);
     cardGroup.add(chip);
 
     // Card stripe
-    const stripeGeometry = new THREE.BoxGeometry(4.2, 0.3, 0.001);
+    const stripeGeometry = new THREE.BoxGeometry(3.4, 0.25, 0.001);
     const stripeMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x000000 
     });
     const stripe = new THREE.Mesh(stripeGeometry, stripeMaterial);
-    stripe.position.set(0, -0.4, -0.06);
+    stripe.position.set(0, -0.3, -0.05);
     cardGroup.add(stripe);
 
-    // Card details
-    const cardDetailGeometry = new THREE.BoxGeometry(3.8, 0.15, 0.015);
-    const cardDetailMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x2563eb,
-      transparent: true,
-      opacity: 0.3
-    });
-    const cardDetail = new THREE.Mesh(cardDetailGeometry, cardDetailMaterial);
-    cardDetail.position.set(0, -0.7, 0.061);
-    cardGroup.add(cardDetail);
-
-    // Add PAYCODE DRC text on the card
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    canvas.width = 512;
-    canvas.height = 128;
+    // Add PAYCODE DRC text at the top of the card
+    const titleCanvas = document.createElement('canvas');
+    const titleContext = titleCanvas.getContext('2d');
+    titleCanvas.width = 512;
+    titleCanvas.height = 128;
     
-    if (context) {
-      context.fillStyle = 'rgba(0, 0, 0, 0)';
-      context.fillRect(0, 0, canvas.width, canvas.height);
+    if (titleContext) {
+      titleContext.fillStyle = 'rgba(0, 0, 0, 0)';
+      titleContext.fillRect(0, 0, titleCanvas.width, titleCanvas.height);
       
-      context.font = 'bold 48px Arial';
-      context.fillStyle = 'white';
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
-      context.fillText('PAYCODE DRC', canvas.width / 2, canvas.height / 2);
+      titleContext.font = 'bold 42px Arial';
+      titleContext.fillStyle = 'white';
+      titleContext.textAlign = 'center';
+      titleContext.textBaseline = 'middle';
+      titleContext.fillText('PAYCODE DRC', titleCanvas.width / 2, titleCanvas.height / 2);
     }
     
-    const textTexture = new THREE.CanvasTexture(canvas);
-    const textMaterial = new THREE.MeshBasicMaterial({ 
-      map: textTexture,
+    const titleTexture = new THREE.CanvasTexture(titleCanvas);
+    const titleMaterial = new THREE.MeshBasicMaterial({ 
+      map: titleTexture,
       transparent: true
     });
-    const textGeometry = new THREE.PlaneGeometry(2.5, 0.6);
-    const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-    textMesh.position.set(0, 0.1, 0.061);
-    cardGroup.add(textMesh);
+    const titleGeometry = new THREE.PlaneGeometry(2.0, 0.4);
+    const titleMesh = new THREE.Mesh(titleGeometry, titleMaterial);
+    titleMesh.position.set(0, 0.65, 0.051);
+    cardGroup.add(titleMesh);
 
-    // Add PayCode logo on the card
-    const logoGeometry = new THREE.CircleGeometry(0.2, 16);
+    // Add 16-digit card number in the middle
+    const numberCanvas = document.createElement('canvas');
+    const numberContext = numberCanvas.getContext('2d');
+    numberCanvas.width = 512;
+    numberCanvas.height = 128;
+    
+    if (numberContext) {
+      numberContext.fillStyle = 'rgba(0, 0, 0, 0)';
+      numberContext.fillRect(0, 0, numberCanvas.width, numberCanvas.height);
+      
+      numberContext.font = 'bold 32px Courier New';
+      numberContext.fillStyle = 'white';
+      numberContext.textAlign = 'center';
+      numberContext.textBaseline = 'middle';
+      numberContext.fillText('4532 1234 5678 9012', numberCanvas.width / 2, numberCanvas.height / 2);
+    }
+    
+    const numberTexture = new THREE.CanvasTexture(numberCanvas);
+    const numberMaterial = new THREE.MeshBasicMaterial({ 
+      map: numberTexture,
+      transparent: true
+    });
+    const numberGeometry = new THREE.PlaneGeometry(2.8, 0.35);
+    const numberMesh = new THREE.Mesh(numberGeometry, numberMaterial);
+    numberMesh.position.set(0, -0.1, 0.051);
+    cardGroup.add(numberMesh);
+
+    // Add PayCode logo on the card (smaller)
+    const logoGeometry = new THREE.CircleGeometry(0.15, 16);
     const logoMaterial = new THREE.MeshBasicMaterial({ 
       color: 0x3498db 
     });
     const logo = new THREE.Mesh(logoGeometry, logoMaterial);
-    logo.position.set(1.5, 0.5, 0.061);
+    logo.position.set(1.2, 0.4, 0.051);
     cardGroup.add(logo);
 
     // Position the card in center
