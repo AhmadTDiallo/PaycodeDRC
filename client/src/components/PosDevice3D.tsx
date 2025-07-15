@@ -54,132 +54,11 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     directionalLight.shadow.mapSize.height = 2048;
     scene.add(directionalLight);
 
-    // Create handheld POS device
-    const posGroup = new THREE.Group();
-
-    // Main body (handheld design) - Made bigger
-    const bodyGeometry = new THREE.BoxGeometry(1.8, 4.5, 0.75);
-    const bodyMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x2c3e50,
-      shininess: 50 
-    });
-    const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-    body.position.y = 0;
-    body.castShadow = true;
-    posGroup.add(body);
-
-    // Screen (small LCD display) - Made bigger
-    const screenGeometry = new THREE.BoxGeometry(1.5, 0.9, 0.08);
-    const screenMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x1a1a1a 
-    });
-    const screen = new THREE.Mesh(screenGeometry, screenMaterial);
-    screen.position.set(0, 1.2, 0.375);
-    screen.castShadow = true;
-    posGroup.add(screen);
-
-    // Screen display (glowing blue) - Made bigger
-    const displayGeometry = new THREE.PlaneGeometry(1.2, 0.6);
-    const displayMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0x3498db,
-      transparent: true,
-      opacity: 0.9
-    });
-    const display = new THREE.Mesh(displayGeometry, displayMaterial);
-    display.position.set(0, 1.2, 0.415);
-    posGroup.add(display);
-
-    // Add simple screen elements instead of text
-    const screenElementGeometry = new THREE.PlaneGeometry(0.8, 0.1);
-    const screenElementMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.4
-    });
-    const screenElement = new THREE.Mesh(screenElementGeometry, screenElementMaterial);
-    screenElement.position.set(0, 1.2, 0.416);
-    posGroup.add(screenElement);
-
-    // Keypad area - Made bigger and lighter for better key visibility
-    const keypadGeometry = new THREE.BoxGeometry(1.5, 1.8, 0.08);
-    const keypadMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x2c3e50 
-    });
-    const keypad = new THREE.Mesh(keypadGeometry, keypadMaterial);
-    keypad.position.set(0, 0, 0.375);
-    keypad.castShadow = true;
-    posGroup.add(keypad);
-
-    // Individual keys (4x3 layout) - Made bigger with numbers
-    const keyNumbers = [
-      ['1', '2', '3'],
-      ['4', '5', '6'],
-      ['7', '8', '9'],
-      ['*', '0', '#']
-    ];
-    
-    for (let i = 0; i < 4; i++) {
-      for (let j = 0; j < 3; j++) {
-        const keyGeometry = new THREE.BoxGeometry(0.22, 0.22, 0.04);
-        const keyMaterial = new THREE.MeshPhongMaterial({ 
-          color: 0xecf0f1,
-          shininess: 30
-        });
-        const key = new THREE.Mesh(keyGeometry, keyMaterial);
-        key.position.set(
-          -0.37 + j * 0.37,
-          0.37 - i * 0.3,
-          0.39
-        );
-        key.castShadow = true;
-        posGroup.add(key);
-
-        // Add number/symbol on key - make it very visible with better contrast
-        const numberGeometry = new THREE.PlaneGeometry(0.12, 0.12);
-        const numberMaterial = new THREE.MeshBasicMaterial({ 
-          color: 0x2c3e50,
-          transparent: false,
-          opacity: 1.0
-        });
-        const number = new THREE.Mesh(numberGeometry, numberMaterial);
-        number.position.set(
-          -0.37 + j * 0.37,
-          0.37 - i * 0.3,
-          0.41
-        );
-        posGroup.add(number);
-      }
-    }
-
-    // Card slot at the bottom - Made bigger
-    const slotGeometry = new THREE.BoxGeometry(1.2, 0.08, 0.15);
-    const slotMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x1a1a1a 
-    });
-    const slot = new THREE.Mesh(slotGeometry, slotMaterial);
-    slot.position.set(0, -1.8, 0.375);
-    posGroup.add(slot);
-
-    // PayCode logo - Made bigger
-    const logoGeometry = new THREE.CircleGeometry(0.12, 16);
-    const logoMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0x3498db 
-    });
-    const logo = new THREE.Mesh(logoGeometry, logoMaterial);
-    logo.position.set(0, 0.45, 0.39);
-    posGroup.add(logo);
-
-    // Position the POS device
-    posGroup.position.set(-3.5, 0, 0);
-    posGroup.rotation.y = 0.3;
-    posGroup.userData = { type: 'pos', isClicked: false };
-    scene.add(posGroup);
-
-    // Create 3D Credit Card - Made bigger
+    // Create 3D Credit Card - Much bigger and centered
     const cardGroup = new THREE.Group();
 
-    // Card body - Made bigger
-    const cardGeometry = new THREE.BoxGeometry(3.15, 1.95, 0.08);
+    // Card body - Much bigger (doubled size)
+    const cardGeometry = new THREE.BoxGeometry(6.3, 3.9, 0.16);
     const cardMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x1e3a8a,
       shininess: 80 
@@ -188,63 +67,64 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     card.castShadow = true;
     cardGroup.add(card);
 
-    // Card chip - Made bigger
-    const chipGeometry = new THREE.BoxGeometry(0.45, 0.38, 0.03);
+    // Card chip - Much bigger
+    const chipGeometry = new THREE.BoxGeometry(0.9, 0.76, 0.06);
     const chipMaterial = new THREE.MeshPhongMaterial({ 
       color: 0xffd700,
       shininess: 100 
     });
     const chip = new THREE.Mesh(chipGeometry, chipMaterial);
-    chip.position.set(-0.9, 0.3, 0.04);
+    chip.position.set(-1.8, 0.6, 0.08);
     cardGroup.add(chip);
 
-    // Card stripe - Made bigger
-    const stripeGeometry = new THREE.BoxGeometry(3.15, 0.22, 0.001);
+    // Card stripe - Much bigger
+    const stripeGeometry = new THREE.BoxGeometry(6.3, 0.44, 0.002);
     const stripeMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x000000 
     });
     const stripe = new THREE.Mesh(stripeGeometry, stripeMaterial);
-    stripe.position.set(0, -0.3, -0.04);
+    stripe.position.set(0, -0.6, -0.08);
     cardGroup.add(stripe);
 
-    // Remove the mock card number and text - keep it clean
-    // Just add some subtle embossed rectangles to simulate card details
-    const cardDetailGeometry = new THREE.BoxGeometry(2.8, 0.1, 0.01);
+    // Card details - Much bigger
+    const cardDetailGeometry = new THREE.BoxGeometry(5.6, 0.2, 0.02);
     const cardDetailMaterial = new THREE.MeshPhongMaterial({ 
       color: 0x2563eb,
       transparent: true,
       opacity: 0.3
     });
     const cardDetail = new THREE.Mesh(cardDetailGeometry, cardDetailMaterial);
-    cardDetail.position.set(0, -0.5, 0.041);
+    cardDetail.position.set(0, -1.0, 0.082);
     cardGroup.add(cardDetail);
 
-    // Position the card
-    cardGroup.position.set(3.5, 0, 0);
-    cardGroup.rotation.y = -0.3;
-    cardGroup.rotation.z = 0.1;
+    // Add PayCode logo on the card - Much bigger
+    const logoGeometry = new THREE.CircleGeometry(0.3, 16);
+    const logoMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0x3498db 
+    });
+    const logo = new THREE.Mesh(logoGeometry, logoMaterial);
+    logo.position.set(2.2, 0.8, 0.082);
+    cardGroup.add(logo);
+
+    // Position the card in center
+    cardGroup.position.set(0, 0, 0);
+    cardGroup.rotation.y = 0;
+    cardGroup.rotation.z = 0.05;
     cardGroup.userData = { type: 'card', isClicked: false };
     scene.add(cardGroup);
 
-    // Mouse interaction
+    // Mouse interaction - only for card now
     const onMouseClick = (event: MouseEvent) => {
       const rect = renderer.domElement.getBoundingClientRect();
       mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
       mouseRef.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
       raycasterRef.current.setFromCamera(mouseRef.current, camera);
-      const intersects = raycasterRef.current.intersectObjects([posGroup, cardGroup], true);
+      const intersects = raycasterRef.current.intersectObjects([cardGroup], true);
 
       if (intersects.length > 0) {
-        const clickedObject = intersects[0].object.parent;
-        
-        if (clickedObject === posGroup) {
-          posGroup.userData.isClicked = !posGroup.userData.isClicked;
-          console.log('POS Device clicked!');
-        } else if (clickedObject === cardGroup) {
-          cardGroup.userData.isClicked = !cardGroup.userData.isClicked;
-          console.log('Credit Card clicked!');
-        }
+        cardGroup.userData.isClicked = !cardGroup.userData.isClicked;
+        console.log('Credit Card clicked!');
       }
     };
 
@@ -252,27 +132,23 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     renderer.domElement.addEventListener('click', onMouseClick);
     renderer.domElement.style.cursor = 'pointer';
 
-    // Animation
+    // Animation - only for card now
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
       
-      // Swing left to right instead of full rotation
-      const baseRotationPOS = 0.3 + Math.sin(Date.now() * 0.002) * 0.4;
-      const baseRotationCard = -0.3 + Math.sin(Date.now() * 0.0015) * 0.4;
+      // Gentle rotation for the centered card
+      const baseRotationCard = Math.sin(Date.now() * 0.0015) * 0.2;
       
       // Add interactive rotation if clicked
-      posGroup.rotation.y = baseRotationPOS + (posGroup.userData.isClicked ? Math.sin(Date.now() * 0.01) * 0.1 : 0);
-      cardGroup.rotation.y = baseRotationCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.01) * 0.1 : 0);
+      cardGroup.rotation.y = baseRotationCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.01) * 0.15 : 0);
       
       // Subtle floating animation with interactive bounce
-      const baseFloatPOS = Math.sin(Date.now() * 0.001) * 0.2;
-      const baseFloatCard = Math.sin(Date.now() * 0.001 + Math.PI) * 0.15;
+      const baseFloatCard = Math.sin(Date.now() * 0.001) * 0.15;
       
-      posGroup.position.y = baseFloatPOS + (posGroup.userData.isClicked ? Math.sin(Date.now() * 0.005) * 0.1 : 0);
       cardGroup.position.y = baseFloatCard + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.005) * 0.1 : 0);
       
       // Card gentle rotation with interactive effect
-      cardGroup.rotation.z = 0.1 + Math.sin(Date.now() * 0.0005) * 0.05 + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.008) * 0.05 : 0);
+      cardGroup.rotation.z = 0.05 + Math.sin(Date.now() * 0.0005) * 0.03 + (cardGroup.userData.isClicked ? Math.sin(Date.now() * 0.008) * 0.05 : 0);
       
       renderer.render(scene, camera);
     };
