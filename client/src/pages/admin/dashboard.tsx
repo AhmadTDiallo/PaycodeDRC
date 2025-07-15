@@ -71,48 +71,54 @@ export default function AdminDashboard() {
           </p>
         </div>
 
-        {/* Mobile-Friendly Quick Actions */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        {/* Mobile-Optimized Quick Actions */}
+        <div className="space-y-3 sm:space-y-0 sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 sm:mb-8">
           <Card 
-            className="cursor-pointer hover:shadow-md transition-shadow bg-white border-gray-200 shadow-sm"
+            className="cursor-pointer hover:shadow-lg transition-all duration-200 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 shadow-sm active:scale-95"
             onClick={() => setLocation("/admin/news/new")}
           >
-            <CardContent className="p-4 sm:p-6">
-              <div className="flex items-center space-x-3">
-                <PlusCircle className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 flex-shrink-0" />
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Créer un article</h3>
-                  <p className="text-xs sm:text-sm text-gray-700">Rédiger un nouvel article</p>
+            <CardContent className="p-5 sm:p-6">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-green-100 rounded-full">
+                  <PlusCircle className="h-6 w-6 text-green-600" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-gray-900 text-base sm:text-lg">Créer un article</h3>
+                  <p className="text-sm text-gray-600 mt-1">Rédiger un nouvel article de blog</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card 
-            className="cursor-pointer hover:shadow-md transition-shadow bg-white border-gray-200 shadow-sm"
+            className="cursor-pointer hover:shadow-lg transition-all duration-200 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200 shadow-sm active:scale-95"
             onClick={() => setLocation("/admin/news")}
           >
-            <CardContent className="p-4 sm:p-6">
-              <div className="flex items-center space-x-3">
-                <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 flex-shrink-0" />
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Gérer les articles</h3>
-                  <p className="text-xs sm:text-sm text-gray-700">Voir et modifier les articles</p>
+            <CardContent className="p-5 sm:p-6">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-blue-100 rounded-full">
+                  <FileText className="h-6 w-6 text-blue-600" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-gray-900 text-base sm:text-lg">Gérer les articles</h3>
+                  <p className="text-sm text-gray-600 mt-1">Voir et modifier les articles existants</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card 
-            className="cursor-pointer hover:shadow-md transition-shadow bg-white border-gray-200 shadow-sm sm:col-span-2 lg:col-span-1"
+            className="cursor-pointer hover:shadow-lg transition-all duration-200 bg-gradient-to-r from-purple-50 to-violet-50 border-purple-200 shadow-sm active:scale-95 md:col-span-2 lg:col-span-1"
             onClick={() => setLocation("/admin/users")}
           >
-            <CardContent className="p-4 sm:p-6">
-              <div className="flex items-center space-x-3">
-                <Users className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 flex-shrink-0" />
-                <div className="min-w-0">
-                  <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Gérer les utilisateurs</h3>
-                  <p className="text-xs sm:text-sm text-gray-700">Comptes d'administration</p>
+            <CardContent className="p-5 sm:p-6">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-purple-100 rounded-full">
+                  <Users className="h-6 w-6 text-purple-600" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-gray-900 text-base sm:text-lg">Gérer les utilisateurs</h3>
+                  <p className="text-sm text-gray-600 mt-1">Comptes et permissions d'administration</p>
                 </div>
               </div>
             </CardContent>

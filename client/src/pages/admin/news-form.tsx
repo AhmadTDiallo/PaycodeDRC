@@ -247,16 +247,16 @@ export default function AdminNewsForm() {
                       control={form.control}
                       name="title"
                       render={({ field }) => (
-                        <FormItem className="md:col-span-2">
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Titre de l'Article *</FormLabel>
+                        <FormItem className="lg:col-span-2">
+                          <FormLabel className="text-gray-800 font-semibold text-sm sm:text-base">Titre de l'Article *</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Entrez le titre de l'article"
-                              className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11"
+                              className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11 sm:h-12 text-sm sm:text-base"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600 font-medium" />
+                          <FormMessage className="text-red-600 font-medium text-xs sm:text-sm" />
                         </FormItem>
                       )}
                     />
@@ -266,22 +266,22 @@ export default function AdminNewsForm() {
                       name="category"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Catégorie *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm sm:text-base">Catégorie *</FormLabel>
                           <Select onValueChange={field.onChange} value={field.value}>
                             <FormControl>
-                              <SelectTrigger className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11">
+                              <SelectTrigger className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11 sm:h-12 text-sm sm:text-base">
                                 <SelectValue placeholder="Sélectionnez une catégorie" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent className="bg-white border-gray-300">
                               {categories.map((category) => (
-                                <SelectItem key={category} value={category} className="text-gray-900">
+                                <SelectItem key={category} value={category} className="text-gray-900 text-sm sm:text-base">
                                   {category}
                                 </SelectItem>
                               ))}
                             </SelectContent>
                           </Select>
-                          <FormMessage className="text-red-600 font-medium" />
+                          <FormMessage className="text-red-600 font-medium text-xs sm:text-sm" />
                         </FormItem>
                       )}
                     />
@@ -291,15 +291,15 @@ export default function AdminNewsForm() {
                       name="author"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Auteur *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm sm:text-base">Auteur *</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="Entrez le nom de l'auteur"
-                              className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11"
+                              className="border-gray-300 focus:border-blue-500 focus:ring-blue-200 bg-white text-gray-900 h-11 sm:h-12 text-sm sm:text-base"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600 font-medium" />
+                          <FormMessage className="text-red-600 font-medium text-xs sm:text-sm" />
                         </FormItem>
                       )}
                     />
@@ -307,26 +307,26 @@ export default function AdminNewsForm() {
                 </div>
 
                 {/* Content Section */}
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-gray-300 rounded-xl p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-gray-300 rounded-xl p-4 sm:p-6 shadow-sm">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 border-b border-gray-300 pb-3 flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
                     Contenu de l'Article
                   </h3>
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <FormField
                       control={form.control}
                       name="summary"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Résumé *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm sm:text-base">Résumé *</FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Entrez un bref résumé de l'article"
-                              className="border-gray-300 focus:border-green-500 focus:ring-green-200 bg-white text-gray-900 min-h-[90px]"
+                              className="border-gray-300 focus:border-green-500 focus:ring-green-200 bg-white text-gray-900 min-h-[70px] sm:min-h-[90px] text-sm sm:text-base"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600 font-medium" />
+                          <FormMessage className="text-red-600 font-medium text-xs sm:text-sm" />
                         </FormItem>
                       )}
                     />
@@ -336,15 +336,15 @@ export default function AdminNewsForm() {
                       name="content"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-gray-800 font-semibold text-sm">Contenu Complet *</FormLabel>
+                          <FormLabel className="text-gray-800 font-semibold text-sm sm:text-base">Contenu Complet *</FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Entrez le contenu complet de l'article"
-                              className="border-gray-300 focus:border-green-500 focus:ring-green-200 bg-white text-gray-900 min-h-[220px]"
+                              className="border-gray-300 focus:border-green-500 focus:ring-green-200 bg-white text-gray-900 min-h-[150px] sm:min-h-[220px] text-sm sm:text-base"
                               {...field}
                             />
                           </FormControl>
-                          <FormMessage className="text-red-600 font-medium" />
+                          <FormMessage className="text-red-600 font-medium text-xs sm:text-sm" />
                         </FormItem>
                       )}
                     />
@@ -352,25 +352,25 @@ export default function AdminNewsForm() {
                 </div>
 
                 {/* Media Section */}
-                <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-gray-300 rounded-xl p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-300 pb-3 flex items-center">
+                <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-gray-300 rounded-xl p-4 sm:p-6 shadow-sm">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 border-b border-gray-300 pb-3 flex items-center">
                     <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
                     Image Principale
                   </h3>
-                  <div className="space-y-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex-1">
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                      <div className="flex-1 w-full">
                         <label className="block text-sm font-semibold text-gray-800 mb-3">
                           Télécharger une Image depuis l'Ordinateur
                         </label>
-                        <div className="flex items-center space-x-4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                           <Button
                             type="button"
                             variant="outline"
                             onClick={() => document.getElementById('image-upload')?.click()}
-                            className="border-gray-300 text-gray-800 hover:bg-purple-50 bg-white h-11 px-6"
+                            className="border-gray-300 text-gray-800 hover:bg-purple-50 bg-white h-10 sm:h-11 px-4 sm:px-6 w-full sm:w-auto text-sm sm:text-base"
                           >
-                            <Upload className="h-4 w-4 mr-2" />
+                            <Upload className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                             Choisir un Fichier
                           </Button>
                           <input
