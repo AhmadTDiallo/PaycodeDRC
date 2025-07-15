@@ -105,6 +105,8 @@ Paycode DRC is a full-stack fintech platform designed as a licensed payment aggr
 
 ```
 Changelog:
+- July 15, 2025. Enhanced 3D credit card with high-resolution textures and closer camera positioning for crisp text visibility
+- July 15, 2025. Resolved database connection issues with proper WebSocket configuration for Neon Database
 - July 15, 2025. Fixed critical admin navigation routing by adding missing routes in App.tsx
 - July 15, 2025. Improved admin back button visibility with dark text colors (text-gray-900)
 - July 15, 2025. Corrected navigation flow: "Créer Article" now returns to dashboard instead of article list

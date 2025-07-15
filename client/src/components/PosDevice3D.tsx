@@ -20,22 +20,24 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     const scene = new THREE.Scene();
     sceneRef.current = scene;
     
-    // Camera setup
+    // Camera setup - closer view for better text visibility
     const camera = new THREE.PerspectiveCamera(
       75,
       380 / 280,
       0.1,
       1000
     );
-    camera.position.set(0, 2, 3.5);
+    camera.position.set(0, 1, 2.2);
     camera.lookAt(0, 0, 0);
 
-    // Renderer setup
+    // Renderer setup with higher quality
     const renderer = new THREE.WebGLRenderer({ 
       antialias: true, 
-      alpha: true 
+      alpha: true,
+      powerPreference: "high-performance"
     });
     renderer.setSize(380, 280);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Better text quality
     renderer.setClearColor(0x000000, 0); // Transparent background
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -86,24 +88,35 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     stripe.position.set(0, -0.3, -0.05);
     cardGroup.add(stripe);
 
-    // Add PAYCODE DRC text at the top of the card
+    // Add PAYCODE DRC text at the top of the card with high quality
     const titleCanvas = document.createElement('canvas');
     const titleContext = titleCanvas.getContext('2d');
-    titleCanvas.width = 512;
-    titleCanvas.height = 128;
+    titleCanvas.width = 1024; // Higher resolution for crisp text
+    titleCanvas.height = 256;
     
     if (titleContext) {
+      // Enable high-quality text rendering
+      titleContext.imageSmoothingEnabled = true;
+      titleContext.imageSmoothingQuality = 'high';
+      
       titleContext.fillStyle = 'rgba(0, 0, 0, 0)';
       titleContext.fillRect(0, 0, titleCanvas.width, titleCanvas.height);
       
-      titleContext.font = 'bold 42px Arial';
+      titleContext.font = 'bold 84px Arial, sans-serif'; // Larger font for higher quality
       titleContext.fillStyle = 'white';
       titleContext.textAlign = 'center';
       titleContext.textBaseline = 'middle';
+      titleContext.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+      titleContext.lineWidth = 2;
+      titleContext.strokeText('PAYCODE DRC', titleCanvas.width / 2, titleCanvas.height / 2);
       titleContext.fillText('PAYCODE DRC', titleCanvas.width / 2, titleCanvas.height / 2);
     }
     
     const titleTexture = new THREE.CanvasTexture(titleCanvas);
+    titleTexture.generateMipmaps = false;
+    titleTexture.minFilter = THREE.LinearFilter;
+    titleTexture.magFilter = THREE.LinearFilter;
+    
     const titleMaterial = new THREE.MeshBasicMaterial({ 
       map: titleTexture,
       transparent: true
@@ -113,24 +126,35 @@ export default function PosDevice3D({ className = '' }: PosDevice3DProps) {
     titleMesh.position.set(0, 0.65, 0.051);
     cardGroup.add(titleMesh);
 
-    // Add 16-digit card number in the middle
+    // Add 16-digit card number in the middle with high quality
     const numberCanvas = document.createElement('canvas');
     const numberContext = numberCanvas.getContext('2d');
-    numberCanvas.width = 512;
-    numberCanvas.height = 128;
+    numberCanvas.width = 1024; // Higher resolution for crisp text
+    numberCanvas.height = 256;
     
     if (numberContext) {
+      // Enable high-quality text rendering
+      numberContext.imageSmoothingEnabled = true;
+      numberContext.imageSmoothingQuality = 'high';
+      
       numberContext.fillStyle = 'rgba(0, 0, 0, 0)';
       numberContext.fillRect(0, 0, numberCanvas.width, numberCanvas.height);
       
-      numberContext.font = 'bold 32px Courier New';
+      numberContext.font = 'bold 64px "Courier New", monospace'; // Larger font for higher quality
       numberContext.fillStyle = 'white';
       numberContext.textAlign = 'center';
       numberContext.textBaseline = 'middle';
+      numberContext.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+      numberContext.lineWidth = 1;
+      numberContext.strokeText('4532 1234 5678 9012', numberCanvas.width / 2, numberCanvas.height / 2);
       numberContext.fillText('4532 1234 5678 9012', numberCanvas.width / 2, numberCanvas.height / 2);
     }
     
     const numberTexture = new THREE.CanvasTexture(numberCanvas);
+    numberTexture.generateMipmaps = false;
+    numberTexture.minFilter = THREE.LinearFilter;
+    numberTexture.magFilter = THREE.LinearFilter;
+    
     const numberMaterial = new THREE.MeshBasicMaterial({ 
       map: numberTexture,
       transparent: true
