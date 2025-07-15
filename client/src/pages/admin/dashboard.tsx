@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useAdminAuth } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { PlusCircle, FileText, Users, Settings } from "lucide-react";
+import { PlusCircle, FileText } from "lucide-react";
 
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
@@ -101,43 +101,7 @@ export default function AdminDashboard() {
               </div>
             </CardContent>
           </Card>
-
-          <Card className="cursor-pointer hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-3">
-                <Users className="h-8 w-8 text-purple-600" />
-                <div>
-                  <h3 className="font-medium text-gray-900">Demandes</h3>
-                  <p className="text-sm text-gray-600">Demandes de démo</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="cursor-pointer hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-3">
-                <Settings className="h-8 w-8 text-orange-600" />
-                <div>
-                  <h3 className="font-medium text-gray-900">Paramètres</h3>
-                  <p className="text-sm text-gray-600">Configuration</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
-
-        {/* Recent Activity */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Activité récente</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-center text-gray-500 py-8">
-              Aucune activité récente à afficher
-            </div>
-          </CardContent>
-        </Card>
       </main>
     </div>
   );
