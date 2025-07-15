@@ -216,58 +216,104 @@ export default function News() {
 
         {/* Article Detail Modal */}
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="max-w-5xl max-h-[95vh] overflow-hidden p-0 bg-white">
             {selectedArticle && (
-              <>
-                <DialogHeader>
-                  <DialogDescription className="sr-only">
-                    Détails complets de l'article de presse
-                  </DialogDescription>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <Badge className="bg-blue-600 text-white px-3 py-1 text-sm font-semibold">
-                        {selectedArticle.category}
-                      </Badge>
-                      <div className="flex items-center text-sm text-gray-600">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        <span>
-                          {formatSafeDate(selectedArticle.publishedDate || selectedArticle.createdAt, "dd MMMM yyyy")}
-                        </span>
+              <div className="flex flex-col h-full">
+                {/* Header Section */}
+                <div className="relative">
+                  {selectedArticle.imageUrl && (
+                    <div className="h-80 relative overflow-hidden">
+                      <img 
+                        src={selectedArticle.imageUrl} 
+                        alt={selectedArticle.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      
+                      {/* Category badge overlay */}
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-white/90 text-gray-800 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+                          {selectedArticle.category}
+                        </Badge>
+                      </div>
+                      
+                      {/* Title overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h1 className="text-3xl font-bold mb-2 leading-tight">
+                          {selectedArticle.title}
+                        </h1>
+                        <div className="flex items-center space-x-4 text-white/90">
+                          <div className="flex items-center">
+                            <Calendar className="h-4 w-4 mr-2" />
+                            <span className="text-sm">
+                              {formatSafeDate(selectedArticle.publishedDate || selectedArticle.createdAt, "dd MMMM yyyy")}
+                            </span>
+                          </div>
+                          <div className="flex items-center">
+                            <User className="h-4 w-4 mr-2" />
+                            <span className="text-sm">Par {selectedArticle.author}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <DialogTitle className="text-2xl font-bold text-gray-900 mb-4">
-                    {selectedArticle.title}
-                  </DialogTitle>
-                </DialogHeader>
-                
-                {selectedArticle.imageUrl && (
-                  <div className="mb-6">
-                    <img 
-                      src={selectedArticle.imageUrl} 
-                      alt={selectedArticle.title}
-                      className="w-full h-64 object-cover rounded-lg"
-                    />
-                  </div>
-                )}
+                  )}
+                  
+                  {/* Header without image */}
+                  {!selectedArticle.imageUrl && (
+                    <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-8 text-white">
+                      <div className="mb-4">
+                        <Badge className="bg-white/20 text-white px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+                          {selectedArticle.category}
+                        </Badge>
+                      </div>
+                      <h1 className="text-3xl font-bold mb-4 leading-tight">
+                        {selectedArticle.title}
+                      </h1>
+                      <div className="flex items-center space-x-4 text-white/90">
+                        <div className="flex items-center">
+                          <Calendar className="h-4 w-4 mr-2" />
+                          <span className="text-sm">
+                            {formatSafeDate(selectedArticle.publishedDate || selectedArticle.createdAt, "dd MMMM yyyy")}
+                          </span>
+                        </div>
+                        <div className="flex items-center">
+                          <User className="h-4 w-4 mr-2" />
+                          <span className="text-sm">Par {selectedArticle.author}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center text-sm text-gray-700">
-                    <User className="h-4 w-4 mr-2" />
-                    <span>Par {selectedArticle.author}</span>
+                {/* Content Section */}
+                <div className="flex-1 overflow-y-auto p-8">
+                  <DialogHeader className="mb-6">
+                    <DialogDescription className="sr-only">
+                      Détails complets de l'article de presse
+                    </DialogDescription>
+                    <DialogTitle className="sr-only">
+                      {selectedArticle.title}
+                    </DialogTitle>
+                  </DialogHeader>
+                  
+                  {/* Summary */}
+                  <div className="mb-8">
+                    <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                      <h3 className="text-lg font-semibold text-blue-900 mb-3">Résumé</h3>
+                      <p className="text-blue-800 text-lg leading-relaxed">
+                        {selectedArticle.summary}
+                      </p>
+                    </div>
                   </div>
-
-                  <div className="prose prose-gray max-w-none">
-                    <p className="text-lg text-gray-800 font-medium mb-4 bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-                      {selectedArticle.summary}
-                    </p>
-                    
-                    <div className="text-gray-800 leading-relaxed whitespace-pre-wrap text-base">
+                  
+                  {/* Main Content */}
+                  <div className="prose prose-lg max-w-none">
+                    <div className="text-gray-800 leading-relaxed text-lg whitespace-pre-wrap">
                       {selectedArticle.content}
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             )}
           </DialogContent>
         </Dialog>
