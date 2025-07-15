@@ -47,7 +47,7 @@ const translations = {
     'value.stat3': '99.9%',
     'value.stat3Label': 'Temps de disponibilité du système',
     'value.inclusionTitle': 'Favoriser l\'inclusion financière en RDC',
-    'value.inclusionDescription': 'En tant qu\'agrégateur agréé, Paycode RDC propose des solutions de paiement sécurisées, fiables et évolutives qui favorisent l\'inclusion financière et l\'efficacité. Nous aidons les institutions à réduire leurs coûts, améliorer l\'accessibilité et promouvoir l\'interopérabilité au sein de l\'écosystème croissant de la finance numérique du pays.',
+    'value.inclusionDescription': 'En tant qu\'agrégateur agréé, Paycode RDC propose des solutions de paiement sécurisés, fiables et évolutivf qui favorisent l\'inclusion financière et l\'efficacité. Nous aidons les institutions à réduire leurs coûts, améliorer l\'accessibilité et promouvoir l\'interopérabilité au sein de l\'écosystème croissant de la finance numérique du pays.',
 
     // Solutions
     'solutions.title': 'Nos Solutions',
