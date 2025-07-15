@@ -39,6 +39,9 @@ export interface IStorage {
   getAdminUserByUsername(username: string): Promise<AdminUser | undefined>;
   getAdminUserById(id: number): Promise<AdminUser | undefined>;
   validateAdminPassword(username: string, password: string): Promise<AdminUser | null>;
+  getAllAdminUsers(): Promise<AdminUser[]>;
+  updateAdminUser(id: number, updates: Partial<AdminUser>): Promise<AdminUser>;
+  deleteAdminUser(id: number): Promise<boolean>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -148,11 +151,43 @@ export class DatabaseStorage implements IStorage {
 
   // Admin users implementation
   async createAdminUser(user: InsertAdminUser): Promise<AdminUser> {
-    const [newUser] = await db
+    const saltRounds = 12;
+    const hashedPassword = await bcrypt.hash(user.password, saltRounds);
+    
+    const [adminUser] = await db
       .insert(adminUsers)
-      .values(user)
+      .values({
+        username: user.username,
+        email: user.email,
+        passwordHash: hashedPassword,
+        role: user.role || "admin",
+        isActive: user.isActive !== undefined ? user.isActive : true,
+      })
       .returning();
-    return newUser;
+    return adminUser;
+  }
+
+  async getAllAdminUsers(): Promise<AdminUser[]> {
+    return await db.select().from(adminUsers).orderBy(adminUsers.createdAt);
+  }
+
+  async updateAdminUser(id: number, updates: Partial<AdminUser>): Promise<AdminUser> {
+    const [updatedUser] = await db
+      .update(adminUsers)
+      .set({
+        ...updates,
+        updatedAt: new Date(),
+      })
+      .where(eq(adminUsers.id, id))
+      .returning();
+    return updatedUser;
+  }
+
+  async deleteAdminUser(id: number): Promise<boolean> {
+    const result = await db
+      .delete(adminUsers)
+      .where(eq(adminUsers.id, id));
+    return result.rowCount > 0;
   }
 
   async getAdminUserByUsername(username: string): Promise<AdminUser | undefined> {

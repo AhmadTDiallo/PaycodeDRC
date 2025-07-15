@@ -175,6 +175,58 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json({ success: true, user: req.session.adminUser });
   });
 
+  // Admin user management routes
+  app.get('/api/admin/users', requireAdmin, async (req, res) => {
+    try {
+      const users = await storage.getAllAdminUsers();
+      res.json({ success: true, data: users });
+    } catch (error) {
+      console.error("Error fetching admin users:", error);
+      res.status(500).json({ success: false, message: "Failed to fetch admin users" });
+    }
+  });
+
+  app.post('/api/admin/users', requireAdmin, async (req, res) => {
+    try {
+      const validatedData = insertAdminUserSchema.parse(req.body);
+      const newUser = await storage.createAdminUser(validatedData);
+      res.status(201).json({ success: true, data: newUser });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ success: false, message: "Validation error", errors: error.errors });
+      }
+      console.error("Error creating admin user:", error);
+      res.status(500).json({ success: false, message: "Failed to create admin user" });
+    }
+  });
+
+  app.put('/api/admin/users/:id', requireAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const updates = req.body;
+      const updatedUser = await storage.updateAdminUser(id, updates);
+      res.json({ success: true, data: updatedUser });
+    } catch (error) {
+      console.error("Error updating admin user:", error);
+      res.status(500).json({ success: false, message: "Failed to update admin user" });
+    }
+  });
+
+  app.delete('/api/admin/users/:id', requireAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const success = await storage.deleteAdminUser(id);
+      if (success) {
+        res.json({ success: true, message: "Admin user deleted successfully" });
+      } else {
+        res.status(404).json({ success: false, message: "Admin user not found" });
+      }
+    } catch (error) {
+      console.error("Error deleting admin user:", error);
+      res.status(500).json({ success: false, message: "Failed to delete admin user" });
+    }
+  });
+
   // Public news endpoint
   app.get("/api/news", async (req, res) => {
     try {

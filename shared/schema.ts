@@ -40,6 +40,7 @@ export const adminUsers = pgTable("admin_users", {
   username: varchar("username", { length: 50 }).notNull().unique(),
   email: text("email").notNull().unique(),
   passwordHash: text("password_hash").notNull(),
+  role: varchar("role", { length: 20 }).default("admin").notNull(), // 'superadmin' or 'admin'
   isActive: boolean("is_active").default(true).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
@@ -87,12 +88,14 @@ export const updateNewsArticleSchema = insertNewsArticleSchema.partial().extend(
 // Admin user schemas
 export const insertAdminUserSchema = createInsertSchema(adminUsers).omit({
   id: true,
+  passwordHash: true,
   createdAt: true,
   updatedAt: true,
 }).extend({
   username: z.string().min(3, "Username must be at least 3 characters"),
   email: z.string().email("Invalid email address"),
-  passwordHash: z.string(),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+  role: z.enum(["admin", "superadmin"]).default("admin"),
 });
 
 export const adminLoginSchema = z.object({

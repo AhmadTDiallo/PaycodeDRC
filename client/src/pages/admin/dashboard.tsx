@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useAdminAuth } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { PlusCircle, FileText } from "lucide-react";
+import { PlusCircle, FileText, Users } from "lucide-react";
 
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
@@ -97,6 +97,21 @@ export default function AdminDashboard() {
                 <div>
                   <h3 className="font-semibold text-gray-900">Manage Articles</h3>
                   <p className="text-sm text-gray-700">View and edit articles</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card 
+            className="cursor-pointer hover:shadow-md transition-shadow bg-white border-gray-200 shadow-sm"
+            onClick={() => setLocation("/admin/users")}
+          >
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3">
+                <Users className="h-8 w-8 text-green-600" />
+                <div>
+                  <h3 className="font-semibold text-gray-900">Manage Users</h3>
+                  <p className="text-sm text-gray-700">Admin user accounts</p>
                 </div>
               </div>
             </CardContent>

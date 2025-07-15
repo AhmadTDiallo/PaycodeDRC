@@ -32,8 +32,8 @@ export default function AdminLogin() {
   useEffect(() => {
     if (loginError) {
       toast({
-        title: "Erreur de connexion",
-        description: "Nom d'utilisateur ou mot de passe incorrect",
+        title: "Login Error",
+        description: "Invalid username or password",
         variant: "destructive",
       });
     }
@@ -48,10 +48,10 @@ export default function AdminLogin() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-900">
-            Administration PAYCODE DRC
+            PAYCODE DRC Administration
           </CardTitle>
-          <p className="text-gray-600 mt-2">
-            Connectez-vous pour accéder au panneau d'administration
+          <p className="text-gray-800 font-medium mt-2">
+            Login to access the administration panel
           </p>
         </CardHeader>
         <CardContent>
@@ -62,10 +62,11 @@ export default function AdminLogin() {
                 name="username"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nom d'utilisateur</FormLabel>
+                    <FormLabel className="text-gray-800 font-medium">Username</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Entrez votre nom d'utilisateur"
+                        placeholder="Enter your username"
+                        className="border-gray-300 focus:border-blue-500"
                         {...field}
                         disabled={isLoggingIn}
                       />
@@ -79,11 +80,12 @@ export default function AdminLogin() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Mot de passe</FormLabel>
+                    <FormLabel className="text-gray-800 font-medium">Password</FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        placeholder="Entrez votre mot de passe"
+                        placeholder="Enter your password"
+                        className="border-gray-300 focus:border-blue-500"
                         {...field}
                         disabled={isLoggingIn}
                       />
@@ -97,7 +99,7 @@ export default function AdminLogin() {
                 className="w-full bg-blue-600 hover:bg-blue-700"
                 disabled={isLoggingIn}
               >
-                {isLoggingIn ? "Connexion..." : "Se connecter"}
+                {isLoggingIn ? "Logging in..." : "Login"}
               </Button>
             </form>
           </Form>
