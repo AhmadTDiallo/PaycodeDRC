@@ -21,6 +21,21 @@
   background: transparent;
 }
 
+/* Mobile background image positioning for EDAPT page */
+@media (max-width: 768px) {
+  .edapt-hero-bg {
+    background-position: center center !important;
+    background-size: cover !important;
+    transform: scale(1.1);
+  }
+  
+  .edapt-fixed-bg {
+    background-position: center center !important;
+    background-size: cover !important;
+    background-attachment: scroll !important;
+  }
+}
+
 :root {
   --background: hsl(225, 45%, 10%);
   --foreground: hsl(210, 40%, 95%);

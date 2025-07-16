@@ -91,13 +91,13 @@ export default function EdaptPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Fixed Parallax Background */}
       <div 
-        className="fixed inset-0 z-0"
+        className="fixed inset-0 z-0 edapt-fixed-bg"
         style={{
           backgroundImage: `url(${fingerprintImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed',
+          backgroundAttachment: 'scroll',
           filter: 'blur(2px) brightness(0.2) contrast(1.2)',
         }}
       />
@@ -137,9 +137,12 @@ export default function EdaptPage() {
       <section className="relative min-h-screen flex items-center justify-center py-24 md:py-32">
         {/* Hero Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 edapt-hero-bg"
           style={{
             backgroundImage: `url(${fingerprintImage})`,
+            backgroundPosition: 'center center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
             filter: 'brightness(0.4) contrast(1.4) saturate(1.2)',
           }}
         />
