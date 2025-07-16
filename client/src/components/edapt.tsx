@@ -238,11 +238,8 @@ export default function Edapt() {
             }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
-              // Scroll to contact section or handle learn more action
-              const contactSection = document.getElementById('contact');
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-              }
+              // Navigate to EDAPT page
+              window.location.href = '/edapt';
             }}
           >
             {t("edapt.learnMore") || "En savoir plus"}

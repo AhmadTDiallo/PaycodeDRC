@@ -105,6 +105,57 @@ const translations = {
     'edapt.benefit6Desc': 'S\'adapte facilement aux besoins croissants et à l\'expansion géographique.',
     'edapt.learnMore': 'En savoir plus',
 
+    // EDAPT Page translations (French)
+    'edaptPage.heroTag': 'Technologie Brevetée',
+    'edaptPage.heroSubtitle': 'Technologie Électronique des Données et des Paiements',
+    'edaptPage.heroDescription': 'La technologie EDAPT de Paycode est une plateforme brevetée et propriétaire—la seule de son genre au monde—qui combine l\'identification biométrique sécurisée avec des paiements numériques hors ligne en temps réel.',
+    
+    'edaptPage.featuresTitle': 'Fonctionnalités Principales',
+    'edaptPage.featuresSubtitle': 'Une technologie révolutionnaire qui redéfinit les paiements numériques',
+    
+    'edaptPage.feature1Title': 'Identification Biométrique',
+    'edaptPage.feature1Desc': 'Utilisant la reconnaissance des veines palmaires et faciale, EDAPT offre le plus haut niveau de vérification d\'identité sécurisée.',
+    'edaptPage.feature2Title': 'Accès Portefeuille Électronique',
+    'edaptPage.feature2Desc': 'Accès aux portefeuilles numériques et comptes bancaires directement liés aux profils authentifiés biométriquement.',
+    'edaptPage.feature3Title': 'Transactions Hors Ligne',
+    'edaptPage.feature3Desc': 'Notre système breveté traite les paiements sécurisés hors ligne, en temps réel, sans accès internet ou réseau mobile.',
+    'edaptPage.feature4Title': 'Interopérabilité Complète',
+    'edaptPage.feature4Desc': 'EDAPT se connecte aux secteurs financier, gouvernemental, sanitaire et agricole, permettant une prestation de services unifiée.',
+    
+    'edaptPage.uniqueTitle': 'Pourquoi EDAPT est Unique',
+    'edaptPage.uniqueSubtitle': 'La seule technologie brevetée de ce type au monde',
+    
+    'edaptPage.unique1Title': 'Technologie Exclusive',
+    'edaptPage.unique1Desc': 'Paycode détient le brevet pour cette solution intégrée de paiements biométriques hors ligne, nous rendant le seul fournisseur mondial.',
+    'edaptPage.unique2Title': 'Authentification Biométrique',
+    'edaptPage.unique2Desc': 'Reconnaissance des veines palmaires et faciale sans dépendre des documents traditionnels.',
+    'edaptPage.unique3Title': 'Accès Portefeuille & Compte',
+    'edaptPage.unique3Desc': 'Accès direct aux portefeuilles numériques et comptes bancaires liés aux profils biométriques.',
+    'edaptPage.unique4Title': 'Transactions Temps Réel Hors Ligne',
+    'edaptPage.unique4Desc': 'Système breveté qui traite les paiements sécurisés hors ligne, assurant l\'inclusion là où les systèmes traditionnels ne peuvent pas atteindre.',
+    'edaptPage.unique5Title': 'Interopérabilité Complète',
+    'edaptPage.unique5Desc': 'Connexion entre les secteurs financier, gouvernemental, sanitaire et agricole pour une prestation de services unifiée.',
+    
+    'edaptPage.deploymentTitle': 'Déploiement Stratégique',
+    'edaptPage.deploymentSubtitle': 'EDAPT est déjà opérationnel à travers l\'Afrique avec une expansion rapide en cours',
+    
+    'edaptPage.stat1Label': 'Utilisateurs Actifs',
+    'edaptPage.stat1Desc': 'Plus de 4 millions d\'utilisateurs à travers 8 pays',
+    'edaptPage.stat2Label': 'Pays Desservis',
+    'edaptPage.stat2Desc': 'Présence établie dans 8 pays africains',
+    'edaptPage.stat3Label': 'Technologie Brevetée',
+    'edaptPage.stat3Desc': 'La seule solution de ce type au monde',
+    
+    'edaptPage.mastercardTitle': 'Intégration Mastercard Community Pass',
+    'edaptPage.mastercardDesc': 'Intégré avec le Community Pass de Mastercard, EDAPT livre des cartes intelligentes biométriques à des millions de personnes non bancarisées à travers l\'Afrique.',
+    'edaptPage.ghanaTitle': 'Plateforme Nationale e-Zwich du Ghana',
+    'edaptPage.ghanaDesc': 'Déjà opérationnel comme cœur de la plateforme nationale e-Zwich du Ghana, EDAPT soutient plus de 4 millions d\'utilisateurs dans huit pays.',
+    
+    'edaptPage.ctaTitle': 'Prêt à Révolutionner les Paiements ?',
+    'edaptPage.ctaSubtitle': 'EDAPT de Paycode représente la seule solution brevetée et prouvée capable de fournir des paiements biométriques sécurisés et hors ligne à grande échelle.',
+    'edaptPage.ctaButton': 'Contactez-nous',
+    'edaptPage.backButton': 'Retour',
+
     // Financial Switch Popup (French)
     'solutions.popup.title': 'Switch Financier - Aperçu Détaillé',
     'solutions.popup.architecture': 'Architecture de Routage des Paiements',
@@ -317,6 +368,57 @@ const translations = {
     'edapt.feature4Title': 'Interoperability',
     'edapt.feature4Desc': 'Compatible across financial, government aid, health, and agricultural services.',
     'edapt.learnMore': 'Learn More',
+
+    // EDAPT Page translations (English)
+    'edaptPage.heroTag': 'Patented Technology',
+    'edaptPage.heroSubtitle': 'Electronic Data And Payments Technology',
+    'edaptPage.heroDescription': 'Paycode\'s EDAPT is a patented, proprietary platform—the only one of its kind globally—that combines secure biometric identification with real-time, offline digital payments.',
+    
+    'edaptPage.featuresTitle': 'Core Features',
+    'edaptPage.featuresSubtitle': 'Revolutionary technology that redefines digital payments',
+    
+    'edaptPage.feature1Title': 'Biometric Identification',
+    'edaptPage.feature1Desc': 'Using palm vein and facial recognition, EDAPT offers the highest level of secure identity verification.',
+    'edaptPage.feature2Title': 'Electronic Wallet Access',
+    'edaptPage.feature2Desc': 'Users gain access to digital wallets and bank accounts directly linked to their biometrically authenticated profiles.',
+    'edaptPage.feature3Title': 'Offline Transactions',
+    'edaptPage.feature3Desc': 'Our patented system processes secure payments offline, in real-time, without internet or mobile network access.',
+    'edaptPage.feature4Title': 'Full Interoperability',
+    'edaptPage.feature4Desc': 'EDAPT connects across financial, government, health, and agricultural sectors, enabling unified service delivery.',
+    
+    'edaptPage.uniqueTitle': 'Why EDAPT is Unique',
+    'edaptPage.uniqueSubtitle': 'The only patented technology of its kind in the world',
+    
+    'edaptPage.unique1Title': 'Exclusive Technology',
+    'edaptPage.unique1Desc': 'Paycode holds the patent for this integrated offline biometric payments solution, making us the sole provider worldwide.',
+    'edaptPage.unique2Title': 'Biometric Authentication',
+    'edaptPage.unique2Desc': 'Palm vein and facial recognition without relying on traditional documents.',
+    'edaptPage.unique3Title': 'Wallet & Account Access',
+    'edaptPage.unique3Desc': 'Direct access to digital wallets and bank accounts linked to biometric profiles.',
+    'edaptPage.unique4Title': 'Offline Real-Time Transactions',
+    'edaptPage.unique4Desc': 'Patented system that processes secure payments offline, ensuring inclusion where traditional systems cannot reach.',
+    'edaptPage.unique5Title': 'Full Interoperability',
+    'edaptPage.unique5Desc': 'Connects across financial, government, health, and agricultural sectors for unified service delivery.',
+    
+    'edaptPage.deploymentTitle': 'Strategic Deployment',
+    'edaptPage.deploymentSubtitle': 'EDAPT is already operational across Africa with rapid expansion underway',
+    
+    'edaptPage.stat1Label': 'Active Users',
+    'edaptPage.stat1Desc': 'Over 4 million users across 8 countries',
+    'edaptPage.stat2Label': 'Countries Served',
+    'edaptPage.stat2Desc': 'Established presence in 8 African countries',
+    'edaptPage.stat3Label': 'Patented Technology',
+    'edaptPage.stat3Desc': 'The only solution of its kind globally',
+    
+    'edaptPage.mastercardTitle': 'Mastercard Community Pass Integration',
+    'edaptPage.mastercardDesc': 'Integrated with Mastercard\'s Community Pass, EDAPT is delivering biometric smart cards to millions of unbanked individuals across Africa.',
+    'edaptPage.ghanaTitle': 'Ghana\'s National e-Zwich Platform',
+    'edaptPage.ghanaDesc': 'Already operational as the core of Ghana\'s national e-Zwich platform, EDAPT supports over 4 million users in eight countries.',
+    
+    'edaptPage.ctaTitle': 'Ready to Revolutionize Payments?',
+    'edaptPage.ctaSubtitle': 'Paycode\'s EDAPT represents the only patented and proven solution capable of delivering secure, biometric, offline payments at scale.',
+    'edaptPage.ctaButton': 'Contact Us',
+    'edaptPage.backButton': 'Back',
     
     'edapt.usecasesTitle': 'Use Cases',
     'edapt.usecase1Title': 'Financial Services',
