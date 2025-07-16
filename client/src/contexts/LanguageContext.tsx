@@ -109,6 +109,8 @@ const translations = {
     'edaptPage.heroTag': 'Technologie Brevetée',
     'edaptPage.heroSubtitle': 'Technologie Électronique des Données et des Paiements',
     'edaptPage.heroDescription': 'La technologie EDAPT de Paycode est une plateforme brevetée et propriétaire—la seule de son genre au monde—qui combine l\'identification biométrique sécurisée avec des paiements numériques hors ligne en temps réel.',
+    'edaptPage.heroImageTitle': 'Technologie Biométrique Avancée',
+    'edaptPage.heroImageSubtitle': 'Sécurité et Innovation',
     
     'edaptPage.featuresTitle': 'Fonctionnalités Principales',
     'edaptPage.featuresSubtitle': 'Une technologie révolutionnaire qui redéfinit les paiements numériques',
@@ -373,6 +375,8 @@ const translations = {
     'edaptPage.heroTag': 'Patented Technology',
     'edaptPage.heroSubtitle': 'Electronic Data And Payments Technology',
     'edaptPage.heroDescription': 'Paycode\'s EDAPT is a patented, proprietary platform—the only one of its kind globally—that combines secure biometric identification with real-time, offline digital payments.',
+    'edaptPage.heroImageTitle': 'Advanced Biometric Technology',
+    'edaptPage.heroImageSubtitle': 'Security and Innovation',
     
     'edaptPage.featuresTitle': 'Core Features',
     'edaptPage.featuresSubtitle': 'Revolutionary technology that redefines digital payments',
