@@ -70,7 +70,7 @@ const translations = {
     'solutions.edaptDesc': 'EDAPT (Electronic Data And Payments Technology) de Paycode est une plateforme robuste qui combine l\'identification biométrique sécurisée avec des paiements numériques capables de fonctionner hors ligne—même dans des endroits reculés. Caractéristiques clés incluent l\'identité biométrique et l\'authentification (reconnaissance faciale/palmaire), l\'accès au portefeuille électronique et aux comptes bancaires, les transactions hors ligne en temps réel—aucun internet requis, et l\'interopérabilité entre les services financiers, d\'aide gouvernementale, de santé et agricoles.',
 
     // EDAPT Section
-    'edapt.title': 'EDAPT - Electronic Data And Payments Technology',
+    'edapt.title': 'EDAPT - Technologie Électronique des Données et des Paiements',
     'edapt.subtitle': 'Une plateforme robuste qui combine l\'identification biométrique sécurisée avec des paiements numériques capables de fonctionner hors ligne—même dans des endroits reculés.',
     
     'edapt.feature1Title': 'Identification Biométrique',
