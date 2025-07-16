@@ -55,6 +55,17 @@ export default function Solutions() {
       gradient: "from-orange-500 via-orange-600 to-red-500",
       delay: 0.4
     },
+    {
+      icon: Shield,
+      number: "05",
+      title: t("solutions.edaptTitle"), 
+      description: t("solutions.edaptDesc"),
+      image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      iconBg: "bg-gradient-to-br from-indigo-500 to-purple-600",
+      features: ["Biometric Authentication", "Offline Transactions", "Electronic Wallet", "Multi-Service Interoperability"],
+      gradient: "from-indigo-500 via-indigo-600 to-purple-600",
+      delay: 0.5
+    },
   ];
 
   // Payment routing diagram as SVG

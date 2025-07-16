@@ -3,6 +3,7 @@ import HeroSection from "@/components/hero-section";
 import ValueProposition from "@/components/value-proposition";
 
 import Solutions from "@/components/solutions";
+import Edapt from "@/components/edapt";
 import Awards from "@/components/awards";
 
 import Team from "@/components/team";
@@ -18,6 +19,7 @@ export default function Home() {
       <ValueProposition />
 
       <Solutions />
+      <Edapt />
       <Awards />
 
       <Team />

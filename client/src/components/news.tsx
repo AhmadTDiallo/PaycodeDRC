@@ -133,10 +133,7 @@ export default function News() {
               const isDbArticle = 'id' in article;
               const displayImage = isDbArticle ? article.imageUrl : article.image;
               
-              // Debug logging for imageUrls
-              if (isDbArticle && article.id === 6) {
-                console.log("Article 6 imageUrls:", article.imageUrls, typeof article.imageUrls);
-              }
+
               
               const displayImages = isDbArticle && article.imageUrls && article.imageUrls.length > 0 
                 ? article.imageUrls 
@@ -241,7 +238,7 @@ export default function News() {
                     <div className="h-80 relative">
                       {selectedArticle.imageUrls && selectedArticle.imageUrls.length > 0 ? (
                         <div className="relative h-full">
-                          {console.log("Modal: Rendering slideshow with images:", selectedArticle.imageUrls)}
+
                           <ImageSlideshow 
                             images={selectedArticle.imageUrls} 
                             className="w-full h-full"
