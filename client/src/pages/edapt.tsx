@@ -134,100 +134,106 @@ export default function EdaptPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32">
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative min-h-screen flex items-center justify-center py-24 md:py-32">
+        {/* Hero Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${fingerprintImage})`,
+            filter: 'brightness(0.4) contrast(1.4) saturate(1.2)',
+          }}
+        />
+        
+        {/* Enhanced Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/85 via-blue-900/75 to-slate-900/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-transparent to-slate-900/60" />
+        
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            className="text-center"
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
           >
             <motion.div variants={fadeInUp} className="mb-8">
-              <Badge className="bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 text-blue-200 px-6 py-3 text-lg font-medium rounded-full">
+              <Badge className="bg-blue-600/30 backdrop-blur-md border border-blue-400/40 text-blue-100 px-8 py-4 text-xl font-medium rounded-full shadow-2xl">
                 {t("edaptPage.heroTag")}
               </Badge>
             </motion.div>
             
             <motion.h1 
               variants={fadeInUp}
-              className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
+              className="text-6xl md:text-8xl font-bold text-white mb-8 leading-tight"
+              style={{
+                textShadow: '0 0 30px rgba(59, 130, 246, 0.5)'
+              }}
             >
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
                 EDAPT
               </span>
             </motion.h1>
             
             <motion.h2 
               variants={fadeInUp}
-              className="text-2xl md:text-3xl text-slate-300 font-light mb-8 max-w-4xl mx-auto"
+              className="text-3xl md:text-4xl text-white font-light mb-8 max-w-5xl mx-auto"
+              style={{
+                textShadow: '0 2px 10px rgba(0, 0, 0, 0.7)'
+              }}
             >
               {t("edaptPage.heroSubtitle")}
             </motion.h2>
             
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-slate-400 max-w-4xl mx-auto leading-relaxed mb-12"
+              className="text-xl md:text-2xl text-slate-200 max-w-5xl mx-auto leading-relaxed mb-16"
+              style={{
+                textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)'
+              }}
             >
               {t("edaptPage.heroDescription")}
             </motion.p>
 
             <motion.div
               variants={fadeInUp}
-              className="flex justify-center mt-16"
+              className="flex justify-center"
             >
-              <div className="relative w-full max-w-4xl h-96 rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
-                {/* Hero Background Image */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                  style={{
-                    backgroundImage: `url(${fingerprintImage})`,
-                    filter: 'brightness(0.7) contrast(1.3) saturate(1.1)',
+              <motion.div 
+                className="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-2xl px-8 py-6 border border-white/20 shadow-2xl"
+                animate={{
+                  y: [0, -8, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <motion.div 
+                  className="w-16 h-16 rounded-full bg-blue-500/40 backdrop-blur-md border border-blue-300/60 flex items-center justify-center"
+                  animate={{
+                    scale: [1, 1.15, 1],
+                    boxShadow: [
+                      "0 0 25px rgba(59, 130, 246, 0.4)",
+                      "0 0 50px rgba(59, 130, 246, 0.8)",
+                      "0 0 25px rgba(59, 130, 246, 0.4)"
+                    ]
                   }}
-                />
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-blue-900/60 to-transparent" />
-                
-                {/* Content Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div 
-                    className="text-center text-white p-8"
-                    animate={{
-                      y: [0, -5, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <motion.div 
-                      className="w-20 h-20 mx-auto mb-6 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/50 flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 1],
-                        boxShadow: [
-                          "0 0 20px rgba(59, 130, 246, 0.3)",
-                          "0 0 40px rgba(59, 130, 246, 0.6)",
-                          "0 0 20px rgba(59, 130, 246, 0.3)"
-                        ]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      <Fingerprint className="w-10 h-10 text-blue-200" />
-                    </motion.div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      {t("edaptPage.heroImageTitle") || "Technologie Biométrique Avancée"}
-                    </h3>
-                    <p className="text-blue-200 text-lg">
-                      {t("edaptPage.heroImageSubtitle") || "Sécurité et Innovation"}
-                    </p>
-                  </motion.div>
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <Fingerprint className="w-8 h-8 text-blue-100" />
+                </motion.div>
+                <div className="text-left">
+                  <h3 className="text-xl font-bold text-white mb-1">
+                    {t("edaptPage.heroImageTitle") || "Technologie Biométrique"}
+                  </h3>
+                  <p className="text-blue-200">
+                    {t("edaptPage.heroImageSubtitle") || "Sécurité Avancée"}
+                  </p>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
