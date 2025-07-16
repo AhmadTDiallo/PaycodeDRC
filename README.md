@@ -1,4 +1,4 @@
-# Paycode DRC - Fintech Platform
+# Paycode Fintech Congo  - Fintech Platform - Diallo
 
 A comprehensive fintech platform for the Democratic Republic of Congo, serving as a licensed payment aggregator with shared, interoperable payment platforms for financial institutions.
 
@@ -347,7 +347,4 @@ npm run type-check   # TypeScript checking
 ## 📄 License
 
 This project is under proprietary license. All rights reserved to Paycode DRC.
-
----
-
-**Built with ❤️ for the DRC fintech ecosystem**
+Any inquiries please refer to Ahmad Tidiane Diallo. 
