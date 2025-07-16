@@ -24,28 +24,15 @@
 /* Mobile background image positioning for EDAPT page */
 @media (max-width: 768px) {
   .edapt-hero-bg {
-    background-position: 60% center !important;
+    background-position: center center !important;
     background-size: cover !important;
-    transform: scale(1.2) translateX(10%);
+    transform: scale(1.1);
   }
   
   .edapt-fixed-bg {
-    background-position: 60% center !important;
+    background-position: center center !important;
     background-size: cover !important;
     background-attachment: scroll !important;
-    transform: scale(1.1) translateX(5%);
-  }
-}
-
-@media (max-width: 480px) {
-  .edapt-hero-bg {
-    background-position: 65% center !important;
-    transform: scale(1.3) translateX(15%);
-  }
-  
-  .edapt-fixed-bg {
-    background-position: 65% center !important;
-    transform: scale(1.2) translateX(10%);
   }
 }
 
