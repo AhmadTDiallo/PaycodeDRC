@@ -347,9 +347,4 @@ npm run type-check   # Vérification TypeScript
 ## 📄 Licence
 
 Ce projet est sous licence propriétaire. Tous droits réservés à Paycode DRC.
-
-
-
----
-
-**Construit avec ❤️ pour l'écosystème fintech de la RDC**
+Contact Ahmad Tidiane Diallo for more information.
