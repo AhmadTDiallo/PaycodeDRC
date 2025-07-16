@@ -37,17 +37,18 @@ export default function Edapt() {
   ];
 
   return (
-    <section id="edapt" className="relative py-20 overflow-hidden">
-      {/* Background with animated gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_100%,rgba(139,92,246,0.1),transparent_50%)]" />
+    <section id="edapt" className="relative py-16 overflow-hidden">
+      {/* Background with blue gradients */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-blue-100/50 to-blue-200/30">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.2),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_100%,rgba(37,99,235,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(29,78,216,0.1),transparent_50%)]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -75,25 +76,63 @@ export default function Edapt() {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* POS Device Image with Glass Morphism */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
+          {/* 3D Floating POS Device */}
           <motion.div
             variants={slideInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative group"
+            className="relative group perspective-1000"
           >
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-xl border border-white/20 shadow-2xl p-8">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <motion.img
-                src={posDeviceImage}
-                alt="POS Device"
-                className="w-full h-auto rounded-2xl shadow-lg transform group-hover:scale-105 transition-transform duration-500"
-                whileHover={{ y: -5 }}
-              />
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-paycode-blue to-paycode-blue-light rounded-full opacity-20 blur-xl" />
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 blur-xl" />
+            <div className="relative">
+              {/* 3D Shadow beneath device */}
+              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4/5 h-8 bg-gradient-to-r from-transparent via-blue-900/20 to-transparent rounded-full blur-xl" />
+              
+              {/* Floating POS Device */}
+              <motion.div
+                className="relative z-10"
+                whileHover={{ 
+                  y: -15,
+                  rotateX: 5,
+                  rotateY: 5,
+                  scale: 1.05
+                }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 300, 
+                  damping: 20 
+                }}
+                style={{
+                  transformStyle: "preserve-3d",
+                  filter: "drop-shadow(0 25px 50px rgba(37, 99, 235, 0.25))"
+                }}
+              >
+                <motion.img
+                  src={posDeviceImage}
+                  alt="POS Device"
+                  className="w-full h-auto object-contain max-w-md mx-auto"
+                  style={{
+                    background: "transparent",
+                    mixBlendMode: "normal"
+                  }}
+                  animate={{
+                    y: [0, -8, 0],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </motion.div>
+              
+              {/* Floating particles around device */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse" />
+                <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-500 rounded-full opacity-40 animate-ping" />
+                <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-blue-300 rounded-full opacity-50 animate-pulse" style={{ animationDelay: "1s" }} />
+              </div>
             </div>
           </motion.div>
 
@@ -140,7 +179,7 @@ export default function Edapt() {
           viewport={{ once: true }}
           className="relative"
         >
-          <div className="bg-gradient-to-r from-paycode-blue/90 to-paycode-blue-light/90 backdrop-blur-xl rounded-3xl p-8 md:p-12 text-white border border-white/10 shadow-2xl overflow-hidden">
+          <div className="bg-gradient-to-r from-paycode-blue/90 to-paycode-blue-light/90 backdrop-blur-xl rounded-3xl p-6 md:p-10 text-white border border-white/10 shadow-2xl overflow-hidden">
             {/* Animated background elements */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.05),transparent_70%)]" />
@@ -148,14 +187,14 @@ export default function Edapt() {
             <div className="relative">
               <motion.h3 
                 variants={fadeInUp}
-                className="text-2xl md:text-3xl font-bold text-center mb-8"
+                className="text-2xl md:text-3xl font-bold text-center mb-6"
               >
                 {t("edapt.benefitsTitle")}
               </motion.h3>
               
               <motion.div 
                 variants={staggerContainer}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
               >
                 {[1, 2, 3, 4, 5, 6].map((num) => (
                   <motion.div

@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 3D Perspective utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
 :root {
   --background: hsl(225, 45%, 10%);
   --foreground: hsl(210, 40%, 95%);
