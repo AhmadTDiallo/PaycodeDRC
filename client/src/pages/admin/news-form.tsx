@@ -33,6 +33,8 @@ export default function AdminNewsForm() {
   const { isAuthenticated, isLoading: authLoading } = useAdminAuth();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
+  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
@@ -49,6 +51,7 @@ export default function AdminNewsForm() {
     category: z.string().min(1, "Catégorie requise"),
     author: z.string().min(1, "Auteur requis"),
     imageUrl: z.string().optional(),
+    imageUrls: z.array(z.string()).optional(),
     isPublished: z.boolean().default(false),
     publishedDate: z.string().optional(),
   });
@@ -62,6 +65,7 @@ export default function AdminNewsForm() {
       category: "",
       author: "",
       imageUrl: "",
+      imageUrls: [],
       isPublished: false,
       publishedDate: new Date().toISOString().split('T')[0],
     },
@@ -84,11 +88,15 @@ export default function AdminNewsForm() {
         category: article.category,
         author: article.author,
         imageUrl: article.imageUrl || "",
+        imageUrls: article.imageUrls || [],
         isPublished: article.isPublished,
         publishedDate: publishedDate,
       });
       if (article.imageUrl) {
         setImagePreview(article.imageUrl);
+      }
+      if (article.imageUrls && article.imageUrls.length > 0) {
+        setImagePreviews(article.imageUrls);
       }
     }
   }, [articleResponse, form]);
@@ -101,6 +109,43 @@ export default function AdminNewsForm() {
       form.setValue('imageUrl', reader.result as string);
     };
     reader.readAsDataURL(file);
+  };
+
+  const handleMultipleImageUpload = (files: FileList | null) => {
+    if (!files) return;
+    
+    const fileArray = Array.from(files);
+    setSelectedImages(prev => [...prev, ...fileArray]);
+    
+    const newPreviews: string[] = [];
+    const readers: FileReader[] = [];
+    
+    fileArray.forEach((file, index) => {
+      const reader = new FileReader();
+      readers.push(reader);
+      reader.onloadend = () => {
+        newPreviews[index] = reader.result as string;
+        
+        // Update when all readers are done
+        if (newPreviews.filter(Boolean).length === fileArray.length) {
+          setImagePreviews(prev => {
+            const updated = [...prev, ...newPreviews];
+            form.setValue('imageUrls', updated);
+            return updated;
+          });
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const removeImage = (index: number) => {
+    setImagePreviews(prev => {
+      const updated = prev.filter((_, i) => i !== index);
+      form.setValue('imageUrls', updated);
+      return updated;
+    });
+    setSelectedImages(prev => prev.filter((_, i) => i !== index));
   };
 
   const createMutation = useMutation({
@@ -171,6 +216,7 @@ export default function AdminNewsForm() {
       category: data.category || "",
       author: data.author || "",
       imageUrl: data.imageUrl || "",
+      imageUrls: data.imageUrls || [],
       isPublished: data.isPublished || false,
       publishedDate: data.publishedDate || new Date().toISOString().split('T')[0],
     };
@@ -352,7 +398,7 @@ export default function AdminNewsForm() {
                 <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-gray-300 rounded-xl p-4 sm:p-6 shadow-sm">
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 border-b border-gray-300 pb-3 flex items-center">
                     <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                    Image Principale
+                    Images de l'Article
                   </h3>
                   <div className="space-y-4 sm:space-y-6">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -425,6 +471,64 @@ export default function AdminNewsForm() {
                         </FormItem>
                       )}
                     />
+
+                    {/* Multiple Images Upload Section */}
+                    <div className="mt-8 pt-6 border-t border-gray-300">
+                      <h4 className="text-base font-semibold text-gray-900 mb-4">Images Supplémentaires (Diaporama)</h4>
+                      <div className="space-y-4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => document.getElementById('multiple-image-upload')?.click()}
+                            className="border-gray-300 text-gray-800 hover:bg-purple-50 bg-white h-10 sm:h-11 px-4 sm:px-6 w-full sm:w-auto text-sm sm:text-base"
+                          >
+                            <Upload className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                            Ajouter Plusieurs Images
+                          </Button>
+                          <input
+                            id="multiple-image-upload"
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            className="hidden"
+                            onChange={(e) => handleMultipleImageUpload(e.target.files)}
+                          />
+                          <span className="text-sm text-gray-700 font-medium">
+                            {imagePreviews.length > 0 ? `${imagePreviews.length} image(s) sélectionnée(s)` : 'Aucune image supplémentaire'}
+                          </span>
+                        </div>
+
+                        {/* Preview grid for multiple images */}
+                        {imagePreviews.length > 0 && (
+                          <div className="mt-6">
+                            <label className="block text-sm font-semibold text-gray-800 mb-3">
+                              Aperçu des Images du Diaporama
+                            </label>
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                              {imagePreviews.map((preview, index) => (
+                                <div key={index} className="relative border border-gray-300 rounded-lg p-2 bg-white shadow-sm">
+                                  <img
+                                    src={preview}
+                                    alt={`Preview ${index + 1}`}
+                                    className="h-24 w-full object-cover rounded-md"
+                                  />
+                                  <Button
+                                    type="button"
+                                    variant="destructive"
+                                    size="sm"
+                                    className="absolute -top-2 -right-2 h-6 w-6 p-0 rounded-full"
+                                    onClick={() => removeImage(index)}
+                                  >
+                                    ×
+                                  </Button>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
 

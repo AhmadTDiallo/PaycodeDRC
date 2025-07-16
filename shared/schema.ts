@@ -28,6 +28,7 @@ export const newsArticles = pgTable("news_articles", {
   category: varchar("category", { length: 100 }).notNull(),
   author: text("author").notNull(),
   imageUrl: text("image_url"),
+  imageUrls: text("image_urls").array(),
   publishedDate: timestamp("published_date"),
   isPublished: boolean("is_published").default(false).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -77,6 +78,7 @@ export const insertNewsArticleSchema = createInsertSchema(newsArticles).omit({
   category: z.string().min(1, "Category is required"),
   author: z.string().min(1, "Author is required"),
   imageUrl: z.string().optional().or(z.literal("")),
+  imageUrls: z.array(z.string()).optional(),
   publishedDate: z.date().optional(),
   isPublished: z.boolean().default(false),
 });

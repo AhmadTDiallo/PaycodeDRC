@@ -11,6 +11,7 @@ import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { Calendar, User, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState } from "react";
+import ImageSlideshow from "@/components/ui/image-slideshow";
 
 export default function News() {
   const { t } = useLanguage();
@@ -131,6 +132,9 @@ export default function News() {
             {currentArticles.map((article, index) => {
               const isDbArticle = 'id' in article;
               const displayImage = isDbArticle ? article.imageUrl : article.image;
+              const displayImages = isDbArticle && article.imageUrls && article.imageUrls.length > 0 
+                ? article.imageUrls 
+                : (displayImage ? [displayImage] : []);
               const displayDate = isDbArticle 
                 ? formatSafeDate(article.publishedDate || article.createdAt)
                 : article.date;
@@ -147,11 +151,11 @@ export default function News() {
                     className="bg-white shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 h-full cursor-pointer flex"
                     onClick={() => handleArticleClick(article, isDbArticle ? undefined : article.url)}
                   >
-                    {displayImage && (
+                    {displayImages.length > 0 && (
                       <div className="w-24 h-24 flex-shrink-0">
-                        <div
-                          className="w-full h-full bg-cover bg-center"
-                          style={{ backgroundImage: `url(${displayImage})` }}
+                        <ImageSlideshow 
+                          images={displayImages} 
+                          className="w-full h-full"
                         />
                       </div>
                     )}
@@ -221,13 +225,20 @@ export default function News() {
               <div className="flex flex-col h-full">
                 {/* Header Section */}
                 <div className="relative">
-                  {selectedArticle.imageUrl && (
+                  {((selectedArticle.imageUrls && selectedArticle.imageUrls.length > 0) || selectedArticle.imageUrl) && (
                     <div className="h-80 relative overflow-hidden">
-                      <img 
-                        src={selectedArticle.imageUrl} 
-                        alt={selectedArticle.title}
-                        className="w-full h-full object-cover"
-                      />
+                      {selectedArticle.imageUrls && selectedArticle.imageUrls.length > 0 ? (
+                        <ImageSlideshow 
+                          images={selectedArticle.imageUrls} 
+                          className="w-full h-full"
+                        />
+                      ) : selectedArticle.imageUrl ? (
+                        <img 
+                          src={selectedArticle.imageUrl} 
+                          alt={selectedArticle.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : null}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                       
                       {/* Category badge overlay */}
