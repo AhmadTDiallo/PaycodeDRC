@@ -1,159 +1,159 @@
 # Paycode DRC - Fintech Platform
 
-Une plateforme fintech complète pour la République Démocratique du Congo, servant d'agrégateur de paiements licencié avec des plateformes de paiement partagées et interopérables pour les institutions financières.
+A comprehensive fintech platform for the Democratic Republic of Congo, serving as a licensed payment aggregator with shared, interoperable payment platforms for financial institutions.
 
-## 🌟 Aperçu
+## 🌟 Overview
 
-Paycode DRC est une application web full-stack moderne qui présente les services de l'entreprise, avec des capacités de demandes de démonstration, d'abonnements à la newsletter, et un système complet de gestion d'administration. L'application met en vedette la technologie brevetée EDAPT (Electronic Data And Payments Technology) avec des visualisations 3D immersives.
+Paycode DRC is a modern full-stack web application that showcases the company's services, with capabilities for demo requests, newsletter subscriptions, and a complete administration management system. The application features the patented EDAPT (Electronic Data And Payments Technology) technology with immersive 3D visualizations.
 
-## 🚀 Fonctionnalités Principales
+## 🚀 Key Features
 
-### 🎨 Interface Utilisateur
-- **Design Responsive** : Optimisé pour mobile-first avec adaptation parfaite de 320px au desktop
-- **Animations Avancées** : Utilise Framer Motion pour des transitions fluides et interactions 3D
-- **Glassmorphisme** : Effets de verre moderne avec backdrop-blur et transparences
-- **Thème Sombre Professionnel** : Palette de couleurs bleu foncé cohérente
-- **Support Bilingue** : Interface complète Français/Anglais avec commutation dynamique
+### 🎨 User Interface
+- **Responsive Design** : Mobile-first optimized with perfect adaptation from 320px to desktop
+- **Advanced Animations** : Uses Framer Motion for smooth transitions and 3D interactions
+- **Glassmorphism** : Modern glass effects with backdrop-blur and transparency
+- **Professional Dark Theme** : Consistent dark blue color palette
+- **Bilingual Support** : Complete French/English interface with dynamic switching
 
-### 🔧 Technologie EDAPT
-- **Page Dédiée EDAPT** : Section autonome avec design parallax et effets immersifs
-- **Visualisation 3D** : Dispositif d'enregistrement d'empreintes digitales avec animations flottantes
-- **Navigation Minimaliste** : Logo d'empreinte digitale avec sélecteur de langue uniquement
-- **Statistiques Interactives** : Compteurs animés avec déclencheurs d'intersection observer
+### 🔧 EDAPT Technology
+- **Dedicated EDAPT Page** : Standalone section with parallax design and immersive effects
+- **3D Visualization** : Fingerprint registration device with floating animations
+- **Minimalist Navigation** : Fingerprint logo with language selector only
+- **Interactive Statistics** : Animated counters with intersection observer triggers
 
-### 🗄️ Gestion de Contenu
-- **Interface Admin Complète** : Dashboard avec authentification sécurisée
-- **Gestion d'Articles** : Création, édition, publication/dépublication d'actualités
-- **Modal Magazine** : Affichage des articles avec design de magazine moderne
-- **Slider Horizontal** : Section actualités restructurée avec fonctionnalité de slider
+### 🗄️ Content Management
+- **Complete Admin Interface** : Dashboard with secure authentication
+- **Article Management** : Creation, editing, publishing/unpublishing of news
+- **Magazine Modal** : Article display with modern magazine design
+- **Horizontal Slider** : News section restructured with slider functionality
 
-### 📊 Système de Base de Données
-- **PostgreSQL avec Neon** : Base de données cloud serverless avec pooling de connexions
-- **Drizzle ORM** : ORM TypeScript type-safe avec schémas Zod partagés
-- **Migrations Automatisées** : Gestion des schémas avec `drizzle-kit push`
-- **Stockage Persistant** : Toutes les données sauvegardées de façon permanente
+### 📊 Database System
+- **PostgreSQL with Neon** : Serverless cloud database with connection pooling
+- **Drizzle ORM** : Type-safe TypeScript ORM with shared Zod schemas
+- **Automated Migrations** : Schema management with `drizzle-kit push`
+- **Persistent Storage** : All data permanently saved
 
-## 🏗️ Architecture Technique
+## 🏗️ Technical Architecture
 
 ### Frontend
 ```
 Framework: React 18 + TypeScript + Vite
 Styling: Tailwind CSS + shadcn/ui (style "new-york")
 State: TanStack Query (React Query)
-Routing: Wouter (client-side routing léger)
+Routing: Wouter (lightweight client-side routing)
 Animations: Framer Motion
 Forms: React Hook Form + Zod validation
-UI: shadcn/ui avec branding personnalisé PayCode
+UI: shadcn/ui with custom PayCode branding
 ```
 
 ### Backend
 ```
 Runtime: Node.js + TypeScript + tsx
-Framework: Express.js (API RESTful)
+Framework: Express.js (RESTful API)
 Database: PostgreSQL (Neon Database) + Drizzle ORM
-Validation: Schémas Zod partagés client/serveur
-Sessions: connect-pg-simple (sessions PostgreSQL)
-Build: esbuild (production), Vite middleware (développement)
+Validation: Shared Zod schemas client/server
+Sessions: connect-pg-simple (PostgreSQL sessions)
+Build: esbuild (production), Vite middleware (development)
 ```
 
 ### Build System
 ```
-Frontend: Vite + plugin React + overlay erreurs runtime
-Backend: esbuild (format ESM)
-Development: Serveurs concurrents avec intégration middleware Vite
-Deployment: Frontend statique + backend API Express
+Frontend: Vite + React plugin + runtime error overlay
+Backend: esbuild (ESM format)
+Development: Concurrent servers with Vite middleware integration
+Deployment: Static frontend + Express API backend
 ```
 
-## 📁 Structure du Projet
+## 📁 Project Structure
 
 ```
 paycode-drc/
-├── client/                     # Application React frontend
+├── client/                     # React frontend application
 │   ├── src/
-│   │   ├── components/         # Composants UI réutilisables
-│   │   │   ├── ui/            # Composants shadcn/ui
-│   │   │   ├── edapt.tsx      # Section EDAPT (page principale)
-│   │   │   ├── navigation.tsx  # Navigation principale
+│   │   ├── components/         # Reusable UI components
+│   │   │   ├── ui/            # shadcn/ui components
+│   │   │   ├── edapt.tsx      # EDAPT section (main page)
+│   │   │   ├── navigation.tsx  # Main navigation
 │   │   │   ├── hero-section.tsx
 │   │   │   ├── solutions.tsx
 │   │   │   ├── statistics.tsx
 │   │   │   ├── news.tsx
 │   │   │   ├── contact.tsx
 │   │   │   └── footer.tsx
-│   │   ├── pages/             # Pages de l'application
-│   │   │   ├── home.tsx       # Page d'accueil
-│   │   │   ├── edapt.tsx      # Page autonome EDAPT
+│   │   ├── pages/             # Application pages
+│   │   │   ├── home.tsx       # Home page
+│   │   │   ├── edapt.tsx      # Standalone EDAPT page
 │   │   │   └── not-found.tsx
-│   │   ├── contexts/          # Contextes React
+│   │   ├── contexts/          # React contexts
 │   │   │   └── LanguageContext.tsx
-│   │   ├── hooks/             # Hooks personnalisés
-│   │   ├── lib/               # Utilitaires et configuration
+│   │   ├── hooks/             # Custom hooks
+│   │   ├── lib/               # Utilities and configuration
 │   │   └── main.tsx
 │   └── index.html
-├── server/                     # Backend Express
-│   ├── db.ts                  # Configuration base de données
-│   ├── index.ts               # Point d'entrée serveur
-│   ├── routes.ts              # Routes API
-│   ├── storage.ts             # Interface stockage + implémentation
-│   ├── sendgrid.ts            # Configuration email
-│   └── vite.ts                # Intégration Vite
-├── shared/                     # Code partagé
-│   └── schema.ts              # Schémas Drizzle + Zod
-├── scripts/                    # Scripts utilitaires
+├── server/                     # Express backend
+│   ├── db.ts                  # Database configuration
+│   ├── index.ts               # Server entry point
+│   ├── routes.ts              # API routes
+│   ├── storage.ts             # Storage interface + implementation
+│   ├── sendgrid.ts            # Email configuration
+│   └── vite.ts                # Vite integration
+├── shared/                     # Shared code
+│   └── schema.ts              # Drizzle + Zod schemas
+├── scripts/                    # Utility scripts
 │   ├── create-admin.js
 │   └── create-superadmin.js
-├── attached_assets/            # Ressources multimédia
-│   ├── fingerregister_*.avif  # Image dispositif empreintes
-│   └── *.jpg, *.webp         # Autres images
-└── README.md                   # Documentation projet
+├── attached_assets/            # Media resources
+│   ├── fingerregister_*.avif  # Fingerprint device image
+│   └── *.jpg, *.webp         # Other images
+└── README.md                   # Project documentation
 ```
 
-## 🛠️ Installation et Configuration
+## 🛠️ Installation and Setup
 
-### Prérequis
+### Prerequisites
 - Node.js 18+ 
-- PostgreSQL (ou accès Neon Database)
-- npm ou yarn
+- PostgreSQL (or Neon Database access)
+- npm or yarn
 
 ### Installation
 ```bash
-# Cloner le repository
+# Clone the repository
 git clone <repository-url>
 cd paycode-drc
 
-# Installer les dépendances
+# Install dependencies
 npm install
 
-# Configurer les variables d'environnement
-# DATABASE_URL pour la connexion PostgreSQL
+# Configure environment variables
+# DATABASE_URL for PostgreSQL connection
 ```
 
-### Développement
+### Development
 ```bash
-# Démarrer le serveur de développement
+# Start development server
 npm run dev
 
-# Le serveur démarre sur http://localhost:5000
-# Frontend + Backend sur le même port avec middleware Vite
+# Server starts on http://localhost:5000
+# Frontend + Backend on same port with Vite middleware
 ```
 
-### Base de Données
+### Database
 ```bash
-# Pousser les changements de schéma
+# Push schema changes
 npm run db:push
 
-# Créer un administrateur
+# Create an administrator
 node scripts/create-admin.js
 
-# Créer un super administrateur  
+# Create a super administrator  
 node scripts/create-superadmin.js
 ```
 
-## 📊 Schéma de Base de Données
+## 📊 Database Schema
 
-### Tables Principales
+### Main Tables
 ```sql
-demo_requests          # Demandes de démonstration client
+demo_requests          # Client demo requests
 ├── id (serial)
 ├── name (varchar)
 ├── email (varchar)
@@ -162,12 +162,12 @@ demo_requests          # Demandes de démonstration client
 ├── message (text)
 └── created_at (timestamp)
 
-newsletter_subscriptions # Abonnements newsletter
+newsletter_subscriptions # Newsletter subscriptions
 ├── id (serial)
 ├── email (varchar, unique)
 └── created_at (timestamp)
 
-news_articles          # Articles d'actualités
+news_articles          # News articles
 ├── id (serial)
 ├── title (varchar)
 ├── content (text)
@@ -176,7 +176,7 @@ news_articles          # Articles d'actualités
 ├── created_at (timestamp)
 └── updated_at (timestamp)
 
-admin_users           # Utilisateurs administrateurs
+admin_users           # Administrator users
 ├── id (serial)
 ├── username (varchar, unique)
 ├── password_hash (varchar)
@@ -187,29 +187,29 @@ admin_users           # Utilisateurs administrateurs
 
 ## 🎨 Design System
 
-### Palette de Couleurs
+### Color Palette
 ```css
-/* Couleurs Principales PayCode */
---paycode-blue: hsl(225, 85%, 35%)      /* Bleu principal */
---paycode-blue-light: hsl(225, 83%, 55%) /* Bleu clair */
---paycode-blue-accent: hsl(225, 70%, 68%) /* Accent bleu */
---paycode-gray: hsl(225, 20%, 65%)       /* Gris neutre */
+/* PayCode Primary Colors */
+--paycode-blue: hsl(225, 85%, 35%)      /* Primary blue */
+--paycode-blue-light: hsl(225, 83%, 55%) /* Light blue */
+--paycode-blue-accent: hsl(225, 70%, 68%) /* Blue accent */
+--paycode-gray: hsl(225, 20%, 65%)       /* Neutral gray */
 
-/* Thème Sombre */
---background: hsl(225, 45%, 10%)         /* Arrière-plan */
---foreground: hsl(210, 40%, 95%)         /* Texte principal */
---card: hsl(225, 40%, 15%)               /* Cartes */
---border: hsl(225, 30%, 30%)             /* Bordures */
+/* Dark Theme */
+--background: hsl(225, 45%, 10%)         /* Background */
+--foreground: hsl(210, 40%, 95%)         /* Primary text */
+--card: hsl(225, 40%, 15%)               /* Cards */
+--border: hsl(225, 30%, 30%)             /* Borders */
 ```
 
-### Typographie
+### Typography
 - **Headers** : Inter/Poppins (font-bold)
 - **Body** : Inter (font-normal)
 - **Accents** : Montserrat (font-semibold)
 
 ### Responsive Breakpoints
 ```css
-sm: 640px   /* Mobile large */
+sm: 640px   /* Large mobile */
 md: 768px   /* Tablet */
 lg: 1024px  /* Desktop */
 xl: 1280px  /* Large desktop */
@@ -217,134 +217,137 @@ xl: 1280px  /* Large desktop */
 
 ## 🌐 API Endpoints
 
-### Demandes de Démonstration
+### Demo Requests
 ```http
-POST /api/demo-requests    # Créer demande
-GET  /api/demo-requests    # Lister demandes (admin)
+POST /api/demo-requests    # Create request
+GET  /api/demo-requests    # List requests (admin)
 ```
 
 ### Newsletter
 ```http
-POST /api/newsletter       # S'abonner
-GET  /api/newsletter       # Lister abonnés (admin)
+POST /api/newsletter       # Subscribe
+GET  /api/newsletter       # List subscribers (admin)
 ```
 
-### Actualités
+### News
 ```http
-GET    /api/news           # Lister articles
-POST   /api/news           # Créer article (admin)
-GET    /api/news/:id       # Obtenir article
-PUT    /api/news/:id       # Modifier article (admin)
-DELETE /api/news/:id       # Supprimer article (admin)
-PATCH  /api/news/:id/toggle # Publier/dépublier (admin)
+GET    /api/news           # List articles
+POST   /api/news           # Create article (admin)
+GET    /api/news/:id       # Get article
+PUT    /api/news/:id       # Update article (admin)
+DELETE /api/news/:id       # Delete article (admin)
+PATCH  /api/news/:id/toggle # Publish/unpublish (admin)
 ```
 
 ### Administration
 ```http
-POST /api/auth/login       # Connexion admin
-POST /api/auth/logout      # Déconnexion admin
-GET  /api/auth/me          # Profil utilisateur
+POST /api/auth/login       # Admin login
+POST /api/auth/logout      # Admin logout
+GET  /api/auth/me          # User profile
 ```
 
-## 🔒 Sécurité
+## 🔒 Security
 
-### Authentification
-- **Sessions PostgreSQL** : Stockage sessions avec connect-pg-simple
-- **Hash Passwords** : bcryptjs pour hachage sécurisé
-- **Validation** : Schémas Zod côté client et serveur
-- **CORS** : Configuration Express sécurisée
+### Authentication
+- **PostgreSQL Sessions** : Session storage with connect-pg-simple
+- **Password Hashing** : bcryptjs for secure hashing
+- **Validation** : Zod schemas on client and server
+- **CORS** : Secure Express configuration
 
-### Validation des Données
-- **Côté Client** : React Hook Form + Zod
-- **Côté Serveur** : Validation Zod avant base de données
-- **Sanitisation** : Nettoyage automatique des entrées
+### Data Validation
+- **Client Side** : React Hook Form + Zod
+- **Server Side** : Zod validation before database
+- **Sanitization** : Automatic input cleaning
 
-## 📱 Optimisations Mobile
+## 📱 Mobile Optimizations
 
 ### Responsive Design
-- **Navigation Compacte** : Menu hamburger avec overlay
-- **Typographie Adaptative** : text-sm à text-8xl selon l'écran
-- **Grilles Flexibles** : grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
-- **Espacement Intelligent** : py-16 md:py-24, px-4 lg:px-8
+- **Compact Navigation** : Hamburger menu with overlay
+- **Adaptive Typography** : text-sm to text-8xl based on screen
+- **Flexible Grids** : grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
+- **Smart Spacing** : py-16 md:py-24, px-4 lg:px-8
 
 ### Performance
-- **Images Optimisées** : object-contain avec max-height contrôlé
-- **Animations Légères** : Framer Motion avec will-change
-- **Lazy Loading** : Intersection Observer pour animations
-- **Bundle Splitting** : Vite code splitting automatique
+- **Optimized Images** : object-contain with controlled max-height
+- **Lightweight Animations** : Framer Motion with will-change
+- **Lazy Loading** : Intersection Observer for animations
+- **Bundle Splitting** : Automatic Vite code splitting
 
-## 🚀 Déploiement
+## 🚀 Deployment
 
-### Variables d'Environnement
+### Environment Variables
 ```env
-DATABASE_URL=postgresql://...  # URL base de données PostgreSQL
-NODE_ENV=production           # Environnement de production
-PORT=5000                     # Port serveur (optionnel)
+DATABASE_URL=postgresql://...  # PostgreSQL database URL
+NODE_ENV=production           # Production environment
+PORT=5000                     # Server port (optional)
 ```
 
-### Build Production
+### Production Build
 ```bash
 # Build frontend + backend
 npm run build
 
-# Le frontend est construit dans dist/public
-# Le backend est bundlé dans dist/server
+# Frontend is built to dist/public
+# Backend is bundled to dist/server
 ```
 
-### Déploiement
-- **Build automatisé** : Frontend statique + API Express
-- **Variables d'environnement** : Configuration PostgreSQL
-- **HTTPS** : TLS automatique
-- **Monitoring** : Vérifications de santé intégrées
+### Deployment
+- **Automated Build** : Static frontend + Express API
+- **Environment Variables** : PostgreSQL configuration
+- **HTTPS** : Automatic TLS
+- **Monitoring** : Built-in health checks
 
-## 📈 Fonctionnalités Avancées
+## 📈 Advanced Features
 
-### Animations et Interactions
-- **Parallax** : Effet de profondeur sur page EDAPT
-- **3D Transforms** : preserve-3d pour dispositifs flottants
-- **Micro-interactions** : Hover states et tap feedback
-- **Intersection Observer** : Animations au scroll
+### Animations and Interactions
+- **Parallax** : Depth effect on EDAPT page
+- **3D Transforms** : preserve-3d for floating devices
+- **Micro-interactions** : Hover states and tap feedback
+- **Intersection Observer** : Scroll-triggered animations
 
-### Internationalisation
-- **Context API** : Gestion d'état de langue
-- **Commutation Dynamique** : FR/EN sans rechargement
-- **Fallbacks** : Textes par défaut si traduction manquante
-- **localStorage** : Persistance préférence langue
+### Internationalization
+- **Context API** : Language state management
+- **Dynamic Switching** : FR/EN without reload
+- **Fallbacks** : Default texts if translation missing
+- **localStorage** : Language preference persistence
 
-### SEO et Performance
-- **Meta Tags** : Descriptions et Open Graph
-- **Semantic HTML** : Structure accessible
-- **Core Web Vitals** : Optimisations LCP, FID, CLS
-- **Progressive Enhancement** : Fonctionne sans JavaScript
+### SEO and Performance
+- **Meta Tags** : Descriptions and Open Graph
+- **Semantic HTML** : Accessible structure
+- **Core Web Vitals** : LCP, FID, CLS optimizations
+- **Progressive Enhancement** : Works without JavaScript
 
-## 🔧 Scripts Disponibles
+## 🔧 Available Scripts
 
 ```bash
-npm run dev          # Développement avec HMR
-npm run build        # Build production
-npm run preview      # Prévisualiser build
-npm run db:push      # Migrations base de données
-npm run type-check   # Vérification TypeScript
+npm run dev          # Development with HMR
+npm run build        # Production build
+npm run preview      # Preview build
+npm run db:push      # Database migrations
+npm run type-check   # TypeScript checking
 ```
 
 
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-### Standards de Code
-- **TypeScript** : Types stricts activés
-- **ESLint** : Configuration recommandée React
-- **Prettier** : Formatage automatique
-- **Conventional Commits** : Messages de commit structurés
+### Code Standards
+- **TypeScript** : Strict types enabled
+- **ESLint** : React recommended configuration
+- **Prettier** : Automatic formatting
+- **Conventional Commits** : Structured commit messages
 
 ### Workflow
-1. Fork du repository
-2. Créer branche feature (`git checkout -b feature/nouvelle-fonctionnalite`)
-3. Commits avec messages descriptifs
-4. Tests des changements
-5. Pull request avec description détaillée
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/new-feature`)
+3. Commits with descriptive messages
+4. Test changes
+5. Pull request with detailed description
 
-## 📄 Licence
+## 📄 License
 
-Ce projet est sous licence propriétaire. Tous droits réservés à Paycode DRC.
-Contact Ahmad Tidiane Diallo for more information.
+This project is under proprietary license. All rights reserved to Paycode DRC.
+
+---
+
+**Built with ❤️ for the DRC fintech ecosystem**
