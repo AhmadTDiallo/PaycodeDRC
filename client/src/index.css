@@ -13,6 +13,14 @@
   transform-style: preserve-3d;
 }
 
+/* POS Device floating effect with white background removal */
+.pos-device-float {
+  filter: contrast(1.2) brightness(0.95) saturate(1.1);
+  /* Remove white background using CSS filters */
+  mix-blend-mode: multiply;
+  background: transparent;
+}
+
 :root {
   --background: hsl(225, 45%, 10%);
   --foreground: hsl(210, 40%, 95%);
