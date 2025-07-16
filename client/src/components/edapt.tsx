@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Fingerprint, Wifi, CreditCard, Network, CheckCircle2, ArrowRight } from "lucide-react";
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
-import posDeviceImage from "@assets/POS device_1752596140378.jpg";
+import fingerprintImage from "@assets/fingerregister_1752658741575.avif";
 
 export default function Edapt() {
   const { t } = useLanguage();
@@ -117,7 +117,7 @@ export default function Edapt() {
               {/* 3D Shadow beneath device */}
               <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-4/5 h-8 bg-gradient-to-r from-transparent via-blue-900/30 to-transparent rounded-full blur-xl" />
               
-              {/* Floating POS Device */}
+              {/* Floating Fingerprint Registration Device */}
               <motion.div
                 className="relative z-10"
                 whileHover={{ 
@@ -149,12 +149,12 @@ export default function Edapt() {
                   }}
                 >
                   <img
-                    src={posDeviceImage}
-                    alt="POS Device"
+                    src={fingerprintImage}
+                    alt="Fingerprint Registration Device"
                     className="w-full h-auto object-contain"
                     style={{
                       background: "transparent",
-                      filter: "contrast(1.1) brightness(1.1) saturate(1.2) drop-shadow(0 0 20px rgba(59, 130, 246, 0.3))"
+                      filter: "contrast(1.1) brightness(1.05) saturate(1.2) drop-shadow(0 0 25px rgba(59, 130, 246, 0.4))"
                     }}
                   />
                 </motion.div>
