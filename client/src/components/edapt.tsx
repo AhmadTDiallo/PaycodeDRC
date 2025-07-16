@@ -94,14 +94,14 @@ export default function Edapt() {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center mb-8">
           {/* 3D Floating POS Device with Glass Container */}
           <motion.div
             variants={slideInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="relative group perspective-1000"
+            className="relative group perspective-1000 order-2 lg:order-1"
             whileInView={{ 
               scale: [0.9, 1],
               rotateY: [15, 0],
@@ -110,7 +110,7 @@ export default function Edapt() {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             {/* Glass morphism container */}
-            <div className="relative p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden">
+            <div className="relative p-4 sm:p-6 lg:p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden mx-auto max-w-md lg:max-w-none">
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent group-hover:from-white/10 transition-all duration-500" />
               
@@ -137,7 +137,7 @@ export default function Edapt() {
                 }}
               >
                 <motion.div
-                  className="relative max-w-sm mx-auto"
+                  className="relative w-full max-w-xs sm:max-w-sm mx-auto flex justify-center"
                   animate={{
                     y: [0, -8, 0],
                     rotateY: [0, 2, 0],
@@ -151,10 +151,11 @@ export default function Edapt() {
                   <img
                     src={fingerprintImage}
                     alt="Fingerprint Registration Device"
-                    className="w-full h-auto object-contain"
+                    className="w-full h-auto object-contain object-center"
                     style={{
                       background: "transparent",
-                      filter: "contrast(1.1) brightness(1.05) saturate(1.2) drop-shadow(0 0 25px rgba(59, 130, 246, 0.4))"
+                      filter: "contrast(1.1) brightness(1.05) saturate(1.2) drop-shadow(0 0 25px rgba(59, 130, 246, 0.4))",
+                      maxHeight: "300px"
                     }}
                   />
                 </motion.div>
@@ -176,7 +177,7 @@ export default function Edapt() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-2 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 order-1 lg:order-2"
           >
             {edaptFeatures.map((feature, index) => (
               <motion.div
@@ -197,9 +198,9 @@ export default function Edapt() {
                 }}
               >
                 <Card className="h-full border-0 bg-white/15 backdrop-blur-md hover:bg-white/25 transition-all duration-500 border border-white/20 shadow-xl hover:shadow-2xl">
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-4 sm:p-6 text-center">
                     <motion.div 
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mx-auto mb-4 shadow-lg`}
+                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg`}
                       whileHover={{ 
                         scale: 1.2, 
                         rotate: 360,
@@ -207,12 +208,12 @@ export default function Edapt() {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <feature.icon className="w-6 h-6 text-white" />
+                      <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </motion.div>
-                    <h3 className="text-base font-bold text-white mb-3 group-hover:text-blue-200 transition-colors drop-shadow-sm">
+                    <h3 className="text-sm sm:text-base font-bold text-white mb-2 sm:mb-3 group-hover:text-blue-200 transition-colors drop-shadow-sm">
                       {t(feature.titleKey)}
                     </h3>
-                    <p className="text-sm text-blue-100 leading-relaxed drop-shadow-sm">
+                    <p className="text-xs sm:text-sm text-blue-100 leading-relaxed drop-shadow-sm">
                       {t(feature.descKey)}
                     </p>
                   </CardContent>
