@@ -121,15 +121,15 @@ export default function EdaptPage() {
       </nav>
       
       {/* Back Button */}
-      <div className="fixed top-24 left-6 z-50">
+      <div className="fixed top-20 left-4 md:top-24 md:left-6 z-50">
         <motion.button
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-lg transition-all duration-300 flex items-center gap-2"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg shadow-lg transition-all duration-300 flex items-center gap-1 md:gap-2 text-sm md:text-base"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => window.location.href = '/'}
         >
-          <ArrowLeft className="w-4 h-4" />
-          <span>{t("edaptPage.backButton") || "Retour"}</span>
+          <ArrowLeft className="w-3 h-3 md:w-4 md:h-4" />
+          <span className="hidden sm:inline">{t("edaptPage.backButton") || "Retour"}</span>
         </motion.button>
       </div>
 
@@ -154,15 +154,15 @@ export default function EdaptPage() {
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={fadeInUp} className="mb-8">
-              <Badge className="bg-blue-600/30 backdrop-blur-md border border-blue-400/40 text-blue-100 px-8 py-4 text-xl font-medium rounded-full shadow-2xl">
+            <motion.div variants={fadeInUp} className="mb-6 md:mb-8">
+              <Badge className="bg-blue-600/30 backdrop-blur-md border border-blue-400/40 text-blue-100 px-4 py-2 md:px-8 md:py-4 text-sm md:text-xl font-medium rounded-full shadow-2xl">
                 {t("edaptPage.heroTag")}
               </Badge>
             </motion.div>
             
             <motion.h1 
               variants={fadeInUp}
-              className="text-6xl md:text-8xl font-bold text-white mb-8 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white mb-6 md:mb-8 leading-tight px-4"
               style={{
                 textShadow: '0 0 30px rgba(59, 130, 246, 0.5)'
               }}
@@ -174,7 +174,7 @@ export default function EdaptPage() {
             
             <motion.h2 
               variants={fadeInUp}
-              className="text-3xl md:text-4xl text-white font-light mb-8 max-w-5xl mx-auto"
+              className="text-lg sm:text-xl md:text-2xl lg:text-4xl text-white font-light mb-6 md:mb-8 max-w-5xl mx-auto px-4"
               style={{
                 textShadow: '0 2px 10px rgba(0, 0, 0, 0.7)'
               }}
@@ -184,7 +184,7 @@ export default function EdaptPage() {
             
             <motion.p 
               variants={fadeInUp}
-              className="text-xl md:text-2xl text-slate-200 max-w-5xl mx-auto leading-relaxed mb-16"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-200 max-w-5xl mx-auto leading-relaxed mb-12 md:mb-16 px-4"
               style={{
                 textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)'
               }}
@@ -197,7 +197,7 @@ export default function EdaptPage() {
               className="flex justify-center"
             >
               <motion.div 
-                className="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-2xl px-8 py-6 border border-white/20 shadow-2xl"
+                className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-white/10 backdrop-blur-md rounded-2xl px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 border border-white/20 shadow-2xl mx-4 sm:mx-0"
                 animate={{
                   y: [0, -8, 0],
                 }}
@@ -208,7 +208,7 @@ export default function EdaptPage() {
                 }}
               >
                 <motion.div 
-                  className="w-16 h-16 rounded-full bg-blue-500/40 backdrop-blur-md border border-blue-300/60 flex items-center justify-center"
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-blue-500/40 backdrop-blur-md border border-blue-300/60 flex items-center justify-center"
                   animate={{
                     scale: [1, 1.15, 1],
                     boxShadow: [
@@ -223,13 +223,13 @@ export default function EdaptPage() {
                     ease: "easeInOut"
                   }}
                 >
-                  <Fingerprint className="w-8 h-8 text-blue-100" />
+                  <Fingerprint className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-100" />
                 </motion.div>
-                <div className="text-left">
-                  <h3 className="text-xl font-bold text-white mb-1">
+                <div className="text-center sm:text-left">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                     {t("edaptPage.heroImageTitle") || "Technologie Biométrique"}
                   </h3>
-                  <p className="text-blue-200">
+                  <p className="text-sm sm:text-base text-blue-200">
                     {t("edaptPage.heroImageSubtitle") || "Sécurité Avancée"}
                   </p>
                 </div>
@@ -240,12 +240,12 @@ export default function EdaptPage() {
       </section>
 
       {/* Core Features Section */}
-      <section className="py-24 relative">
+      <section className="py-16 md:py-24 relative">
         <div className="absolute inset-0 bg-slate-800/30 backdrop-blur-sm" />
         
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -253,19 +253,19 @@ export default function EdaptPage() {
           >
             <motion.h2 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 px-4"
             >
               {t("edaptPage.featuresTitle")}
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-slate-400 max-w-3xl mx-auto"
+              className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto px-4"
             >
               {t("edaptPage.featuresSubtitle")}
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -278,18 +278,18 @@ export default function EdaptPage() {
                 className="group"
               >
                 <Card className="h-full bg-white/5 backdrop-blur-md border border-white/10 hover:border-blue-400/30 transition-all duration-300">
-                  <CardContent className="p-8 text-center">
+                  <CardContent className="p-4 sm:p-6 md:p-8 text-center">
                     <motion.div 
-                      className="w-16 h-16 rounded-xl bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 flex items-center justify-center mx-auto mb-6"
+                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 flex items-center justify-center mx-auto mb-4 md:mb-6"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <feature.icon className="w-8 h-8 text-blue-400" />
+                      <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-400" />
                     </motion.div>
-                    <h3 className="text-xl font-bold text-white mb-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-3 md:mb-4">
                       {t(feature.titleKey)}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
                       {t(feature.descKey)}
                     </p>
                   </CardContent>
@@ -301,12 +301,12 @@ export default function EdaptPage() {
       </section>
 
       {/* Why EDAPT is Unique Section */}
-      <section className="py-24 relative">
+      <section className="py-16 md:py-24 relative">
         <div className="absolute inset-0 bg-blue-900/20 backdrop-blur-sm" />
         
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -314,19 +314,19 @@ export default function EdaptPage() {
           >
             <motion.h2 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 px-4"
             >
               {t("edaptPage.uniqueTitle")}
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-slate-400 max-w-3xl mx-auto"
+              className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto px-4"
             >
               {t("edaptPage.uniqueSubtitle")}
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {uniqueFeatures.map((feature, index) => (
               <motion.div
                 key={index}
@@ -338,18 +338,18 @@ export default function EdaptPage() {
                 whileHover={{ y: -5 }}
               >
                 <Card className="h-full bg-white/5 backdrop-blur-md border border-white/10 hover:border-blue-400/30 transition-all duration-300">
-                  <CardContent className="p-8">
+                  <CardContent className="p-4 sm:p-6 md:p-8">
                     <motion.div 
-                      className="w-14 h-14 rounded-lg bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 flex items-center justify-center mb-6"
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 flex items-center justify-center mb-4 md:mb-6"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <feature.icon className="w-7 h-7 text-blue-400" />
+                      <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400" />
                     </motion.div>
-                    <h3 className="text-xl font-bold text-white mb-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-3 md:mb-4">
                       {t(feature.titleKey)}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
                       {t(feature.descKey)}
                     </p>
                   </CardContent>
@@ -361,12 +361,12 @@ export default function EdaptPage() {
       </section>
 
       {/* Strategic Deployment Section */}
-      <section className="py-24 relative">
+      <section className="py-16 md:py-24 relative">
         <div className="absolute inset-0 bg-slate-800/30 backdrop-blur-sm" />
         
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -374,20 +374,20 @@ export default function EdaptPage() {
           >
             <motion.h2 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 px-4"
             >
               {t("edaptPage.deploymentTitle")}
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-slate-400 max-w-3xl mx-auto mb-16"
+              className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 md:mb-16 px-4"
             >
               {t("edaptPage.deploymentSubtitle")}
             </motion.p>
           </motion.div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-20">
             {deploymentStats.map((stat, index) => (
               <motion.div
                 key={index}
@@ -398,18 +398,18 @@ export default function EdaptPage() {
                 custom={index}
                 className="text-center"
               >
-                <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
+                <div className="bg-white/5 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 border border-white/10">
                   <motion.div 
-                    className="text-5xl font-bold text-blue-400 mb-4"
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-400 mb-3 md:mb-4"
                     whileInView={{ scale: [0.5, 1.1, 1] }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
                     {stat.number}
                   </motion.div>
-                  <h3 className="text-lg font-semibold text-white mb-2">
+                  <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
                     {t(stat.labelKey)}
                   </h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-slate-400 text-xs sm:text-sm">
                     {t(stat.descKey)}
                   </p>
                 </div>
@@ -423,23 +423,23 @@ export default function EdaptPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center"
           >
-            <motion.div variants={slideInLeft} className="space-y-8">
+            <motion.div variants={slideInLeft} className="space-y-6 md:space-y-8 px-4 lg:px-0">
               <div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
                   {t("edaptPage.mastercardTitle")}
                 </h3>
-                <p className="text-slate-400 leading-relaxed text-lg">
+                <p className="text-slate-400 leading-relaxed text-base md:text-lg">
                   {t("edaptPage.mastercardDesc")}
                 </p>
               </div>
               
               <div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
                   {t("edaptPage.ghanaTitle")}
                 </h3>
-                <p className="text-slate-400 leading-relaxed text-lg">
+                <p className="text-slate-400 leading-relaxed text-base md:text-lg">
                   {t("edaptPage.ghanaDesc")}
                 </p>
               </div>
@@ -447,29 +447,29 @@ export default function EdaptPage() {
 
             <motion.div 
               variants={slideInRight}
-              className="relative"
+              className="relative px-4 lg:px-0"
             >
-              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
-                <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-4 sm:p-6 md:p-8 border border-white/10">
+                <div className="grid grid-cols-2 gap-4 md:gap-6">
                   <div className="text-center">
-                    <MapPin className="w-12 h-12 text-blue-400 mx-auto mb-3" />
-                    <div className="text-xl font-bold text-white">Ghana</div>
-                    <div className="text-sm text-slate-400">e-Zwich Platform</div>
+                    <MapPin className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-blue-400 mx-auto mb-2 md:mb-3" />
+                    <div className="text-lg sm:text-xl font-bold text-white">Ghana</div>
+                    <div className="text-xs sm:text-sm text-slate-400">e-Zwich Platform</div>
                   </div>
                   <div className="text-center">
-                    <Globe className="w-12 h-12 text-blue-400 mx-auto mb-3" />
-                    <div className="text-xl font-bold text-white">Africa</div>
-                    <div className="text-sm text-slate-400">Mastercard Integration</div>
+                    <Globe className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-blue-400 mx-auto mb-2 md:mb-3" />
+                    <div className="text-lg sm:text-xl font-bold text-white">Africa</div>
+                    <div className="text-xs sm:text-sm text-slate-400">Mastercard Integration</div>
                   </div>
                   <div className="text-center">
-                    <Users className="w-12 h-12 text-blue-400 mx-auto mb-3" />
-                    <div className="text-xl font-bold text-white">4M+</div>
-                    <div className="text-sm text-slate-400">Active Users</div>
+                    <Users className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-blue-400 mx-auto mb-2 md:mb-3" />
+                    <div className="text-lg sm:text-xl font-bold text-white">4M+</div>
+                    <div className="text-xs sm:text-sm text-slate-400">Active Users</div>
                   </div>
                   <div className="text-center">
-                    <Shield className="w-12 h-12 text-blue-400 mx-auto mb-3" />
-                    <div className="text-xl font-bold text-white">Patented</div>
-                    <div className="text-sm text-slate-400">Exclusive Technology</div>
+                    <Shield className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-blue-400 mx-auto mb-2 md:mb-3" />
+                    <div className="text-lg sm:text-xl font-bold text-white">Patented</div>
+                    <div className="text-xs sm:text-sm text-slate-400">Exclusive Technology</div>
                   </div>
                 </div>
               </div>
@@ -479,7 +479,7 @@ export default function EdaptPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-24 relative">
+      <section className="py-16 md:py-24 relative">
         <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-sm" />
         
         <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -491,19 +491,19 @@ export default function EdaptPage() {
           >
             <motion.h2 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 px-4"
             >
               {t("edaptPage.ctaTitle")}
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className="text-xl text-slate-400 mb-8 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-slate-400 mb-6 md:mb-8 leading-relaxed px-4"
             >
               {t("edaptPage.ctaSubtitle")}
             </motion.p>
             <motion.button
               variants={fadeInUp}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg shadow-xl transition-all duration-300 inline-flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {
@@ -516,7 +516,7 @@ export default function EdaptPage() {
               }}
             >
               {t("edaptPage.ctaButton")}
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </motion.button>
           </motion.div>
         </div>
