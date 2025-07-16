@@ -173,161 +173,60 @@ export default function EdaptPage() {
 
             <motion.div
               variants={fadeInUp}
-              className="flex justify-center"
+              className="flex justify-center mt-16"
             >
-              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl max-w-lg">
-                <motion.div
-                  className="relative w-full h-80 flex items-center justify-center"
-                  animate={{
-                    y: [0, -10, 0],
+              <div className="relative w-full max-w-4xl h-96 rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
+                {/* Hero Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: `url(${fingerprintImage})`,
+                    filter: 'brightness(0.7) contrast(1.3) saturate(1.1)',
                   }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  {/* Modern Tech Illustration */}
-                  <svg 
-                    width="400" 
-                    height="320" 
-                    viewBox="0 0 400 320" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-full h-full"
+                />
+                
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-blue-900/60 to-transparent" />
+                
+                {/* Content Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div 
+                    className="text-center text-white p-8"
+                    animate={{
+                      y: [0, -5, 0],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
                   >
-                    {/* Background Circles */}
-                    <motion.circle 
-                      cx="200" 
-                      cy="160" 
-                      r="120" 
-                      stroke="rgba(59, 130, 246, 0.3)" 
-                      strokeWidth="2" 
-                      fill="none"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    />
-                    <motion.circle 
-                      cx="200" 
-                      cy="160" 
-                      r="80" 
-                      stroke="rgba(99, 102, 241, 0.4)" 
-                      strokeWidth="1" 
-                      fill="none"
-                      animate={{ rotate: -360 }}
-                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    />
-                    
-                    {/* Central Device */}
-                    <rect x="160" y="120" width="80" height="80" rx="12" fill="rgba(30, 58, 138, 0.8)" stroke="rgba(59, 130, 246, 0.6)" strokeWidth="2"/>
-                    
-                    {/* Fingerprint Icon */}
-                    <motion.g
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <path d="M200 140c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm0 32c-6.6 0-12-5.4-12-12s5.4-12 12-12 12 5.4 12 12-5.4 12-12 12z" fill="rgba(56, 189, 248, 0.9)"/>
-                      <path d="M200 135c-13.8 0-25 11.2-25 25s11.2 25 25 25 25-11.2 25-25-11.2-25-25-25zm0 42c-9.4 0-17-7.6-17-17s7.6-17 17-17 17 7.6 17 17-7.6 17-17 17z" fill="rgba(56, 189, 248, 0.7)"/>
-                      <path d="M200 130c-16.6 0-30 13.4-30 30s13.4 30 30 30 30-13.4 30-30-13.4-30-30-30zm0 52c-12.1 0-22-9.9-22-22s9.9-22 22-22 22 9.9 22 22-9.9 22-22 22z" fill="rgba(56, 189, 248, 0.5)"/>
-                    </motion.g>
-                    
-                    {/* Connection Lines */}
-                    <motion.line 
-                      x1="200" y1="50" x2="200" y2="120" 
-                      stroke="rgba(59, 130, 246, 0.6)" 
-                      strokeWidth="2"
-                      animate={{ opacity: [0.3, 1, 0.3] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <motion.line 
-                      x1="200" y1="200" x2="200" y2="270" 
-                      stroke="rgba(59, 130, 246, 0.6)" 
-                      strokeWidth="2"
-                      animate={{ opacity: [0.3, 1, 0.3] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                    />
-                    <motion.line 
-                      x1="80" y1="160" x2="160" y2="160" 
-                      stroke="rgba(59, 130, 246, 0.6)" 
-                      strokeWidth="2"
-                      animate={{ opacity: [0.3, 1, 0.3] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                    />
-                    <motion.line 
-                      x1="240" y1="160" x2="320" y2="160" 
-                      stroke="rgba(59, 130, 246, 0.6)" 
-                      strokeWidth="2"
-                      animate={{ opacity: [0.3, 1, 0.3] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-                    />
-                    
-                    {/* Network Nodes */}
-                    <motion.circle 
-                      cx="200" cy="40" r="8" 
-                      fill="rgba(34, 197, 94, 0.8)"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <motion.circle 
-                      cx="200" cy="280" r="8" 
-                      fill="rgba(34, 197, 94, 0.8)"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                    />
-                    <motion.circle 
-                      cx="70" cy="160" r="8" 
-                      fill="rgba(34, 197, 94, 0.8)"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                    />
-                    <motion.circle 
-                      cx="330" cy="160" r="8" 
-                      fill="rgba(34, 197, 94, 0.8)"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-                    />
-                    
-                    {/* Data Flow Particles */}
-                    <motion.circle 
-                      cx="0" cy="0" r="3" 
-                      fill="rgba(59, 130, 246, 0.8)"
+                    <motion.div 
+                      className="w-20 h-20 mx-auto mb-6 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/50 flex items-center justify-center"
                       animate={{
-                        cx: [200, 70],
-                        cy: [120, 160],
-                        opacity: [0, 1, 0]
+                        scale: [1, 1.1, 1],
+                        boxShadow: [
+                          "0 0 20px rgba(59, 130, 246, 0.3)",
+                          "0 0 40px rgba(59, 130, 246, 0.6)",
+                          "0 0 20px rgba(59, 130, 246, 0.3)"
+                        ]
                       }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <motion.circle 
-                      cx="0" cy="0" r="3" 
-                      fill="rgba(59, 130, 246, 0.8)"
-                      animate={{
-                        cx: [200, 330],
-                        cy: [200, 160],
-                        opacity: [0, 1, 0]
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
                       }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                    />
-                    
-                    {/* Security Shield */}
-                    <motion.g
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      <path d="M200 85l-15-8v-12l15-8 15 8v12l-15 8z" fill="rgba(239, 68, 68, 0.6)" stroke="rgba(239, 68, 68, 0.8)" strokeWidth="1"/>
-                      <path d="M200 75l-8-4v-6l8-4 8 4v6l-8 4z" fill="rgba(239, 68, 68, 0.8)"/>
-                    </motion.g>
-                    
-                    {/* Payment Symbol */}
-                    <motion.g
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    >
-                      <rect x="285" y="140" width="20" height="12" rx="2" fill="rgba(59, 130, 246, 0.7)" stroke="rgba(59, 130, 246, 0.9)" strokeWidth="1"/>
-                      <circle cx="295" cy="146" r="3" fill="rgba(255, 255, 255, 0.9)"/>
-                    </motion.g>
-                  </svg>
-                </motion.div>
+                      <Fingerprint className="w-10 h-10 text-blue-200" />
+                    </motion.div>
+                    <h3 className="text-2xl font-bold mb-2">
+                      {t("edaptPage.heroImageTitle") || "Technologie Biométrique Avancée"}
+                    </h3>
+                    <p className="text-blue-200 text-lg">
+                      {t("edaptPage.heroImageSubtitle") || "Sécurité et Innovation"}
+                    </p>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
