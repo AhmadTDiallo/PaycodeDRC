@@ -37,7 +37,7 @@ export default function Edapt() {
   ];
 
   return (
-    <section id="edapt" className="relative py-16 overflow-hidden">
+    <section id="edapt" className="relative py-12 overflow-hidden">
       {/* Modern blue glass morphism background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-blue-500/15 to-indigo-600/20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_60%)]" />
@@ -57,7 +57,7 @@ export default function Edapt() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-10"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -94,7 +94,7 @@ export default function Edapt() {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-8">
           {/* 3D Floating POS Device with Glass Container */}
           <motion.div
             variants={slideInLeft}
@@ -222,80 +222,32 @@ export default function Edapt() {
           </motion.div>
         </div>
 
-        {/* Benefits Section with Enhanced Glass Morphism */}
+        {/* Learn More Section */}
         <motion.div
-          variants={fadeInUp}
+          className="text-center"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="relative"
-          whileInView={{ 
-            y: [30, 0],
-            opacity: [0, 1],
-            scale: [0.95, 1]
-          }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          variants={fadeInUp}
         >
-          <div className="bg-gradient-to-r from-blue-900/80 via-indigo-900/70 to-blue-800/80 backdrop-blur-xl rounded-3xl p-8 text-white shadow-2xl overflow-hidden border border-white/10">
-            {/* Enhanced animated background elements */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.15),transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(99,102,241,0.12),transparent_50%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(147,197,253,0.08),transparent_70%)]" />
-            
-            <div className="relative">
-              <motion.h3 
-                variants={fadeInUp}
-                className="text-2xl md:text-3xl font-bold text-center mb-8 drop-shadow-lg"
-                whileInView={{ scale: [0.9, 1.05, 1] }}
-                transition={{ duration: 0.6 }}
-              >
-                {t("edapt.benefitsTitle")}
-              </motion.h3>
-              
-              <motion.div 
-                variants={staggerContainer}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-              >
-                {[1, 2, 3, 4, 5, 6].map((num) => (
-                  <motion.div
-                    key={num}
-                    variants={fadeInUp}
-                    className="flex items-start space-x-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all duration-500 hover:border-white/20"
-                    whileHover={{ 
-                      scale: 1.05,
-                      y: -5,
-                      boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
-                    }}
-                    whileInView={{
-                      x: [20, 0],
-                      opacity: [0, 1]
-                    }}
-                    transition={{ 
-                      duration: 0.5,
-                      delay: num * 0.1
-                    }}
-                  >
-                    <div className="flex-shrink-0">
-                      <motion.div
-                        whileHover={{ rotate: 360, scale: 1.2 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <CheckCircle2 className="w-5 h-5 text-blue-300 mt-1" />
-                      </motion.div>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-base mb-2 text-blue-100">
-                        {t(`edapt.benefit${num}Title`)}
-                      </h4>
-                      <p className="text-blue-200 text-sm leading-relaxed">
-                        {t(`edapt.benefit${num}Desc`)}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
+          <motion.button
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-full font-semibold shadow-xl border border-white/20 backdrop-blur-sm transition-all duration-300"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              // Scroll to contact section or handle learn more action
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            {t("edapt.learnMore") || "En savoir plus"}
+            <ArrowRight className="inline-block ml-2 w-5 h-5" />
+          </motion.button>
         </motion.div>
       </div>
     </section>

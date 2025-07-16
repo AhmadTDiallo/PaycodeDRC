@@ -103,6 +103,7 @@ const translations = {
     'edapt.benefit5Desc': 'Respecte les standards internationaux de sécurité et de protection des données.',
     'edapt.benefit6Title': 'Évolutivité',
     'edapt.benefit6Desc': 'S\'adapte facilement aux besoins croissants et à l\'expansion géographique.',
+    'edapt.learnMore': 'En savoir plus',
 
     // Financial Switch Popup (French)
     'solutions.popup.title': 'Switch Financier - Aperçu Détaillé',
@@ -315,6 +316,7 @@ const translations = {
     'edapt.feature3Desc': 'Real-time payments without internet connection required, perfect for remote areas.',
     'edapt.feature4Title': 'Interoperability',
     'edapt.feature4Desc': 'Compatible across financial, government aid, health, and agricultural services.',
+    'edapt.learnMore': 'Learn More',
     
     'edapt.usecasesTitle': 'Use Cases',
     'edapt.usecase1Title': 'Financial Services',
