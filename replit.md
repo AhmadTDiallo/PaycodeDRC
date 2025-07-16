@@ -105,6 +105,11 @@ Paycode DRC is a full-stack fintech platform designed as a licensed payment aggr
 
 ```
 Changelog:
+- July 16, 2025. Complete EDAPT page redesign with professional dark blue theme matching main site
+- July 16, 2025. Simplified navigation with only logo and language selector on EDAPT page
+- July 16, 2025. Added fixed parallax background effect with fingerprint image
+- July 16, 2025. Implemented clean glassmorphism design with professional card layouts
+- July 16, 2025. Enhanced mobile responsiveness and readability across all sections
 - July 16, 2025. Replaced POS device image with fingerprint registration device (fingerregister_1752658741575.avif) for better thematic fit
 - July 16, 2025. Made EDAPT section more compact by removing detailed benefits section and replacing with "Learn More" button
 - July 16, 2025. Added modern blue glassmorphism background with floating geometric shapes and enhanced animations
