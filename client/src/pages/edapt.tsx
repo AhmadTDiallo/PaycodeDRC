@@ -110,13 +110,8 @@ export default function EdaptPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center">
-              <div className="w-10 h-10 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/50 flex items-center justify-center mr-3">
-                <Fingerprint className="w-6 h-6 text-blue-200" />
-              </div>
-              <div className="text-2xl font-bold text-white">
-                PAYCODE
-              </div>
+            <div className="w-10 h-10 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/50 flex items-center justify-center">
+              <Fingerprint className="w-6 h-6 text-blue-200" />
             </div>
             
             {/* Language Selector */}
