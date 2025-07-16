@@ -43,7 +43,7 @@ export default function ImageSlideshow({ images, className = "" }: ImageSlidesho
   return (
     <div className={`relative ${className}`}>
       {/* Main Image */}
-      <div className="relative overflow-hidden rounded-lg">
+      <div className="relative overflow-hidden rounded-lg h-full">
         <img
           src={images[currentImage]}
           alt={`Article image ${currentImage + 1}`}
@@ -54,23 +54,23 @@ export default function ImageSlideshow({ images, className = "" }: ImageSlidesho
         <Button
           variant="ghost"
           size="sm"
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full h-8 w-8 p-0"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full h-10 w-10 p-0 shadow-lg transition-all duration-200"
           onClick={prevImage}
         >
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="h-5 w-5" />
         </Button>
         
         <Button
           variant="ghost"
           size="sm"
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full h-8 w-8 p-0"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full h-10 w-10 p-0 shadow-lg transition-all duration-200"
           onClick={nextImage}
         >
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="h-5 w-5" />
         </Button>
 
         {/* Image Counter */}
-        <div className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 rounded-md text-xs">
+        <div className="absolute top-3 right-3 bg-black/80 text-white px-3 py-1 rounded-full text-sm font-medium">
           {currentImage + 1} / {images.length}
         </div>
       </div>

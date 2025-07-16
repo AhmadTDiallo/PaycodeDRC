@@ -152,11 +152,17 @@ export default function News() {
                     onClick={() => handleArticleClick(article, isDbArticle ? undefined : article.url)}
                   >
                     {displayImages.length > 0 && (
-                      <div className="w-24 h-24 flex-shrink-0">
-                        <ImageSlideshow 
-                          images={displayImages} 
-                          className="w-full h-full"
+                      <div className="w-24 h-24 flex-shrink-0 relative">
+                        <div
+                          className="w-full h-full bg-cover bg-center rounded-lg"
+                          style={{ backgroundImage: `url(${displayImages[0]})` }}
                         />
+                        {/* Show image count indicator if multiple images */}
+                        {displayImages.length > 1 && (
+                          <div className="absolute bottom-1 right-1 bg-black/70 text-white px-1 py-0.5 rounded text-xs">
+                            {displayImages.length}
+                          </div>
+                        )}
                       </div>
                     )}
                     <CardContent className="p-4 flex-1 flex flex-col justify-between">
