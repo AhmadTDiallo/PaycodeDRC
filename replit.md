@@ -105,6 +105,11 @@ Paycode DRC is a full-stack fintech platform designed as a licensed payment aggr
 
 ```
 Changelog:
+- July 16, 2025. Added EDAPT menu item in navigation and created standalone EDAPT section
+- July 16, 2025. Removed EDAPT from solutions grid and redesigned as modern standalone section
+- July 16, 2025. Implemented glass morphism effects and smooth transitions for EDAPT section
+- July 16, 2025. Added POS device image with hover effects and glassmorphism styling
+- July 16, 2025. Comprehensive bilingual support for EDAPT content (French/English)
 - July 15, 2025. Removed POS device component completely from the application
 - July 15, 2025. Resolved database connection issues with proper WebSocket configuration for Neon Database
 - July 15, 2025. Fixed critical admin navigation routing by adding missing routes in App.tsx
