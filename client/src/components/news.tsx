@@ -232,30 +232,35 @@ export default function News() {
                 {/* Header Section */}
                 <div className="relative">
                   {((selectedArticle.imageUrls && selectedArticle.imageUrls.length > 0) || selectedArticle.imageUrl) && (
-                    <div className="h-80 relative overflow-hidden">
+                    <div className="h-80 relative">
                       {selectedArticle.imageUrls && selectedArticle.imageUrls.length > 0 ? (
-                        <ImageSlideshow 
-                          images={selectedArticle.imageUrls} 
-                          className="w-full h-full"
-                        />
+                        <div className="relative h-full">
+                          <ImageSlideshow 
+                            images={selectedArticle.imageUrls} 
+                            className="w-full h-full"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
+                        </div>
                       ) : selectedArticle.imageUrl ? (
-                        <img 
-                          src={selectedArticle.imageUrl} 
-                          alt={selectedArticle.title}
-                          className="w-full h-full object-cover"
-                        />
+                        <div className="relative h-full">
+                          <img 
+                            src={selectedArticle.imageUrl} 
+                            alt={selectedArticle.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        </div>
                       ) : null}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                       
                       {/* Category badge overlay */}
-                      <div className="absolute top-4 left-4">
+                      <div className="absolute top-4 left-4 z-10">
                         <Badge className="bg-white/90 text-gray-800 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
                           {selectedArticle.category}
                         </Badge>
                       </div>
                       
                       {/* Title overlay */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
                         <h1 className="text-3xl font-bold mb-2 leading-tight">
                           {selectedArticle.title}
                         </h1>

@@ -22,7 +22,7 @@ export default function ImageSlideshow({ images, className = "" }: ImageSlidesho
         <img
           src={images[0]}
           alt="Article image"
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-cover"
         />
       </div>
     );
@@ -43,7 +43,7 @@ export default function ImageSlideshow({ images, className = "" }: ImageSlidesho
   return (
     <div className={`relative ${className}`}>
       {/* Main Image */}
-      <div className="relative overflow-hidden rounded-lg h-full">
+      <div className="relative overflow-hidden h-full">
         <img
           src={images[currentImage]}
           alt={`Article image ${currentImage + 1}`}
@@ -54,23 +54,23 @@ export default function ImageSlideshow({ images, className = "" }: ImageSlidesho
         <Button
           variant="ghost"
           size="sm"
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full h-10 w-10 p-0 shadow-lg transition-all duration-200"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full h-12 w-12 p-0 shadow-lg transition-all duration-200 z-20"
           onClick={prevImage}
         >
-          <ChevronLeft className="h-5 w-5" />
+          <ChevronLeft className="h-6 w-6" />
         </Button>
         
         <Button
           variant="ghost"
           size="sm"
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full h-10 w-10 p-0 shadow-lg transition-all duration-200"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full h-12 w-12 p-0 shadow-lg transition-all duration-200 z-20"
           onClick={nextImage}
         >
-          <ChevronRight className="h-5 w-5" />
+          <ChevronRight className="h-6 w-6" />
         </Button>
 
         {/* Image Counter */}
-        <div className="absolute top-3 right-3 bg-black/80 text-white px-3 py-1 rounded-full text-sm font-medium">
+        <div className="absolute top-4 right-4 bg-black/80 text-white px-4 py-2 rounded-full text-sm font-medium z-20">
           {currentImage + 1} / {images.length}
         </div>
       </div>
