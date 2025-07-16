@@ -111,37 +111,9 @@ export default function EdaptPage() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <svg 
-                width="40" 
-                height="40" 
-                viewBox="0 0 40 40" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-                className="mr-3"
-              >
-                {/* Main circle */}
-                <circle cx="20" cy="20" r="18" fill="url(#gradient1)" stroke="rgba(59, 130, 246, 0.8)" strokeWidth="2"/>
-                
-                {/* Inner design - representing digital/fintech */}
-                <circle cx="20" cy="20" r="12" fill="none" stroke="rgba(255, 255, 255, 0.6)" strokeWidth="1"/>
-                <circle cx="20" cy="20" r="7" fill="none" stroke="rgba(255, 255, 255, 0.8)" strokeWidth="1"/>
-                
-                {/* Central P */}
-                <path d="M16 14h2c2 0 3 1 3 2.5s-1 2.5-3 2.5h-2v3h-1v-8zm1 4h1c1 0 2-.5 2-1.5s-1-1.5-2-1.5h-1v3z" fill="white"/>
-                
-                {/* Digital dots */}
-                <circle cx="14" cy="12" r="1" fill="rgba(59, 130, 246, 0.8)"/>
-                <circle cx="26" cy="12" r="1" fill="rgba(59, 130, 246, 0.8)"/>
-                <circle cx="14" cy="28" r="1" fill="rgba(59, 130, 246, 0.8)"/>
-                <circle cx="26" cy="28" r="1" fill="rgba(59, 130, 246, 0.8)"/>
-                
-                <defs>
-                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="rgba(59, 130, 246, 0.9)"/>
-                    <stop offset="100%" stopColor="rgba(99, 102, 241, 0.9)"/>
-                  </linearGradient>
-                </defs>
-              </svg>
+              <div className="w-10 h-10 rounded-full bg-blue-500/30 backdrop-blur-md border border-blue-400/50 flex items-center justify-center mr-3">
+                <Fingerprint className="w-6 h-6 text-blue-200" />
+              </div>
               <div className="text-2xl font-bold text-white">
                 PAYCODE
               </div>
