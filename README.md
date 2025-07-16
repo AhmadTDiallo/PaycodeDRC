@@ -105,7 +105,7 @@ paycode-drc/
 ├── attached_assets/            # Ressources multimédia
 │   ├── fingerregister_*.avif  # Image dispositif empreintes
 │   └── *.jpg, *.webp         # Autres images
-└── replit.md                   # Documentation projet
+└── README.md                   # Documentation projet
 ```
 
 ## 🛠️ Installation et Configuration
@@ -125,7 +125,7 @@ cd paycode-drc
 npm install
 
 # Configurer les variables d'environnement
-# DATABASE_URL sera fourni automatiquement par Replit/Neon
+# DATABASE_URL pour la connexion PostgreSQL
 ```
 
 ### Développement
@@ -291,11 +291,11 @@ npm run build
 # Le backend est bundlé dans dist/server
 ```
 
-### Déploiement Replit
-- **Auto-déploiement** : Via Replit Deployments
-- **Domaine** : `.replit.app` ou domaine personnalisé
-- **TLS** : HTTPS automatique
-- **Health Checks** : Vérifications de santé intégrées
+### Déploiement
+- **Build automatisé** : Frontend statique + API Express
+- **Variables d'environnement** : Configuration PostgreSQL
+- **HTTPS** : TLS automatique
+- **Monitoring** : Vérifications de santé intégrées
 
 ## 📈 Fonctionnalités Avancées
 
@@ -327,16 +327,7 @@ npm run db:push      # Migrations base de données
 npm run type-check   # Vérification TypeScript
 ```
 
-## 📝 Historique des Changements
 
-### Juillet 2025
-- **16 Juillet** : Refonte complète page EDAPT avec thème bleu professionnel
-- **16 Juillet** : Navigation minimaliste avec logo empreinte digitale
-- **16 Juillet** : Optimisations mobile complètes et design responsive
-- **15 Juillet** : Interface admin traduite en français
-- **15 Juillet** : Modal articles avec layout magazine
-- **09 Juillet** : Intégration PostgreSQL avec Neon Database
-- **03 Juillet** : Configuration initiale du projet
 
 ## 🤝 Contribution
 
@@ -357,12 +348,7 @@ npm run type-check   # Vérification TypeScript
 
 Ce projet est sous licence propriétaire. Tous droits réservés à Paycode DRC.
 
-## 📞 Support
 
-Pour toute question technique ou demande de support :
-- **Documentation** : Voir `replit.md` pour détails techniques
-- **Issues** : Utiliser le système d'issues du repository
-- **Contact** : Via le formulaire de contact de l'application
 
 ---
 
