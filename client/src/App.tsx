@@ -11,6 +11,7 @@ import AdminDashboard from "@/pages/admin/dashboard";
 import AdminNewsList from "@/pages/admin/news-list";
 import AdminNewsForm from "@/pages/admin/news-form";
 import UserManagement from "@/pages/admin/user-management";
+import DemoRequests from "@/pages/admin/demo-requests";
 
 function Router() {
   return (
@@ -27,6 +28,7 @@ function Router() {
       <Route path="/admin/news/:id/edit" component={AdminNewsForm} />
       <Route path="/admin/users" component={UserManagement} />
       <Route path="/admin/user-management" component={UserManagement} />
+      <Route path="/admin/demo-requests" component={DemoRequests} />
     </Switch>
   );
 }

@@ -129,6 +129,25 @@ export default function AdminDashboard() {
               </div>
             </CardContent>
           </Card>
+
+          <Card 
+            className="cursor-pointer active:scale-95 transition-transform bg-gradient-to-br from-orange-500 to-orange-600 text-white border-0 shadow-md"
+            onClick={() => setLocation("/admin/demo-requests")}
+          >
+            <CardContent className="p-3 sm:p-4">
+              <div className="flex items-center space-x-3">
+                <div className="flex-shrink-0">
+                  <FileText className="h-5 w-5 sm:h-6 sm:w-6" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-sm sm:text-base font-semibold truncate">Demande du Client</h3>
+                  <p className="text-xs text-orange-100 truncate">
+                    Voir demandes démo
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
     </div>
