@@ -15,7 +15,9 @@ import {
   EyeOff, 
   ArrowLeft,
   Calendar,
-  User
+  User,
+  FileText,
+  Settings
 } from "lucide-react";
 import { NewsArticle } from "@shared/schema";
 import { format } from "date-fns";
@@ -82,8 +84,13 @@ export default function AdminNewsList() {
 
   if (authLoading || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Chargement...</div>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 flex items-center justify-center">
+        <div className="relative">
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-green-200 border-t-green-600"></div>
+          <div className="absolute inset-0 animate-pulse">
+            <div className="h-12 w-12 bg-green-100 rounded-full opacity-20"></div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -105,66 +112,89 @@ export default function AdminNewsList() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Compact Mobile Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="px-3 sm:px-6">
-          <div className="py-3 sm:py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
+      {/* Modern Header */}
+      <header className="bg-white/90 backdrop-blur-sm shadow-xl border-b border-green-100">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="py-4 sm:py-6">
+            <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center">
+              <div className="flex items-center gap-4">
                 <Button
                   variant="ghost"
-                  size="sm"
                   onClick={() => setLocation("/admin/dashboard")}
-                  className="p-1 sm:p-2 hover:bg-gray-100 text-gray-900"
+                  className="p-2 sm:p-3 hover:bg-green-100 text-green-900 rounded-lg transition-all duration-200"
                 >
-                  <ArrowLeft className="h-4 w-4 text-gray-900" />
+                  <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
-                <h1 className="text-sm sm:text-lg font-semibold text-gray-900 truncate">
-                  Articles
-                </h1>
+                <div className="flex items-center gap-3">
+                  <div className="bg-gradient-to-r from-green-500 to-green-600 p-3 rounded-xl shadow-md">
+                    <FileText className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                      Gérer Articles
+                    </h1>
+                    <p className="text-sm text-gray-600 hidden sm:block">
+                      Modifier et organiser le contenu
+                    </p>
+                  </div>
+                </div>
               </div>
               
-              <Button
-                onClick={() => setLocation("/admin/news-form")}
-                size="sm"
-                className="bg-green-600 hover:bg-green-700 text-white h-8 px-3 text-xs sm:text-sm"
-              >
-                <PlusCircle className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                <span className="hidden sm:inline">Nouvel Article</span>
-                <span className="sm:hidden">+</span>
-              </Button>
+              <div className="flex items-center gap-2">
+                <div className="bg-gradient-to-r from-green-100 to-green-200 px-3 py-2 rounded-full">
+                  <span className="text-sm text-green-800 font-medium">
+                    {articles.length} {articles.length === 1 ? 'article' : 'articles'}
+                  </span>
+                </div>
+                <Button
+                  onClick={() => setLocation("/admin/news-form")}
+                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-200"
+                >
+                  <PlusCircle className="h-4 w-4 mr-2" />
+                  <span className="hidden sm:inline">Nouvel Article</span>
+                  <span className="sm:hidden">Créer</span>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Compact Main Content */}
-      <main className="px-3 sm:px-6 py-4 sm:py-6">
+      {/* Main Content */}
+      <main className="px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {articles.length === 0 ? (
-          <Card className="bg-white border shadow-sm">
-            <CardContent className="text-center py-6 sm:py-8 px-3 sm:px-4">
-              <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">
-                Aucun article
+          <div className="text-center py-12 sm:py-16">
+            <div className="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-8 sm:p-12 shadow-xl max-w-md mx-auto">
+              <div className="mb-6">
+                <div className="bg-green-300 p-4 rounded-full w-16 h-16 mx-auto flex items-center justify-center">
+                  <FileText className="h-8 w-8 text-green-600" />
+                </div>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-green-800 mb-3">
+                Aucun article trouvé
               </h3>
-              <p className="text-xs sm:text-sm text-gray-600 mb-3">
-                Créez votre premier article
+              <p className="text-green-700 text-sm sm:text-base mb-6">
+                Créez votre premier article pour commencer à publier du contenu sur votre site.
               </p>
               <Button
                 onClick={() => setLocation("/admin/news-form")}
-                className="bg-green-600 hover:bg-green-700 text-white h-8 px-3 text-xs sm:text-sm"
-                size="sm"
+                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-200"
               >
-                <PlusCircle className="h-3 w-3 mr-1" />
-                Créer
+                <PlusCircle className="h-5 w-5 mr-2" />
+                Créer le premier article
               </Button>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         ) : (
-          <div className="space-y-4">
-            {articles.map((article) => (
-              <Card key={article.id} className="bg-white border-gray-200 hover:shadow-md transition-shadow shadow-sm">
-                <CardContent className="p-4 sm:p-6">
+          <div className="space-y-6">
+            {articles.map((article, index) => (
+              <Card key={article.id} className={`border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
+                index % 2 === 0 
+                  ? 'bg-gradient-to-br from-green-50 to-white border-l-4 border-l-green-500' 
+                  : 'bg-gradient-to-br from-blue-50 to-white border-l-4 border-l-blue-500'
+              } rounded-2xl overflow-hidden`}>
+                <CardContent className="p-6 sm:p-8">
                   <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-2">
@@ -216,7 +246,11 @@ export default function AdminNewsList() {
                         size="sm"
                         onClick={() => handleTogglePublish(article.id)}
                         disabled={togglePublishMutation.isPending}
-                        className="flex items-center justify-center space-x-1 border-gray-300 text-gray-700 hover:bg-gray-50 text-xs sm:text-sm"
+                        className={`flex items-center justify-center space-x-1 text-xs sm:text-sm transition-all duration-200 rounded-full ${
+                          article.isPublished 
+                            ? 'border-red-300 text-red-700 hover:bg-red-50' 
+                            : 'border-green-300 text-green-700 hover:bg-green-50'
+                        }`}
                       >
                         {article.isPublished ? (
                           <>

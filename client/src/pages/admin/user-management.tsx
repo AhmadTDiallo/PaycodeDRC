@@ -13,7 +13,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { insertAdminUserSchema, type AdminUser, type InsertAdminUser } from "@shared/schema";
-import { UserPlus, Edit, Trash2, Users, Shield, User, ArrowLeft } from "lucide-react";
+import { UserPlus, Edit, Trash2, Users, Shield, User, ArrowLeft, Settings } from "lucide-react";
 import { useLocation } from "wouter";
 import { useAdminAuth } from "@/hooks/useAdmin";
 
@@ -123,8 +123,13 @@ export default function UserManagement() {
   // Show loading while checking authentication
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Chargement...</div>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 flex items-center justify-center">
+        <div className="relative">
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-200 border-t-purple-600"></div>
+          <div className="absolute inset-0 animate-pulse">
+            <div className="h-12 w-12 bg-purple-100 rounded-full opacity-20"></div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -135,38 +140,52 @@ export default function UserManagement() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Compact Mobile Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="px-3 sm:px-6">
-          <div className="py-3 sm:py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
+      {/* Modern Header */}
+      <header className="bg-white/90 backdrop-blur-sm shadow-xl border-b border-purple-100">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="py-4 sm:py-6">
+            <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center">
+              <div className="flex items-center gap-4">
                 <Button
                   variant="ghost"
-                  size="sm"
                   onClick={() => setLocation("/admin/dashboard")}
-                  className="p-1 sm:p-2 hover:bg-gray-100 text-gray-900"
+                  className="p-2 sm:p-3 hover:bg-purple-100 text-purple-900 rounded-lg transition-all duration-200"
                 >
-                  <ArrowLeft className="h-4 w-4 text-gray-900" />
+                  <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
-                <h1 className="text-sm sm:text-lg font-semibold text-gray-900 truncate">
-                  Utilisateurs Admin
-                </h1>
+                <div className="flex items-center gap-3">
+                  <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-3 rounded-xl shadow-md">
+                    <Users className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                      Utilisateurs Admin
+                    </h1>
+                    <p className="text-sm text-gray-600 hidden sm:block">
+                      Gérer les comptes administrateurs
+                    </p>
+                  </div>
+                </div>
               </div>
               
-              <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button 
-                    size="sm" 
-                    className="bg-blue-600 hover:bg-blue-700 text-white h-8 px-3 text-xs sm:text-sm"
-                  >
-                    <UserPlus className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                    <span className="hidden sm:inline">Nouvel Admin</span>
-                    <span className="sm:hidden">+</span>
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="mx-3 sm:mx-0 max-w-sm sm:max-w-md">
+              <div className="flex items-center gap-2">
+                <div className="bg-gradient-to-r from-purple-100 to-purple-200 px-3 py-2 rounded-full">
+                  <span className="text-sm text-purple-800 font-medium">
+                    {users.length} {users.length === 1 ? 'admin' : 'admins'}
+                  </span>
+                </div>
+                <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button 
+                      className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-200"
+                    >
+                      <UserPlus className="h-4 w-4 mr-2" />
+                      <span className="hidden sm:inline">Nouvel Admin</span>
+                      <span className="sm:hidden">Créer</span>
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="mx-3 sm:mx-0 max-w-sm sm:max-w-md">
                   <DialogHeader>
                     <DialogTitle className="text-base sm:text-lg">Nouvel Administrateur</DialogTitle>
                   </DialogHeader>
@@ -269,97 +288,156 @@ export default function UserManagement() {
                       </div>
                     </form>
                   </Form>
-                </DialogContent>
-              </Dialog>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Compact Main Content */}
-      <main className="px-3 sm:px-6 py-4 sm:py-6">
-        <div className="mb-3 sm:mb-4">
-          <p className="text-xs sm:text-sm text-gray-600">
-            Gérer les comptes administrateurs
-          </p>
-        </div>
-
-        <Card className="bg-white shadow-sm border">
-          <CardHeader className="bg-gray-50 border-b p-3 sm:p-4">
-            <CardTitle className="text-gray-900 text-sm sm:text-base font-semibold flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              Administrateurs
-            </CardTitle>
-          </CardHeader>
-          
-          <CardContent className="p-0 sm:p-1">
-            {isLoading ? (
-              <div className="p-6 sm:p-8 text-center">
-                <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-b-2 border-green-600 mx-auto"></div>
-                <p className="text-gray-600 mt-2 text-sm sm:text-base">Chargement des utilisateurs...</p>
+      {/* Main Content */}
+      <main className="px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        {users.length === 0 ? (
+          <div className="text-center py-12 sm:py-16">
+            <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl p-8 sm:p-12 shadow-xl max-w-md mx-auto">
+              <div className="mb-6">
+                <div className="bg-purple-300 p-4 rounded-full w-16 h-16 mx-auto flex items-center justify-center">
+                  <Users className="h-8 w-8 text-purple-600" />
+                </div>
               </div>
-            ) : (
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow className="bg-gray-50">
-                      <TableHead className="font-semibold text-gray-900 text-xs sm:text-sm px-2 sm:px-4">Nom</TableHead>
-                      <TableHead className="font-semibold text-gray-900 text-xs sm:text-sm px-2 sm:px-4 hidden sm:table-cell">Email</TableHead>
-                      <TableHead className="font-semibold text-gray-900 text-xs sm:text-sm px-2 sm:px-4">Rôle</TableHead>
-                      <TableHead className="font-semibold text-gray-900 text-xs sm:text-sm px-2 sm:px-4 hidden md:table-cell">Statut</TableHead>
-                      <TableHead className="font-semibold text-gray-900 text-xs sm:text-sm px-2 sm:px-4 hidden lg:table-cell">Créé</TableHead>
-                      <TableHead className="font-semibold text-gray-900 text-xs sm:text-sm px-2 sm:px-4">Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {users.map((user: AdminUser) => (
-                      <TableRow key={user.id} className="bg-white hover:bg-gray-50">
-                        <TableCell className="font-medium text-gray-900 text-xs sm:text-sm px-2 sm:px-4">
-                          <div className="flex flex-col">
-                            <span>{user.username}</span>
-                            <span className="text-xs text-gray-500 sm:hidden">{user.email}</span>
-                          </div>
-                        </TableCell>
-                        <TableCell className="text-gray-700 text-xs sm:text-sm px-2 sm:px-4 hidden sm:table-cell">{user.email}</TableCell>
-                        <TableCell className="px-2 sm:px-4">{getRoleBadge(user.role)}</TableCell>
-                        <TableCell className="px-2 sm:px-4 hidden md:table-cell">
-                          <Badge variant={user.isActive ? "default" : "secondary"} className="text-xs">
-                            {user.isActive ? "Actif" : "Inactif"}
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="text-gray-600 text-xs sm:text-sm px-2 sm:px-4 hidden lg:table-cell">
-                          {new Date(user.createdAt).toLocaleDateString()}
-                        </TableCell>
-                        <TableCell className="px-2 sm:px-4">
-                          <div className="flex gap-1 sm:gap-2">
-                            {user.role !== "superadmin" && (
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => handleDeleteUser(user)}
-                                className="text-red-600 hover:text-red-700 hover:bg-red-50 p-1 sm:p-2"
-                                disabled={deleteUserMutation.isPending}
-                              >
-                                <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
-                              </Button>
+              <h3 className="text-xl sm:text-2xl font-bold text-purple-800 mb-3">
+                Aucun administrateur
+              </h3>
+              <p className="text-purple-700 text-sm sm:text-base mb-6">
+                Créez le premier compte administrateur pour commencer à gérer votre système.
+              </p>
+              <Button
+                onClick={() => setIsCreateDialogOpen(true)}
+                className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-200"
+              >
+                <UserPlus className="h-5 w-5 mr-2" />
+                Créer le premier admin
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <Card className="bg-white/90 backdrop-blur-sm shadow-xl border-0 rounded-2xl overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6 sm:p-8">
+              <CardTitle className="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                <Users className="h-6 w-6" />
+                Liste des Administrateurs
+              </CardTitle>
+              <p className="text-purple-100 text-sm sm:text-base mt-2">
+                Gérez les accès et permissions de vos administrateurs
+              </p>
+            </CardHeader>
+            
+            <CardContent className="p-0">
+              {isLoading ? (
+                <div className="p-8 sm:p-12 text-center">
+                  <div className="relative">
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-200 border-t-purple-600 mx-auto"></div>
+                    <div className="absolute inset-0 animate-pulse">
+                      <div className="h-12 w-12 bg-purple-100 rounded-full opacity-20 mx-auto"></div>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mt-4 text-sm sm:text-base">Chargement des utilisateurs...</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="bg-gradient-to-r from-purple-50 to-purple-100 border-b border-purple-200">
+                        <th className="text-left font-bold text-purple-900 text-sm px-4 sm:px-6 py-4">Administrateur</th>
+                        <th className="text-left font-bold text-purple-900 text-sm px-4 sm:px-6 py-4 hidden sm:table-cell">Email</th>
+                        <th className="text-left font-bold text-purple-900 text-sm px-4 sm:px-6 py-4">Rôle</th>
+                        <th className="text-left font-bold text-purple-900 text-sm px-4 sm:px-6 py-4 hidden md:table-cell">Statut</th>
+                        <th className="text-left font-bold text-purple-900 text-sm px-4 sm:px-6 py-4 hidden lg:table-cell">Créé le</th>
+                        <th className="text-center font-bold text-purple-900 text-sm px-4 sm:px-6 py-4">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {users.map((user: AdminUser, index) => (
+                        <tr key={user.id} className={`transition-all duration-200 hover:bg-purple-50 ${
+                          index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                        } border-b border-gray-100`}>
+                          <td className="px-4 sm:px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold ${
+                                user.role === 'superadmin' ? 'bg-gradient-to-r from-red-500 to-red-600' : 'bg-gradient-to-r from-purple-500 to-purple-600'
+                              }`}>
+                                {user.username.charAt(0).toUpperCase()}
+                              </div>
+                              <div>
+                                <div className="font-semibold text-gray-900 text-sm sm:text-base">{user.username}</div>
+                                <div className="text-xs text-gray-500 sm:hidden">{user.email}</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-4 sm:px-6 py-4 text-gray-700 text-sm hidden sm:table-cell">{user.email}</td>
+                          <td className="px-4 sm:px-6 py-4">
+                            {user.role === "superadmin" ? (
+                              <Badge className="bg-gradient-to-r from-red-500 to-red-600 text-white border-0 gap-1">
+                                <Shield size={12} />Super Admin
+                              </Badge>
+                            ) : (
+                              <Badge className="bg-gradient-to-r from-purple-500 to-purple-600 text-white border-0 gap-1">
+                                <User size={12} />Admin
+                              </Badge>
                             )}
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                    {users.length === 0 && (
-                      <TableRow>
-                        <TableCell colSpan={6} className="text-center py-6 sm:py-8 text-gray-500 text-sm">
-                          Aucun utilisateur administrateur trouvé
-                        </TableCell>
-                      </TableRow>
-                    )}
-                  </TableBody>
-                </Table>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+                          </td>
+                          <td className="px-4 sm:px-6 py-4 hidden md:table-cell">
+                            <Badge variant={user.isActive ? "default" : "secondary"} className={
+                              user.isActive 
+                                ? "bg-gradient-to-r from-green-500 to-green-600 text-white border-0" 
+                                : "bg-gray-200 text-gray-700"
+                            }>
+                              {user.isActive ? "Actif" : "Inactif"}
+                            </Badge>
+                          </td>
+                          <td className="px-4 sm:px-6 py-4 text-gray-600 text-sm hidden lg:table-cell">
+                            {new Date(user.createdAt).toLocaleDateString('fr-FR')}
+                          </td>
+                          <td className="px-4 sm:px-6 py-4">
+                            <div className="flex justify-center">
+                              {user.role !== "superadmin" ? (
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => handleDeleteUser(user)}
+                                  className="border-red-300 text-red-700 hover:bg-red-50 hover:border-red-400 transition-all duration-200 rounded-full px-3 py-1"
+                                  disabled={deleteUserMutation.isPending}
+                                >
+                                  <Trash2 className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                                  <span className="hidden sm:inline">Supprimer</span>
+                                </Button>
+                              ) : (
+                                <Badge variant="secondary" className="text-xs">
+                                  Protégé
+                                </Badge>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                      {users.length === 0 && (
+                        <tr>
+                          <td colSpan={6} className="text-center py-12 text-gray-500 text-sm">
+                            <div className="flex flex-col items-center gap-2">
+                              <Users className="h-8 w-8 text-gray-400" />
+                              <span>Aucun utilisateur administrateur trouvé</span>
+                            </div>
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
       </main>
     </div>
   );
