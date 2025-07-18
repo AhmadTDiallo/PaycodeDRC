@@ -53,49 +53,79 @@ export default function DemoRequests() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
       {/* Mobile-friendly Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white/90 backdrop-blur-sm shadow-lg border-b border-blue-100">
         <div className="px-3 sm:px-6">
-          <div className="py-3 sm:py-4">
+          <div className="py-4 sm:py-5">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+              <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setLocation("/admin/dashboard")}
-                  className="p-1 sm:p-2 hover:bg-gray-100 text-gray-900"
+                  className="p-2 sm:p-3 hover:bg-blue-100 text-blue-900 rounded-lg transition-all duration-200"
                 >
-                  <ArrowLeft className="h-4 w-4 text-gray-900" />
+                  <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
-                <h1 className="text-sm sm:text-lg font-semibold text-gray-900 truncate">
-                  Demande du Client
-                </h1>
+                <div className="flex items-center gap-3">
+                  <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-2 rounded-xl shadow-md">
+                    <FileText className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h1 className="text-lg sm:text-xl font-bold text-gray-900">
+                      Demandes Client
+                    </h1>
+                    <p className="text-xs sm:text-sm text-gray-600 hidden sm:block">
+                      Gérer les demandes de démonstration
+                    </p>
+                  </div>
+                </div>
               </div>
               
-              <Badge variant="outline" className="text-xs sm:text-sm">
-                {requests.length} demande{requests.length !== 1 ? 's' : ''}
-              </Badge>
+              <div className="flex items-center gap-2">
+                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-full shadow-lg">
+                  <span className="text-sm sm:text-base font-bold">
+                    {requests.length}
+                  </span>
+                  <span className="text-xs sm:text-sm ml-1 font-medium">
+                    {requests.length !== 1 ? 'demandes' : 'demande'}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="px-3 sm:px-6 py-4 sm:py-6">
-        <Card className="bg-white shadow-sm border">
-          <CardHeader className="bg-gray-50 border-b p-3 sm:p-4">
-            <CardTitle className="text-gray-900 text-sm sm:text-base font-semibold flex items-center gap-2">
-              <FileText className="h-4 w-4" />
-              Demandes de Démonstration
+      <main className="px-3 sm:px-6 py-6 sm:py-8">
+        <Card className="bg-white/95 backdrop-blur-sm shadow-xl border-0 rounded-2xl overflow-hidden">
+          <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 border-b-0 p-4 sm:p-6">
+            <CardTitle className="text-white text-base sm:text-lg font-bold flex items-center gap-3">
+              <div className="bg-white/20 p-2 rounded-lg">
+                <FileText className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <div>Demandes de Démonstration</div>
+                <div className="text-blue-100 text-sm font-normal mt-1">
+                  Consultez et gérez toutes les demandes client
+                </div>
+              </div>
             </CardTitle>
           </CardHeader>
           
           <CardContent className="p-0">
             {isLoading ? (
-              <div className="p-6 sm:p-8 text-center">
-                <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 border-b-2 border-orange-600 mx-auto"></div>
-                <p className="text-gray-600 mt-2 text-sm sm:text-base">Chargement des demandes...</p>
+              <div className="p-8 sm:p-12 text-center">
+                <div className="relative">
+                  <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-4 border-blue-200 border-t-blue-600 mx-auto"></div>
+                  <div className="absolute inset-0 animate-pulse">
+                    <div className="h-8 w-8 sm:h-12 sm:w-12 bg-blue-100 rounded-full mx-auto opacity-20"></div>
+                  </div>
+                </div>
+                <p className="text-gray-700 mt-4 text-base sm:text-lg font-medium">Chargement des demandes...</p>
+                <p className="text-gray-500 mt-1 text-sm">Veuillez patienter</p>
               </div>
             ) : (
               <div className="space-y-0">
@@ -103,12 +133,12 @@ export default function DemoRequests() {
                 <div className="hidden lg:block overflow-x-auto">
                   <Table>
                     <TableHeader>
-                      <TableRow className="bg-gray-50">
-                        <TableHead className="font-semibold text-gray-900 text-sm px-4">Client</TableHead>
-                        <TableHead className="font-semibold text-gray-900 text-sm px-4">Entreprise</TableHead>
-                        <TableHead className="font-semibold text-gray-900 text-sm px-4">Contact</TableHead>
-                        <TableHead className="font-semibold text-gray-900 text-sm px-4">Message</TableHead>
-                        <TableHead className="font-semibold text-gray-900 text-sm px-4">Date</TableHead>
+                      <TableRow className="bg-gradient-to-r from-blue-50 to-orange-50 border-b-2 border-blue-200">
+                        <TableHead className="font-bold text-blue-900 text-sm px-6 py-4">Client</TableHead>
+                        <TableHead className="font-bold text-blue-900 text-sm px-6 py-4">Entreprise</TableHead>
+                        <TableHead className="font-bold text-blue-900 text-sm px-6 py-4">Contact</TableHead>
+                        <TableHead className="font-bold text-blue-900 text-sm px-6 py-4">Message</TableHead>
+                        <TableHead className="font-bold text-blue-900 text-sm px-6 py-4">Date</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -179,10 +209,14 @@ export default function DemoRequests() {
                 </div>
 
                 {/* Mobile Card View */}
-                <div className="lg:hidden space-y-3 p-3">
-                  {requests.map((request: DemoRequest) => (
-                    <Card key={request.id} className="border border-gray-200 shadow-sm">
-                      <CardContent className="p-4">
+                <div className="lg:hidden space-y-4 p-4 sm:p-6">
+                  {requests.map((request: DemoRequest, index) => (
+                    <Card key={request.id} className={`border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
+                      index % 2 === 0 
+                        ? 'bg-gradient-to-br from-blue-50 to-white border-l-4 border-l-blue-500' 
+                        : 'bg-gradient-to-br from-orange-50 to-white border-l-4 border-l-orange-500'
+                    } rounded-2xl overflow-hidden`}>
+                      <CardContent className="p-5">
                         <div className="space-y-3">
                           {/* Header with name and company */}
                           <div className="flex flex-col space-y-2">
@@ -197,7 +231,11 @@ export default function DemoRequests() {
                           </div>
 
                           {/* Contact Information */}
-                          <div className="space-y-2 bg-gray-50 rounded-lg p-3">
+                          <div className={`space-y-2 rounded-xl p-4 ${
+                            index % 2 === 0 
+                              ? 'bg-blue-100/50' 
+                              : 'bg-orange-100/50'
+                          }`}>
                             <div className="flex items-center gap-2">
                               <Mail className="h-3 w-3 text-gray-500 flex-shrink-0" />
                               <span className="text-xs text-gray-600 break-all">{request.email}</span>
@@ -217,24 +255,34 @@ export default function DemoRequests() {
                           </div>
 
                           {/* Message */}
-                          <div className="space-y-2">
+                          <div className="space-y-3">
                             <div className="flex items-center gap-2 justify-between">
                               <div className="flex items-center gap-2">
-                                <MessageSquare className="h-4 w-4 text-gray-500 flex-shrink-0" />
-                                <span className="text-sm font-medium text-gray-900">Message:</span>
+                                <MessageSquare className={`h-4 w-4 flex-shrink-0 ${
+                                  index % 2 === 0 ? 'text-blue-600' : 'text-orange-600'
+                                }`} />
+                                <span className="text-sm font-bold text-gray-900">Message:</span>
                               </div>
                               {request.message.length > 100 && (
                                 <Button
                                   variant="default"
                                   size="sm"
                                   onClick={() => handleViewMessage(request)}
-                                  className="text-xs px-2 py-1 h-auto bg-orange-600 hover:bg-orange-700 text-white"
+                                  className={`text-xs px-3 py-2 h-auto text-white font-semibold rounded-full shadow-md ${
+                                    index % 2 === 0 
+                                      ? 'bg-blue-600 hover:bg-blue-700' 
+                                      : 'bg-orange-600 hover:bg-orange-700'
+                                  }`}
                                 >
                                   Voir complet
                                 </Button>
                               )}
                             </div>
-                            <div className="text-sm text-gray-700 leading-relaxed bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                            <div className={`text-sm text-gray-800 leading-relaxed rounded-xl p-4 shadow-sm ${
+                              index % 2 === 0 
+                                ? 'bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-600' 
+                                : 'bg-gradient-to-r from-orange-50 to-orange-100 border-l-4 border-orange-600'
+                            }`}>
                               {request.message.length > 100 ? `${request.message.substring(0, 100)}...` : request.message}
                             </div>
                           </div>
@@ -244,9 +292,18 @@ export default function DemoRequests() {
                   ))}
                   
                   {requests.length === 0 && (
-                    <div className="text-center py-8">
-                      <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-500 text-sm">Aucune demande de démonstration trouvée</p>
+                    <div className="p-8 sm:p-12 text-center">
+                      <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8 shadow-lg">
+                        <div className="mb-4">
+                          <div className="bg-gray-300 p-4 rounded-full w-16 h-16 mx-auto flex items-center justify-center">
+                            <FileText className="h-8 w-8 text-gray-500" />
+                          </div>
+                        </div>
+                        <h3 className="text-lg font-bold text-gray-700 mb-2">Aucune demande trouvée</h3>
+                        <p className="text-gray-500 text-sm">
+                          Les demandes de démonstration apparaîtront ici une fois soumises par les clients.
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>
