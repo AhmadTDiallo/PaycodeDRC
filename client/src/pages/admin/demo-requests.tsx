@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useAdminAuth } from "@/hooks/useAdmin";
 import { ArrowLeft, FileText, User, Building, Phone, MessageSquare, Calendar, Mail } from "lucide-react";
 import { useLocation } from "wouter";
@@ -13,6 +15,8 @@ import type { DemoRequest } from "@shared/schema";
 export default function DemoRequests() {
   const [, setLocation] = useLocation();
   const { isAuthenticated, isLoading: authLoading } = useAdminAuth();
+  const [selectedRequest, setSelectedRequest] = useState<DemoRequest | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Fetch all demo requests
   const { data: requestsResponse, isLoading, error } = useQuery({
@@ -42,6 +46,11 @@ export default function DemoRequests() {
   if (!isAuthenticated) {
     return null;
   }
+
+  const handleViewMessage = (request: DemoRequest) => {
+    setSelectedRequest(request);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -132,8 +141,20 @@ export default function DemoRequests() {
                             </div>
                           </TableCell>
                           <TableCell className="text-gray-700 text-sm px-4 max-w-xs">
-                            <div className="truncate" title={request.message}>
-                              {request.message}
+                            <div className="flex items-center gap-2">
+                              <div className="truncate flex-1">
+                                {request.message.length > 50 ? `${request.message.substring(0, 50)}...` : request.message}
+                              </div>
+                              {request.message.length > 50 && (
+                                <Button
+                                  variant="default"
+                                  size="sm"
+                                  onClick={() => handleViewMessage(request)}
+                                  className="text-xs px-2 py-1 h-auto bg-blue-600 hover:bg-blue-700 text-white"
+                                >
+                                  Voir plus
+                                </Button>
+                              )}
                             </div>
                           </TableCell>
                           <TableCell className="text-gray-600 text-sm px-4">
@@ -197,12 +218,24 @@ export default function DemoRequests() {
 
                           {/* Message */}
                           <div className="space-y-2">
-                            <div className="flex items-center gap-2">
-                              <MessageSquare className="h-4 w-4 text-gray-500 flex-shrink-0" />
-                              <span className="text-sm font-medium text-gray-900">Message:</span>
+                            <div className="flex items-center gap-2 justify-between">
+                              <div className="flex items-center gap-2">
+                                <MessageSquare className="h-4 w-4 text-gray-500 flex-shrink-0" />
+                                <span className="text-sm font-medium text-gray-900">Message:</span>
+                              </div>
+                              {request.message.length > 100 && (
+                                <Button
+                                  variant="default"
+                                  size="sm"
+                                  onClick={() => handleViewMessage(request)}
+                                  className="text-xs px-2 py-1 h-auto bg-orange-600 hover:bg-orange-700 text-white"
+                                >
+                                  Voir complet
+                                </Button>
+                              )}
                             </div>
                             <div className="text-sm text-gray-700 leading-relaxed bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
-                              {request.message}
+                              {request.message.length > 100 ? `${request.message.substring(0, 100)}...` : request.message}
                             </div>
                           </div>
                         </div>
@@ -221,6 +254,64 @@ export default function DemoRequests() {
             )}
           </CardContent>
         </Card>
+
+        {/* Message Detail Modal */}
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+            {selectedRequest && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="text-lg font-semibold text-gray-900">
+                    Message de {selectedRequest.name}
+                  </DialogTitle>
+                </DialogHeader>
+                
+                <div className="space-y-4">
+                  {/* Client Info */}
+                  <div className="bg-gray-50 rounded-lg p-4 space-y-2">
+                    <div className="flex items-center gap-2">
+                      <User className="h-4 w-4 text-gray-500" />
+                      <span className="font-medium text-gray-900">{selectedRequest.name}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Building className="h-4 w-4 text-gray-500" />
+                      <span className="text-gray-700">{selectedRequest.company}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-4 w-4 text-gray-500" />
+                      <span className="text-gray-700">{selectedRequest.email}</span>
+                    </div>
+                    {selectedRequest.phone && (
+                      <div className="flex items-center gap-2">
+                        <Phone className="h-4 w-4 text-gray-500" />
+                        <span className="text-gray-700">{selectedRequest.phone}</span>
+                      </div>
+                    )}
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4 text-gray-500" />
+                      <span className="text-gray-700">
+                        {formatSafeDate(selectedRequest.createdAt, "dd MMMM yyyy 'à' HH:mm")}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Full Message */}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <MessageSquare className="h-5 w-5 text-gray-500" />
+                      <h3 className="text-base font-semibold text-gray-900">Message complet:</h3>
+                    </div>
+                    <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4">
+                      <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">
+                        {selectedRequest.message}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </main>
     </div>
   );
