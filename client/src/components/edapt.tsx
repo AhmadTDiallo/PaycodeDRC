@@ -94,23 +94,18 @@ export default function Edapt() {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center justify-items-center mb-8">
           {/* 3D Floating POS Device with Glass Container */}
           <motion.div
             variants={slideInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="relative group perspective-1000 order-2 lg:order-1"
-            whileInView={{ 
-              scale: [0.9, 1],
-              rotateY: [15, 0],
-              opacity: [0, 1]
-            }}
+            className="relative group perspective-1000 order-2 lg:order-1 flex justify-center"
             transition={{ duration: 1, ease: "easeOut" }}
           >
             {/* Glass morphism container */}
-            <div className="relative p-4 sm:p-6 lg:p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden mx-auto max-w-md lg:max-w-none">
+            <div className="relative p-4 sm:p-6 lg:p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-none w-full flex items-center justify-center min-h-[200px] sm:min-h-[250px]">
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent group-hover:from-white/10 transition-all duration-500" />
               
@@ -137,7 +132,7 @@ export default function Edapt() {
                 }}
               >
                 <motion.div
-                  className="relative w-full max-w-xs sm:max-w-sm mx-auto flex justify-center"
+                  className="relative w-full max-w-[250px] sm:max-w-[300px] lg:max-w-[350px] mx-auto flex justify-center items-center"
                   animate={{
                     y: [0, -8, 0],
                     rotateY: [0, 2, 0],
@@ -151,11 +146,12 @@ export default function Edapt() {
                   <img
                     src={fingerprintImage}
                     alt="Fingerprint Registration Device"
-                    className="w-full h-auto object-contain object-center"
+                    className="w-full h-auto object-contain object-center mx-auto block"
                     style={{
                       background: "transparent",
                       filter: "contrast(1.1) brightness(1.05) saturate(1.2) drop-shadow(0 0 25px rgba(59, 130, 246, 0.4))",
-                      maxHeight: "300px"
+                      maxHeight: "280px",
+                      maxWidth: "100%"
                     }}
                   />
                 </motion.div>
