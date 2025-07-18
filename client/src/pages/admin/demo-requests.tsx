@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { useAdminAuth } from "@/hooks/useAdmin";
 import { ArrowLeft, FileText, User, Building, Phone, MessageSquare, Calendar, Mail } from "lucide-react";
 import { useLocation } from "wouter";
@@ -260,10 +260,13 @@ export default function DemoRequests() {
           <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
             {selectedRequest && (
               <>
-                <DialogHeader>
-                  <DialogTitle className="text-lg font-semibold text-gray-900">
+                <DialogHeader className="bg-blue-50 -m-6 mb-4 p-6 border-b">
+                  <DialogTitle className="text-xl font-bold text-blue-900">
                     Message de {selectedRequest.name}
                   </DialogTitle>
+                  <DialogDescription className="sr-only">
+                    Détails complets de la demande de démonstration
+                  </DialogDescription>
                 </DialogHeader>
                 
                 <div className="space-y-4">
@@ -297,12 +300,12 @@ export default function DemoRequests() {
 
                   {/* Full Message */}
                   <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <MessageSquare className="h-5 w-5 text-gray-500" />
-                      <h3 className="text-base font-semibold text-gray-900">Message complet:</h3>
+                    <div className="flex items-center gap-2 bg-orange-100 p-3 rounded-lg">
+                      <MessageSquare className="h-5 w-5 text-orange-600" />
+                      <h3 className="text-lg font-bold text-orange-900">Message complet:</h3>
                     </div>
-                    <div className="bg-blue-50 border-l-4 border-blue-500 rounded-r-lg p-4">
-                      <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">
+                    <div className="bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-600 rounded-r-lg p-4 shadow-sm">
+                      <p className="text-gray-900 leading-relaxed whitespace-pre-wrap font-medium">
                         {selectedRequest.message}
                       </p>
                     </div>
