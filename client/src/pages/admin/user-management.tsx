@@ -15,12 +15,14 @@ import { apiRequest } from "@/lib/queryClient";
 import { insertAdminUserSchema, type AdminUser, type InsertAdminUser } from "@shared/schema";
 import { UserPlus, Edit, Trash2, Users, Shield, User, ArrowLeft } from "lucide-react";
 import { useLocation } from "wouter";
+import { useAdminAuth } from "@/hooks/useAdmin";
 
 export default function UserManagement() {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [, setLocation] = useLocation();
+  const { isAuthenticated, isLoading: authLoading } = useAdminAuth();
 
   const form = useForm<InsertAdminUser>({
     resolver: zodResolver(insertAdminUserSchema),
@@ -34,8 +36,9 @@ export default function UserManagement() {
   });
 
   // Fetch all admin users
-  const { data: usersResponse, isLoading } = useQuery({
+  const { data: usersResponse, isLoading, error } = useQuery({
     queryKey: ["/api/admin/users"],
+    enabled: isAuthenticated, // Only fetch when authenticated
   });
 
   const users = usersResponse?.data || [];
@@ -43,20 +46,7 @@ export default function UserManagement() {
   // Create user mutation
   const createUserMutation = useMutation({
     mutationFn: async (data: InsertAdminUser) => {
-      const response = await fetch("/api/admin/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to create admin user");
-      }
-      
-      return await response.json();
+      return await apiRequest('POST', '/api/admin/users', data);
     },
     onSuccess: () => {
       toast({
@@ -79,19 +69,7 @@ export default function UserManagement() {
   // Delete user mutation
   const deleteUserMutation = useMutation({
     mutationFn: async (id: number) => {
-      const response = await fetch(`/api/admin/users/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to delete admin user");
-      }
-      
-      return await response.json();
+      return await apiRequest('DELETE', `/api/admin/users/${id}`);
     },
     onSuccess: () => {
       toast({
@@ -128,12 +106,33 @@ export default function UserManagement() {
     }
   };
 
+  // Authentication check
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      setLocation("/admin/login");
+    }
+  }, [isAuthenticated, authLoading, setLocation]);
+
   const getRoleBadge = (role: string) => {
     if (role === "superadmin") {
       return <Badge variant="destructive" className="gap-1"><Shield size={12} />Super Administrateur</Badge>;
     }
     return <Badge variant="secondary" className="gap-1"><User size={12} />Administrateur</Badge>;
   };
+
+  // Show loading while checking authentication
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-lg">Chargement...</div>
+      </div>
+    );
+  }
+
+  // Don't render if not authenticated
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
