@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Fingerprint } from "lucide-react";
+import { Menu, Fingerprint, Building2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "wouter";
 import LanguageSelector from "./LanguageSelector";
 
 export default function Navigation() {
@@ -104,6 +105,15 @@ export default function Navigation() {
               className="ml-4 flex items-center space-x-3"
             >
               <LanguageSelector />
+              <Link href="/mfi-onboarding">
+                <Button
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                  size="sm"
+                >
+                  <Building2 className="w-4 h-4" />
+                  {t("nav.mfiOnboarding")}
+                </Button>
+              </Link>
               <Button
                 onClick={() => scrollToSection("contact")}
                 className="bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white px-6 py-2.5 rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
@@ -169,6 +179,15 @@ export default function Navigation() {
                     transition={{ delay: 0.5 }}
                   >
                     <LanguageSelector />
+                    <Link href="/mfi-onboarding">
+                      <Button
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                      >
+                        <Building2 className="w-4 h-4" />
+                        {t("nav.mfiOnboarding")}
+                      </Button>
+                    </Link>
                     <Button
                       onClick={() => scrollToSection("contact")}
                       className="w-full bg-gradient-to-r from-paycode-blue to-paycode-blue-light hover:from-paycode-blue-light hover:to-paycode-blue text-white font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"

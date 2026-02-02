@@ -18,6 +18,7 @@ const translations = {
     'nav.caseStudies': 'Cas d\'usage',
     'nav.news': 'Actualités',
     'nav.contact': 'Contact',
+    'nav.mfiOnboarding': 'On-boarding IMF',
 
     // Hero Section
     'hero.title': 'PAYCODE FINTECH CONGO',
@@ -304,6 +305,7 @@ const translations = {
     'nav.caseStudies': 'Case Studies',
     'nav.news': 'News',
     'nav.contact': 'Contact',
+    'nav.mfiOnboarding': 'MFI On-boarding',
 
     // Hero Section
     'hero.title': 'PAYCODE FINTECH CONGO',

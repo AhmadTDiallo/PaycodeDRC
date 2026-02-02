@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useAdminAuth } from "@/hooks/useAdmin";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { PlusCircle, FileText, Users, Settings, BarChart3, MessageSquare } from "lucide-react";
+import { PlusCircle, FileText, Users, Settings, BarChart3, MessageSquare, Building2, ClipboardList } from "lucide-react";
 
 export default function AdminDashboard() {
   const [, setLocation] = useLocation();
@@ -117,7 +117,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Enhanced Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6">
           <Card 
             className="cursor-pointer hover:scale-105 hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0 shadow-xl rounded-2xl overflow-hidden group"
             onClick={() => setLocation("/admin/news-form")}
@@ -188,6 +188,44 @@ export default function AdminDashboard() {
                   <h3 className="text-lg sm:text-xl font-bold mb-2">Demandes Client</h3>
                   <p className="text-orange-100 text-sm sm:text-base">
                     Consulter les demandes de démonstration
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card 
+            className="cursor-pointer hover:scale-105 hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-teal-500 to-teal-600 text-white border-0 shadow-xl rounded-2xl overflow-hidden group"
+            onClick={() => setLocation("/admin/mfi-submissions")}
+          >
+            <CardContent className="p-6 sm:p-7">
+              <div className="flex flex-col items-center text-center space-y-4">
+                <div className="bg-white/20 backdrop-blur-sm p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <Building2 className="h-8 w-8 sm:h-10 sm:w-10" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2">Soumissions IMF</h3>
+                  <p className="text-teal-100 text-sm sm:text-base">
+                    Gérer les demandes d'intégration IMF
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card 
+            className="cursor-pointer hover:scale-105 hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-indigo-500 to-indigo-600 text-white border-0 shadow-xl rounded-2xl overflow-hidden group"
+            onClick={() => setLocation("/admin/mfi-config")}
+          >
+            <CardContent className="p-6 sm:p-7">
+              <div className="flex flex-col items-center text-center space-y-4">
+                <div className="bg-white/20 backdrop-blur-sm p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <ClipboardList className="h-8 w-8 sm:h-10 sm:w-10" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2">Config Questionnaire</h3>
+                  <p className="text-indigo-100 text-sm sm:text-base">
+                    Configurer les modules et questions IMF
                   </p>
                 </div>
               </div>
