@@ -157,7 +157,7 @@ const institutionSchema = z.object({
 type InstitutionFormData = z.infer<typeof institutionSchema>;
 
 export default function MfiOnboardingPage() {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const { toast } = useToast();
   const t = translations[language as keyof typeof translations] || translations.en;
   
