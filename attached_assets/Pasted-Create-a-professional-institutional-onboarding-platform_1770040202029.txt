@@ -1,0 +1,103 @@
+Create a professional institutional onboarding platform called “Paycode MFI Onboarding Portal” that will be integrated into the existing Paycode website and administrative system.
+
+The platform’s purpose is to collect verified, structured operational and technology requirements from Microfinance Institutions (MFIs) in a standardized and scalable way.
+
+Public Website Integration
+
+On the Paycode public website, add a clearly visible button labeled:
+
+“On-boarding MFI”
+
+This button should be presented in French and positioned alongside other institutional or partner-related actions. When clicked, it should redirect the user to the MFI Onboarding Portal.
+
+The onboarding portal should feel like a natural extension of the Paycode website, with a professional, institutional tone appropriate for regulated financial entities.
+
+MFI Identification and Verification
+
+Before accessing the questionnaire, each MFI must identify itself using official institutional contact information. This includes:
+
+The official name of the MFI
+
+Country of operation
+
+An official institutional email address (non-personal, non-free email)
+
+An official phone number
+
+The platform must ensure that each submission is uniquely associated with a real, identifiable MFI. Submissions should not be anonymous.
+
+The verification process should be lightweight and friction-minimizing while still ensuring that Paycode can reliably identify and contact the submitting institution.
+
+Dynamic Needs Assessment Questionnaire
+
+After identification, MFIs should be guided through a modular, structured questionnaire designed to capture their system and operational needs.
+
+The questionnaire must be composed of configurable modules representing different functional areas, such as:
+
+Core Banking Systems
+
+POS and Agent Banking
+
+Treasury and Transaction Management
+
+Payments and Integrations
+
+Compliance, Risk, and Regulatory Reporting
+
+MFIs should select the modules relevant to them using structured inputs such as checkboxes and multi-select fields. When a module is selected, the platform should dynamically reveal follow-up questions specific to that module. If a module is not selected, its related questions should remain hidden.
+
+The questionnaire must avoid reliance on unstructured free-text responses wherever possible, prioritizing structured data capture that can be analyzed and compared across institutions.
+
+Configurable and Versioned Questionnaires
+
+The questionnaire must be fully configurable by Paycode. Modules, questions, and selectable options should be treated as managed components rather than fixed elements.
+
+Paycode must be able to:
+
+Add new modules and questions
+
+Disable or archive existing modules and questions without losing historical data
+
+Modify selectable options over time
+
+Control the order and visibility of modules
+
+Each MFI submission must be associated with the specific version of the questionnaire used at the time of submission, ensuring that historical data remains accurate and comparable as requirements evolve.
+
+Data Storage and Intelligence
+
+All submitted data must be stored in a structured, queryable format that allows Paycode to:
+
+Filter MFIs by country, size, and system needs
+
+Track demand trends over time
+
+Segment institutions by readiness or priority
+
+Support internal reporting, proposal generation, and partner matching
+
+Each submission should include timestamps and an internal status indicating its progression through Paycode’s onboarding or engagement process.
+
+Administrative Integration
+
+The MFI Onboarding Portal must integrate into Paycode’s existing administrative interface, which already manages requests, demos, and newsletters.
+
+Within the existing admin area, add a dedicated section for MFI Onboarding, allowing authorized Paycode staff to:
+
+View and search all MFI submissions
+
+Review detailed questionnaire responses
+
+Manage submission statuses and internal notes
+
+Configure questionnaire modules, questions, and options
+
+Export structured data for internal use
+
+The onboarding system should function as a natural extension of the current admin environment rather than a separate or standalone tool.
+
+User Experience and Tone
+
+The overall experience should be clean, professional, and enterprise-focused. The interface should respect the time and expectations of institutional users and reflect Paycode’s positioning as a serious financial infrastructure provider.
+
+This platform is not intended to be a simple form, but a foundational onboarding and discovery system that will evolve into a strategic intelligence layer supporting Paycode’s growth, partnerships, and market expansion.
