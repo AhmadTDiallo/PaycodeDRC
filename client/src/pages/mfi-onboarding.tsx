@@ -27,6 +27,7 @@ import {
   Wallet,
   Settings,
   ArrowLeft,
+  Languages,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -298,12 +299,22 @@ export default function MfiOnboardingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
       <div className="container mx-auto px-4 py-8">
-        <Link href="/">
-          <Button variant="ghost" className="text-white hover:bg-white/10 mb-4">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t.backToHome}
+        <div className="flex justify-between items-center mb-4">
+          <Link href="/">
+            <Button variant="ghost" className="text-white hover:bg-white/10">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t.backToHome}
+            </Button>
+          </Link>
+          <Button 
+            variant="outline" 
+            onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
+            className="border-white/30 text-white hover:bg-white/10 bg-white/5"
+          >
+            <Languages className="w-4 h-4 mr-2" />
+            {language === "fr" ? "English" : "Français"}
           </Button>
-        </Link>
+        </div>
 
         <motion.div
           initial={{ y: -20, opacity: 0 }}
